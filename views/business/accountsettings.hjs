@@ -5,6 +5,7 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/accountsettings.css'/>
     {{{ newrelic.getBrowserTimingHeader }}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -57,8 +58,9 @@
 					{{alert}}
 				</div>
 			{{/alert}}
-			<div class="col-md-4" style = "margin-bottom:30px">
-				<h2>Hello, Dr. {{ lname }}!</h2>
+			<div style = "margin-bottom:50px">
+				<h2>Change your personal information and preferences</h2>
+				<hr></hr>
 			</div>
 		</div>
 		<div class="form-inline">
@@ -68,8 +70,11 @@
 			<form class="form-horizontal" action="" method="post">
 				<label class="col-md-2 col-md-offset-2 control-label editName">Name</label>
 
-				<div class="col-md-6">
+				<div class="col-md-3">
 					<input type="text" style = "margin-bottom: 20px" id="editName" name="editName" value="{{ fname }} {{lname}}" class="form-control" readonly>
+				</div>
+
+				<div class="col-md-3 empty">
 				</div>
 
 			</form>

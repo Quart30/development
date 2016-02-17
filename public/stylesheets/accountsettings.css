@@ -1,0 +1,67 @@
+h1, h2, h3, h4, h5, h6, p, span, a {
+  color: white;
+  font-family: Lato, sans-serif;
+}
+
+body{
+  text-align: center;
+  background-image: url('../images/business-settings.jpg');
+  image-rendering: crisp-edges;
+  background-size: cover;
+}
+
+h2 {
+  font-size: 40px;
+  text-align: center;
+}
+
+.custom-button{
+  
+  border-width: 2px;
+  border-style: solid;
+  border-color: white;
+  color: #ffffff;
+  font-size: 15px;
+  color: white;
+  background: transparent;
+  padding: 13px 15px 13px 15px;
+  text-decoration: none;
+  width:120px;
+  overflow: auto;
+  white-space: nowrap;
+  margin:20px auto;
+  margin-top: 0;
+  border:1px white solid;
+
+}
+
+.custom-button:hover {
+  background-color: inherit;
+}
+
+.label{
+  font-size: 15px;
+  color: white;
+}
+
+.form-inline{
+  color: white;
+  font-family: Lato, sans-serif;
+}
+
+.container-margin-accountSettings {
+  background-color: #4682b4;
+  padding: 20px;
+}
+
+.inApp, h5{
+  text-align: left;
+}
+
+.empty{
+  height: 60px;
+}
+
+.formControl {
+  margin-bottom: 20px;
+}
