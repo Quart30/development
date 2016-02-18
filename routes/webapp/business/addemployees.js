@@ -81,7 +81,8 @@ exports.post = function(req,res) {
             email: email,
             registrationToken : token,
             admin: false,
-            permissionLevel: 3
+            permissionLevel: 3,
+            registered: false
         });
 
 
@@ -90,7 +91,8 @@ exports.post = function(req,res) {
             from: 'quart30dev@gmail.com',
             subject: 'Employee Signup',
             text: 'Hello ' + username + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
-            'http://quart30.herokuapp.com/employeeregister?token=' + token
+            //'http://quart30.herokuapp.com/employeeregister?token=' + token
+            'http://localhost:4000/employeeregister?token=' + token
         };
 
         // send mail with defined transport object
