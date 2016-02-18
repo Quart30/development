@@ -4,7 +4,10 @@
     <title>{{ title }}</title>
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <!--<link rel='stylesheet' href='/stylesheets/style.css'/>-->
+     <link rel='stylesheet' href='/stylesheets/register.css'/>
+
+
     {{#newrelic}}
         {{{ newrelic.getBrowserTimingHeader }}}
     {{/newrelic}}
@@ -16,7 +19,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
-            <img id = "company-logo" src="images/logo.png">
+            <img id = "company-logo" src="images/logo2.png">
         </a>
       </div>
       <div class="navbar-padding-right">
