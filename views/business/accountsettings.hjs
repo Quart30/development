@@ -136,13 +136,13 @@
 					<div class="col-md-2 col-md-offset-1">
 						{{#smsNotify}}
 						<form class="form-horizontal" action="" method="post">
-							<input type="hidden" name="sendText" value="0">
-							<input type="checkbox" name="sendText" onchange="this.form.submit();" checked />
+							<input type="hidden" id="checkBox" name="sendText" value="0">
+							<input type="checkbox" id="checkBox" name="sendText" onchange="this.form.submit();" checked />
 						</form>
 						{{/smsNotify}}
 						{{^smsNotify}}
 						<form class="form-horizontal" action="" method="post">
-							<input type="checkbox" name="sendText" value="1" onchange="this.form.submit();" />
+							<input type="checkbox" id="checkBox" name="sendText" value="1" onchange="this.form.submit();" />
 						</form>
 						{{/smsNotify}}
 					</div>
@@ -152,13 +152,13 @@
 					<div class="col-md-2 col-md-offset-1">
 						{{#emailNotify}}
 						<form class="form-hozirontal" action="" method="post">
-							<input type="hidden" name="sendEmail" value="0">
-							<input type="checkbox" name="sendEmail" onchange="this.form.submit();" checked />
+							<input type="hidden" id="checkBox" name="sendEmail" value="0">
+							<input type="checkbox" id="checkBox" name="sendEmail" onchange="this.form.submit();" checked />
 						</form>
 						{{/emailNotify}}
 						{{^emailNotify}}
 						<form class="form-horizontal" action="" method="post">
-							<input type="checkbox" name="sendEmail" value="1" onchange="this.form.submit();" />
+							<input type="checkbox" id="checkBox" name="sendEmail" value="1" onchange="this.form.submit();" />
 						</form>
 						{{/emailNotify}}
 					</div>
