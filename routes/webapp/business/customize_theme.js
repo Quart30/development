@@ -10,8 +10,8 @@ exports.get = function (req, res, next) {
 
         res.render('business/customize_theme', {
             message: req.flash('permission'),
-            logo: business.logo,
-            //bg: '/images/bg/thumb/' + business.style.bg
+            logo: "images/thumb/cow.png", //business.logo,
+            bg: "images/bg.jpg"  // + business.style.bg
         });
     });
 };

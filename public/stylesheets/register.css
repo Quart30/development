@@ -1,0 +1,103 @@
+html *
+{
+    font-family: Lato, sans-serif;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+h1 {
+    /*font-size: 60px;*/
+    color: white;
+}
+
+h2 {
+    margin-top: 150px;
+}
+
+body {
+    background-image: url('../images/register-background.jpg');
+    background-size: cover;
+}
+
+#txt {
+    color:white
+}
+
+.whitetext {
+    color: white !important;
+}
+
+
+
+
+.navbar-default {
+    background-color: rgba(201,201,201, 0.3);
+    border-color: #c9c9c9;
+}
+
+#company-logo {
+    height:100px;
+    margin-left:10%;
+    margin-top:-15%;
+}
+.custom-button{
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    color: #ffffff;
+    font-size: 20px;
+    color: white;
+    background: transparent;
+    padding: 13px 25px 13px 25px;
+    text-decoration: none;
+    width:150px;
+    overflow: auto;
+    white-space: nowrap;
+    margin:20px auto;
+    border:1px white solid;
+
+}
+
+.form-input{
+    width: 230px;
+    border: 1px solid #FFF;
+    color: white;
+    padding: 5px;
+    background: transparent;
+}
+.form-input::placeholder-shown {
+    color: white;
+}
+
+.regis {
+    display: block;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    height: 50px;
+    width: 300px;
+}
+
+.custom-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#regis-container {
+    margin-top: 50px;
+    margin-bottom: 150px;
+}
+
+#form-separator {
+    border-right: 2px solid;
+    border-color: #e3e3e3;
+}
+
+#register-image {
+    margin-left: 100px;
+    margin-top: -50px;
+    width:500px;
+}
