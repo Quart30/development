@@ -59,7 +59,12 @@ exports.get = function(req,res){
  * @param req and res The two parameters passed in to get the apprporiate employee,
  * @returns The appropriate data about the employee
  */
-exports.post = function(req,res) {
+
+
+
+exports.post = function(req,res){
+    console.log(req.body);
+
     var parsed = baby.parse(req.body.csvEmployees);
     var rows = parsed.data;
     var database =  req.db;
