@@ -49,7 +49,7 @@
 
                 <div class="outerAlign" >
 
-                    <h3 class="tableheader">Employees already registered</h2>
+                    <h3 class="tableheader">Employees already registered</h3>
 
                         <div class="tableheader">
 
@@ -71,7 +71,7 @@
                         </div>
 
 
-                        <h3 class="tableheader">Employees not yet registered</h2>
+                        <h3 class="tableheader">Employees not yet registered</h3>
 
                         <div class="tableheader">
 
