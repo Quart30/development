@@ -24,7 +24,7 @@
               <li><a href="/dashboard">Dashboard</a></li>
               <li><a href="/addemployees">Employees</a></li>
               <li class="active">
-                  <a href="/customizetheme">Settings</a>
+                  <a href="/accountSettings">Settings</a>
               </li>
               <li><a href="/businesssetting">Company Name</a></li>
           </ul>
@@ -39,7 +39,7 @@
               <li>
                   <a href="/customizetheme">Customize Theme</a>
               </li>
-              <li><a href="/accountSettings">More Settings</a></li>
+              <li><a href="/accountSettings">Account Settings</a></li>
           </ul>
       </div>
   </nav>

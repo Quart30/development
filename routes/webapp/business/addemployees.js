@@ -1,8 +1,8 @@
 var crypto = require('crypto');
 var baby = require('babyparse');
 var async = require('async');
-var sendgrid  = require('sendgrid')('robobetty', 'NoKcE0FGE4bd');
 var ObjectId = require('mongodb').ObjectID;
+var transporter = require('nodemailer').createTransport('smtps://quart30dev%40gmail.com:cse112quart@smtp.gmail.com');
 
 /**
  * Takes a req and res parameters and is inputted into function to get employee, notemployee, and business data.
@@ -51,7 +51,7 @@ exports.get = function(req,res){
             res.render('business/addemployees',{title: 'Express',notsigned: notemployee, signed: employeee});
 
         });
-}
+};
 
 /**
  * Takes a req and res parameters and is inputted into function to get employee, notemployee, and business data.
@@ -59,8 +59,12 @@ exports.get = function(req,res){
  * @param req and res The two parameters passed in to get the apprporiate employee,
  * @returns The appropriate data about the employee
  */
+
+
+
 exports.post = function(req,res){
     console.log(req.body);
+
     var parsed = baby.parse(req.body.csvEmployees);
     var rows = parsed.data;
     var database =  req.db;
@@ -81,26 +85,29 @@ exports.post = function(req,res){
             lname: lname,
             email: email,
             registrationToken : token,
-            admin: false
+            admin: false,
+            permissionLevel: 3
         });
 
 
-        sendgrid.send({
+        var message = {
             to: email,
-            from: 'test@localhost',
+            from: 'quart30dev@gmail.com',
             subject: 'Employee Signup',
             text: 'Hello ' + username + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
-            'http://robobetty-dev.herokuapp.com/employeeregister?token=' + token
-        }, function (err, json){
-            if (err) {
-                //return next(err);
-                return console.error(err);
+            'http://quart30.herokuapp.com/employeeregister?token=' + token
+        };
+
+        // send mail with defined transport object
+        transporter.sendMail(message, function(error, info){
+            if(error){
+                return console.log('Email error: ' + error);
             }
-            console.log(json);
+            console.log('Message sent: ' + info.response);
         });
     }
     res.redirect('/addemployees');
-}
+};
 
 
 function randomToken() {
