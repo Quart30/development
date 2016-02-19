@@ -12,7 +12,7 @@ exports.get = function (req, res) {
     console.log('Business = ' + req.user[0].business);
     var walkinsAllowed = req.user[0].walkins;
 
-    res.render('business/dashboard', {title: 'Express',
+    res.render('business/dashboard', {title: 'Dashboard',
 		eid: employeeId,
 		employeeName: employeename,
         employeeLast: employeeLastName,

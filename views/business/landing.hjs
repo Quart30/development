@@ -20,7 +20,7 @@
             <div class="shameless-plug">Powered by Quart 3.0</div>
             <div class="form-container">
                 <form action="login" method="post">
-                    <label for="email" class="login-section-text    " "form-label" >
+                    <label for="email" class="login-section-text" "form-label" >
                         <span class="form-span">Email</span>
                         <input type="email" class="form-input" id="email" name="email" required />
                     </label>
