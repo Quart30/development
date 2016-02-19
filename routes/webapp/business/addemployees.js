@@ -60,6 +60,7 @@ exports.get = function(req,res){
  * @returns The appropriate data about the employee
  */
 exports.post = function(req,res){
+    console.log(req.body);
     var parsed = baby.parse(req.body.csvEmployees);
     var rows = parsed.data;
     var database =  req.db;
