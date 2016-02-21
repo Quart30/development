@@ -1,13 +1,29 @@
+h1, h2, h3, h4, h5, h6, p, span, a, input, label, div {
+  color: white;
+}
 
-/*.container-background{
+* {
+  margin: 0;
+}
 
-    box-shadow: 0 9px 0px 0px white, 0 -9px 0px 0px white, 12px 0 15px -4px rgba(31, 73, 125, 0.8), -12px 0 15px -4px rgba(31, 73, 125, 0.8);;
+html, body {
+  height: 100%;
+  overflow-y: hidden;
+}
 
-}*/
-
-h1 {
-    /*font-size: 60px;*/
-    color: white;
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -80px; 
+}
+.page-wrap:after {
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 80px; 
+}
+.site-footer {
+    background: rgba(0,0,0,0.6);
+    text-align: center;
 }
 
 body {
@@ -19,6 +35,10 @@ body {
     color:white
 }
 
+.list-inline {
+    padding-top: 30px;
+}
+
 .whitetext {
     color: white !important;
 }
@@ -27,4 +47,29 @@ body {
     background-color: #000000;
     opacity: 0.6;
     filter: alpha(opacity=60);
+    box-shadow:  0px 0px 30px 15px rgba(0, 0, 0, 0.4);
+    margin-top: 5%;
+}
+.top-bar-section{
+    height: 12vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.4);
+}
+.shameless-plug {
+  font-size: 18pt;
+  margin-left: 10%;
+  padding-top: 33px;
+}
+.shameless-plug:hover {
+    color:white;
+}
+.form-container{
+  float: right;
+  padding-right: 40px;
+  margin-top: -48px;
+}
+
+.nav-links {
+    margin-top: -40px;
+    margin-right: 30px;
 }
