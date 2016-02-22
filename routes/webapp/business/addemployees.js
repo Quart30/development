@@ -63,8 +63,6 @@ exports.get = function(req,res){
 
 
 exports.post = function(req,res){
-    console.log(req.body);
-
     var parsed = baby.parse(req.body.csvEmployees);
     var rows = parsed.data;
     var database =  req.db;
@@ -74,7 +72,7 @@ exports.post = function(req,res){
 
     for(var i = 0; i < rows.length; i++){
         var username = rows[i][0];
-        var email = rows[i][1];
+        var email = rows[i][1].trim();
         var nameArr = username.split(' ');
         var fname = nameArr[0];
         var lname = nameArr[1];
@@ -84,18 +82,21 @@ exports.post = function(req,res){
             fname: fname,
             lname: lname,
             email: email,
-            registrationToken : token,
+            registrationToken : token, //will be removed programmatically once the employee confirms
             admin: false,
             permissionLevel: 3,
-            registered: false
+            registered: false,
+            smsNotify: true, //added to match passport
+            emailNotify: true, //added to match passport
+            phone: 1234567890 //TODO: maybe add phone number to employee confirmation page?
+            /*password: pass*/ //will be added programmatically once the employee confirms
         });
-
 
         var message = {
             to: email,
             from: 'quart30dev@gmail.com',
             subject: 'Employee Signup',
-            text: 'Hello ' + username + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
+            text: 'Hello, ' + fname + ' ' + lname + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
             //'http://quart30.herokuapp.com/employeeregister?token=' + token
             'http://localhost:4000/employeeregister?token=' + token
         };
