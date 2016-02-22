@@ -48,16 +48,10 @@
                             <input class="regis form-input" type="text" name="companyName" value="{{ companyName }}" placeholder="  Company Name" required>
                         </div>
                         <div>
-                            <input class="regis form-input" type="text" name="fname" value="{{ fname }}" placeholder="  First Name" required>
-                        </div>
-                        <div>
-                            <input class="regis form-input" type="text" name="lname" value="{{ lname }}" placeholder="  Last Name" required>
-                        </div>
-                        <div>
                             <input class="regis form-input" type="email" name="email" value="{{ email }}" placeholder="  Email" required>
                         </div>
                         <div>
-                            <input class="regis form-input" type="tel" name="phone" value="{{ phone }}" placeholder="  Phone Number" required>
+                            <input class="regis form-input" type="tel" name="phone" value="{{ phone }}" placeholder="  Phone Number (optional)">
                         </div>
                         <div>
                             <input class="regis form-input" type="password" name="password" value="{{ password }}" placeholder="  Password" required>
@@ -69,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 110px;">© Copyright 2058, Quart 3.0</p>
+        <p style="text-align: center; margin-top: 180px;">© Copyright 2058, Quart 3.0</p>
     </div>
 
 </body>

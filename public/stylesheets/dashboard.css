@@ -1,4 +1,4 @@
-h1, h2, h3, h4, h5, h6, p, span, a, input, label, div {
+h1, h2, h3, h4, h5, h6, p, span, a, input, label, div, strong, li, ul, footer {
   color: white;
 }
 
@@ -22,12 +22,12 @@ html, body {
   height: 80px; 
 }
 .site-footer {
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.5);
     text-align: center;
 }
 
 body {
-    background-image: url('../images/dashboard-background.png');
+  background-color: #89bdd3;
     background-size: cover;
 }
 
@@ -39,21 +39,16 @@ body {
     padding-top: 30px;
 }
 
-.whitetext {
-    color: white !important;
-}
-
 .transbox {
-    background-color: #000000;
-    opacity: 0.6;
+  background-color: rgba(0,0,0,0.5);
     filter: alpha(opacity=60);
-    box-shadow:  0px 0px 30px 15px rgba(0, 0, 0, 0.4);
+    /*box-shadow:  0px 0px 30px 15px rgba(0, 0, 0, 0.5);*/
     margin-top: 5%;
 }
 .top-bar-section{
     height: 12vh;
     width: 100vw;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.5);
 }
 .shameless-plug {
   font-size: 18pt;

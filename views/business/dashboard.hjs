@@ -4,8 +4,6 @@
     <title>{{ title }}</title>
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
-    <link rel='stylesheet' href='/stylesheets/index.css'/>
-    <link rel='stylesheet' href='/stylesheets/dashboard.css'/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/dashboard.css'/>
     {{{ newrelic.getBrowserTimingHeader }}}
@@ -97,7 +95,7 @@
       <li><a href="#" class="whitetext">Privacy</a></li>
       <li><a href="#" class="whitetext">Terms</a></li>
       <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
-      <li class="footer-copyright whitetext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
+      <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
     </ul>
   </footer>
 </body>
