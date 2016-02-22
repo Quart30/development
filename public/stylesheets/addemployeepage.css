@@ -1,62 +1,56 @@
-h1, h2, h3, h4, h5, h6, p, span, a {
-    color: white;
-    font-family: Lato, sans-serif;
+h1, h2, h3, h4, h5, h6, p, span, a, input, label, div, strong, li, ul, footer {
+  color: white;
 }
-
 body {
-    background-image: url('../images/add-employee-bg.jpg');
-    background-size: cover;
     background-color: #89bdd3;
 }
 
-
-h1 {
-    font-size: 60px;
-    text-align: center;
+.top-bar-section{
+    height: 12vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+}
+.shameless-plug {
+  font-size: 18pt;
+  margin-left: 10%;
+  padding-top: 33px;
+}
+.shameless-plug:hover {
+    color:white;
+}
+.nav-links {
+    margin-top: -40px;
+    margin-right: 30px;
+}
+li.active {
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
 }
 
-.custom-button{
-
-    border-width: 2px;
+.custom-button {
+    border-width: 1px;
     border-style: solid;
     border-color: white;
     color: #ffffff;
     font-size: 20px;
     color: white;
     background: transparent;
-    padding: 13px 25px 13px 25px;
     text-decoration: none;
     width:150px;
     overflow: auto;
     white-space: nowrap;
-    margin:20px auto;
     border:1px white solid;
-
-
 }
-
-html *
-{
-    font-family: Lato, sans-serif;
-    color: white;
-}
-
-
 .custom-button:hover {
     background-color: inherit;
 }
 
-.container-margin-employee {
-    padding-top: 80px;
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    background: rgba(100,100,100,.5);
-    z-index: 1;
-
+.transbox {
+  background-color: rgba(0,0,0,0.5);
 }
 
-.label{
-    font-size: 15px;
-    color: white;
+
+td {
+    text-align: left;
 }
