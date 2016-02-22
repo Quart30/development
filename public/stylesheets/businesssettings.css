@@ -4,8 +4,12 @@ h1, h2, h3, h4, h5, h6, p, span, a, input, label, div, strong, li, ul, footer {
 body {
     background-color: #89bdd3;
 }
+html, body {
+  height: 100%;
+  overflow-y: hidden;
+}
 
-.top-bar-section{
+.top-bar-section {
     height: 12vh;
     width: 100vw;
     background-color: rgba(0,0,0,0.5);
@@ -59,4 +63,22 @@ h1 {
 .label{
   font-size: 15px;
   color: white;
+}
+
+.list-inline {
+    padding-top: 30px;
+}
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -80px; 
+}
+.page-wrap:after {
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 80px; 
+}
+.site-footer {
+    background: rgba(0,0,0,0.5);
+    text-align: center;
 }
