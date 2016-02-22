@@ -50,7 +50,7 @@
       {{#message}}
          <div class="alert alert-danger">{{message}}</div>
       {{/message}}
-      <h1><strong><div>Hi, {{employeeName}} {{employeeLast}} ({{employeePermission}}) {{walkinsAllowed}}</div></strong></h1>
+      <h1><strong><div>Hi, {{companyName}} {{employeeName}} {{employeeLast}} ({{employeePermission}}) {{walkinsAllowed}}</div></strong></h1>
       <div class="dashboardTopInfo text-center">
 
         <h1 class="text-center">Today</h1>
@@ -86,7 +86,7 @@
           </tbody>
         </table>
       </div>
-    </div> 
+    </div>
     <!-- end transbox -->
   </div>
 
