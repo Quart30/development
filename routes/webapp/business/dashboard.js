@@ -12,13 +12,17 @@ exports.get = function (req, res) {
     console.log('Business = ' + req.user[0].business);
     var walkinsAllowed = req.user[0].walkins;
 
-    res.render('business/dashboard', {title: 'Dashboard',
-		eid: employeeId,
-		employeeName: employeename,
-        employeeLast: employeeLastName,
-        employeePhone: employeePhone,
-        employeePermission: employeePermission,
-        walkinsAllowed: walkinsAllowed,
-		message: req.flash("permission"),
-	});
+    res.render('business/dashboard', 
+        {
+            title: 'Dashboard',
+    		eid: employeeId,
+    		employeeName: employeename,
+            employeeLast: employeeLastName,
+            employeePhone: employeePhone,
+            employeePermission: employeePermission,
+            walkinsAllowed: walkinsAllowed,
+    		message: req.flash("permission"),
+	   });
 };
+
+

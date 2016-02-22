@@ -15,6 +15,7 @@
       eid = "{{eid}}";
     </script>
     <script src="/javascripts/dashboard.js"></script>
+    <script src="/javascripts/demo.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -34,7 +35,7 @@
           <li>
             <a href="/queue">Queue</a>
           </li>
-          <li>
+          <li id="emptab">
             <a href="/addemployees">Employees</a>
           </li>
           <li>
@@ -44,6 +45,8 @@
             <a href="/">Logout</a>
           </li>
       </ul>
+      
+      
     </div>
   </nav>
   <div class="container container-margin-no-secondary">
@@ -57,16 +60,16 @@
    <div class="alert alert-danger">{{message}}</div>
 {{/message}}
 
-  <h1><strong><div>Hi, {{employeeName}} {{employeeLast}} </div></strong></h1>
-
+  <h1><strong><div>Hi, {{employeeName}} {{employeeLast}} {{employeePermission}}</div></strong></h1>
   <div class="dashboardTopInfo text-center">
 
       <h1 class="text-center">Today</h1>
       <h1 class="text-center" id="currentDate" ></h1>
       <div id="txt" class="text-center"></div>
     </div>
-      <p></p>
-      
+      <p name="demo" id="demo">Good Evening!</p>
+      <script type="text/javascript"> if (true) {document.getElementsByName("demo").innerHTML = "PermissionLevel = " };
+    }</script>
     </div>
   </div>
 
@@ -81,5 +84,9 @@
             </ul>
         </div>
     </footer>
+
+
+
+
 </body>
 </html>
