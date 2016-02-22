@@ -14,7 +14,6 @@
 </head>
 <body>
     <div class="initial-screen">
-
         <div class = "top-bar-section" >
             <div class="shameless-plug">Powered by Quart 3.0</div>
             <div class="form-container">
@@ -34,21 +33,23 @@
                 {{/message}}
             </div>
        </div>
-
         <div class="signup-container">
-            <div class="col-md-2 col-md-offset-5"></div>
-                <h1><span style="font-weight: 900;">HERALD</span> <span style="font-weight: 300;">CHECK-IN</span></h1>
-                <div>
-                    <a href="/register" class="standard-btn">Sign Up</a>
-                    <a href="#foo" class="standard-btn">Learn More</a>
-                  <!--  <a href="/login" class="standard-btn" style="margin-left: -1px;">Log In</a> -->
+            <div class="row">
+                <div class="col-md-2 col-md-offset-5"></div>
+                    <h1><span style="font-weight: 900;">HERALD</span> <span style="font-weight: 300;">CHECK-IN</span></h1>
+                    <div>
+                        <a href="/register" class="standard-btn">Sign Up</a>
+                        <a href="#foo" class="standard-btn">Learn More</a>
+                    </div>
                 </div>
             </div>
-            <div class="initial-screen-bottom-links">
-                <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">About</a>
-                <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Sponsors</a>
-                <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Testimonials</a>
-                <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Blog</a>
+            <div class="row">
+                <div class="initial-screen-bottom-links">
+                    <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">About</a>
+                    <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Sponsors</a>
+                    <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Testimonials</a>
+                    <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Blog</a>
+                </div>
             </div>
         </div>
     </div>
