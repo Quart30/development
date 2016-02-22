@@ -15,7 +15,6 @@
 <body>
     <div class="initial-screen">
 
-        <!--  LOGIN AT TOP RIGHT OF SCREEN -->
         <div class = "top-bar-section" >
             <div class="shameless-plug">Powered by Quart 3.0</div>
             <div class="form-container">
@@ -35,13 +34,13 @@
                 {{/message}}
             </div>
        </div>
-        <!-- LOGIN DIV END HERE -->
 
         <div class="signup-container">
             <div class="col-md-2 col-md-offset-5"></div>
                 <h1><span style="font-weight: 900;">HERALD</span> <span style="font-weight: 300;">CHECK-IN</span></h1>
                 <div>
-                    <a href="/register" class="standard-btn" style="width: 300px;">Register Your Business</a>
+                    <a href="/register" class="standard-btn">Sign Up</a>
+                    <a href="#foo" class="standard-btn">Learn More</a>
                   <!--  <a href="/login" class="standard-btn" style="margin-left: -1px;">Log In</a> -->
                 </div>
             </div>
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="middle-bar-section">
+    <div class="middle-bar-section" id="foo">
         <h2 class="middle-bar-section-text">Herald is changing the way businesses do reception.</h2>
     </div>
     <div class="bottom-part" style="text-align: center;">

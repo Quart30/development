@@ -39,7 +39,7 @@ REST API Documentation
 ---------------------
 http://cse112-goldteam.github.io/web-app/
 
-To deploy documents
+To deploy documents:
 ```
 gulp doc-deploy
 ```
