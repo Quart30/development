@@ -1,14 +1,31 @@
-h1, h2, h3, h4, h5, h6, p, span, a {
+h1, h2, h3, h4, h5, h6, p, span, a, input, label, div, strong, li, ul, footer {
   color: white;
-  font-family: Lato, sans-serif;
+}
+body {
+    background-color: #89bdd3;
 }
 
-body{
-  text-align: center;
-  background-image: url('../images/business-settings.jpg');
-  image-rendering: crisp-edges;
-  background-size: cover;
-  background-color: #89bdd3
+.top-bar-section{
+    height: 12vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+}
+.shameless-plug {
+  font-size: 18pt;
+  margin-left: 10%;
+  padding-top: 33px;
+}
+.shameless-plug:hover {
+    color:white;
+}
+.nav-links {
+    margin-top: -40px;
+    margin-right: 30px;
+}
+li.active {
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
 }
 
 h1 {

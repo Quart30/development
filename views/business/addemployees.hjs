@@ -50,10 +50,10 @@
             <input style="margin-top: -39px;" class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
         </form>
 
-        <div class="row text-center" id="regis-container">
+        <div class="row" id="regis-container">
             <div class="outerAlign" >
-                <h3 class="tableheader">Employees already registered</h3>
-                    <div class="tableheader transbox">
+                <h3 class="text-center">Employees already registered</h3>
+                    <div class="transbox">
                         <table class="table table tablewidth" id="registeredEmployees">
                             <thead>
                                 <tr>
@@ -69,8 +69,8 @@
                             {{/signed}}
                         </table>
                     </div>
-                    <h3 class="tableheader">Employees not yet registered</h3>
-                    <div class="tableheader transbox">
+                    <h3 class="not-registered text-center">Employees not yet registered</h3>
+                    <div class="transbox">
                         <table class="table table tablewidth" id="unregisteredEmployees">
                             <thead>
                                 <tr>
