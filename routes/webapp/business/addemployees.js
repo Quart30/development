@@ -68,6 +68,7 @@ exports.post = function(req,res){
     var database =  req.db;
     var employeeDB = database.get('employees');
     var businessID = req.user[0].business;
+    var companyName = req.user[0].company;
 
 
     for(var i = 0; i < rows.length; i++){
@@ -79,6 +80,7 @@ exports.post = function(req,res){
         var token = randomToken();
         employeeDB.insert({
             business: ObjectId(businessID),
+            company: companyName,
             fname: fname,
             lname: lname,
             email: email,

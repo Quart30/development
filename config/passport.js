@@ -84,6 +84,9 @@ module.exports = function (passport) {
                             }
 
                             var businessID = result._id.toString();
+                            var company = result.companyName;
+
+                            console.log('Company is ' + company);
 
                             employees.insert({
                                 business: ObjectId(businessID),
@@ -95,7 +98,8 @@ module.exports = function (passport) {
                                 smsNotify: true,
                                 emailNotify: true,
                                 admin: true,
-                                permissionLevel: 2
+                                permissionLevel: 2,
+                                company: company
                             }, function (err, user) {
                                 if (err) {
                                     throw err;
