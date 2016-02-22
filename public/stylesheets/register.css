@@ -2,7 +2,17 @@ html *
 {
     font-family: Lato, sans-serif;
 }
+/* general rules */
+h1, h2, h3, h4, h5, h6, p, span, a, input, label, div {
+  color: white;
+}
 
+.initial-screen {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../images/landing-background.jpg');
+  background-size: cover;
+}
 html {
     position: relative;
     min-height: 100%;
@@ -30,6 +40,44 @@ body {
 }
 
 
+.top-bar-section{
+    height: 12vh;
+    width: 100vw;
+    background-color: rgba(201,201,201, 0.3);
+}
+.form-label{
+    float: left;
+}
+.form-span {
+    display: block;
+    margin: 0 0 3px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.form-input{
+    width: 230px;
+    border: 1px solid #FFF;
+    color: white;
+    padding: 5px;
+    background: transparent;
+}
+.form-input::placeholder-shown {
+  color: white;
+}
+.form-container{
+  float: right;
+  padding-right: 40px;
+  margin-top: -48px;
+}
+.shameless-plug {
+  font-size: 18pt;
+  margin-left: 10%;
+  padding-top: 33px;
+}
+.shameless-plug:hover {
+    color:white;
+}
+/* end of top bar */
 
 
 .navbar-default {
@@ -44,21 +92,20 @@ body {
 }
 .custom-button{
 
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
     border-color: white;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 17px;
     color: white;
     background: transparent;
-    padding: 13px 25px 13px 25px;
+    padding: 10px 20px 10px 20px;
     text-decoration: none;
     width:150px;
     overflow: auto;
     white-space: nowrap;
-    margin:20px auto;
     border:1px white solid;
-
+    margin-top: 5px;
 }
 
 .form-input{
@@ -68,16 +115,17 @@ body {
     padding: 5px;
     background: transparent;
 }
-.form-input::placeholder-shown {
-    color: white;
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255,255,255,0.8);
+  font-size: 12pt;
 }
 
 .regis {
-    display: block;
-    margin-bottom: 30px;
-    margin-top: 20px;
-    height: 50px;
-    width: 300px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 38px;
+    width: 250px;
 }
 
 .custom-center {
@@ -87,8 +135,6 @@ body {
 }
 
 #regis-container {
-    margin-top: 50px;
-    margin-bottom: 150px;
 }
 
 #form-separator {
@@ -96,8 +142,41 @@ body {
     border-color: #e3e3e3;
 }
 
-#register-image {
-    margin-left: 100px;
-    margin-top: -50px;
-    width:500px;
+/* button stuff */
+.standard-btn {
+  border-width: 2px;
+  border-style: solid;
+  border-color: white;
+  color: #ffffff;
+  font-size: 20px;
+  color: white;
+  background: transparent;
+  padding: 13px 25px 13px 25px;
+  text-decoration: none;
+  text-align: center;
+
+  width:160px;
+  display:inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  margin:0px auto;
+  border:1px white solid;
 }
+
+.standard-btn-small {
+  padding: 6px 25px 6px 25px;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.standard-btn-large {
+  width: 300px;
+  font-size: 25px;
+  padding: 13px 25px 13px 25px;
+  overflow: hidden;
+}
+
+.standard-btn:hover {
+  text-decoration: none;
+}
+

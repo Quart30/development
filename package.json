@@ -26,6 +26,7 @@
     "hjs": "~0.0.6",
     "mongodb": "~1.4",
     "monk": "*",
+	"nodemailer": "*",
     "morgan": "~1.5.1",
     "multer": "^0.1.8",
     "newrelic": "^1.16.4",

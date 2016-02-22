@@ -26,7 +26,7 @@
             <li><a href="/dashboard">Dashboard</a></li>
             <li class="active"><a href="/addemployees">Employees</a></li>
             <li>
-                <a href="/customizetheme">Settings</a>
+                <a href="/accountSettings">Settings</a>
             </li>
             <li><a href="/businesssetting">Company Name</a></li>
         </ul>
@@ -43,13 +43,13 @@
 
             <div class="row text-center" id="regis-container">
                 <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
-                    <textarea class="add-email" type="text" STYLE="color: #000000; name="csvEmployees" placeholder="CSV of Employees EMAILS" required ></textarea>
+                    <textarea class="add-email" type="text" STYLE="color: #000000;" name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
                     <input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
                 </form>
 
                 <div class="outerAlign" >
 
-                    <h3 class="tableheader">Employees already registered</h2>
+                    <h3 class="tableheader">Employees already registered</h3>
 
                         <div class="tableheader">
 
@@ -71,7 +71,7 @@
                         </div>
 
 
-                        <h3 class="tableheader">Employees not yet registered</h2>
+                        <h3 class="tableheader">Employees not yet registered</h3>
 
                         <div class="tableheader">
 
