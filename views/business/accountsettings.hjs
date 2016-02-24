@@ -4,7 +4,6 @@
     <title>{{ title }}</title>
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link rel='stylesheet' href='/stylesheets/accountsettings.css'/>
     {{{ newrelic.getBrowserTimingHeader }}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -12,30 +11,35 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-	    <div class="navbar-header">
-	        <a class="navbar-brand" href="/">
-            <img id = "company-logo" src="images/logo.png">
-        </a>
-	    </div>
-	    <div class="navbar-padding-right">
-        <ul class="nav navbar-nav navbar-right navbar-padding">
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/addemployees">Employees</a></li>
-            <li class="active">
-                <a href="/accountSettings">Settings</a>
-            </li>
-            <li><a href="/businesssetting">Company Name</a></li>
+      <!-- nav bar -->
+      <div class = "top-bar-section">
+        <div style="padding-top: 33px;">
+          <span class="shameless-plug">Herald</span>
+        </div>
+        <div class="form-container">
+          {{#message}}
+            <div style="color: #FFFFFF">{{message}}</div>
+          {{/message}}
+        </div>
+        <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
+          <li>
+            <a href="/dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="/addemployees">Employees</a>
+          </li>
+          <li class="active">
+            <a href="/accountSettings">Settings</a>
+          </li>
+          <li>
+            <a href="/businesssetting">Company Name</a>
+          </li>
         </ul>
-	    </div>
-	    <!--Secondary navbar for the Settings tab-->
-	    <div class="navbar-secondary navbar-tabs" id="secondary_navbar">
-	        <ul>
+      </div>
+	    <div class="top-bar-section-secondary" id="secondary_navbar">
+	        <ul class="nav navbar-nav navbar-right navbar-secondary">
 	            <li><a href="/registerDevice">Configurations</a></li>
 	            <li><a href="/manageforms">Manage Forms</a></li>
-
-	            <!-- <li><a href="/setdisclosure">Add Disclosure Agreement</a></li> -->
-
 	            <li><a href="/uploadlogo">Upload Logo</a></li>
 	            <li>
 	                <a href="/customizetheme">Customize Theme</a>
@@ -43,7 +47,7 @@
 	            <li class="active"><a href="/accountSettings">Account Settings</a></li>
 	        </ul>
 	    </div>
-	</nav>
+      <!-- end nav bar -->
 
 	<div class="container container-margin-accountSettings">
 		{{#message}}
@@ -66,9 +70,6 @@
 			</div>
 		</div>
 		<div class="form-inline">
-			<!--<div class="col-md-2 col-md-offset-2">
-				<h4>Name</h4>
-			</div>-->
 			<form class="form-horizontal" action="" method="post">
 				<label class="col-md-2 col-md-offset-2 control-label editName">Name</label>
 
