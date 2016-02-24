@@ -6,7 +6,7 @@ body {
 }
 html, body {
   height: 100%;
-  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .custom-button{
@@ -37,12 +37,9 @@ html, body {
 }
 
 .container-margin-accountSettings {
-  background-color: #4682b4;
-  padding: 20px;
-}
-
-.inApp, h5{
-  text-align: left;
+  background-color: #c9c9c9;
+  margin-top: 10vh;
+  padding-bottom: 20px;
 }
 
 .empty{
@@ -53,40 +50,6 @@ html, body {
   margin-top: 50px; 
 }
 
-.checkBox{
-  width: 20px;
-  position: relative;
-  margin: 20px auto;
-  label {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #fcfff4;
-    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-    border-radius: 4px;
-    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-    &:after {
-      content: '';
-      width: 9px;
-      height: 5px;
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      border: 3px solid #333;
-      border-top: none;
-      border-right: none;
-      background: transparent;
-      opacity: 0;
-      transform: rotate(-45deg);
-    }
-    &:hover::after {
-      opacity: 0.5;
-    }
-  }   
-}
 
 .top-bar-section {
     height: 12vh;
@@ -119,4 +82,30 @@ li.active {
 .navbar-secondary {
   padding-top: 15px;
   padding-right: 100px;
+}
+
+.std-input {
+  background: transparent;
+  border:1px white solid;
+  height: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.list-inline {
+    padding-top: 30px;
+}
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -80px; 
+}
+.page-wrap:after {
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 80px; 
+}
+.site-footer {
+    background: rgba(0,0,0,0.5);
+    text-align: center;
 }
