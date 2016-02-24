@@ -1,26 +1,15 @@
-h1, h2, h3, h4, h5, h6, p, span, a {
+h1, h2, h3, h4, h5, h6, p, span, a, input, label, div, strong, li, ul, footer {
   color: white;
-  font-family: Lato, sans-serif;
 }
-
-body{
-  text-align: center;
-  background-image: url('../images/business-settings.jpg');
-  image-rendering: crisp-edges;
-  background-size: cover;
+body {
+    background-color: #89bdd3;
 }
-
-h2 {
-  font-size: 40px;
-  text-align: center;
-}
-
-h5 {
-  font-size: 20px;
+html, body {
+  height: 100%;
+  overflow-y: hidden;
 }
 
 .custom-button{
-  
   border-width: 2px;
   border-style: solid;
   border-color: white;
@@ -36,9 +25,7 @@ h5 {
   margin:20px auto;
   margin-top: 0;
   border:1px white solid;
-
 }
-
 .custom-button:hover {
   background-color: inherit;
 }
@@ -99,4 +86,37 @@ h5 {
       opacity: 0.5;
     }
   }   
+}
+
+.top-bar-section {
+    height: 12vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+}
+.shameless-plug {
+  font-size: 18pt;
+  margin-left: 10%;
+  padding-top: 33px;
+}
+.shameless-plug:hover {
+    color:white;
+}
+.nav-links {
+    margin-top: -40px;
+    margin-right: 30px;
+}
+li.active {
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+}
+
+.top-bar-section-secondary {
+    height: 10vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.3);
+}
+.navbar-secondary {
+  padding-top: 15px;
+  padding-right: 100px;
 }
