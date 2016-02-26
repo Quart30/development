@@ -27,7 +27,7 @@ html, body {
   border:1px white solid;
 }
 .custom-button:hover {
-  background-color: inherit;
+  color: white;
 }
 
 .form-inline{
