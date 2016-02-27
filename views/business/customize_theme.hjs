@@ -4,7 +4,6 @@
     <title>Personalize</title>
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link rel='stylesheet' href='/stylesheets/customizetheme.css'/>
     {{{ newrelic.getBrowserTimingHeader }}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -13,39 +12,43 @@
 </head>
 
 <body>
+    <div class="page-wrap">
 <!--Holds the main tabs for the business-->
-<nav class="navbar navbar-default navbar-static-top" >
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/">
-            <img id = "company-logo" src="images/logo.png">
-        </a>
-    </div>
-    <div class="navbar-padding-right">
-        <ul class="nav navbar-nav navbar-right navbar-padding">
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/addemployees">Employees</a></li>
-            <li class="active">
-                <a href="/accountSettings">Settings</a>
-            </li>
-            <li><a href="/businesssetting">Company Name</a></li>
+    <div class = "top-bar-section">
+        <div style="padding-top: 33px;">
+          <span class="shameless-plug">Herald</span>
+        </div>
+        <div class="form-container">
+          {{#message}}
+            <div>{{message}}</div>
+          {{/message}}
+        </div>
+        <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
+          <li>
+            <a href="/dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="/addemployees">Employees</a>
+          </li>
+          <li class="active">
+            <a href="/accountSettings">Settings</a>
+          </li>
+          <li>
+            <a href="/businesssetting">Company Name</a>
+          </li>
         </ul>
-    </div>
-    <!--Secondary navbar for the Settings tab-->
-    <div class="navbar-secondary navbar-tabs">
-        <ul>
-            <li><a href="/registerDevice">Configurations</a></li>
-            <li><a href="/manageforms">Manage Forms</a></li>
-
-            <!-- <li><a href="/setdisclosure">Add Disclosure Agreement</a></li> -->
-
-            <li><a href="/uploadlogo">Upload Logo</a></li>
-            <li class="active">
-                <a href="/customizetheme">Customize Theme</a>
-            </li>
-            <li><a href="/accountSettings">Account Settings</a></li>
-        </ul>
-    </div>
-</nav>
+      </div>
+        <div class="top-bar-section-secondary" id="secondary_navbar">
+            <ul class="nav navbar-nav navbar-right navbar-secondary">
+                <li><a href="/registerDevice">Configurations</a></li>
+                <li><a href="/manageforms">Manage Forms</a></li>
+                <li><a href="/uploadlogo">Upload Logo</a></li>
+                <li class="active">
+                    <a href="/customizetheme">Customize Theme</a>
+                </li>
+                <li><a href="/accountSettings">Account Settings</a></li>
+            </ul>
+        </div>
     {{#message}}
    <div class="alert alert-danger">{{message}}</div>
     {{/message}}
@@ -54,6 +57,7 @@
 
     <h2>Customize Your Themes!</h2>
     <span class="subtitle"> &nbsp&nbspChange what images your visitors will see when checking in.</span>
+    <hr></hr>
 
     <div class="row text-center">
         <div class="col-md-6">
@@ -74,25 +78,18 @@
             &nbspCustomize My Theme
         </a>
     </div>
-
-
 </div>
 
 <!--Footer to display the about info,etc-->
-<footer class="footer navbar-fixed-bottom">
-    <div >
-        <ul class="list-inline footer-links text-center">
-            <!--<li><a href="#">About Us</a></li>
-            <li><a href="#">Store</a></li>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
-            <li><a href="#">Support</a></li>-->
-            <li class = "footer-copyright">Copyright &#169; Gold Team-CSE 112, Winter 2015. All Rights Reserved.</li>
-        </ul>
+<footer class="footer site-footer">
+    <ul class="list-inline">
+      <li><a href="#" class="whitetext">Privacy</a></li>
+      <li><a href="#" class="whitetext">Terms</a></li>
+      <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
+      <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
+    </ul>
+  </footer>
     </div>
-</footer>
-
 </body>
 
 
