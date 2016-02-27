@@ -23,8 +23,8 @@ function dateToString(date) {
 
 function getDate(){
 	var currentdate = new Date();
-	var datetime= '';
-	datetime += dateToString(currentdate );
+	var datetime = '';
+	datetime += dateToString(currentdate);
 
 
 	var $header = $('<h1/>');

@@ -41,9 +41,11 @@ a:hover {
 }
 
 .standard-btn-small {
+  width: 120px;
   padding: 6px 25px 6px 25px;
   font-size: 13px;
   overflow: hidden;
+  text-align: center;
 }
 
 .standard-btn-large {
@@ -61,7 +63,7 @@ a:hover {
 
 /* grey bar on top of landing page including login form */
 .top-bar-section{
-    height: 12vh;
+    height: 70px;
     width: 100vw;
     background-color: rgba(201,201,201, 0.3);
 }
@@ -86,12 +88,12 @@ a:hover {
 }
 .form-container{
   float: right;
-  padding-right: 40px;
-  margin-top: -42px;
+  padding-right: 20px;
+  margin-top: -54px;
 }
 .shameless-plug {
   font-size: 13pt;
-  margin-left: 10%;
+  margin-left: 40px;
   padding-top: 33px;
 }
 /* end of top bar */
