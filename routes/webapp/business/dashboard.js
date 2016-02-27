@@ -1,7 +1,6 @@
 var auth = require('../../../lib/auth');
 
 exports.get = function (req, res) {
-
 	var employeeId = req.user[0]._id;
 	var employeename = req.user[0].fname;
 
@@ -9,8 +8,8 @@ exports.get = function (req, res) {
     var employeeLastName = req.user[0].lname;
     var employeePhone = req.user[0].phone;
     var employeePermission = req.user[0].permissionLevel;
-    console.log('Business = ' + req.user[0].business);
     var walkinsAllowed = req.user[0].walkins;
+    var companyName = "";
 
     res.render('business/dashboard', 
         {
@@ -21,6 +20,7 @@ exports.get = function (req, res) {
             employeePhone: employeePhone,
             employeePermission: employeePermission,
             walkinsAllowed: walkinsAllowed,
+            companyName: companyName,
     		message: req.flash("permission"),
 	   });
 };

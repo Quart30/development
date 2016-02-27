@@ -84,6 +84,9 @@ module.exports = function (passport) {
                             }
 
                             var businessID = result._id.toString();
+                            var company = result.companyName;
+
+                            console.log('Company is ' + company);
 
                             employees.insert({
                                 business: ObjectId(businessID),
@@ -95,8 +98,9 @@ module.exports = function (passport) {
                                 smsNotify: true,
                                 emailNotify: true,
                                 admin: true,
-                                permissionLevel: 2
-                            },function(err, user){
+                                permissionLevel: 2,
+                                company: company
+                            }, function (err, user) {
                                 if (err) {
                                     throw err;
                                 }
@@ -111,36 +115,40 @@ module.exports = function (passport) {
     ));
 
 
-
-    passport.use('local-signup-employee',new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
-        passReqToCallback: true
-    },
-        function (req,email,password,done) {
-
+    passport.use('local-signup-employee', new LocalStrategy({
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true
+        },
+        function (req, email, password, done) {
 
 
-            var db =req.db;
+            var db = req.db;
             var employee = db.get('employees');
 
             password = auth.hashPassword(password);
 
             employee.findAndModify({
-             query: {registrationToken: req.query.token},
-             update: { $unset: {registrationToken: 1},
-                $set: {password: password} },
-             new: true},
-                function (err,user){
-                if (err) {
-                     throw err; }
-                return done(null,user);
+                    query: {registrationToken: req.query.token},
+                    update: {
+                        $unset: {registrationToken: 1},
+                        $set: {
+                            password: password,
+                            registered: true
+                        }
+                    },
+                    new: true
+                },
+                function (err, user) {
+                    if (err) {
+                        throw err;
+                    }
+                    return done(null, user);
 
-                 }
+                }
             );
         }
     ));
-
 
 
     // =========================================================================
@@ -157,14 +165,13 @@ module.exports = function (passport) {
         },
         function (req, email, password, done) { // callback with email and password from our form
 
-
             auth.validateLogin(req.db, email, password, function (user) {
                 if (!user) {
                     return done(null, false, req.flash("login", "Invalid Email and/or Password"));
                 }
                 else {
-                    return done(null,user);
-                    }
+                    return done(null, user);
+                }
             });
         }
     ));

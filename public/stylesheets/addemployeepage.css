@@ -43,14 +43,21 @@ li.active {
     border:1px white solid;
 }
 .custom-button:hover {
-    background-color: inherit;
+    color: white;
 }
 
 .transbox {
   background-color: rgba(0,0,0,0.5);
 }
 
-
 td {
     text-align: left;
+}
+
+.tableheader {
+    margin-top: 40px;
+}
+
+.not-registered {
+    margin-top: 40px;
 }
