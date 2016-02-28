@@ -26,9 +26,9 @@ exports.get = function (req,res) {
 
         var page; // page to load
         if (emp.permissionLevel < 3)
-            page = 'business/accountsettings';
+            page = 'business/level_2/accountsettings';
         else
-            page = 'business/accountsettings_low';
+            page = 'business/level_3/accountsettings';
 
         res.render(page, {
             title: 'Express',
@@ -65,30 +65,37 @@ exports.post = function (req, res) {
     if (inputPass != null)
     {
         if(inputPass === req.user.Employee[0].password)
-				{
-                    //find employees based on id
-					employees.find({_id: eid}, function (err, result) {
-						var emp = result[0];
-						var phone = emp.phone;
-						phone = phone.replace('1', '');
-						phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-        		res.render('business/accountsettings', {
-            	title: 'Express',
-            	fname: emp.fname,
-            	lname: emp.lname,
-            	password: emp.password,
-            	phone: phone,
-            	email: emp.email,
-            	smsNotify: emp.smsNotify,
-            	emailNotify: emp.emailNotify,
-							edited: 'Password successfully changed!'
-						});
-					});
-				}
-				else
-				{
-					inputPass = auth.hashPassword(inputPass);
-					employees.findAndModify({_id: eid}, { $set: {password: inputPass}}, function(err, data) {
+        {
+            //find employees based on id
+            employees.find({_id: eid}, function (err, result) {
+                var emp = result[0];
+                var phone = emp.phone;
+                phone = phone.replace('1', '');
+                phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+
+                var page; // page to load
+                if (emp.permissionLevel < 3)
+                    page = 'business/level_2/accountsettings';
+                else
+                    page = 'business/level_3/accountsettings';
+
+        		res.render(page, {
+                    title: 'Express',
+                    fname: emp.fname,
+                    lname: emp.lname,
+                    password: emp.password,
+                    phone: phone,
+                    email: emp.email,
+                    smsNotify: emp.smsNotify,
+                    emailNotify: emp.emailNotify,
+                                edited: 'Password successfully changed!'
+                });
+            });
+        }
+		else
+		{
+			inputPass = auth.hashPassword(inputPass);
+			employees.findAndModify({_id: eid}, { $set: {password: inputPass}}, function(err, data) {
            	if (err) { return handleError(res, err);}
 		   //find employees based on id
            	employees.find({_id: eid}, function (err, result) {
@@ -96,7 +103,14 @@ exports.post = function (req, res) {
              	var phone = emp.phone;
              	phone = phone.replace('1', '');
 							phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-             	res.render('business/accountsettings', {
+
+                var page; // page to load
+                if (emp.permissionLevel < 3)
+                    page = 'business/level_2/accountsettings';
+                else
+                    page = 'business/level_3/accountsettings';
+
+             	res.render(page, {
                  	title: 'Express',
                  	fname: emp.fname,
                  	lname: emp.lname,
@@ -123,7 +137,14 @@ exports.post = function (req, res) {
                 var phone = emp.phone;
                 phone = phone.replace('1', '');
 								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                res.render('business/accountsettings', {
+
+                var page; // page to load
+                if (emp.permissionLevel < 3)
+                    page = 'business/level_2/accountsettings';
+                else
+                    page = 'business/level_3/accountsettings';
+
+                res.render(page, {
                     title: 'Express',
                     fname: emp.fname,
                     lname: emp.lname,
@@ -154,7 +175,14 @@ exports.post = function (req, res) {
                     var phone = emp.phone;
                     phone = phone.replace('1', '');
 										phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                    res.render('business/accountsettings', {
+
+                    var page; // page to load
+                    if (emp.permissionLevel < 3)
+                        page = 'business/level_2/accountsettings';
+                    else
+                        page = 'business/level_3/accountsettings';
+
+                    res.render(page, {
                         title: 'Express',
                         fname: emp.fname,
                         lname: emp.lname,
@@ -176,7 +204,12 @@ exports.post = function (req, res) {
                 var phone = emp.phone;
                 phone = phone.replace('1', '');
 								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                res.render('business/accountsettings', {
+                var page; // page to load
+                if (emp.permissionLevel < 3)
+                    page = 'business/level_2/accountsettings';
+                else
+                    page = 'business/level_3/accountsettings';
+                res.render(page, {
                     title: 'Express',
                     fname: emp.fname,
                     lname: emp.lname,
@@ -211,7 +244,14 @@ exports.post = function (req, res) {
                 var phone = emp.phone;
                 phone = phone.replace('1', '');
 								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                res.render('business/accountsettings', {
+
+                var page; // page to load
+                if (emp.permissionLevel < 3)
+                    page = 'business/level_2/accountsettings';
+                else
+                    page = 'business/level_3/accountsettings';
+
+                res.render(page, {
                     title: 'Express',
                     fname: emp.fname,
                     lname: emp.lname,
@@ -246,7 +286,13 @@ exports.post = function (req, res) {
                 var phone = emp.phone;
                 phone = phone.replace('1', '');
 								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                res.render('business/accountsettings', {
+                var page; // page to load
+                if (emp.permissionLevel < 3)
+                    page = 'business/level_2/accountsettings';
+                else
+                    page = 'business/level_3/accountsettings';
+
+                res.render(page, {
                     title: 'Express',
                     fname: emp.fname,
                     lname: emp.lname,

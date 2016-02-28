@@ -18,7 +18,7 @@ exports.get = function (req, res, next) {
                 fn();
             })
         }, function () {
-            res.render('business/registerDevice', {tokensDB: results, message: req.flash("permission")});
+            res.render('business/level_2/registerDevice', {tokensDB: results, message: req.flash("permission")});
             }
         );
     });

@@ -22,7 +22,7 @@ exports.get = function (req, res, next) {
                 return next(new Error('Error finding appointment: ' + req.params.id));
             }
 
-            return res.render('business/viewform', {
+            return res.render('business/level_2/viewform', {
                 title: 'Form for ' + appt.fname + ' ' + appt.lname,
                 name: appt.fname + ' ' + appt.lname,
                 formData: formResponse.answers

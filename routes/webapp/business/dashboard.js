@@ -15,7 +15,7 @@ exports.get = function (req, res) {
     var companyName = req.user[0].company;
 
 
-    res.render('business/dashboard', {title: 'Express',
+    res.render('business/level_2/dashboard', {title: 'Express',
 		eid: employeeId,
 		employeeName: employeename,
         employeeLast: employeeLastName,

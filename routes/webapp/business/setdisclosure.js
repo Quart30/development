@@ -14,7 +14,7 @@ exports.get = function(req, res) {
 		disclosure = disclosure.replace(/<\/p>/g, '\n');
 		//disclosure = _.escape(disclosure);
 
-		res.render('business/setdisclosure', {
+		res.render('business/level_2/setdisclosure', {
 			disclosure: _.unescape(disclosure)
 		});
 	});
@@ -29,7 +29,7 @@ exports.post = function(req, res) {
 
 	if (disclosure.length === 0)
 	{
-		res.render('business/setdisclosure', {
+		res.render('business/level_2/setdisclosure', {
 			disclosure: req.body.disclosure,
 			alert: 'Disclosure field left empty, please fill it in.'
 		});
@@ -49,7 +49,7 @@ exports.post = function(req, res) {
 			}
 		});
 
-		res.render('business/setdisclosure', {
+		res.render('business/level_2/setdisclosure', {
 			disclosure: req.body.disclosure,
 			edited: 'Disclosure agreement successfully saved!'
 		});

@@ -8,7 +8,7 @@ exports.get = function (req, res, next) {
             return next(err);
         }
 
-        res.render('business/theme'  ,{
+        res.render('business/level_2/theme'  ,{
             companyName: business.companyName,
            // bg: business.style.bg,
              logo: business.logo ,

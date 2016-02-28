@@ -11,7 +11,7 @@ exports.get = function (req,res) {
         var phone = dbBusiness.phone;
         phone = phone.replace('1', '');
         phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-        res.render('business/businesssetting', {
+        res.render('business/level_2/businesssetting', {
             companyName: dbBusiness.companyName,
             phone: phone
         });
@@ -40,10 +40,10 @@ exports.post = function (req, res) {
             //if input fields are empty
             if (companyName === '' || phone === '') {
                 phone = dbBusiness.phone;
-                //removing country code 1 from phone 
+                //removing country code 1 from phone
                 phone = phone.replace('1', '');
                 phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                res.render('business/businesssetting', {
+                res.render('business/level_2/businesssetting', {
                     error: 'You must fill in all fields.',
                     companyName: dbBusiness.companyName,
                     phone: phone
@@ -64,7 +64,7 @@ exports.post = function (req, res) {
                     });
                     phone = phone.replace('1', '');
                     phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                    res.render('business/businesssetting', {
+                    res.render('business/level_2/businesssetting', {
                         companyName: companyName,
                         phone: phone,
                         edited: 'change successfully done.'
@@ -74,13 +74,13 @@ exports.post = function (req, res) {
                     phone = dbBusiness.phone;
                     phone = phone.replace('1', '');
                     phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                    res.render('business/businesssetting', {
+                    res.render('business/level_2/businesssetting', {
                         companyName: dbBusiness.companyName,
                         phone: phone,
                         error: 'phone number should be in 1 xxx-xxx-xxxx format'
                     });
                 }
-                
+
             }
         }// end of undefined password if statement
 
@@ -97,7 +97,7 @@ exports.post = function (req, res) {
                     phone = dbBusiness.phone;
                     phone = phone.replace('1', '');
                     phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                    res.render('business/businesssetting', {
+                    res.render('business/level_2/businesssetting', {
                         companyName: dbBusiness.companyName,
                         phone: phone,
                         edited: 'password successfully changed.'
@@ -107,7 +107,7 @@ exports.post = function (req, res) {
                     phone = dbBusiness.phone;
                     phone = phone.replace('1', '');
                     phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                    res.render('business/businesssetting', {
+                    res.render('business/level_2/businesssetting', {
                         companyName: dbBusiness.companyName,
                         phone: phone,
                         error: 'password does not match'
@@ -118,7 +118,7 @@ exports.post = function (req, res) {
             phone = dbBusiness.phone;
             phone = phone.replace('1', '');
             phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-            res.render('business/businesssetting', {
+            res.render('business/level_2/businesssetting', {
                 error: 'You must fill in all fields.',
                 companyName: dbBusiness.companyName,
                 phone: phone
@@ -128,5 +128,5 @@ exports.post = function (req, res) {
 
     });
 
-    
-}; 
+
+};
