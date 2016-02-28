@@ -54,9 +54,9 @@ exports.get = function(req,res){
                 var emp = r[0];
                 var page; // page to load
                 if (emp.permissionLevel < 3)
-                    page = 'business/level_2/accountsettings';
+                    page = 'business/level_2/addemployees';
                 else
-                    page = 'business/level_3/accountsettings';
+                    page = 'business/level_3/addemployees';
 
                 res.render(page,{title: 'Express',notsigned: notemployee, signed: employeee});
             });
