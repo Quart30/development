@@ -14,8 +14,13 @@ exports.get = function (req, res) {
 
     var companyName = req.user[0].company;
 
+    var page; // page to load
+    if (req.user[0].permissionLevel < 3)
+        page = 'business/level_2/dashboard';
+    else
+        page = 'business/level_3/dashboard';
 
-    res.render('business/level_2/dashboard', {title: 'Express',
+    res.render(page, {title: 'Express',
 		eid: employeeId,
 		employeeName: employeename,
         employeeLast: employeeLastName,
