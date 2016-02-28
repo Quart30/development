@@ -32,9 +32,6 @@
           <li class="active">
             <a href="/accountSettings">Settings</a>
           </li>
-          <li>
-            <a href="/businesssetting">Company Name</a>
-          </li>
         </ul>
       </div>
 
