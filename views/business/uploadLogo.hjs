@@ -4,7 +4,7 @@
     <title>{{ title }}</title>
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/uploadLogo.css' />
     {{#newrelic}}
         {{{ newrelic.getBrowserTimingHeader }}}
     {{/newrelic}}
@@ -16,39 +16,44 @@
 </head>
 
 <body>
-    <!--Holds the main tabs for the business-->
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">
-                <img id = "company-logo" src="images/logo.png">
-            </a>
-        </div>
-        <div class="navbar-padding-right">
-        <ul class="nav navbar-nav navbar-right navbar-padding">
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/addemployees">Employees</a></li>
-            <li class="active">
-                <a href="/customizetheme">Settings</a>
-            </li>
-            <li><a href="/businesssetting">Company Name</a></li>
-        </ul>
-    </div>
-    <!--Secondary navbar for the Settings tab-->
-    <div class="navbar-secondary navbar-tabs">
-        <ul>
-            <li><a href="/registerDevice">Configurations</a></li>
-            <li><a href="/manageforms">Manage Forms</a></li>
+    <!-- nav bar -->
+        <div class = "top-bar-section">
+           <div style="padding-top: 33px;">
+             <span class="shameless-plug">Herald</span>
+           </div>
+           <div class="form-container">
+             {{#message}}
+               <div>{{message}}</div>
+             {{/message}}
+           </div>
+           <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
+             <li>
+               <a href="/dashboard">Dashboard</a>
+             </li>
+             <li>
+               <a href="/addemployees">Employees</a>
+             </li>
+             <li class="active">
+               <a href="/accountSettings">Settings</a>
+             </li>
+             <li>
+               <a href="/businesssetting">Company Name</a>
+             </li>
+           </ul>
+         </div>
+   	    <div class="top-bar-section-secondary" id="secondary_navbar">
+   	        <ul class="nav navbar-nav navbar-right navbar-secondary">
+   	            <li><a href="/registerDevice">Configurations</a></li>
+   	          <!--  <li><a href="/manageforms">Manage Forms</a></li> -->
+   	            <li class = "active"><a href="/uploadlogo">Upload Logo</a></li>
+   	            <li>
+   	                <a href="/customizetheme">Customize Theme</a>
+   	            </li>
+   	            <li><a href="/accountSettings">Account Settings</a></li>
+   	        </ul>
+   	    </div>
+         <!-- end nav bar -->
 
-            <!-- <li><a href="/setdisclosure">Add Disclosure Agreement</a></li> -->
-
-            <li class="active"><a href="/uploadlogo">Upload Logo</a></li>
-            <li>
-                <a href="/customizetheme">Customize Theme</a>
-            </li>
-            <li><a href="/accountSettings">Account Settings</a></li>
-        </ul>
-    </div>
-    </nav>
 
     <!-- Container to hold instructions & upload form-->
     <div class="container">
@@ -56,11 +61,17 @@
         <div class ="row">
 
             <div class="col-sm-6">
-                <h1>Uploading a Logo</h1>
+                <h1>Upload a Logo</h1>
                 <p style="color:grey">Upload your own logo to match your office.</p>
                 <br>
             </div>
+
         </div>
+
+    <!-- First Line -->
+    <div>
+        <hr></hr>
+    </div>
 
         <div class="row">
              <div class="col-md-4 col-md-offset-4 ">
@@ -82,6 +93,8 @@
         <br><br>
         <h2 class = "text-center">Click the upload button to browse for a picture</h2>
         <br>
+
+        <hr></hr>
 
 
         {{#error}}
@@ -111,19 +124,16 @@
 
     </div>
 
+    <br><br>
+
     <!--Footer to display the about info,etc-->
-    <footer class="footer navbar-fixed-bottom">
-        <div class="container">
-            <ul class="list-inline footer-links text-center">
-                <!--<li><a href="#">About Us</a></li>
-                <li><a href="#">Store</a></li>
-                <li><a href="#">Jobs</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Support</a></li>-->
-                <li class = "footer-copyright">Copyright &#169; Gold Team-CSE 112, Winter 2015. All Rights Reserved.</li>
-            </ul>
-        </div>
+    <footer class="footer site-footer">
+      <ul class="list-inline">
+        <li><a href="#" class="whitetext">Privacy</a></li>
+        <li><a href="#" class="whitetext">Terms</a></li>
+        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
+        <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
+      </ul>
     </footer>
 
 </body>
