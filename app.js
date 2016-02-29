@@ -14,6 +14,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var passport = require('passport');
 var async = require('async');
+var ObjectId = require('mongodb').ObjectID;
 var app = express();
 
 global.__base = __dirname + '/';
@@ -148,8 +149,10 @@ var auth = require('./lib/auth');
  * An convenience API call to create an employee.
  * Usage: Postman POST localhost:4000/createemployee
  * If any of the parameters are excluded, they are filled
- * with placeholder values.
+ * with placeholder values, except bid, which is required for
+ * permission level = 3.
  * URL parameters:
+ * @param bid business ID
  * @param fname first name
  * @param lname last name
  * @param email email
@@ -161,6 +164,7 @@ var auth = require('./lib/auth');
 app.post('/createemployee', function(req,res) {
     var employeeDB = req.db.get("employees");
     var params = req.query;
+    var bid = params.bid ? ObjectId(params.bid) : 123;
     var fname = params.fname ? params.fname : "First";
     var lname = params.lname ? params.lname : "Last";
     var email = params.email ? params.email: "placeholder@mailinator.com";
@@ -169,9 +173,8 @@ app.post('/createemployee', function(req,res) {
     var company = params.company ? params.company : "Placeholder Company";
     var password = params.password ? params.password : "placeholder";
     var phone = params.phone ? params.phone : "1234567890";
-    var newEmployee = {fname: fname, lname: lname, email: email, permissionLevel: permission,
-        admin: admin, company: company, password: password, phone: phone};
-    console.log(newEmployee);
+    //var newEmployee = {bid: bid, fname: fname, lname: lname, email: email, permissionLevel: permission,
+        //admin: admin, company: company, password: password, phone: phone};
 
     employeeDB.findOne({email: email}, function(err, result) {
         if (err) {
@@ -181,7 +184,7 @@ app.post('/createemployee', function(req,res) {
             if (!result) {
                 console.log("Inserting " + fname + " " + lname + " into the database");
                 employeeDB.insert({
-                    business: 123, //irrelevant/obsolete
+                    business: bid,
                     password: auth.hashPassword(password),
                     phone: phone,
                     fname: fname,
