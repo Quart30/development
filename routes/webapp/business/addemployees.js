@@ -49,18 +49,7 @@ exports.get = function(req,res){
                 throw err;
             }
 
-            // load the page
-            employeeDB.find({_id: req.user[0]._id}, function (err, results) {
-                var emp = results[0];
-                var page; // page to load
-                if (emp.permissionLevel < 3)
-                    page = 'business/level_2/addemployees';
-                else
-                    page = 'business/level_3/addemployees';
-
-                res.render(page,{title: 'Express',notsigned: notemployee, signed: employeee});
-            });
-
+            res.render('business/addemployees',{title: 'Express',notsigned: notemployee, signed: employeee});
         });
 };
 

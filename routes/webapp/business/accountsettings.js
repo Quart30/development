@@ -74,10 +74,18 @@ exports.post = function (req, res) {
                 phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
 
                 var page; // page to load
-                if (emp.permissionLevel < 3)
-                    page = 'business/level_2/accountsettings';
-                else
-                    page = 'business/level_3/accountsettings';
+                switch (emp.permissionLevel) {
+                    case 1:
+                    case 2:
+                        page = 'business/level_2/accountsettings';
+                        break;
+                    case 3:
+                        page = 'business/level_3/accountsettings';
+                        break;
+                    default: // default level 4
+                        page = 'business/level_4/accountsettings';
+                        break;
+                }
 
         		res.render(page, {
                     title: 'Express',
