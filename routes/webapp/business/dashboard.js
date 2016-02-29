@@ -15,16 +15,16 @@ exports.get = function (req, res) {
     var companyName = req.user[0].company;
 
     var page; // page to load
-    switch (emp.permissionLevel) {
+    switch (req.user[0].permissionLevel) {
         case 1:
         case 2:
-            page = 'business/level_2/dashboard';
+            page = 'business/level_2/accountsettings';
             break;
         case 3:
-            page = 'business/level_3/dashboard';
+            page = 'business/level_3/accountsettings';
             break;
         default: // default level 4
-            page = 'business/level_4/dashboard';
+            page = 'business/level_4/accountsettings';
             break;
     }
     res.render(page, {title: 'Express',
