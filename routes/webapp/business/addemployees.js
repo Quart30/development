@@ -50,8 +50,8 @@ exports.get = function(req,res){
             }
 
             // load the page
-            employeeDB.find({_id: eid}, function (err, results) {
-                var emp = r[0];
+            employeeDB.find({_id: req.user[0]._id}, function (err, results) {
+                var emp = results[0];
                 var page; // page to load
                 if (emp.permissionLevel < 3)
                     page = 'business/level_2/addemployees';
