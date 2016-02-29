@@ -13,12 +13,12 @@ exports.get = function (req, res, next) {
             return res.sendStatus(500, err);
         }
         async.eachSeries(results, function (result, fn) {
-            employees.findOne({_id: result.employee, business: currentuser}, function (err, employee) {
-                result.employee = employee.fname + " " + employee.lname;
-                fn();
-            })
-        }, function () {
-            res.render('business/registerDevice', {tokensDB: results, message: req.flash("permission")});
+                employees.findOne({_id: result.employee, business: currentuser}, function (err, employee) {
+                    result.employee = employee.fname + " " + employee.lname;
+                    fn();
+                })
+            }, function () {
+                res.render('business/registerDevice', {tokensDB: results, message: req.flash("permission")});
             }
         );
     });
