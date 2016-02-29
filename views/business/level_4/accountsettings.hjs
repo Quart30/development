@@ -26,9 +26,6 @@
           <li>
             <a href="/dashboard">Dashboard</a>
           </li>
-          <li>
-            <a href="/addemployees">Employees</a>
-          </li>
           <li class="active">
             <a href="/accountSettings">Settings</a>
           </li>
