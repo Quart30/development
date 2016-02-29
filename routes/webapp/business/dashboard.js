@@ -18,13 +18,13 @@ exports.get = function (req, res) {
     switch (req.user[0].permissionLevel) {
         case 1:
         case 2:
-            page = 'business/level_2/accountsettings';
+            page = 'business/level_2/dashboard';
             break;
         case 3:
-            page = 'business/level_3/accountsettings';
+            page = 'business/level_3/dashboard';
             break;
         default: // default level 4
-            page = 'business/level_4/accountsettings';
+            page = 'business/level_4/dashboard';
             break;
     }
     res.render(page, {title: 'Express',
