@@ -32,7 +32,15 @@ body {
 }
 
 #txt {
-    color:white
+    color:white;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 50%;
 }
 
 .whitetext {
@@ -51,7 +59,7 @@ body {
 .form-span {
     display: block;
     margin: 0 0 3px;
-    font-size: 1.2em;
+    font-size: 1.7em;
     font-weight: bold;
 }
 .form-input{
@@ -70,7 +78,7 @@ body {
   margin-top: -48px;
 }
 .shameless-plug {
-  font-size: 18pt;
+  font-size: 25pt;
   margin-left: 10%;
   padding-top: 33px;
 }
@@ -90,6 +98,8 @@ body {
     margin-left:10%;
     margin-top:-15%;
 }
+
+/*Sign up Button*/
 .custom-button{
 
     border-width: 1px;
@@ -98,7 +108,7 @@ body {
     color: #ffffff;
     font-size: 17px;
     color: white;
-    background: transparent;
+    background: #003bb3;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     width:150px;
@@ -111,9 +121,10 @@ body {
 .form-input{
     width: 230px;
     border: 1px solid #FFF;
-    color: white;
+    color: #182c49;
+    font-size: 18px;
     padding: 5px;
-    background: transparent;
+    background: white;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -124,8 +135,8 @@ body {
 .regis {
     margin-bottom: 5px;
     margin-top: 5px;
-    height: 38px;
-    width: 250px;
+    height: 48px;
+    width: 350px;
 }
 
 .custom-center {
@@ -142,19 +153,20 @@ body {
     border-color: #e3e3e3;
 }
 
-/* button stuff */
+/*Login button stuff */
 .standard-btn {
   border-width: 2px;
   border-style: solid;
   border-color: white;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
-  background: transparent;
+  background: darkgray;
   padding: 13px 25px 13px 25px;
   text-decoration: none;
   text-align: center;
 
+  height: 36px;
   width:160px;
   display:inline-block;
   overflow: auto;
@@ -180,3 +192,12 @@ body {
   text-decoration: none;
 }
 
+/*Register Container Styling*/
+#regis-container {
+    height: 650px;
+    width: 500px;
+    margin-left: 290px;
+    margin-top: 100px;
+    margin-bottom: 150px;
+    background-color: rgba(173, 181, 172, 0.5);
+}
