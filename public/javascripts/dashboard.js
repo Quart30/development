@@ -1,5 +1,5 @@
 $(function () {
-    
+
   getDate();
   $(startTime);
   $(table);
@@ -58,7 +58,7 @@ function prependZero(i) {
 function table() {
 
     var cols, $btn;
-
+    console.log("Starting table...");
     $.get('/api/employee/' + eid + '/appointments/today', function (data) {
 
         var count = 0;
