@@ -1,10 +1,9 @@
 $(function () {
-
-    getDate();
-    $(startTime);
-    $(table);
-    $(poll);
-
+    
+  getDate();
+  $(startTime);
+  $(table);
+  //$(poll);
 
 });
 
@@ -124,13 +123,14 @@ function table() {
 }//end of table()
 
 
-function poll() {
-    setTimeout(function () {
-        table();
+//function poll() {
+//    setTimeout(function(){
+//        table();
+//
+//        poll();
+//    },1000);//checks every 1000 millisecond
+//}
 
-        poll();
-    }, 1000);//checks every 1000 millisecond
-}
 
 //function to get the appointment's time in a formatted string
 function getAppDate(date) {
