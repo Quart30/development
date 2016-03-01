@@ -1,6 +1,7 @@
 var auth = require ('../../../lib/auth');
 exports.get = function (req,res) {
     var bid = req.user[0].business;
+    console.log(bid);
     var db = req.db;
     var businesses = db.get('businesses');
     businesses.findById(bid, function (err, result) {

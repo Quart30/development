@@ -14,6 +14,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var passport = require('passport');
 var async = require('async');
+var ObjectId = require('mongodb').ObjectID;
 var app = express();
 
 global.__base = __dirname + '/';
@@ -143,6 +144,72 @@ app.use('/api/m/business', business);
 app.use('/api/m/example', require('./routes/api/example'));
 app.use('/api', require('./routes/webapi'));
 
+var auth = require('./lib/auth');
+/**
+ * An convenience API call to create an employee.
+ * Usage: Postman POST localhost:4000/createemployee
+ * If any of the parameters are excluded, they are filled
+ * with placeholder values, except bid, which is required for
+ * permission level = 3.
+ * URL parameters:
+ * @param bid business ID
+ * @param fname first name
+ * @param lname last name
+ * @param email email
+ * @param permission permission level
+ * @param admin does this user have admin priveleges?
+ * @param company the employee's company
+ * @param phone phone number
+ */
+app.post('/createemployee', function(req,res) {
+    var employeeDB = req.db.get("employees");
+    var params = req.query;
+    var bid = params.bid ? ObjectId(params.bid) : 123;
+    var fname = params.fname ? params.fname : "First";
+    var lname = params.lname ? params.lname : "Last";
+    var email = params.email ? params.email: "placeholder@mailinator.com";
+    var permission = params.permission ? Number(params.permission) : 3 ;
+    var admin = params.admin ? Boolean(params.admin) : false;
+    var company = params.company ? params.company : "Placeholder Company";
+    var password = params.password ? params.password : "placeholder";
+    var phone = params.phone ? params.phone : "1234567890";
+    //var newEmployee = {bid: bid, fname: fname, lname: lname, email: email, permissionLevel: permission,
+        //admin: admin, company: company, password: password, phone: phone};
+
+    employeeDB.findOne({email: email}, function(err, result) {
+        if (err) {
+            console.log("/createemployee error: " + err);
+        }
+        else {
+            if (!result) {
+                console.log("Inserting " + fname + " " + lname + " into the database");
+                employeeDB.insert({
+                    business: bid,
+                    password: auth.hashPassword(password),
+                    phone: phone,
+                    fname: fname,
+                    lname: lname,
+                    email: email,
+                    smsNotify: true, //needed?
+                    emailNotify: true, //not in use currently
+                    admin: admin,
+                    permissionLevel: permission,
+                    company: company //Permission 1 users don't require company
+                });
+            }
+            else {
+                console.log("/createemployee error: " + fname + " " + lname + " is " +
+                "already in the database! Removing him for debugging purposes");
+                employeeDB.remove({email: email}, {justOne: true});
+            }
+        }
+    });
+
+    res.writeHead(200);
+    res.end();
+});
+
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
@@ -180,3 +247,5 @@ app.use(function (err, req, res) {
 
 
 exports = module.exports = app;
+
+//---delete below this line please
