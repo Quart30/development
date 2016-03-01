@@ -182,7 +182,7 @@ app.post('/createemployee', function(req,res) {
         }
         else {
             if (!result) {
-                console.log("Inserting " + fname + " " + lname + " into the database");
+                console.log("Successfully inserted " + fname + " " + lname + ".");
                 employeeDB.insert({
                     business: bid,
                     password: auth.hashPassword(password),
@@ -207,6 +207,25 @@ app.post('/createemployee', function(req,res) {
 
     res.writeHead(200);
     res.end();
+});
+
+/**
+ * Convenience API call for deleting an employee.
+ * You need to supply the business id the employee
+ * belongs to, as well as the employee's email.
+ * @param bid business id
+ * @param email employee's email
+ */
+app.delete('/deleteemployee', function(req,res){
+    var employeeDB = req.db.get("employees");
+    var params = req.query;
+    var bid = params.bid ? ObjectId(params.bid) : 123;
+    var email = params.email ? params.email : "placeholder@mailinator.com";
+    employeeDB.remove({business: bid, email: email}, function(err) {
+        if (err) {
+            console.log("/deleteemployee: Error deleting employee: " + err);
+        }
+    })
 });
 
 
