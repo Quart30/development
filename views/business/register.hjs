@@ -45,17 +45,26 @@
                     <h2>Create an Account</h2>
                     <form method="post" action="" enctype="application/x-www-form-urlencoded">
                         <div>
-                            <input class="regis form-input" type="text" name="companyName" value="{{ companyName }}" placeholder="  Company Name" required>
+                            <input class="regis form-input" type="text" name="companyName" value="{{ companyName }}" placeholder="Company Name" required>
                         </div>
                         <div>
-                            <input class="regis form-input" type="email" name="email" value="{{ email }}" placeholder="  Email" required>
+                            <input class="regis form-input" type="tel" name="phone" value="{{ phone }}" placeholder="Phone Number">
                         </div>
                         <div>
-                            <input class="regis form-input" type="tel" name="phone" value="{{ phone }}" placeholder="  Phone Number (optional)">
+                            <input class="regis form-input" type="email" name="email" value="{{ email }}" placeholder="Company Email" required>
                         </div>
                         <div>
-                            <input class="regis form-input" type="password" name="password" value="{{ password }}" placeholder="  Password" required>
+                            <input class="regis form-input" type="email" name="email" value="{{ email }}" placeholder="Confirm Email" required>
                         </div>
+                        <div>
+                            <input class="regis form-input" type="password" name="password" value="{{ password }}" placeholder="Password" required>
+                        </div>
+
+                        <div>
+                            <input class="regis form-input" type="password" name="password" value="{{ password }}" placeholder="Confirm Password" required>
+                        </div>
+
+
                         <div>
                             <input class="btn custom-button" name="submit" type="submit" value="Sign Up">
                         </div>
