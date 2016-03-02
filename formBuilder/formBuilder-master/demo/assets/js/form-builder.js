@@ -878,13 +878,13 @@ Author: Kevin Chappell <kevin.b.chappell@gmail.com>
       advFields += '<input type="text" name="name"  value="' + values.name + '" class="fld-name form-control" id="title-' + lastID + '" /></div>';
       */
 
-        /*
-        Don't think we need access roles since only a worker will be able to alter form anyway
-      advFields += '<div class="frm-fld access-wrap"><label>' + opts.messages.roles + '</label>';
 
-      advFields += '<input type="checkbox" name="enable_roles" value="" ' + (values.role !== undefined ? 'checked' : '') + ' id="enable_roles-' + lastID + '"/> <label for="enable_roles-' + lastID + '" class="roles-label">' + opts.messages.limitRole + '</label>';
+       // Don't think we need access roles since only a worker will be able to alter form anyway
+     // advFields += '<div class="frm-fld access-wrap"><label>' + opts.messages.roles + '</label>';
+
+      //advFields += '<input type="checkbox" name="enable_roles" value="" ' + (values.role !== undefined ? 'checked' : '') + ' id="enable_roles-' + lastID + '"/> <label for="enable_roles-' + lastID + '" class="roles-label">' + opts.messages.limitRole + '</label>';
       advFields += '<div class="frm-fld available-roles" ' + (values.role !== undefined ? 'style="display:block"' : '') + '>';
-      */
+
 
         /*
       for (key in opts.roles) {
