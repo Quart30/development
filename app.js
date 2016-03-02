@@ -288,6 +288,16 @@ app.post('/createappointment', function(req, res) {
     });
 });
 
+app.post('/registerslack', function(req, res) {
+    res.writeHead(200);
+    var params = req.query;
+
+    var token = params.access_token;
+
+    res.write('Token: ' + token);
+    res.end();
+});
+
 /**
  * Convenience API call to delete an appointment or appointments.
  * You can just write "all" for apptId and fill in eid to delete all
