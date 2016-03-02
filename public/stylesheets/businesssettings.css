@@ -9,6 +9,10 @@ html, body {
   overflow-y: hidden;
 }
 
+.business-setting-margin{
+  text-align: center;
+}
+
 .form {
   margin: 0px auto;
   text-align: center;
@@ -71,7 +75,7 @@ h1 {
   white-space: nowrap;
   margin: 20px auto;
   border:1px white solid;
-
+  display: block;
 }
 
 .custom-button:hover {
@@ -99,4 +103,8 @@ h1 {
 .site-footer {
     background: rgba(0,0,0,0.5);
     text-align: center;
+}
+
+.slack-button{
+  display: block;
 }
