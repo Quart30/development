@@ -1,57 +1,66 @@
 
 <!DOCTYPE html>
-
-
 <html>
-
   <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-builder.css">
-  <!-- Only include on form render page -->
-
-
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel='stylesheet' href='/stylesheets/customizetheme.css'/>
 <body style='background-color: #89bdd3'>
+    <div class = "top-bar-section">
+        <div style="padding-top: 33px;">
+          <span class="shameless-plug">Herald</span>
+        </div>
+        <div class="form-container">
+          {{#message}}
+            <div>{{message}}</div>
+          {{/message}}
+        </div>
+        <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
+          <li>
+            <a href="/dashboard" class="linkey">Dashboard</a>
+          </li>
+          <li>
+            <a href="/addemployees" class="linkey">Employees</a>
+          </li>
+          <li class="active">
+            <a href="/accountSettings" class="linkey">Settings</a>
+          </li>
+          <li>
+            <a href="/businesssetting" class="linkey">Company Name</a>
+          </li>
+        </ul>
+      </div>
+        <div class="top-bar-section-secondary" id="secondary_navbar">
+            <ul class="nav navbar-nav navbar-right navbar-secondary">
+                <li><a href="/uploadlogo" class="linkey">Upload Logo</a></li>
+                <li class="active"><a href="/formbuilder" class="linkey">Manage Forms</a></li>
+                <li><a href="/customizetheme" class="linkey">Customize Theme</a></li>
+                <li><a href="/accountSettings" class="linkey">Account Settings</a></li>
+            </ul>
+        </div>
+    {{#message}}
+   <div class="alert alert-danger">{{message}}</div>
+    {{/message}}
 
-<div class="build-form">
-<h2> <strong> Add Elements to your Form here </strong> </h2>
-<form action="">
-<textarea name="formBuilder" id="formBuilder" cols="30" rows="10"> </textarea>
-</form>
-<br style="clear:both">
-</div>
+  <div class="build-form" style="text-align: center; padding: 20px 50px 50px 50px;">
+    <h1><strong style="color:white;">Make a new form</strong></h1>
+    <form action="">
+      <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"> </textarea>
+    </form>
+    <br style="clear:both">
+  </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- <script src="js/formBuilder.js"></script>
-
-<!-- <link rel="stylesheet" href="css/formBuilder.css"> -->
-
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script src="/formBuilder/formBuilder-master/demo/assets/js/form-builder.js"></script>
-  <!-- Only include on form render page -->
-
   <script>
-  jQuery(document).ready(function($) {
-    'use strict';
-    var template = document.getElementById('formBuilder');
-
-    $(template).formBuilder();
-
-
-  });
-      // add logic that if save button is pressed $(template).toXML() gets called and saved in the DB
-</script>
-
+    jQuery(document).ready(function($) {
+      'use strict';
+      var template = document.getElementById('formBuilder');
+      $(template).formBuilder();
+    });
+  </script>
 </body>
-<!--
-<ul id="frmb-0-control-box" class="frmb-control ui-sortable"><li class="autocomplete ui-sortable-handle" type="9" name="autocomplete" label="Autocomplete">Autocomplete</li><li class="date_input ui-sortable-handle" type="3" name="date_input" label="Date Field">Date Field</li><li class="radio-group ui-sortable-handle" type="10" name="radio-group" label="Radio Group">Radio Group</li><li class="checkbox-group ui-sortable-handle" type="10" name="checkbox-group" label="Checkbox Group">Checkbox Group</li><li class="checkbox ui-sortable-handle" type="5" name="checkbox" label="Checkbox">Checkbox</li><li class="rich-text ui-sortable-handle" type="7" name="rich-text" label="Rich Text Editor">Rich Text Editor</li><li class="select ui-sortable-handle" type="6" name="select" label="Select">Select</li><li class="text-input ui-sortable-handle" type="11" name="text-input" label="Text Field">Text Field</li></ul>
-</ul>
--->
 
 </html>
-
-
-
-
-
-
-
-

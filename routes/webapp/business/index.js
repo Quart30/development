@@ -11,14 +11,12 @@ var accountSettings = require('./accountsettings');
 var uploadLogo = require('./uploadlogo');
 var register = require('./register');
 var dashboard = require('./dashboard');
-var registerDevice = require('./registerdevice');
 var addEmployees = require('./addemployees');
 var employeeRegister = require('./employeeregister');
 var viewForm = require('./viewform');
 var customizeTheme = require('./customize_theme');
 var manageForms = require('./manage_forms');
 var businesssetting = require('./businesssetting');
-var setdisclosure = require('./setdisclosure');
 module.exports = function (passport) {
 
 
@@ -59,8 +57,6 @@ module.exports = function (passport) {
 
     router.get('/dashboard', isLoggedIn, dashboard.get);
 
-    router.get('/registerdevice', isLoggedIn, registerDevice.get);
-
     router.get('/addemployees',isLoggedInBusiness, addEmployees.get);
     router.post('/addemployees',isLoggedInBusiness, addEmployees.post);
 
@@ -75,9 +71,6 @@ module.exports = function (passport) {
     }));
 
     router.get('/viewform/:id', viewForm.get);
-
-    router.get('/setdisclosure', isLoggedInBusiness, setdisclosure.get);
-    router.post('/setdisclosure', isLoggedInBusiness, setdisclosure.post);
 
 function isLoggedIn(req,res,next){
         if(req.isAuthenticated()){
