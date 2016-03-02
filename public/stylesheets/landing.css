@@ -87,7 +87,6 @@ a:hover {
     color: white;
 }
 .form-container{
-<<<<<<< HEAD
   float: right;
   padding-right: 20px;
   margin-top: -54px;
@@ -96,16 +95,6 @@ a:hover {
   font-size: 13pt;
   margin-left: 40px;
   padding-top: 33px;
-=======
-    float: right;
-    padding-right: 40px;
-    margin-top: -42px;
-}
-.shameless-plug {
-    font-size: 13pt;
-    margin-left: 10%;
-    padding-top: 33px;
->>>>>>> 11760e006cdbfee5db4011efa70c2f5d34daa7a3
 }
 /* end of top bar */
 

@@ -13,7 +13,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script> eid = "{{eid}}"; </script>
     <script src="/javascripts/dashboard.js"></script>
-    <script src="/javascripts/demo.js" type="text/javascript"></script>
+ <script> function demo(str){document.getElementById("demo").innerHTML = "PermissionLevel = " + str;}</script>
 
 </head>
 <body>
@@ -31,7 +31,7 @@
       </div>
       <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
         <li class="active">
-          <a href="/dashboard">Dashboard</a>
+          <a href="/dashboardcopy">Dashboard</a>
         </li>
         <li>
           <a href="/queue">Queue</a>
@@ -72,8 +72,8 @@
       <h1 class="text-center" id="currentDate" ></h1>
       <div id="txt" class="text-center"></div>
     </div>
-      <p name="demo" id="demo">Good Evening!</p>
-      <script>getPermissionLevel({{employeePermission}});</script>
+      <p id="demo" onclick="demo({{permissionLevel}})"></p>
+     
     </div>
 
   </div>
