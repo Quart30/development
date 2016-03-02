@@ -45,10 +45,8 @@
    	        <ul class="nav navbar-nav navbar-right navbar-secondary">
    	            <li><a href="/manageforms">Manage Forms</a></li>
    	            <li class = "active"><a href="/uploadlogo">Upload Logo</a></li>
-   	            <li>
-   	                <a href="/customizetheme">Customize Theme</a>
-   	            </li>
-   	            <li><a href="/accountSettings">Account Settings</a></li>
+   	            <li><a href="/customizetheme">Customize Theme</a>
+   	            </li><li><a href="/accountSettings">Account Settings</a></li>
    	        </ul>
    	    </div>
          <!-- end nav bar -->
