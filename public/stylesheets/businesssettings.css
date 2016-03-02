@@ -9,6 +9,15 @@ html, body {
   overflow-y: hidden;
 }
 
+.form {
+  margin: 0px auto;
+  text-align: center;
+}
+
+.form-group {
+  text-align: left;
+}
+
 .top-bar-section {
     height: 12vh;
     width: 100vw;
@@ -51,7 +60,7 @@ h1 {
   width:150px;
   overflow: auto;
   white-space: nowrap;
-  margin:20px auto;
+  margin: 20px auto;
   border:1px white solid;
 
 }

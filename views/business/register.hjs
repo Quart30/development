@@ -24,11 +24,11 @@
             </div>
             <div class="form-container">
                 <form action="login" method="post">
-                    <label for="email" class="login-section-text" "form-label" >
+                    <label for="email" class="login-section-text">
                         <span class="form-span">Email</span>
                         <input type="email" class="form-input" id="email" name="email" required />
                     </label>
-                    <label for="password" class = "login-section-text" "form-label">
+                    <label for="password" class = "login-section-text">
                         <span class="form-span">Password</span>
                         <input type="password" class="form-input" id="password" name="password" required />
                     </label>
@@ -54,14 +54,14 @@
                             <input class="regis form-input" type="email" name="email" value="{{ email }}" placeholder="Company Email" required>
                         </div>
                         <div>
-                            <input class="regis form-input" type="email" name="email" value="{{ email }}" placeholder="Confirm Email" required>
+                            <input class="regis form-input" type="email" name="email2" value="{{ email }}" placeholder="Confirm Email" required>
                         </div>
                         <div>
                             <input class="regis form-input" type="password" name="password" value="{{ password }}" placeholder="Password" required>
                         </div>
 
                         <div>
-                            <input class="regis form-input" type="password" name="password" value="{{ password }}" placeholder="Confirm Password" required>
+                            <input class="regis form-input" type="password" name="password2" value="{{ password }}" placeholder="Confirm Password" required>
                         </div>
 
 
@@ -72,8 +72,9 @@
                 </div>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 180px;">© Copyright 2058, Quart 3.0</p>
+        <p style="text-align: center; margin-top: -50px;">© Copyright 2058, Quart 3.0</p>
     </div>
+    <!-- hello -->
 
 </body>
 
