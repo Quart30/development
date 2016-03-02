@@ -37,7 +37,7 @@ html, body {
 }
 
 .container-margin-accountSettings {
-  background-color: #c9c9c9;
+  background-color: rgba(0,0,0,0.3);
   margin-top: 10vh;
   padding-bottom: 20px;
 }
