@@ -23,7 +23,8 @@ h1 {
 }
 
 h2 {
-    margin-top: 150px;
+    position: relative;
+    /*margin-top: 10%;*/
 }
 
 body {
@@ -59,7 +60,7 @@ body {
 .form-span {
     display: block;
     margin: 0 0 3px;
-    font-size: 1.7em;
+    font-size: 1.2em;
     font-weight: bold;
 }
 .form-input{
@@ -73,14 +74,14 @@ body {
   color: white;
 }
 .form-container{
-  float: right;
-  padding-right: 40px;
-  margin-top: -48px;
+    float: right;
+    padding-right: 40px;
+    margin-top: -42px;
 }
 .shameless-plug {
-  font-size: 25pt;
-  margin-left: 10%;
-  padding-top: 33px;
+    font-size: 13pt;
+    margin-left: 10%;
+    padding-top: 33px;
 }
 .shameless-plug:hover {
     color:white;
@@ -122,21 +123,23 @@ body {
     width: 230px;
     border: 1px solid #FFF;
     color: #182c49;
-    font-size: 18px;
+    /*font-size: 18px;*/
     padding: 5px;
     background: white;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: rgba(255,255,255,0.8);
-  font-size: 12pt;
+    /*color: rgba(255,255,255,0.8); was preventing the placeholders from being shown*/
+    color: black;
+    font-size: 12pt;
 }
 
 .regis {
     margin-bottom: 5px;
     margin-top: 5px;
-    height: 48px;
-    width: 350px;
+    position: relative;
+    height: 10%; /*doesn't do anything?*/
+    width: 60%;
 }
 
 .custom-center {
@@ -194,10 +197,14 @@ body {
 
 /*Register Container Styling*/
 #regis-container {
-    height: 650px;
-    width: 500px;
-    margin-left: 290px;
-    margin-top: 100px;
-    margin-bottom: 150px;
+    position: relative;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    height: 33%;
+    width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7.5%;
+    margin-bottom: 7.5%;
     background-color: rgba(173, 181, 172, 0.5);
 }
