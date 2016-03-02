@@ -46,7 +46,7 @@ module.exports = function (passport) {
 
                 var businesses = db.get('businesses');
                 var employees = db.get('employees');
-
+                var forms = db.get('forms');
 
                 // find a user whose email is the same as the forms email
                 // we are checking to see if the user trying to login already exists
@@ -84,6 +84,12 @@ module.exports = function (passport) {
                             }
 
                             var businessID = result._id.toString();
+
+                            forms.insert({
+                                 business: ObjectId(businessID),
+                                form: {Name: "", Phone:""}
+                            });
+
                             var company = result.companyName;
 
                             console.log('Company is ' + company);
