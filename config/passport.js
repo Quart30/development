@@ -54,6 +54,7 @@ module.exports = function (passport) {
                     email: email
                 });
                 */
+                return done(null, false, {message: "Fields left blank, or email/passwords don't match"});
             } else {
 
                 var businesses = db.get('businesses');
