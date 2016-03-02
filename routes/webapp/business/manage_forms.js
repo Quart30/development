@@ -77,7 +77,7 @@ exports.get = function (req, res, next) {
             return next(err);
         }
 
-        res.render('business/manage_forms',{
+        res.render('business/level_2/manage_forms',{
             message: req.flash('permission'),
             form: formHtml
         });
