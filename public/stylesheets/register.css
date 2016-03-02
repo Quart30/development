@@ -23,7 +23,8 @@ h1 {
 }
 
 h2 {
-    margin-top: 150px;
+    position: relative;
+    /*margin-top: 10%;*/
 }
 
 body {
@@ -32,7 +33,15 @@ body {
 }
 
 #txt {
-    color:white
+    color:white;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 50%;
 }
 
 .whitetext {
@@ -65,14 +74,14 @@ body {
   color: white;
 }
 .form-container{
-  float: right;
-  padding-right: 40px;
-  margin-top: -48px;
+    float: right;
+    padding-right: 40px;
+    margin-top: -42px;
 }
 .shameless-plug {
-  font-size: 18pt;
-  margin-left: 10%;
-  padding-top: 33px;
+    font-size: 13pt;
+    margin-left: 10%;
+    padding-top: 33px;
 }
 .shameless-plug:hover {
     color:white;
@@ -90,6 +99,8 @@ body {
     margin-left:10%;
     margin-top:-15%;
 }
+
+/*Sign up Button*/
 .custom-button{
 
     border-width: 1px;
@@ -98,7 +109,7 @@ body {
     color: #ffffff;
     font-size: 17px;
     color: white;
-    background: transparent;
+    background: #003bb3;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     width:150px;
@@ -111,21 +122,24 @@ body {
 .form-input{
     width: 230px;
     border: 1px solid #FFF;
-    color: white;
+    color: #182c49;
+    /*font-size: 18px;*/
     padding: 5px;
-    background: transparent;
+    background: white;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: rgba(255,255,255,0.8);
-  font-size: 12pt;
+    /*color: rgba(255,255,255,0.8); was preventing the placeholders from being shown*/
+    color: black;
+    font-size: 12pt;
 }
 
 .regis {
     margin-bottom: 5px;
     margin-top: 5px;
-    height: 38px;
-    width: 250px;
+    position: relative;
+    height: 10%; /*doesn't do anything?*/
+    width: 60%;
 }
 
 .custom-center {
@@ -142,19 +156,20 @@ body {
     border-color: #e3e3e3;
 }
 
-/* button stuff */
+/*Login button stuff */
 .standard-btn {
   border-width: 2px;
   border-style: solid;
   border-color: white;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
-  background: transparent;
+  background: darkgray;
   padding: 13px 25px 13px 25px;
   text-decoration: none;
   text-align: center;
 
+  height: 36px;
   width:160px;
   display:inline-block;
   overflow: auto;
@@ -180,3 +195,16 @@ body {
   text-decoration: none;
 }
 
+/*Register Container Styling*/
+#regis-container {
+    position: relative;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    height: 33%;
+    width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7.5%;
+    margin-bottom: 7.5%;
+    background-color: rgba(173, 181, 172, 0.5);
+}

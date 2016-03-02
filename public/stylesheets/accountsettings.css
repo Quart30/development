@@ -50,7 +50,6 @@ html, body {
   margin-top: 50px; 
 }
 
-
 .top-bar-section {
     height: 12vh;
     width: 100vw;
@@ -61,6 +60,7 @@ html, body {
   margin-left: 10%;
   padding-top: 33px;
 }
+
 .shameless-plug:hover {
     color:white;
 }

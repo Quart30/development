@@ -1,0 +1,187 @@
+.frmb {
+  li {
+    position: relative;
+    padding: 6px;
+    clear: both;
+    margin-left: 0;
+    margin-bottom: 5px;
+    background-color: $white;
+    border-radius: 5px;
+    border: 1px solid $white;
+    transition: border 250ms ease-in-out;
+
+    &:hover {
+      border: 1px solid $grey-light-30;
+
+      li {
+        :hover {
+          background: #fefefe;
+        }
+      }
+    }
+
+    &.no-fields label {
+      font-weight: 400;
+    }
+
+    &.frmb-placeholder,
+    &.ui-state-highlight {
+      height: 5px;
+      background: radial-gradient(ellipse at center, rgba(84, 84, 84, 1) 0%, rgba(0, 0, 0, 0) 75%);
+      border: 0 none;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      visibility: visible;
+    }
+
+    &.disabled {
+      [type=checkbox] {
+        float: left;
+        margin-right: 10px;
+      }
+    }
+
+    &.disabled label {
+      font-size: 12px;
+      font-weight: 400;
+      color: $grey;
+    }
+
+    &.disabled .prev-holder {
+      cursor: default;
+      line-height: 28px;
+      padding-left: 5px;
+    }
+
+    a.remove {
+      opacity: 1;
+    }
+
+    &.cta {
+      font-size: 30px;
+      padding: 20% 0;
+      text-align: center;
+    }
+  }
+
+  a.btn {
+    border: 1px solid $white;
+    color: $black;
+    text-decoration: none;
+  }
+
+  a.del-button, a.remove {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    display: inline-block;
+    opacity: 0;
+    border-radius: 0 5px 0 0;
+    border-color: $grey-light-30;
+  }
+
+  a.del-button:hover, a.remove:hover {
+    border-color: $remove;
+    color: $remove;
+  }
+
+  li.delete:hover, li:hover li.delete:hover {
+    background-color: #fdd;
+  }
+
+  &.disabled {
+    padding: 0 5px;
+
+    :hover {
+      border-color: transparent;
+    }
+
+    .form-element {
+      float: none;
+      margin-bottom: 10px;
+      overflow: visible;
+      padding: 5px 0;
+      position: relative;
+    }
+
+    .tooltip-element {
+      display: inline;
+      visibility: visible;
+    }
+  }
+
+  .frm-holder {
+    display: none;
+  }
+
+  .tooltip {
+    left: 20px;
+  }
+
+  .prev-holder {
+    display: block;
+
+    input[type="color"] {
+      width: 60px;
+      padding: 2px;
+      display: inline-block;
+    }
+
+    select[multiple] {
+      height: auto;
+    }
+  }
+
+  .required_asterisk {
+    display: none;
+  }
+
+  .field-label, .legend {
+    color: $grey;
+    margin-bottom: 5px;
+  }
+
+  .disabled .field-label {
+    display: block;
+  }
+}
+
+.stage-wrap {
+  position: relative;
+  float: left;
+  width: 62%;
+  margin-right: 2%;
+
+  .action-links {
+    width: calc( 100% - 141px);
+    display: none;
+    float: right;
+    overflow: hidden;
+    text-align: right;
+  }
+
+  &.empty {
+    &:after {
+      content: attr(data-content);
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      margin-top: -1em;
+    }
+  }
+}
+
+.stage-wrap .action-links .active {
+  font-weight: 700;
+  color: $black;
+}
+
+.frm-fld {
+  padding: 5px 0;
+  clear: left;
+
+  select.form-control {
+    width: 70%;
+  }
+}

@@ -11,18 +11,31 @@ exports.get = function (req, res) {
     var walkinsAllowed = req.user[0].walkins;
     var companyName = "";
 
-    res.render('business/dashboard', 
-        {
-            title: 'Dashboard',
-    		eid: employeeId,
-    		employeeName: employeename,
-            employeeLast: employeeLastName,
-            employeePhone: employeePhone,
-            employeePermission: employeePermission,
-            walkinsAllowed: walkinsAllowed,
-            companyName: companyName,
-    		message: req.flash("permission"),
-	   });
+    //console.log("First name: " + employeename);
+
+    var companyName = req.user[0].company;
+
+    var page; // page to load
+    switch (req.user[0].permissionLevel) {
+        case 1:
+        case 2:
+            page = 'business/level_2/dashboard';
+            break;
+        case 3:
+            page = 'business/level_3/dashboard';
+            break;
+        default: // default level 4
+            page = 'business/level_4/dashboard';
+            break;
+    }
+    res.render(page, {title: 'Dashboard',
+		eid: employeeId,
+		employeeName: employeename,
+        employeeLast: employeeLastName,
+        employeePhone: employeePhone,
+        employeePermission: employeePermission,
+        walkinsAllowed: walkinsAllowed,
+        companyName: companyName,
+		message: req.flash("permission"),
+	});
 };
-
-
