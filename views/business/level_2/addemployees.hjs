@@ -35,10 +35,10 @@
           <a href="/addemployees" style="color: white;">Employees</a>
         </li>
         <li>
-          <a href="/accountSettings"style="color: white;">Settings</a>
+          <a href="/accountSettings"style="color: white;">Account Settings</a>
         </li>
         <li>
-          <a href="/businesssetting"style="color: white;">Company Name</a>
+          <a href="/businesssetting"style="color: white;">Company Settings</a>
         </li>
       </ul>
     </div>

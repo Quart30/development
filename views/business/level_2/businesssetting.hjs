@@ -28,12 +28,21 @@
             <a href="/addemployees">Employees</a>
           </li>
           <li>
-            <a href="/accountSettings">Settings</a>
+            <a href="/accountSettings">Account Settings</a>
           </li>
           <li class="active">
-            <a href="/businesssetting">Company Name</a>
+            <a href="/businesssetting">Company Settings</a>
           </li>
         </ul>
+      </div>
+      <div class="top-bar-section-secondary" id="secondary_navbar">
+          <ul class="nav navbar-nav navbar-right navbar-secondary">
+              <li><a href="/manageforms">Manage Forms</a></li>
+              <li><a href="/uploadlogo">Upload Logo</a></li>
+              <li>
+                  <a href="/customizetheme">Customize Theme</a>
+              </li>
+          </ul>
       </div>
       <!-- end nav bar -->
 
