@@ -30,13 +30,21 @@
             <a href="/addemployees">Employees</a>
           </li>
           <li class="active">
-            <a href="/accountSettings">Account Settings</a>
+            <a href="/accountSettings">Settings</a>
           </li>
           <li>
-            <a href="/businesssetting">Company Settings</a>
+            <a href="/businesssetting">Company Name</a>
           </li>
         </ul>
       </div>
+	    <div class="top-bar-section-secondary" id="secondary_navbar">
+	        <ul class="nav navbar-nav navbar-right navbar-secondary">
+	            <li><a href="/manageforms">Manage Forms</a></li>
+	            <li><a href="/uploadlogo">Upload Logo</a></li>
+	            <li><a href="/customizetheme">Customize Theme</a></li>
+	            <li class="active"><a href="/accountSettings">Account Settings</a></li>
+	        </ul>
+	    </div>
       <!-- end nav bar -->
 
 	<div class="container container-margin-accountSettings">
@@ -55,7 +63,7 @@
 				</div>
 			{{/alert}}
 			<div>
-				<h2 style="text-align: center;">Account Settings</h2>
+				<h2 style="text-align: center;">Personal Information And Preferences</h2>
 				<hr></hr>
 			</div>
 		</div>
