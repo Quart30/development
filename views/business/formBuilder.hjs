@@ -42,9 +42,8 @@
    <div class="alert alert-danger">{{message}}</div>
     {{/message}}
 
-
-  <div class="build-form">
-    <h2> <strong> Add Elements to your Form here </strong> </h2>
+  <div class="build-form" style="text-align: center; padding: 20px 50px 50px 50px;">
+    <h1><strong style="color:white;">Make a new form</strong></h1>
     <form action="">
       <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"> </textarea>
     </form>
