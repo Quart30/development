@@ -10,12 +10,24 @@ exports.get = function (req, res) {
     var employeePermission = req.user[0].permissionLevel;
     var walkinsAllowed = req.user[0].walkins;
 
-    console.log("First name: " + employeename);
+    //console.log("First name: " + employeename);
 
     var companyName = req.user[0].company;
 
-
-    res.render('business/dashboard', {title: 'Express',
+    var page; // page to load
+    switch (req.user[0].permissionLevel) {
+        case 1:
+        case 2:
+            page = 'business/level_2/dashboard';
+            break;
+        case 3:
+            page = 'business/level_3/dashboard';
+            break;
+        default: // default level 4
+            page = 'business/level_4/dashboard';
+            break;
+    }
+    res.render(page, {title: 'Express',
 		eid: employeeId,
 		employeeName: employeename,
         employeeLast: employeeLastName,

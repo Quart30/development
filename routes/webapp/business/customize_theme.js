@@ -8,7 +8,7 @@ exports.get = function (req, res, next) {
             return next(new Error('Business not found for user: ' + req.user));
         }
 
-        res.render('business/customize_theme', {
+        res.render('business/level_2/customize_theme', {
             message: req.flash('permission'),
             logo: "images/thumb/cow.png", //business.logo,
             bg: "images/bg.jpg"  // + business.style.bg

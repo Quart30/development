@@ -1,5 +1,5 @@
 exports.get = function (req, res) {
-    res.render('business/formbuilder', {title: 'Express'});
+    res.render('business/level_2/formbuilder', {title: 'Express'});
 };
 
 exports.get = function (req, res, next) {
@@ -9,7 +9,7 @@ exports.get = function (req, res, next) {
         if (err) {
             return next(err);
         }
-        res.render('business/formbuilder', {
+        res.render('business/level_2/formbuilder', {
             title: 'Express',
             form: JSON.stringify(form),
             findID: businessID

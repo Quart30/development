@@ -1,6 +1,27 @@
 var auth = require('../../../lib/auth');
 
 /**
+ * Find out which account settings page to load based on user level
+ *
+ * @param employee
+ * @returns hjs file to render
+ */
+function getPage(employee) {
+    switch (employee.permissionLevel) {
+        case 1: // place holder
+        case 2:
+            return 'business/level_2/accountsettings';
+            break;
+        case 3:
+            return 'business/level_3/accountsettings';
+            break;
+        default: // default level 4
+            return 'business/level_4/accountsettings';
+            break;
+    }
+}
+
+/**
  * Takes an req parameter and res parameter and returns the details of a particular employee.
  *
  * @param req The req parameter used to access the database,
@@ -24,13 +45,7 @@ exports.get = function (req,res) {
         phone = phone.replace('1', '');
 				phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
 
-        var page; // page to load
-        if (emp.permissionLevel < 3)
-            page = 'business/accountsettings';
-        else
-            page = 'business/accountsettings_low';
-
-        res.render(page, {
+        res.render(getPage(emp), {
             title: 'Express',
             fname: emp.fname,
             lname: emp.lname,
@@ -65,30 +80,31 @@ exports.post = function (req, res) {
     if (inputPass != null)
     {
         if(inputPass === req.user.Employee[0].password)
-				{
-                    //find employees based on id
-					employees.find({_id: eid}, function (err, result) {
-						var emp = result[0];
-						var phone = emp.phone;
-						phone = phone.replace('1', '');
-						phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-        		res.render('business/accountsettings', {
-            	title: 'Express',
-            	fname: emp.fname,
-            	lname: emp.lname,
-            	password: emp.password,
-            	phone: phone,
-            	email: emp.email,
-            	smsNotify: emp.smsNotify,
-            	emailNotify: emp.emailNotify,
-							edited: 'Password successfully changed!'
-						});
-					});
-				}
-				else
-				{
-					inputPass = auth.hashPassword(inputPass);
-					employees.findAndModify({_id: eid}, { $set: {password: inputPass}}, function(err, data) {
+        {
+            //find employees based on id
+            employees.find({_id: eid}, function (err, result) {
+                var emp = result[0];
+                var phone = emp.phone;
+                phone = phone.replace('1', '');
+                phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+
+        		res.render(getPage(emp), {
+                    title: 'Express',
+                    fname: emp.fname,
+                    lname: emp.lname,
+                    password: emp.password,
+                    phone: phone,
+                    email: emp.email,
+                    smsNotify: emp.smsNotify,
+                    emailNotify: emp.emailNotify,
+                                edited: 'Password successfully changed!'
+                });
+            });
+        }
+		else
+		{
+			inputPass = auth.hashPassword(inputPass);
+			employees.findAndModify({_id: eid}, { $set: {password: inputPass}}, function(err, data) {
            	if (err) { return handleError(res, err);}
 		   //find employees based on id
            	employees.find({_id: eid}, function (err, result) {
@@ -96,7 +112,8 @@ exports.post = function (req, res) {
              	var phone = emp.phone;
              	phone = phone.replace('1', '');
 							phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-             	res.render('business/accountsettings', {
+
+             	res.render(getPage(emp), {
                  	title: 'Express',
                  	fname: emp.fname,
                  	lname: emp.lname,
@@ -123,7 +140,8 @@ exports.post = function (req, res) {
                 var phone = emp.phone;
                 phone = phone.replace('1', '');
 								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                res.render('business/accountsettings', {
+
+                res.render(getPage(emp), {
                     title: 'Express',
                     fname: emp.fname,
                     lname: emp.lname,
@@ -154,7 +172,8 @@ exports.post = function (req, res) {
                     var phone = emp.phone;
                     phone = phone.replace('1', '');
 										phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                    res.render('business/accountsettings', {
+
+                    res.render(getPage(emp), {
                         title: 'Express',
                         fname: emp.fname,
                         lname: emp.lname,
@@ -176,7 +195,8 @@ exports.post = function (req, res) {
                 var phone = emp.phone;
                 phone = phone.replace('1', '');
 								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                res.render('business/accountsettings', {
+
+                res.render(getPage(emp), {
                     title: 'Express',
                     fname: emp.fname,
                     lname: emp.lname,
@@ -211,7 +231,8 @@ exports.post = function (req, res) {
                 var phone = emp.phone;
                 phone = phone.replace('1', '');
 								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                res.render('business/accountsettings', {
+
+                res.render(getPage(emp), {
                     title: 'Express',
                     fname: emp.fname,
                     lname: emp.lname,
@@ -246,7 +267,8 @@ exports.post = function (req, res) {
                 var phone = emp.phone;
                 phone = phone.replace('1', '');
 								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                res.render('business/accountsettings', {
+
+                res.render(getPage(emp), {
                     title: 'Express',
                     fname: emp.fname,
                     lname: emp.lname,
