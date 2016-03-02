@@ -42,6 +42,7 @@
 	            <li><a href="/registerDevice">Configurations</a></li>
 	            <!--<li><a href="/manageforms">Manage Forms</a></li>-->
 	            <li><a href="/uploadlogo">Upload Logo</a></li>
+	            <li><a href="/formbuilder">Manage Forms</a></li>
 	            <li>
 	                <a href="/customizetheme">Customize Theme</a>
 	            </li>
