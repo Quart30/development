@@ -4,7 +4,7 @@
 
 <html>
 
-  <link rel="stylesheet" type="text/css" media="screen" href="../../formBuilder/formBuilder-master/demo/assets/css/form-builder.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-builder.css">
   <!-- Only include on form render page -->
 
 
@@ -25,7 +25,7 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-  <script src="../../formBuilder/formBuilder-master/demo/assets/js/form-builder.js"></script>
+  <script src="/formBuilder/formBuilder-master/demo/assets/js/form-builder.js"></script>
   <!-- Only include on form render page -->
 
   <script>

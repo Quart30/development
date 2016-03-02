@@ -132,7 +132,7 @@ app.use(function (req, res, next) {
 app.use('/office', require('./routes/webapp/checkin'));
 app.use('/', businessRoutes);
 
-
+app.use("/formBuilder", express.static(__dirname + '/formBuilder'));
 // Set Mobile Routes
 app.use('/', mobileAuth);
 app.use('/api/m/form', mobileForm);
