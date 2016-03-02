@@ -288,7 +288,7 @@ app.post('/createappointment', function(req, res) {
     });
 });
 
-app.post('/registerslack', function(req, res) {
+app.get('/registerslack', function(req, res) {
     res.writeHead(200);
     var params = req.query;
 
