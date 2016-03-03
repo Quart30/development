@@ -34,6 +34,9 @@
           <li class="active">
             <a href="/businesssetting" style="color: white;">Company Settings</a>
           </li>
+          <li>
+            <a href="/logout" style="color: white;">Logout</a>
+          </li>
         </ul>
       </div>
       <div class="top-bar-section-secondary" id="secondary_navbar">
