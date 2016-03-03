@@ -16,9 +16,9 @@ var passport = require('passport');
 var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var app = express();
+var request = require('request');
 var server = require('http').createServer(app).listen(8000);
 var io = require('socket.io')(server);
-
 
 
 global.__base = __dirname + '/';
@@ -292,6 +292,35 @@ app.post('/createappointment', function(req, res) {
            res.write("Successfully inserted " + fname + " " +
                lname + " into the appointments table. Appt id = " + result._id.toString());
            res.end();
+
+           var hr = date.getHours();
+           var min = date.getMinutes();
+           var ampm = (hr >= 12) ? 'PM' : 'AM';
+           if (hr == 0)
+                hr = 12;
+           else if (hr > 12)
+                hr -= 12;
+
+           // add a 0 to mins
+           if (min <= 9)
+                min = '0' + min;
+
+           var text = { 'text': fname + ' ' + lname +
+                        ' has checked in for their appointment at ' +
+                        hr + ':' + min + ' ' + ampm };
+            // set to slack
+           var options = {
+               // this is the URL for quart30.slack.com
+               url: 'https://hooks.slack.com/services/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',
+               method: 'POST',
+               json: text
+           };
+
+           request.post(options, function (error, response, body) {
+               if (!error && response.statusCode == 200) {
+                   console.log(body.id) // Print the shortened url.
+               }
+           });
        }
     });
 });
@@ -334,6 +363,18 @@ app.delete('/deleteappointment', function(req, res) {
             res.end();
         });
     }
+});
+
+
+app.get('/registerslack', function(req, res) {
+
+    var params = req.query;
+
+    console.log('code: ' + params.code);
+    console.log('body: ' + req.body);
+
+
+    res.redirect('/businesssetting/'); // redirect after processing data
 });
 
 
