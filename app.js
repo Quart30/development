@@ -284,6 +284,16 @@ app.post('/createappointment', function(req, res) {
            res.write("Successfully inserted " + fname + " " +
                lname + " into the appointments table. Appt id = " + result._id.toString());
            res.end();
+
+
+           xhr = new XMLHttpRequest();
+           var url = 'https://hooks.slack.com/services/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';
+           xhr.open('POST', url, true);
+           xhr.setRequestHeader("Content-type", "application/json");
+           var data = JSON.stringify({
+               "text": ":fname :lname has checked in for their :date appointment."
+           });
+           xhr.send(data);
        }
     });
 });
@@ -327,9 +337,9 @@ app.delete('/deleteappointment', function(req, res) {
 });
 
 
-app.get('/registerslack', function(req, res) {
-    res.json(req);
-});
+//app.get('/registerslack', function(req, res) {
+//    res.json(req);
+//});
 
 
 // catch 404 and forward to error handler
