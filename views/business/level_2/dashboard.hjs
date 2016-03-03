@@ -38,10 +38,13 @@
           <a href="/addemployees">Employees</a>
         </li>
         <li>
-          <a href="/accountSettings">Settings</a>
+          <a href="/accountSettings">Account Settings</a>
         </li>
         <li>
-          <a href="/businesssetting">Company Name</a>
+          <a href="/businesssetting">Company Settings</a>
+        <li>
+          <a href="/logout">Logout</a>
+        </li>
         </li>
       </ul>
     </div>

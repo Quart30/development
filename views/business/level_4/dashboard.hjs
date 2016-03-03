@@ -20,6 +20,14 @@
         socket.on('appointment_table_modified', function(data) {
             console.log("Got appointment_table_modified message! Reloading table");
             table();
+            /*TODO:
+            While this new functionality is an improvement over the old method in that it will only
+            reload the table when it's modified, it still performs a GET, which will fetch the entire
+            table. This can be problematic if there are a lot of appointments in the queue. I'll look
+            into modifying the table() function so that individual rows can be added. Then, we can pass
+            the data for a single appointment through this function and insert the row client-side rather
+            than retrieving all the rows from the server.
+             */
         });
     </script>
 
