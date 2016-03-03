@@ -361,7 +361,7 @@ app.get('/registerslack', function(req, res) {
 
     var params = req.query;
 
-    console.log(params.access_token);
+    console.log(params.code);
     console.log(params.incoming_webhook);
 
     res.redirect('/businesssetting/'); // redirect after processing data
