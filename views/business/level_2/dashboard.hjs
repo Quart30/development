@@ -41,6 +41,9 @@
         </li>
         <li>
           <a href="/businesssetting">Company Settings</a>
+        <li>
+          <a href="/logout">Logout</a>
+        </li>
         </li>
       </ul>
     </div>
