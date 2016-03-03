@@ -14,6 +14,14 @@
       eid = "{{eid}}";
     </script>
     <script src="/javascripts/dashboard.js"></script>
+    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:8000/');
+        socket.on('appointment_table_modified', function(data) {
+            console.log("Got appointment_table_modified message! Reloading table");
+            table();
+        });
+    </script>
 
 </head>
 <body>

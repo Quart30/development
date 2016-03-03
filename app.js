@@ -16,8 +16,13 @@ var passport = require('passport');
 var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var app = express();
+var server = require('http').createServer(app).listen(8000);
+var io = require('socket.io')(server);
+
+
 
 global.__base = __dirname + '/';
+
 
 //Database
 var monk = require('monk');
@@ -280,6 +285,9 @@ app.post('/createappointment', function(req, res) {
         date: date
     }, function(err, result) {
        if (result) {
+           /*this will let the client know the appointments table changed so they can
+           refresh it*/
+           io.emit('appointment_table_modified');
            res.writeHead(200);
            res.write("Successfully inserted " + fname + " " +
                lname + " into the appointments table. Appt id = " + result._id.toString());
@@ -306,6 +314,7 @@ app.delete('/deleteappointment', function(req, res) {
 
     if (apptId === "all") {
         appointmentsDB.remove({employee: ObjectId(eid)});
+        io.emit('appointment_table_modified');
         res.writeHead(200);
         res.write("Removed all appointments for " + eid + ".");
         res.end();
@@ -314,6 +323,7 @@ app.delete('/deleteappointment', function(req, res) {
         appointmentsDB.findOne({_id: ObjectId(apptId)}, function(err, result) {
             if (result) {
                 appointmentsDB.remove({_id: ObjectId(apptId)});
+                io.emit('appointment_table_modified');
                 res.writeHead(200);
                 res.write("Removed appoimtent " + apptId);
             }
