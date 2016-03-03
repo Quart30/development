@@ -16,6 +16,7 @@ var passport = require('passport');
 var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var app = express();
+var request = require('request');
 
 global.__base = __dirname + '/';
 
@@ -285,21 +286,34 @@ app.post('/createappointment', function(req, res) {
                lname + " into the appointments table. Appt id = " + result._id.toString());
            res.end();
 
+           var hr = date.getHours();
+           var min = date.getMinutes();
+           var ampm = (hr >= 12) ? 'PM' : 'AM';
+           if (hr == 0)
+                hr = 12;
+           else if (hr > 12)
+                hr -= 12;
 
-           xhr = new XMLHttpRequest();
-           var url = 'https://hooks.slack.com/services/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';
-           xhr.open('POST', url, true);
-           xhr.setRequestHeader("Content-type", "application/json");
-           xhr.onreadystatechange = function () {
-               if (xhr.readyState == 4 && xhr.status == 200) {
-                   var json = JSON.parse(xhr.responseText);
-                   console.log(json.email + ", " + json.password)
+           // add a 0 to mins
+           if (min <= 9)
+                min = '0' + min;
+
+           var text = { 'text': fname + ' ' + lname +
+                        ' has checked in for their appointment at ' +
+                        hr + ':' + min + ' ' + ampm };
+            // set to slack
+           var options = {
+               // this is the URL for quart30.slack.com
+               url: 'https://hooks.slack.com/services/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',
+               method: 'POST',
+               json: text
+           };
+
+           request.post(options, function (error, response, body) {
+               if (!error && response.statusCode == 200) {
+                   console.log(body.id) // Print the shortened url.
                }
-           }
-           var data = JSON.stringify({
-               "text": "hello there"
            });
-           xhr.send(data);
        }
     });
 });
@@ -343,9 +357,12 @@ app.delete('/deleteappointment', function(req, res) {
 });
 
 
-//app.get('/registerslack', function(req, res) {
-//    res.json(req);
-//});
+app.get('/registerslack', function(req, res) {
+
+    console.log(req);
+
+    res.redirect('/accountsettings/'); // redirect after processing data
+});
 
 
 // catch 404 and forward to error handler
