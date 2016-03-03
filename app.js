@@ -362,7 +362,7 @@ app.get('/registerslack', function(req, res) {
     var params = req.query;
 
     console.log(params.code);
-    console.log(params.incoming_webhook);
+    console.log(req.body);
 
     res.redirect('/businesssetting/'); // redirect after processing data
 });
