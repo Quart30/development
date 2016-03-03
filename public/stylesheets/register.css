@@ -1,0 +1,210 @@
+html *
+{
+    font-family: Lato, sans-serif;
+}
+/* general rules */
+h1, h2, h3, h4, h5, h6, p, span, a, input, label, div {
+  color: white;
+}
+
+.initial-screen {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../images/landing-background.jpg');
+  background-size: cover;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+h1 {
+    /*font-size: 60px;*/
+    color: white;
+}
+
+h2 {
+    position: relative;
+    /*margin-top: 10%;*/
+}
+
+body {
+    background-image: url('../images/register-background.jpg');
+    background-size: cover;
+}
+
+#txt {
+    color:white;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 50%;
+}
+
+.whitetext {
+    color: white !important;
+}
+
+
+.top-bar-section{
+    height: 12vh;
+    width: 100vw;
+    background-color: rgba(201,201,201, 0.3);
+}
+.form-label{
+    float: left;
+}
+.form-span {
+    display: block;
+    margin: 0 0 3px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.form-input{
+    width: 230px;
+    border: 1px solid #FFF;
+    color: white;
+    padding: 5px;
+    background: transparent;
+}
+.form-input::placeholder-shown {
+  color: white;
+}
+.form-container{
+    float: right;
+    padding-right: 40px;
+    margin-top: -42px;
+}
+.shameless-plug {
+    font-size: 13pt;
+    margin-left: 10%;
+    padding-top: 33px;
+}
+.shameless-plug:hover {
+    color:white;
+}
+/* end of top bar */
+
+
+.navbar-default {
+    background-color: rgba(201,201,201, 0.3);
+    border-color: #c9c9c9;
+}
+
+#company-logo {
+    height:100px;
+    margin-left:10%;
+    margin-top:-15%;
+}
+
+/*Sign up Button*/
+.custom-button{
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    color: #ffffff;
+    font-size: 17px;
+    color: white;
+    background: #003bb3;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    width:150px;
+    overflow: auto;
+    white-space: nowrap;
+    border:1px white solid;
+    margin-top: 5px;
+}
+
+.form-input{
+    width: 230px;
+    border: 1px solid #FFF;
+    color: #182c49;
+    /*font-size: 18px;*/
+    padding: 5px;
+    background: white;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    /*color: rgba(255,255,255,0.8); was preventing the placeholders from being shown*/
+    color: black;
+    font-size: 12pt;
+}
+
+.regis {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    position: relative;
+    height: 10%; /*doesn't do anything?*/
+    width: 60%;
+}
+
+.custom-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#regis-container {
+}
+
+#form-separator {
+    border-right: 2px solid;
+    border-color: #e3e3e3;
+}
+
+/*Login button stuff */
+.standard-btn {
+  border-width: 2px;
+  border-style: solid;
+  border-color: white;
+  color: #ffffff;
+  font-size: 18px;
+  color: white;
+  background: darkgray;
+  padding: 13px 25px 13px 25px;
+  text-decoration: none;
+  text-align: center;
+
+  height: 36px;
+  width:160px;
+  display:inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  margin:0px auto;
+  border:1px white solid;
+}
+
+.standard-btn-small {
+  padding: 6px 25px 6px 25px;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.standard-btn-large {
+  width: 300px;
+  font-size: 25px;
+  padding: 13px 25px 13px 25px;
+  overflow: hidden;
+}
+
+.standard-btn:hover {
+  text-decoration: none;
+}
+
+/*Register Container Styling*/
+#regis-container {
+    position: relative;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    height: 33%;
+    width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7.5%;
+    margin-bottom: 7.5%;
+    background-color: rgba(173, 181, 172, 0.5);
+}

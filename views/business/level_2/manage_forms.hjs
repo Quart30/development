@@ -34,11 +34,7 @@
     <!--Secondary navbar for the Settings tab-->
     <div class="navbar-secondary navbar-tabs">
         <ul>
-            <li><a href="/registerDevice">Configurations</a></li>
             <li class="active"><a href="/manageforms">Manage Forms</a></li>
-
-            <!-- <li><a href="/setdisclosure">Add Disclosure Agreement</a></li> -->
-
             <li><a href="/uploadlogo">Upload Logo</a></li>
             <li>
                 <a href="/customizetheme">Customize Theme</a>
