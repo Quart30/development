@@ -33,11 +33,11 @@
              <li>
                <a href="/addemployees">Employees</a>
              </li>
-             <li class="active">
-               <a href="/accountSettings">Settings</a>
-             </li>
              <li>
-               <a href="/businesssetting">Company Name</a>
+               <a href="/accountSettings">Account Settings</a>
+             </li>
+             <li class="active">
+               <a href="/businesssetting">Company Settings</a>
              </li>
            </ul>
          </div>
@@ -46,7 +46,7 @@
    	            <li><a href="/formbuilder">Manage Forms</a></li>
    	            <li class = "active"><a href="/uploadlogo">Upload Logo</a></li>
    	            <li><a href="/customizetheme">Customize Theme</a>
-   	            </li><li><a href="/accountSettings">Account Settings</a></li>
+   	            <li><a href="/businesssetting">Company Settings</a></li>
    	        </ul>
    	    </div>
          <!-- end nav bar -->
