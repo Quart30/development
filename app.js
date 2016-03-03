@@ -290,6 +290,12 @@ app.post('/createappointment', function(req, res) {
            var url = 'https://hooks.slack.com/services/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';
            xhr.open('POST', url, true);
            xhr.setRequestHeader("Content-type", "application/json");
+           xhr.onreadystatechange = function () {
+               if (xhr.readyState == 4 && xhr.status == 200) {
+                   var json = JSON.parse(xhr.responseText);
+                   console.log(json.email + ", " + json.password)
+               }
+           }
            var data = JSON.stringify({
                "text": ":fname :lname has checked in for their :date appointment."
            });
