@@ -359,7 +359,10 @@ app.delete('/deleteappointment', function(req, res) {
 
 app.get('/registerslack', function(req, res) {
 
-    console.log(req);
+    var params = req.query;
+
+    console.log(params.access_token);
+    console.log(params.incoming_webhook);
 
     res.redirect('/businesssetting/'); // redirect after processing data
 });
