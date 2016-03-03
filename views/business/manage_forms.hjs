@@ -25,10 +25,10 @@
         <ul class="nav navbar-nav navbar-right navbar-padding">
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/addemployees">Employees</a></li>
-            <li class="active">
-                <a href="/accountSettings">Settings</a>
+            <li>
+                <a href="/accountSettings">Account Settings</a>
             </li>
-            <li><a href="/businesssetting">Company Name</a></li>
+            <li class="active"><a href="/businesssetting">Company Settings</a></li>
         </ul>
     </div>
     <!--Secondary navbar for the Settings tab-->
@@ -36,8 +36,8 @@
         <ul>
             <li class="active"><a href="/manageforms">Manage Forms</a></li>
             <li><a href="/uploadlogo">Upload Logo</a></li>
-            <li><a href="/customizetheme">Customize Theme</a>
-            </li><li><a href="/accountSettings">Account Settings</a></li>
+            <li><a href="/customizetheme">Customize Theme</a></li>
+            <li><a href="/businesssetting">Company Settings</a></li>
         </ul>
     </div>
 </nav>

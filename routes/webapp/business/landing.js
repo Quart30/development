@@ -5,10 +5,14 @@ exports.get = function (req, res, next) {
 	req.session.save(function (err) {
 
             if (err) {
-
                 return next(err);
             }
-        });
+    });
+
+    if (req.isAuthenticated()){
+        res.redirect('/dashboard');
+        return;
+    }
 
     res.render('business/landing', { title: 'Landing Page',  message: req.flash("login")});
 };

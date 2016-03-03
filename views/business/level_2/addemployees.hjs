@@ -35,10 +35,13 @@
           <a href="/addemployees" style="color: white;">Employees</a>
         </li>
         <li>
-          <a href="/accountSettings"style="color: white;">Settings</a>
+          <a href="/accountSettings"style="color: white;">Account Settings</a>
         </li>
         <li>
-          <a href="/businesssetting"style="color: white;">Company Name</a>
+          <a href="/businesssetting"style="color: white;">Company Settings</a>
+        </li>
+        <li>
+          <a href="/logout">Logout</a>
         </li>
       </ul>
     </div>
@@ -48,7 +51,7 @@
         <h2>Register Employees</h2>
         <h4>Register all your employee(s) through a CSV file!</h4>
         <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
-            <textarea type="text"name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
+            <textarea style="color: black;" type="text"name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
             <input style="margin-top: -39px;" class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
         </form>
 

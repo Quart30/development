@@ -52,7 +52,7 @@ body {
 .top-bar-section{
     height: 12vh;
     width: 100vw;
-    background-color: rgba(201,201,201, 0.3);
+    background-color: rgba(0,0,0, 0.3);
 }
 .form-label{
     float: left;
@@ -66,25 +66,26 @@ body {
 .form-input{
     width: 230px;
     border: 1px solid #FFF;
-    color: white;
+    color: black;
     padding: 5px;
-    background: transparent;
+    background: white;
 }
 .form-input::placeholder-shown {
-  color: white;
+  color: black;
 }
 .form-container{
     float: right;
     padding-right: 40px;
-    margin-top: -42px;
+    margin-top: -50px;
 }
 .shameless-plug {
-    font-size: 13pt;
+    font-size: 18pt;
     margin-left: 10%;
     padding-top: 33px;
 }
 .shameless-plug:hover {
     color:white;
+    text-decoration: none;
 }
 /* end of top bar */
 
@@ -106,10 +107,10 @@ body {
     border-width: 1px;
     border-style: solid;
     border-color: white;
-    color: #ffffff;
+    color: white;
     font-size: 17px;
     color: white;
-    background: #003bb3;
+    background: transparent;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     width:150px;
@@ -130,7 +131,7 @@ body {
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     /*color: rgba(255,255,255,0.8); was preventing the placeholders from being shown*/
-    color: black;
+    color: rgba(0,0,0,0.5);
     font-size: 12pt;
 }
 
@@ -164,7 +165,7 @@ body {
   color: #ffffff;
   font-size: 18px;
   color: white;
-  background: darkgray;
+  background: transparent;
   padding: 13px 25px 13px 25px;
   text-decoration: none;
   text-align: center;
@@ -206,5 +207,6 @@ body {
     margin-right: auto;
     margin-top: 7.5%;
     margin-bottom: 7.5%;
-    background-color: rgba(173, 181, 172, 0.5);
+    background-color: rgba(0,0,0, 0.4);
+    border: solid 1px grey;
 }

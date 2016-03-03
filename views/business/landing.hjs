@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!--<link rel='stylesheet' href='/stylesheets/style.css'/>-->
     <link rel='stylesheet' href='/stylesheets/landing.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/footer.css'/>
     {{#newrelic}}
         {{{ newrelic.getBrowserTimingHeader }}}
     {{/newrelic}}
@@ -45,30 +46,37 @@
                 </div>
             </div>
             <div class="initial-screen-bottom-links">
-                <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">About</a>
-                <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Sponsors</a>
-                <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Testimonials</a>
-                <a href="/register" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Blog</a>
+                <a href="#" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">About</a>
+                <a href="#" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Sponsors</a>
+                <a href="#" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Testimonials</a>
+                <a href="#" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Blog</a>
             </div>
         </div>
     </div>
-    <div class="middle-bar-section" id="foo">
-        <h2 class="middle-bar-section-text">Herald is changing the way businesses do reception.</h2>
-    </div>
-    <div class="bottom-part" style="text-align: center;">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-2">
-                <h2>What is Herald?</h2>
-                <p class="about-p">Herald is your automated receptionist. With Herald, customers keep track of themselves, allowing your business to use human resources on things other than appointment times and check-in. It's your guestbook, your customer database, your calendar.</p>
-            </div>
-            <div class="col-md-4">
-                <h2>About Peter &amp; Quart 3.0</h2>
-                <p class="about-p">Peter is the peanut butter to Quart 3.0's jelly.</p>
+    <div class="page-wrap">
+        <div class="middle-bar-section" id="foo">
+            <h2 class="middle-bar-section-text">Herald is changing the way businesses do reception.</h2>
+        </div>
+        <div class="bottom-part" style="text-align: center;">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-2">
+                    <h2>What is Herald?</h2>
+                    <p class="about-p">Herald is your automated receptionist. With Herald, customers keep track of themselves, allowing your business to use human resources on things other than appointment times and check-in. It's your guestbook, your customer database, your calendar.</p>
+                </div>
+                <div class="col-md-4">
+                    <h2>About Peter &amp; Quart 3.0</h2>
+                    <p class="about-p">Peter is the peanut butter to Quart 3.0's jelly.</p>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <p style="padding-top: 350px;">© Copyright 2058, Quart 3.0</p>
-        </div>
     </div>
+      <footer class="footer site-footer">
+    <ul class="list-inline">
+      <li><a href="#" class="whitetext">Privacy</a></li>
+      <li><a href="#" class="whitetext">Terms</a></li>
+      <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
+      <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
+    </ul>
+  </footer>
 </body>
 </html>

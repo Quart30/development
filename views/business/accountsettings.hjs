@@ -35,9 +35,6 @@
           <li>
             <a href="/businesssetting">Company Settings</a>
           </li>
-          <li>
-            <a href="/logout">Logout</a>
-          </li>
         </ul>
       </div>
       <!-- end nav bar -->
@@ -58,7 +55,7 @@
 				</div>
 			{{/alert}}
 			<div>
-				<h2 style="text-align: center;">Account Settings</h2>
+				<h2 style="text-align: center;">Personal Information And Preferences</h2>
 				<hr></hr>
 			</div>
 		</div>

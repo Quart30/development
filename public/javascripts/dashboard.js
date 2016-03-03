@@ -1,10 +1,10 @@
+
 $(function () {
 
-  getDate();
-  $(startTime);
-  $(table);
-  //$(poll);
-
+    getDate();
+    $(startTime);
+    $(table);
+    //$(poll);
 });
 
 function dateToString(date) {
@@ -58,8 +58,8 @@ function prependZero(i) {
 function table() {
 
     var cols, $btn;
-    console.log("Starting table...");
     $.get('/api/employee/' + eid + '/appointments/today', function (data) {
+        console.log("Number of appointments: " + data.length);
 
         var count = 0;
         //empties the table
@@ -130,6 +130,8 @@ function table() {
 //        poll();
 //    },1000);//checks every 1000 millisecond
 //}
+
+
 
 
 //function to get the appointment's time in a formatted string
