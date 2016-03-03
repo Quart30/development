@@ -1,6 +1,9 @@
-h1, h2, h3, h4, h5, h6, p, span, a, input, label, div, strong, li, ul, footer {
-  color: white;
+html *
+{
+   font-family: Lato, sans-serif;
+   color: white;
 }
+
 body {
     background-color: #89bdd3;
 }
