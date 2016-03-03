@@ -63,7 +63,7 @@ a:hover {
 .top-bar-section{
     height: 12vh;
     width: 100vw;
-    background-color: rgba(201,201,201, 0.3);
+    background-color: rgba(0,0,0, 0.3);
 }
 .form-label{
     float: left;

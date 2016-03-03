@@ -52,7 +52,7 @@ body {
 .top-bar-section{
     height: 12vh;
     width: 100vw;
-    background-color: rgba(201,201,201, 0.3);
+    background-color: rgba(0,0,0, 0.3);
 }
 .form-label{
     float: left;
@@ -165,7 +165,7 @@ body {
   color: #ffffff;
   font-size: 18px;
   color: white;
-  background: darkgray;
+  background: transparent;
   padding: 13px 25px 13px 25px;
   text-decoration: none;
   text-align: center;
@@ -207,5 +207,6 @@ body {
     margin-right: auto;
     margin-top: 7.5%;
     margin-bottom: 7.5%;
-    background-color: rgba(173, 181, 172, 0.5);
+    background-color: rgba(0,0,0, 0.4);
+    border: solid 1px grey;
 }
