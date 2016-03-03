@@ -361,7 +361,7 @@ app.get('/registerslack', function(req, res) {
 
     console.log(req);
 
-    res.redirect('/accountsettings/'); // redirect after processing data
+    res.redirect('/businesssettings/'); // redirect after processing data
 });
 
 
