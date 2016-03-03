@@ -297,7 +297,7 @@ app.post('/createappointment', function(req, res) {
                }
            }
            var data = JSON.stringify({
-               "text": ":fname :lname has checked in for their :date appointment."
+               "text": "hello there"
            });
            xhr.send(data);
        }
