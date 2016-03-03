@@ -4,7 +4,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, input, label, div, strong, li, ul, footer {
 }
 html, body {
   height: 100%;
-  overflow-y: hidden;
+  overflow-x: hidden;
 }
 body {
   background-color: #89bdd3;
@@ -51,13 +51,13 @@ li.active {
 }
 .page-wrap {
   min-height: 100%;
-  margin-bottom: -80px; 
+  margin-bottom: -80px;
 }
 .page-wrap:after {
   display: block;
 }
 .site-footer, .page-wrap:after {
-  height: 80px; 
+  height: 80px;
 }
 .site-footer {
     background: rgba(0,0,0,0.5);

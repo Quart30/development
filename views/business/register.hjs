@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!--<link rel='stylesheet' href='/stylesheets/style.css'/>-->
      <link rel='stylesheet' href='/stylesheets/register.css'/>
+     <link rel='stylesheet' href='/stylesheets/specificSheets/footer.css'/>
 
 
     {{#newrelic}}
@@ -16,6 +17,7 @@
 </head>
 
 <body style="overflow-y: hidden;">
+    <div class="page-wrap">
 
     <div class="initial-screen">
         <div class = "top-bar-section">
@@ -42,7 +44,7 @@
         <div class="container">
             <div class="row" id="regis-container">
                 <div class="col-md-12" style="text-align: center;">
-                    <h2>Create an Account</h2>
+                    <h2>Create An Account</h2>
                     <form method="post" action="" enctype="application/x-www-form-urlencoded">
                         <div>
                             <input class="regis form-input" type="text" name="companyName" value="{{ companyName }}" placeholder="Company Name" required>
@@ -72,10 +74,17 @@
                 </div>
             </div>
         </div>
-        <p style="text-align: center; margin-top: -50px;">© Copyright 2058, Quart 3.0</p>
     </div>
-    <!-- hello -->
-
+</div>
+<!--Footer to display the about info,etc-->
+<footer class="footer site-footer">
+    <ul class="list-inline">
+      <li><a href="#" class="whitetext">Privacy</a></li>
+      <li><a href="#" class="whitetext">Terms</a></li>
+      <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
+      <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
+    </ul>
+  </footer>
 </body>
 
 </html>

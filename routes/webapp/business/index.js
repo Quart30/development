@@ -27,7 +27,7 @@ module.exports = function (passport) {
     router.get('/', landing.get);
     router.post('/', landing.post);
 
-    router.get('/theming', isLoggedInBusiness, theming.get);
+    router.get('/theming', isLoggedIn, theming.get);
 
    // router.get('/login', landing.get);
     router.post('/login',passport.authenticate('local-login',{
@@ -42,12 +42,12 @@ module.exports = function (passport) {
     router.get('/accountSettings', isLoggedIn, accountSettings.get);
     router.post('/accountSettings', isLoggedIn, accountSettings.post);
 
-    router.get('/businesssetting', isLoggedInBusiness, businesssetting.get);
-    router.post('/businesssetting', isLoggedInBusiness,businesssetting.post);
+    router.get('/businesssetting', isLoggedIn, businesssetting.get);
+    router.post('/businesssetting', isLoggedIn,businesssetting.post);
 
 
-    router.get('/uploadlogo', isLoggedInBusiness, uploadLogo.get);
-    router.post('/uploadlogo', isLoggedInBusiness, uploadLogo.post);
+    router.get('/uploadlogo', isLoggedIn, uploadLogo.get);
+    router.post('/uploadlogo', isLoggedIn, uploadLogo.post);
 
     router.get('/register', register.get);
     router.post('/register',passport.authenticate('local-signup',{
@@ -57,12 +57,12 @@ module.exports = function (passport) {
 
     router.get('/dashboard', isLoggedIn, dashboard.get);
 
-    router.get('/addemployees',isLoggedInBusiness, addEmployees.get);
-    router.post('/addemployees',isLoggedInBusiness, addEmployees.post);
+    router.get('/addemployees',isLoggedIn, addEmployees.get);
+    router.post('/addemployees',isLoggedIn, addEmployees.post);
 
     router.get('/customizetheme', isLoggedIn, customizeTheme.get);
 
-    router.get('/manageforms', isLoggedInBusiness, manageForms.get);
+    router.get('/manageforms', isLoggedIn, manageForms.get);
 
     router.get('/employeeregister', employeeRegister.get);
     router.post('/employeeregister', passport.authenticate('local-signup-employee',{
@@ -72,8 +72,15 @@ module.exports = function (passport) {
 
     router.get('/viewform/:id', viewForm.get);
 
-function isLoggedIn(req,res,next){
-        if(req.isAuthenticated()){
+    router.get('/logout', logOutUser);
+
+    function logOutUser(req, res) {
+        req.logOut();
+        res.redirect('/');
+    }
+
+    function isLoggedIn(req,res,next) {
+        if (req.isAuthenticated()) {
             return next();
         }
 
@@ -81,15 +88,15 @@ function isLoggedIn(req,res,next){
     }
 
 // route middleware to make sure a user is logged in
-function isLoggedInBusiness(req, res, next) {
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated()&& (req.user[0].admin === true)){
-        return next();
-    }
-    req.flash("permission", "You do not have permission to access that page");
-    // if they aren't redirect them to the home page
-    res.redirect('back');
-}
+//function isLoggedInBusiness(req, res, next) {
+//    // if user is authenticated in the session, carry on
+//    if (req.isAuthenticated()&& (req.user[0].admin === true)){
+//        return next();
+//    }
+//    //req.flash("permission", "You do not have permission to access that page");
+//    // if they aren't redirect them to the home page
+//    res.redirect('back');
+//}
 
 
     return router;

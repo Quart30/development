@@ -6,45 +6,45 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel='stylesheet' href='/stylesheets/customizetheme.css'/>
 <body style='background-color: #89bdd3'>
-    <div class = "top-bar-section">
+      <!-- nav bar -->
+      <div class = "top-bar-section">
         <div style="padding-top: 33px;">
           <span class="shameless-plug">Herald</span>
         </div>
         <div class="form-container">
           {{#message}}
-            <div>{{message}}</div>
+            <div style="color: #FFFFFF">{{message}}</div>
           {{/message}}
         </div>
         <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
           <li>
-            <a href="/dashboard" class="linkey">Dashboard</a>
+            <a href="/dashboard" style="color: white;">Dashboard</a>
           </li>
           <li>
-            <a href="/addemployees" class="linkey">Employees</a>
+            <a href="/addemployees" style="color: white;">Employees</a>
+          </li>
+          <li>
+            <a href="/accountSettings" style="color: white;">Account Settings</a>
           </li>
           <li class="active">
-            <a href="/accountSettings" class="linkey">Settings</a>
-          </li>
-          <li>
-            <a href="/businesssetting" class="linkey">Company Name</a>
+            <a href="/businesssetting" style="color: white;">Company Settings</a>
           </li>
         </ul>
       </div>
-        <div class="top-bar-section-secondary" id="secondary_navbar">
-            <ul class="nav navbar-nav navbar-right navbar-secondary">
-                <li><a href="/uploadlogo" class="linkey">Upload Logo</a></li>
-                <li class="active"><a href="/formbuilder" class="linkey">Manage Forms</a></li>
-                <li><a href="/customizetheme" class="linkey">Customize Theme</a></li>
-                <li><a href="/accountSettings" class="linkey">Account Settings</a></li>
-            </ul>
-        </div>
+      <div class="top-bar-section-secondary" id="secondary_navbar">
+          <ul class="nav navbar-nav navbar-right navbar-secondary">
+              <li class="active"><a href="/formbuilder" style="color: white;">Manage Forms</a></li>
+              <li><a href="/customizetheme" style="color: white;">Customize Theme</a></li>
+              <li><a href="/businesssetting" style="color: white;">Company Settings</a></li>
+          </ul>
+      </div>
+      <!-- end nav bar -->
     {{#message}}
    <div class="alert alert-danger">{{message}}</div>
     {{/message}}
 
-
-  <div class="build-form">
-    <h2> <strong> Add Elements to your Form here </strong> </h2>
+  <div class="build-form" style="text-align: center; padding: 20px 50px 50px 50px;">
+    <h1><strong style="color:white;">Make a new form</strong></h1>
     <form action="">
       <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"> </textarea>
     </form>

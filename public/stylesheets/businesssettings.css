@@ -9,6 +9,10 @@ html, body {
   overflow-y: hidden;
 }
 
+.business-setting-margin{
+  text-align: center;
+}
+
 .form {
   margin: 0px auto;
   text-align: center;
@@ -40,6 +44,15 @@ li.active {
     border-style: solid;
     border-color: white;
 }
+.top-bar-section-secondary {
+    height: 10vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.3);
+}
+.navbar-secondary {
+  padding-top: 15px;
+  padding-right: 100px;
+}
 
 h1 {
   font-size: 60px;
@@ -62,7 +75,7 @@ h1 {
   white-space: nowrap;
   margin: 20px auto;
   border:1px white solid;
-
+  display: block;
 }
 
 .custom-button:hover {
@@ -90,4 +103,8 @@ h1 {
 .site-footer {
     background: rgba(0,0,0,0.5);
     text-align: center;
+}
+
+.slack-button{
+  display: block;
 }

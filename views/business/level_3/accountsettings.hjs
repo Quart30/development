@@ -30,7 +30,7 @@
             <a href="/addemployees">Employees</a>
           </li>
           <li class="active">
-            <a href="/accountSettings">Settings</a>
+            <a href="/accountSettings">Account Settings</a>
           </li>
         </ul>
       </div>
