@@ -11,6 +11,7 @@ exports.get = function (req, res, next) {
 
     if (req.isAuthenticated()){
         res.redirect('/dashboard');
+        return;
     }
 
     res.render('business/landing', { title: 'Landing Page',  message: req.flash("login")});
