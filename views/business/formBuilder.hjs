@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-builder.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel='stylesheet' href='/stylesheets/customizetheme.css'/>
+<body style='background-color: #89bdd3'>
+      <!-- nav bar -->
+      <div class = "top-bar-section">
+        <div style="padding-top: 33px;">
+          <span class="shameless-plug">Herald</span>
+        </div>
+        <div class="form-container">
+          {{#message}}
+            <div style="color: #FFFFFF">{{message}}</div>
+          {{/message}}
+        </div>
+        <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
+          <li>
+            <a href="/dashboard" style="color: white;">Dashboard</a>
+          </li>
+          <li>
+            <a href="/addemployees" style="color: white;">Employees</a>
+          </li>
+          <li>
+            <a href="/accountSettings" style="color: white;">Account Settings</a>
+          </li>
+          <li class="active">
+            <a href="/businesssetting" style="color: white;">Company Settings</a>
+          </li>
+        </ul>
+      </div>
+      <div class="top-bar-section-secondary" id="secondary_navbar">
+          <ul class="nav navbar-nav navbar-right navbar-secondary">
+              <li class="active"><a href="/formbuilder" style="color: white;">Manage Forms</a></li>
+              <li><a href="/customizetheme" style="color: white;">Customize Theme</a></li>
+              <li><a href="/businesssetting" style="color: white;">Company Settings</a></li>
+          </ul>
+      </div>
+      <!-- end nav bar -->
+    {{#message}}
+   <div class="alert alert-danger">{{message}}</div>
+    {{/message}}
+
+  <div class="build-form" style="text-align: center; padding: 20px 50px 50px 50px;">
+    <h1><strong style="color:white;">Make a new form</strong></h1>
+    <form action="">
+      <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"> </textarea>
+    </form>
+    <br style="clear:both">
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script src="/formBuilder/formBuilder-master/demo/assets/js/form-builder.js"></script>
+  <script>
+    jQuery(document).ready(function($) {
+      'use strict';
+      var template = document.getElementById('formBuilder');
+      $(template).formBuilder();
+    });
+  </script>
+</body>
+
+</html>

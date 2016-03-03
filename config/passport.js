@@ -7,6 +7,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var auth = require('../lib/auth');
 var ObjectId = require('mongodb').ObjectID;
 
+function checkEqual(field1, field2) {
+    return field1 === field2;
+}
+
 //need this since we are passing in a passport dependency in app.js line 22
 module.exports = function (passport) {
 
@@ -28,12 +32,19 @@ module.exports = function (passport) {
         function (req, email, password, done) {
             var db = req.db;
             var companyName = req.body.companyName;
-            var fname = req.body.fname;
-            var lname = req.body.lname;
+            var fname = req.body.fname; //null for now
+            var lname = req.body.lname; //null for now
             var phone = req.body.phone;
             // Check if any field has been left blank
             if (companyName === '' || fname === '' || lname === '' || email === ''
-                || phone === '' || password === '') {
+                || phone === '' || password === ''
+                || !checkEqual(req.body.email, req.body.email2)
+                || !checkEqual(req.body.password, req.body.password2)) {
+                /*
+                IMPORTANT: Currently, I don't know how to get "res" in here, and we need it
+                to inform the user they didn't fill the form in correctly. Need to come back
+                to this.
+
                 res.render('business/register', {
                     error: 'You must fill in all fields.',
                     companyName: companyName,
@@ -42,11 +53,13 @@ module.exports = function (passport) {
                     lname: lname,
                     email: email
                 });
+                */
+                return done(null, false, {message: "Fields left blank, or email/passwords don't match"});
             } else {
 
                 var businesses = db.get('businesses');
                 var employees = db.get('employees');
-
+                var forms = db.get('forms');
 
                 // find a user whose email is the same as the forms email
                 // we are checking to see if the user trying to login already exists
@@ -85,6 +98,15 @@ module.exports = function (passport) {
 
                             var businessID = result._id.toString();
 
+                            forms.insert({
+                                 business: ObjectId(businessID),
+                                form: {Name: "", Phone:""}
+                            });
+
+                            var company = result.companyName;
+
+                            //console.log('Company is ' + company);
+
                             employees.insert({
                                 business: ObjectId(businessID),
                                 password: result.password,
@@ -95,8 +117,9 @@ module.exports = function (passport) {
                                 smsNotify: true,
                                 emailNotify: true,
                                 admin: true,
-                                permissionLevel: 2
-                            },function(err, user){
+                                permissionLevel: 2,
+                                company: company
+                            }, function (err, user) {
                                 if (err) {
                                     throw err;
                                 }
@@ -111,36 +134,40 @@ module.exports = function (passport) {
     ));
 
 
-
-    passport.use('local-signup-employee',new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
-        passReqToCallback: true
-    },
-        function (req,email,password,done) {
-
+    passport.use('local-signup-employee', new LocalStrategy({
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true
+        },
+        function (req, email, password, done) {
 
 
-            var db =req.db;
+            var db = req.db;
             var employee = db.get('employees');
 
             password = auth.hashPassword(password);
 
             employee.findAndModify({
-             query: {registrationToken: req.query.token},
-             update: { $unset: {registrationToken: 1},
-                $set: {password: password} },
-             new: true},
-                function (err,user){
-                if (err) {
-                     throw err; }
-                return done(null,user);
+                    query: {registrationToken: req.query.token},
+                    update: {
+                        $unset: {registrationToken: 1},
+                        $set: {
+                            password: password,
+                            registered: true
+                        }
+                    },
+                    new: true
+                },
+                function (err, user) {
+                    if (err) {
+                        throw err;
+                    }
+                    return done(null, user);
 
-                 }
+                }
             );
         }
     ));
-
 
 
     // =========================================================================
@@ -157,14 +184,13 @@ module.exports = function (passport) {
         },
         function (req, email, password, done) { // callback with email and password from our form
 
-
             auth.validateLogin(req.db, email, password, function (user) {
                 if (!user) {
                     return done(null, false, req.flash("login", "Invalid Email and/or Password"));
                 }
                 else {
-                    return done(null,user);
-                    }
+                    return done(null, user);
+                }
             });
         }
     ));

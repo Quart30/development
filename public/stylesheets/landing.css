@@ -1,60 +1,60 @@
 /* general rules */
 h1, h2, h3, h4, h5, h6, p, span, a, input, label, div {
-  color: white;
+    color: white;
 }
 
 h1 {
-  font-size: 60px;
+    font-size: 60px;
 }
 
 body {
-  overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 html * {
-   font-family: Lato, sans-serif;
+    font-family: Lato, sans-serif;
 }
 
 a:hover {
-  color: white;
+    color: white;
 }
 
 /* BUTTON THINGS */
 .standard-btn {
-  border-width: 2px;
-  border-style: solid;
-  border-color: white;
-  color: #ffffff;
-  font-size: 20px;
-  color: white;
-  background: transparent;
-  padding: 13px 25px 13px 25px;
-  text-decoration: none;
-  text-align: center;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    color: #ffffff;
+    font-size: 20px;
+    color: white;
+    background: transparent;
+    padding: 13px 25px 13px 25px;
+    text-decoration: none;
+    text-align: center;
 
-  width:160px;
-  display:inline-block;
-  overflow: auto;
-  white-space: nowrap;
-  margin:0px auto;
-  border:1px white solid;
+    width:160px;
+    display:inline-block;
+    overflow: auto;
+    white-space: nowrap;
+    margin:0px auto;
+    border:1px white solid;
 }
 
 .standard-btn-small {
-  padding: 6px 25px 6px 25px;
-  font-size: 13px;
-  overflow: hidden;
+    padding: 6px 25px 6px 25px;
+    font-size: 13px;
+    overflow: hidden;
 }
 
 .standard-btn-large {
-  width: 300px;
-  font-size: 25px;
-  padding: 13px 25px 13px 25px;
-  overflow: hidden;
+    width: 300px;
+    font-size: 25px;
+    padding: 13px 25px 13px 25px;
+    overflow: hidden;
 }
 
 .standard-btn:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 /*----------custom for landing page----------*/
@@ -63,7 +63,7 @@ a:hover {
 .top-bar-section{
     height: 12vh;
     width: 100vw;
-    background-color: rgba(201,201,201, 0.3);
+    background-color: rgba(0,0,0, 0.3);
 }
 .form-label{
     float: left;
@@ -82,65 +82,64 @@ a:hover {
     background: transparent;
 }
 .form-input::placeholder-shown {
-  color: white;
+    color: white;
 }
 .form-container{
-  float: right;
-  padding-right: 40px;
-  margin-top: -42px;
+    float: right;
+    padding-right: 40px;
+    margin-top: -42px;
 }
 .shameless-plug {
-  font-size: 13pt;
-  margin-left: 10%;
-  padding-top: 33px;
+    font-size: 13pt;
+    margin-left: 10%;
+    padding-top: 33px;
 }
 /* end of top bar */
 
 .initial-screen {
-  height: 100vh;
-  width: 100vw;
-  background-image: url('../images/landing-background.jpg');
-  background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../images/landing-background.jpg');
+    background-size: cover;
 }
 
 .signup-container {
-  text-align: center;
-  padding-top: 22vh;
+    text-align: center;
+    padding-top: 22vh;
 }
 
 .initial-screen-bottom-links {
-  padding-top: 290px;
-  text-align: center;
+    padding-top: 290px;
+    text-align: center;
 }
 
 .middle-bar-section {
-  height: 15vh;
-  width: 100vw;
-  background-color: #9ad3de;
-  padding-top: 40px;
+    height: 15vh;
+    width: 100vw;
+    background-color: #9ad3de;
+    padding-top: 40px;
 }
 
 
 .initial-screen-bottom-links-buttons{
-  margin-right: 20px;
-  margin-left: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .middle-bar-section-text {
-  margin: 0px 0px 0px 0px;
-  text-align: center;
+    margin: 0px 0px 0px 0px;
+    text-align: center;
 }
 
 .bottom-part {
-  height: 85vh;
-  width: 100vw;
-  background-image: url('../images/landing-background-2.jpg');
-  background-size: cover;
-  padding-top: 50px;
+    height: 85vh;
+    width: 100vw;
+    background-image: url('../images/landing-background-2.jpg');
+    background-size: cover;
+    padding-top: 50px;
 }
 
 .about-p {
-  font-size: 13pt;
+    font-size: 13pt;
 }
-
 
