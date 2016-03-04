@@ -37,6 +37,7 @@
     "sendgrid": "^1.6.0",
     "serve-favicon": "~2.2.0",
     "socket.io": "^1.4.5",
+    "request": "*",
     "underscore": "^1.8.1"
   },
   "devDependencies": {
