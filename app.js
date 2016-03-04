@@ -386,7 +386,14 @@ app.get('/registerslack', function(req, res) {
 
             // get the necessary data by parsing the body
             // likely add it to the database so we can correctly send messages
-            //JSON.parse(body, )
+            var slack_url = JSON.parse(body, function(k, v) {
+               if (k == 'url')
+                    return v;
+            });
+
+            var businesses = req.db.get('businesses');
+
+            console.log(req);
 
         } else {
             console.log(response.statusCode.toString() + ': ' + error);
