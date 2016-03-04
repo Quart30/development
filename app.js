@@ -385,6 +385,7 @@ app.get('/registerslack', function(req, res) {
             console.log('json: ' + body);
 
             // get the necessary data by parsing the body
+            // likely add it to the database so we can correctly send messages
             //JSON.parse(body, )
 
         } else {
