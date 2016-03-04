@@ -17,7 +17,7 @@ var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var app = express();
 var request = require('request');
-var server = require('http').createServer(app).listen(8000);
+var server = require('http').createServer(app).listen(process.env.PORT || 8000);
 var io = require('socket.io')(server);
 
 
