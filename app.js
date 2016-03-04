@@ -299,8 +299,8 @@ app.post('/createappointment', function(req, res) {
 
            // get business
            var businesses = req.db.get('businesses');
-           var bid = req.user[0].business;
-           businesses.findOne({_id: bid}, function(err, result) {
+           var bid = params.bid;
+           businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
                 if (err)
                     throw(err);
                 else {
