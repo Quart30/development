@@ -14,6 +14,8 @@ exports.get = function (req, res) {
 
     var companyName = req.user[0].company;
 
+    console.log('employee id: ' + employeeId);
+
     var page; // page to load
     switch (req.user[0].permissionLevel) {
         case 1:
