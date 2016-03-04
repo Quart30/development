@@ -375,6 +375,9 @@ app.get('/registerslack', function(req, res) {
     var params = req.query;
     var code = params.code;
 
+    console.log('code: ' + code);
+
+
     var body = {
         'client_id': '23623886482.24011540304',
         'client_secret': '06d85b7b64226c47238bd06fe61fc75c',
@@ -391,8 +394,10 @@ app.get('/registerslack', function(req, res) {
 
     request.post(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log('id:' + body.access_token); // Print the shortened url.
+            console.log('id: ' + body.access_token); // Print the shortened url.
             console.log('json?: ' + body);
+        } else {
+            console.log(response.statusCode.toString() + ': ' + error);
         }
     });
 
