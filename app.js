@@ -377,9 +377,12 @@ app.get('/registerslack', function(req, res) {
 
     // oauth for slack
     var options = {
-        // this is the URL for quart30.slack.com
+        // this is the URL for the slack api request
         url: 'https://slack.com/api/oauth.access',
         method: 'POST',
+        headers: {
+            'content-type' : 'application/x-www-form-urlencoded'
+        },
         body: {
             'client_id': '23623886482.24011540304',
             'client_secret': '06d85b7b64226c47238bd06fe61fc75c',
@@ -389,7 +392,7 @@ app.get('/registerslack', function(req, res) {
 
     request.post(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(body.id) // Print the shortened url.
+            console.log(body.id); // Print the shortened url.
             console.log('------- JSON RESPONSE ------ \n' + body);
         }
     });
