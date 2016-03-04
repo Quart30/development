@@ -309,7 +309,7 @@ app.post('/createappointment', function(req, res) {
                         ' has checked in for their appointment at ' +
                         hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
            };
-            // set to slack
+            // send to slack
            var options = {
                // this is the URL for quart30.slack.com
                url: 'https://hooks.slack.com/services/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',
@@ -319,7 +319,7 @@ app.post('/createappointment', function(req, res) {
 
            request.post(options, function (error, response, body) {
                if (!error && response.statusCode == 200) {
-                   console.log(body.id) // Print the shortened url.
+                   console.log(body.id); // Print the shortened url.
                }
            });
        }
@@ -367,13 +367,32 @@ app.delete('/deleteappointment', function(req, res) {
 });
 
 
+/**
+ * API GET request after "Add to Slack" button is pressed
+ */
 app.get('/registerslack', function(req, res) {
 
     var params = req.query;
+    var code = params.code;
 
-    console.log('code: ' + params.code);
-    console.log('body: ' + req.body);
+    // oauth for slack
+    var options = {
+        // this is the URL for quart30.slack.com
+        url: 'https://slack.com/api/oauth.access',
+        method: 'POST',
+        body: {
+            'client_id': '23623886482.24011540304',
+            'client_secret': '06d85b7b64226c47238bd06fe61fc75c',
+            'code': code
+        }
+    };
 
+    request.post(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body.id) // Print the shortened url.
+            console.log('------- JSON RESPONSE ------ \n' + body);
+        }
+    });
 
     res.redirect('/businesssetting/'); // redirect after processing data
 });
