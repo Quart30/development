@@ -103,7 +103,7 @@ exports.post = function(req,res){
             email: email,
             registrationToken : token, //will be removed programmatically once the employee confirms
             admin: false,
-            permissionLevel: 3,
+            permissionLevel: 4,
             registered: false,
             smsNotify: true, //added to match passport
             emailNotify: true, //added to match passport

@@ -287,7 +287,8 @@ app.post('/createappointment', function(req, res) {
        if (result) {
            /*this will let the client know the appointments table changed so they can
            refresh it*/
-           io.emit('appointment_table_modified');
+           io.emit('create_appointment',
+               {eid: eid, _id: result._id, fname: fname, lname: lname, state: state, date: date});
            res.writeHead(200);
            res.write("Successfully inserted " + fname + " " +
                lname + " into the appointments table. Appt id = " + result._id.toString());
@@ -344,7 +345,7 @@ app.delete('/deleteappointment', function(req, res) {
 
     if (apptId === "all") {
         appointmentsDB.remove({employee: ObjectId(eid)});
-        io.emit('appointment_table_modified');
+        io.emit('delete_all_appointments', {eid: eid});
         res.writeHead(200);
         res.write("Removed all appointments for " + eid + ".");
         res.end();
@@ -353,9 +354,9 @@ app.delete('/deleteappointment', function(req, res) {
         appointmentsDB.findOne({_id: ObjectId(apptId)}, function(err, result) {
             if (result) {
                 appointmentsDB.remove({_id: ObjectId(apptId)});
-                io.emit('appointment_table_modified');
+                io.emit('delete_one_appointment', {eid: result.employee, _id: apptId});
                 res.writeHead(200);
-                res.write("Removed appoimtent " + apptId);
+                res.write("Removed appointment " + apptId);
             }
             else {
                 res.writeHead(400);
