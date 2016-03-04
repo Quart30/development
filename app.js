@@ -374,32 +374,19 @@ app.get('/registerslack', function(req, res) {
 
     var params = req.query;
     var code = params.code;
+    var client_id = '23623886482.24011540304';
+    var client_secret = '06d85b7b64226c47238bd06fe61fc75c';
 
-    console.log('code: ' + code);
-
-    client_id = '23623886482.24011540304';
-    client_secret = '06d85b7b64226c47238bd06fe61fc75c';
-
-    var body = {
-        'client_id': client_id,
-        'client_secret': client_secret,
-        'code': code
-    };
-
-    // oauth for slack
-    var options = {
-        // this is the URL for the slack api request
-        url: 'https://slack.com/api/oauth.access',
-        method: 'POST',
-        json: body
-    };
-
+    // pretty gross way of getting the slack integration
     var url = 'https://slack.com/api/oauth.access?client_id=' + client_id + '&client_secret=' + client_secret + '&code=' + code;
 
     request.post(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log('id: ' + body.access_token); // Print the shortened url.
-            console.log('json?: ' + body);
+            console.log('json: ' + body);
+
+            // get the necessary data by parsing the body
+            //JSON.parse(body, )
+
         } else {
             console.log(response.statusCode.toString() + ': ' + error);
         }
@@ -408,6 +395,27 @@ app.get('/registerslack', function(req, res) {
     res.redirect('/businesssetting/'); // redirect after processing data
 });
 
+/***********************************************************************************************
+{
+    "ok":true,
+    "access_token":"xoxp-23623886482-23625251793-24299768672-161a3ec268",
+    "scope":"identify,incoming-webhook,commands,bot",
+    "team_name":"quart30_cse112","team_id":"T0PJBS2E6",
+    "incoming_webhook":
+    {
+        "channel":"#general",
+        "channel_id":"C0PJ60W0L",
+        "configuration_url":"https:\/\/quart30.slack.com\/services\/B0Q8R9UDR",
+        "url":"https:\/\/hooks.slack.com\/services\/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"
+    },
+    "bot":
+    {
+        "bot_user_id":"U0Q8UFJNS",
+        "bot_access_token":
+        "xoxb-24300528774-XqsHsqbsaeHUSx0j9OGx3Q8j"
+    }
+}
+*************************************************************************************************/
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
