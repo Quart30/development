@@ -375,19 +375,18 @@ app.get('/registerslack', function(req, res) {
     var params = req.query;
     var code = params.code;
 
+    var body = {
+        'client_id': '23623886482.24011540304',
+        'client_secret': '06d85b7b64226c47238bd06fe61fc75c',
+        'code': code
+    };
+
     // oauth for slack
     var options = {
         // this is the URL for the slack api request
         url: 'https://slack.com/api/oauth.access',
         method: 'POST',
-        headers: {
-            'content-type' : 'application/x-www-form-urlencoded'
-        },
-        body: {
-            'client_id': '23623886482.24011540304',
-            'client_secret': '06d85b7b64226c47238bd06fe61fc75c',
-            'code': code
-        }
+        json: body
     };
 
     request.post(options, function (error, response, body) {
