@@ -301,94 +301,52 @@ app.post('/createappointment', function(req, res) {
            var bid;
            employees.findOne({_id: ObjectId(eid)}, function(err, result) {
                bid = result.bid;
-               var businesses = req.db.get('businesses');
-               businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
-                   if (!err)
-                   //throw(err);
-                       console.log(result);
-                   else {
-                       // find a slack channel
-                       var slack_url = result.slack.toString();
-
-                       // make sure we can send the message somewhere
-                       if (slack_url) {
-                           var hr = date.getHours();
-                           var min = date.getMinutes();
-                           var ampm = (hr >= 12) ? 'PM' : 'AM';
-                           if (hr == 0)
-                               hr = 12;
-                           else if (hr > 12)
-                               hr -= 12;
-
-                           // add a 0 to mins
-                           if (min <= 9)
-                               min = '0' + min;
-
-                           // text
-                           var text = { 'text': fname + ' ' + lname +
-                           ' has checked in for their appointment at ' +
-                           hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
-                           };
-
-                           var options = {
-                               url: slack_url,
-                               method: 'POST',
-                               json: text
-                           };
-
-                           request.post(options, function (error, response, body) {
-                               if (!error && response.statusCode == 200) {
-                                   console.log(body.id); // Print the shortened url.
-                               }
-                           });
-                       }
-                   }
-               });
+               console.log('bid: '+ bid);
            });
            // get business
-           //var businesses = req.db.get('businesses');
-           //businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
-           //     if (!err)
-           //         //throw(err);
-           //         console.log(result);
-           //     else {
-           //         // find a slack channel
-           //         var slack_url = result.slack.toString();
-           //
-           //         // make sure we can send the message somewhere
-           //         if (slack_url) {
-           //             var hr = date.getHours();
-           //             var min = date.getMinutes();
-           //             var ampm = (hr >= 12) ? 'PM' : 'AM';
-           //             if (hr == 0)
-           //                 hr = 12;
-           //             else if (hr > 12)
-           //                 hr -= 12;
-           //
-           //             // add a 0 to mins
-           //             if (min <= 9)
-           //                 min = '0' + min;
-           //
-           //             // text
-           //             var text = { 'text': fname + ' ' + lname +
-           //             ' has checked in for their appointment at ' +
-           //             hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
-           //             };
-           //
-           //             var options = {
-           //                 url: slack_url,
-           //                 method: 'POST',
-           //                 json: text
-           //             };
-           //
-           //             request.post(options, function (error, response, body) {
-           //                 if (!error && response.statusCode == 200) {
-           //                     console.log(body.id); // Print the shortened url.
-           //                 }
-           //             });
-           //         }
-           //     }
-           //});
+           var businesses = req.db.get('businesses');
+           businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
+                if (!err)
+                    //throw(err);
+                    console.log(result);
+                else {
+                    // find a slack channel
+                    var slack_url = result.slack.toString();
+
+                    // make sure we can send the message somewhere
+                    if (slack_url) {
+                        var hr = date.getHours();
+                        var min = date.getMinutes();
+                        var ampm = (hr >= 12) ? 'PM' : 'AM';
+                        if (hr == 0)
+                            hr = 12;
+                        else if (hr > 12)
+                            hr -= 12;
+
+                        // add a 0 to mins
+                        if (min <= 9)
+                            min = '0' + min;
+
+                        // text
+                        var text = { 'text': fname + ' ' + lname +
+                        ' has checked in for their appointment at ' +
+                        hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
+                        };
+
+                        var options = {
+                            url: slack_url,
+                            method: 'POST',
+                            json: text
+                        };
+
+                        request.post(options, function (error, response, body) {
+                            if (!error && response.statusCode == 200) {
+                                console.log(body.id); // Print the shortened url.
+                            }
+                        });
+                    }
+                }
+           });
        }
     });
 });
@@ -449,8 +407,6 @@ app.get('/registerslack', function(req, res) {
 
     request.post(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            //console.log('json: ' + body);
-
             // get the necessary data by parsing the body
             // likely add it to the database so we can correctly send messages
             var slack_url;
@@ -462,9 +418,6 @@ app.get('/registerslack', function(req, res) {
             var businesses = req.db.get('businesses');
             var bid = req.user[0].business;
 
-            //console.log("bid: " + bid);
-            //console.log("url: " + slack_url);
-
             businesses.findAndModify({
                 query: { _id: bid },
                 update: { $set: {slack: slack_url} }
@@ -475,9 +428,6 @@ app.get('/registerslack', function(req, res) {
                     }
                 }
             );
-
-            //console.log(req);
-
         } else {
             console.log(response.statusCode.toString() + ': ' + error);
         }
