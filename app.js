@@ -300,52 +300,51 @@ app.post('/createappointment', function(req, res) {
            var employees = req.db.get('employees');
            var bid;
            employees.findOne({_id: ObjectId(eid)}, function(err, result) {
-               bid = result.bid;
-               console.log('bid: '+ bid);
-           });
-           // get business
-           var businesses = req.db.get('businesses');
-           businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
-                if (!err)
-                    //throw(err);
-                    console.log(result);
-                else {
-                    // find a slack channel
-                    var slack_url = result.slack.toString();
+               bid = result.business; // get the business ID
 
-                    // make sure we can send the message somewhere
-                    if (slack_url) {
-                        var hr = date.getHours();
-                        var min = date.getMinutes();
-                        var ampm = (hr >= 12) ? 'PM' : 'AM';
-                        if (hr == 0)
-                            hr = 12;
-                        else if (hr > 12)
-                            hr -= 12;
+               // do another search for the slack url of a business
+               var businesses = req.db.get('businesses');
+               businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
+                   if (err)
+                       throw(err);
+                   else {
+                       // find a slack channel
+                       var slack_url = result.slack.toString();
 
-                        // add a 0 to mins
-                        if (min <= 9)
-                            min = '0' + min;
+                       // make sure we can send the message somewhere
+                       if (slack_url != 'none') {
+                           var hr = date.getHours();
+                           var min = date.getMinutes();
+                           var ampm = (hr >= 12) ? 'PM' : 'AM';
+                           if (hr == 0)
+                               hr = 12;
+                           else if (hr > 12)
+                               hr -= 12;
 
-                        // text
-                        var text = { 'text': fname + ' ' + lname +
-                        ' has checked in for their appointment at ' +
-                        hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
-                        };
+                           // add a 0 to mins
+                           if (min <= 9)
+                               min = '0' + min;
 
-                        var options = {
-                            url: slack_url,
-                            method: 'POST',
-                            json: text
-                        };
+                           // text
+                           var text = { 'text': fname + ' ' + lname +
+                           ' has checked in for their appointment at ' +
+                           hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
+                           };
 
-                        request.post(options, function (error, response, body) {
-                            if (!error && response.statusCode == 200) {
-                                console.log(body.id); // Print the shortened url.
-                            }
-                        });
-                    }
-                }
+                           var options = {
+                               url: slack_url,
+                               method: 'POST',
+                               json: text
+                           };
+
+                           request.post(options, function (error, response, body) {
+                               if (!error && response.statusCode == 200) {
+                                   console.log(body.id); // Print the shortened url.
+                               }
+                           });
+                       }
+                   }
+               });
            });
        }
     });
@@ -394,6 +393,27 @@ app.delete('/deleteappointment', function(req, res) {
 
 /**
  * API GET request after "Add to Slack" button is pressed
+ *
+ * Sample json in response:
+ * {
+ *   "ok":true,
+ *   "access_token":"xoxp-23623886482-23625251793-24299768672-161a3ec268",
+ *   "scope":"identify,incoming-webhook,commands,bot",
+ *   "team_name":"quart30_cse112","team_id":"T0PJBS2E6",
+ *   "incoming_webhook":
+ *   {
+ *       "channel":"#general",
+ *       "channel_id":"C0PJ60W0L",
+ *       "configuration_url":"https:\/\/quart30.slack.com\/services\/B0Q8R9UDR",
+ *       "url":"https:\/\/hooks.slack.com\/services\/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"
+ *   },
+ *   "bot":
+ *   {
+ *       "bot_user_id":"U0Q8UFJNS",
+ *       "bot_access_token":
+ *       "xoxb-24300528774-XqsHsqbsaeHUSx0j9OGx3Q8j"
+ *   }
+ * }
  */
 app.get('/registerslack', function(req, res) {
 
@@ -437,25 +457,6 @@ app.get('/registerslack', function(req, res) {
 });
 
 /***********************************************************************************************
-{
-    "ok":true,
-    "access_token":"xoxp-23623886482-23625251793-24299768672-161a3ec268",
-    "scope":"identify,incoming-webhook,commands,bot",
-    "team_name":"quart30_cse112","team_id":"T0PJBS2E6",
-    "incoming_webhook":
-    {
-        "channel":"#general",
-        "channel_id":"C0PJ60W0L",
-        "configuration_url":"https:\/\/quart30.slack.com\/services\/B0Q8R9UDR",
-        "url":"https:\/\/hooks.slack.com\/services\/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"
-    },
-    "bot":
-    {
-        "bot_user_id":"U0Q8UFJNS",
-        "bot_access_token":
-        "xoxb-24300528774-XqsHsqbsaeHUSx0j9OGx3Q8j"
-    }
-}
 *************************************************************************************************/
 
 // catch 404 and forward to error handler
