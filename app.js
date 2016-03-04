@@ -395,6 +395,10 @@ app.get('/registerslack', function(req, res) {
 
             var businesses = req.db.get('businesses');
             var bid = ObjectId(params.bid);
+
+            console.log("bid: " + bid);
+            console.log("url: " + slack_url);
+
             businesses.findAndModify({
                 query: { _id: bid },
                 update: { slack: slack_url }
