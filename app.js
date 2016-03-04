@@ -394,7 +394,7 @@ app.get('/registerslack', function(req, res) {
             });
 
             var businesses = req.db.get('businesses');
-            var bid = ObjectId(params.bid);
+            var bid = params.bid;
 
             console.log("bid: " + bid);
             console.log("url: " + slack_url);
