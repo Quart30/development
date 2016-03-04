@@ -294,34 +294,52 @@ app.post('/createappointment', function(req, res) {
                lname + " into the appointments table. Appt id = " + result._id.toString());
            res.end();
 
-           var hr = date.getHours();
-           var min = date.getMinutes();
-           var ampm = (hr >= 12) ? 'PM' : 'AM';
-           if (hr == 0)
-                hr = 12;
-           else if (hr > 12)
-                hr -= 12;
 
-           // add a 0 to mins
-           if (min <= 9)
-                min = '0' + min;
+           // ---- slack message ---- //
 
-           var text = { 'text': fname + ' ' + lname +
+           // get business
+           var businesses = req.db.get('businesses');
+           var bid = req.user[0].business;
+           businesses.findOne({_id: bid}, function(err, result) {
+                if (err)
+                    throw(err);
+                else {
+                    // find a slack channel
+                    var slack_url = result.slack.toString();
+
+                    // make sure we can send the message somewhere
+                    if (slack_url) {
+                        var hr = date.getHours();
+                        var min = date.getMinutes();
+                        var ampm = (hr >= 12) ? 'PM' : 'AM';
+                        if (hr == 0)
+                            hr = 12;
+                        else if (hr > 12)
+                            hr -= 12;
+
+                        // add a 0 to mins
+                        if (min <= 9)
+                            min = '0' + min;
+
+                        // text
+                        var text = { 'text': fname + ' ' + lname +
                         ' has checked in for their appointment at ' +
                         hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
-           };
-            // send to slack
-           var options = {
-               // this is the URL for quart30.slack.com
-               url: 'https://hooks.slack.com/services/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',
-               method: 'POST',
-               json: text
-           };
+                        };
 
-           request.post(options, function (error, response, body) {
-               if (!error && response.statusCode == 200) {
-                   console.log(body.id); // Print the shortened url.
-               }
+                        var options = {
+                            url: slack_url,
+                            method: 'POST',
+                            json: text
+                        };
+
+                        request.post(options, function (error, response, body) {
+                            if (!error && response.statusCode == 200) {
+                                console.log(body.id); // Print the shortened url.
+                            }
+                        });
+                    }
+                }
            });
        }
     });
@@ -394,7 +412,6 @@ app.get('/registerslack', function(req, res) {
             });
 
             var businesses = req.db.get('businesses');
-            //var bid = ObjectId(params.bid).toString().split("\n"); // objectId has two fields: eid, bid
             var bid = req.user[0].business;
 
             //console.log("bid: " + bid);
