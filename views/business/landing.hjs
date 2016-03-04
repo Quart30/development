@@ -20,7 +20,9 @@
     </script>
 </head>
 <body>
-    mixpanel.track('Page visit');
+    <script type="text/javascript">
+        mixpanel.track("Page Visit");
+    </script>
     <div class="initial-screen">
 
         <div class = "top-bar-section" >
