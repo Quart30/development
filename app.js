@@ -297,9 +297,13 @@ app.post('/createappointment', function(req, res) {
 
            // ---- slack message ---- //
 
+           var employees = req.db.get('employees');
+           var bid;
+           employees.findOne({_id: ObjectId(eid)}, function(err, result) {
+               bid = result.bid;
+           });
            // get business
            var businesses = req.db.get('businesses');
-           var bid = params.bid;
            businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
                 if (!err)
                     //throw(err);
