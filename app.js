@@ -301,8 +301,9 @@ app.post('/createappointment', function(req, res) {
            var businesses = req.db.get('businesses');
            var bid = params.bid;
            businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
-                if (err)
-                    throw(err);
+                if (!err)
+                    //throw(err);
+                    console.log(result);
                 else {
                     // find a slack channel
                     var slack_url = result.slack.toString();
