@@ -392,8 +392,8 @@ app.get('/registerslack', function(req, res) {
 
     request.post(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(body.id); // Print the shortened url.
-            console.log('------- JSON RESPONSE ------ \n' + body);
+            console.log('id:' + body.id); // Print the shortened url.
+            //console.log('access_code' + body);
         }
     });
 
