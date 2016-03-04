@@ -307,7 +307,8 @@ app.post('/createappointment', function(req, res) {
 
            var text = { 'text': fname + ' ' + lname +
                         ' has checked in for their appointment at ' +
-                        hr + ':' + min + ' ' + ampm };
+                        hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
+           };
             // set to slack
            var options = {
                // this is the URL for quart30.slack.com
