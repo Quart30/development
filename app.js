@@ -377,10 +377,12 @@ app.get('/registerslack', function(req, res) {
 
     console.log('code: ' + code);
 
+    client_id = '23623886482.24011540304';
+    client_secret = '06d85b7b64226c47238bd06fe61fc75c';
 
     var body = {
-        'client_id': '23623886482.24011540304',
-        'client_secret': '06d85b7b64226c47238bd06fe61fc75c',
+        'client_id': client_id,
+        'client_secret': client_secret,
         'code': code
     };
 
@@ -392,7 +394,9 @@ app.get('/registerslack', function(req, res) {
         json: body
     };
 
-    request.post(options, function (error, response, body) {
+    var url = 'https://slack.com/api/oauth.access?client_id=' + client_id + '&client_secret=' + client_secret + '&code=' + code;
+
+    request.post(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log('id: ' + body.access_token); // Print the shortened url.
             console.log('json?: ' + body);
