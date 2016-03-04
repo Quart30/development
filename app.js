@@ -17,7 +17,7 @@ var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var app = express();
 var request = require('request');
-var server = require('http').createServer(app).listen(8000);
+var server = require('http').createServer(app).listen(process.env.PORT || 8000);
 var io = require('socket.io')(server);
 
 
@@ -294,34 +294,57 @@ app.post('/createappointment', function(req, res) {
                lname + " into the appointments table. Appt id = " + result._id.toString());
            res.end();
 
-           var hr = date.getHours();
-           var min = date.getMinutes();
-           var ampm = (hr >= 12) ? 'PM' : 'AM';
-           if (hr == 0)
-                hr = 12;
-           else if (hr > 12)
-                hr -= 12;
 
-           // add a 0 to mins
-           if (min <= 9)
-                min = '0' + min;
+           // ---- slack message ---- //
 
-           var text = { 'text': fname + ' ' + lname +
+           var employees = req.db.get('employees');
+           var bid;
+           employees.findOne({_id: ObjectId(eid)}, function(err, result) {
+               bid = result.bid;
+           });
+           // get business
+           var businesses = req.db.get('businesses');
+           businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
+                if (!err)
+                    //throw(err);
+                    console.log(result);
+                else {
+                    // find a slack channel
+                    var slack_url = result.slack.toString();
+
+                    // make sure we can send the message somewhere
+                    if (slack_url) {
+                        var hr = date.getHours();
+                        var min = date.getMinutes();
+                        var ampm = (hr >= 12) ? 'PM' : 'AM';
+                        if (hr == 0)
+                            hr = 12;
+                        else if (hr > 12)
+                            hr -= 12;
+
+                        // add a 0 to mins
+                        if (min <= 9)
+                            min = '0' + min;
+
+                        // text
+                        var text = { 'text': fname + ' ' + lname +
                         ' has checked in for their appointment at ' +
                         hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
-           };
-            // send to slack
-           var options = {
-               // this is the URL for quart30.slack.com
-               url: 'https://hooks.slack.com/services/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',
-               method: 'POST',
-               json: text
-           };
+                        };
 
-           request.post(options, function (error, response, body) {
-               if (!error && response.statusCode == 200) {
-                   console.log(body.id); // Print the shortened url.
-               }
+                        var options = {
+                            url: slack_url,
+                            method: 'POST',
+                            json: text
+                        };
+
+                        request.post(options, function (error, response, body) {
+                            if (!error && response.statusCode == 200) {
+                                console.log(body.id); // Print the shortened url.
+                            }
+                        });
+                    }
+                }
            });
        }
     });
@@ -383,11 +406,34 @@ app.get('/registerslack', function(req, res) {
 
     request.post(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log('json: ' + body);
+            //console.log('json: ' + body);
 
             // get the necessary data by parsing the body
             // likely add it to the database so we can correctly send messages
-            //JSON.parse(body, )
+            var slack_url;
+            JSON.parse(body, function(k, v) {
+               if (k == 'url')
+                    slack_url = v;
+            });
+
+            var businesses = req.db.get('businesses');
+            var bid = req.user[0].business;
+
+            //console.log("bid: " + bid);
+            //console.log("url: " + slack_url);
+
+            businesses.findAndModify({
+                query: { _id: bid },
+                update: { $set: {slack: slack_url} }
+                },
+                function (err, result) {
+                    if (err) {
+                        throw(err);
+                    }
+                }
+            );
+
+            //console.log(req);
 
         } else {
             console.log(response.statusCode.toString() + ': ' + error);
