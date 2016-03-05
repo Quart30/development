@@ -28,6 +28,15 @@ exports.get = function (req, res) {
             console.error('MongoDB Error in /api/employee/:eid/appointments/today: ' + err);
             return res.send(500);
         }
+
+        //Heroku likes to live in the past...or future; I'm not too sure.
+        var app = require('../../app');
+        if (app.get('env') === 'production') {
+            for (var i = 0; i < results.length; i++) {
+                results[i].date.setHours(results[i].date.getHours() + 8);
+            }
+        }
+
         res.json(results);
     });
 };

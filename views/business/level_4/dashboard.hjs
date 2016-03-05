@@ -16,11 +16,9 @@
     </script>
     <script src="/javascripts/dashboard.js"></script>
     <!--if on localhost, comment this line-->
-    <!--<script src="/socket.io/socket.io.js"></script>-->
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
-        var socket;
-        socket = io.connect();
+        var socket = io();
 //        try {
 //            socket = io.connect('http://quart30.herokuapp.com:8000/');
 //        }

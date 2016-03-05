@@ -16,11 +16,13 @@ var passport = require('passport');
 var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var app = express();
-//var server = require('http').createServer(app).listen(8000);
-//var io = require('socket.io').listen(server);
-var io = require('./bin/www');
-
 var request = require('request');
+
+app.io = require('socket.io')();
+//app.io.on('connection', function() {
+//    console.log('Socket.io connected successfully');
+//});
+
 
 
 global.__base = __dirname + '/';
@@ -289,7 +291,10 @@ app.post('/createappointment', function(req, res) {
        if (result) {
            /*this will let the client know the appointments table changed so they can
            refresh it*/
-           io.emit('create_appointment',
+           if (app.get('env') === 'production') {
+               date.setHours(date.getHours() + 8);
+           }
+           app.io.emit('create_appointment',
                {eid: eid, _id: result._id, fname: fname, lname: lname, state: state, date: date});
            res.writeHead(200);
            res.write("Successfully inserted " + fname + " " +
@@ -302,6 +307,11 @@ app.post('/createappointment', function(req, res) {
            var employees = req.db.get('employees');
            var bid;
            employees.findOne({_id: ObjectId(eid)}, function(err, result) {
+               //TODO: @Randy, take a look at this
+               if (!result) {
+                   return;
+               }
+
                bid = result.business; // get the business ID
 
                // do another search for the slack url of a business
@@ -309,9 +319,10 @@ app.post('/createappointment', function(req, res) {
                businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
                    if (err)
                        throw(err);
-                   else {
+                   //TODO: @Randy, also take a look at this
+                   if (result) {
                        // find a slack channel
-                       var slack_url = result.slack.toString();
+                       var slack_url = result.slack ? result.slack.toString() : 'none';
 
                        // make sure we can send the message somewhere
                        if (slack_url != 'none') {
@@ -370,7 +381,7 @@ app.delete('/deleteappointment', function(req, res) {
 
     if (apptId === "all") {
         appointmentsDB.remove({employee: ObjectId(eid)});
-        io.emit('delete_all_appointments', {eid: eid});
+        app.io.emit('delete_all_appointments', {eid: eid});
         res.writeHead(200);
         res.write("Removed all appointments for " + eid + ".");
         res.end();
@@ -379,7 +390,7 @@ app.delete('/deleteappointment', function(req, res) {
         appointmentsDB.findOne({_id: ObjectId(apptId)}, function(err, result) {
             if (result) {
                 appointmentsDB.remove({_id: ObjectId(apptId)});
-                io.emit('delete_one_appointment', {eid: result.employee, _id: apptId});
+                app.io.emit('delete_one_appointment', {eid: result.employee, _id: apptId});
                 res.writeHead(200);
                 res.write("Removed appointment " + apptId);
             }
@@ -473,7 +484,6 @@ app.use(function (req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    console.log("We're in a development environment!!!");
     app.use(function (err, req, res) {
         console.error(err);
         console.error(err.stack);
