@@ -61,7 +61,7 @@ a:hover {
 
 /* grey bar on top of landing page including login form */
 .top-bar-section{
-    height: 12vh;
+    height: 90px;
     width: 100vw;
     background-color: rgba(0,0,0, 0.3);
 }
@@ -87,12 +87,20 @@ a:hover {
 .form-container{
     float: right;
     padding-right: 40px;
-    margin-top: -42px;
+    margin-top: -30px;
 }
 .shameless-plug {
     font-size: 13pt;
     margin-left: 10%;
     padding-top: 33px;
+}
+@media screen and (max-width: 930px) {
+    .shameless-plug {
+        display: none;
+    }
+    .form-container{
+        margin-top: 15px;
+    }
 }
 /* end of top bar */
 
@@ -112,30 +120,47 @@ a:hover {
     padding-top: 290px;
     text-align: center;
 }
-
-.middle-bar-section {
-    height: 15vh;
-    width: 100vw;
-    background-color: #9ad3de;
-    padding-top: 40px;
-}
-
-
 .initial-screen-bottom-links-buttons{
     margin-right: 20px;
     margin-left: 20px;
 }
+@media screen and (max-height: 730px) {
+    .initial-screen-bottom-links {
+        padding-top: 190px;
+    }
+}
+@media screen and (max-height: 600px) {
+    .initial-screen-bottom-links {
+        padding-top: 60px;
+    }
+    .initial-screen-bottom-links-buttons{
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+}
+
+.middle-bar-section {
+    height: 110px;
+    width: 100vw;
+    background-color: #89bdd3;
+    padding-top: 40px;
+}
+
+
 
 .middle-bar-section-text {
     margin: 0px 0px 0px 0px;
     text-align: center;
 }
 
+.pricing-part {
+    text-align: center;
+    background-color: #c9c9c9;
+}
 .bottom-part {
-    height: 85vh;
     width: 100vw;
-    background-image: url('../images/landing-background-2.jpg');
     background-size: cover;
+    background-image: url('/images/grey-bg-2.jpg');
     padding-top: 50px;
 }
 
