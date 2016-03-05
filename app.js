@@ -317,7 +317,8 @@ app.post('/createappointment', function(req, res) {
                businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
                    if (err)
                        throw(err);
-                   else {
+                    
+                    if (result) {
                        // find a slack channel
                        var slack_url = result.slack.toString();
 
