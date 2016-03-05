@@ -2,7 +2,7 @@ var crypto = require('crypto');
 var baby = require('babyparse');
 var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
-var transporter = require('nodemailer').createTransport('smtps://quart30dev%40gmail.com:cse112quart@smtp.gmail.com');
+//var transporter = require('nodemailer').createTransport('smtps://quart30dev%40gmail.com:cse112quart@smtp.gmail.com');
 
 /**
  * Takes a req and res parameters and is inputted into function to get employee, notemployee, and business data.
