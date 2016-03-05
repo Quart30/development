@@ -29,7 +29,7 @@ exports.get = function (req, res) {
             return res.send(500);
         }
 
-        //Heroku likes to live in the past...or future; I'm not too sure.
+        //Heroku likes to live in the past...or the future. I'm not too sure.
         var app = require('../../app');
         if (app.get('env') === 'production') {
             for (var i = 0; i < results.length; i++) {

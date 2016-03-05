@@ -24,7 +24,6 @@ app.io = require('socket.io')();
 //});
 
 
-
 global.__base = __dirname + '/';
 
 
@@ -280,6 +279,8 @@ app.post('/createappointment', function(req, res) {
         date.setHours(params.hour);
     if (params.minute)
         date.setMinutes(params.minute);
+
+
 
     appointmentsDB.insert({
         employee: ObjectId(eid),
