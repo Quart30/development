@@ -57,21 +57,17 @@
     <div class="middle-bar-section" id="foo">
         <h2 class="middle-bar-section-text">Herald is changing the way businesses do reception.</h2>
     </div>
-    <div class="pricing-part">
-        <div class="container">
+    <div class="pricing-part" style="text-align: center;">
         <div class="row">
-            <div class="col-md-5 col-md-offset-1">
+            <div class="col-md-4 col-md-offset-2">
                 <h2>What is Herald?</h2>
                 <p class="about-p">Herald, powered by an epic collaboration of Quart 3.0 and Peter Venkman, is your automated receptionist. With Herald, customers keep track of themselves, allowing your business to use human resources on things other than appointment times and check-in. It's your guestbook, your customer database, your calendar.</p>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <h2>How does it work?</h2>
                 <p class="about-p">To be: the have, to oth make calamity of respect that is sicklied of time, than fles that is sicklied of somethis rath, to troubler 'tis ressor's wrong, the question. To die: to sleep; not the retural shuffled of soment a sea of some with make calamity of that sleep: perchan flesh is may consummative under 'tis returns of somenter to, 'tis a sleep of?</p>
             </div>
         </div>
-        </div>
-    </div>
-    <div class="bottom-part" style="text-align: center;">
         <div class="pricing-table group">
             <div class="block personal fl">
                 <h2 class="title">personal</h2>
