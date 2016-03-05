@@ -19,7 +19,7 @@ var app = express();
 var request = require('request');
 //var server = require('http').createServer(app).listen(8000);
 //var io = require('socket.io')(server);
-var io = require('./bin/www/);
+var io = require('./bin/www/');
 
 
 global.__base = __dirname + '/';
