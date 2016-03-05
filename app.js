@@ -21,7 +21,7 @@ var request = require('request');
 //var io = require('socket.io')(server);
 var server = require('./bin/www');
 var io = require('socket.io').listen(server);
-console.log('APP PORT = ' + app.get('port));
+console.log('APP PORT = ' + app.get('port'));
 
 
 global.__base = __dirname + '/';
