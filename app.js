@@ -17,11 +17,15 @@ var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var app = express();
 var request = require('request');
+var socket_io = require('socket.io');
 //var server = require('http').createServer(app).listen(8000);
 //var io = require('socket.io')(server);
-var server = require('./bin/www');
-var io = require('socket.io').listen(server);
-console.log('APP PORT = ' + app.get('port'));
+var io = socket_io();
+app.io = io;
+
+var routes = require('./routes/webapi/index')(io);
+
+module.exports = app;
 
 
 global.__base = __dirname + '/';

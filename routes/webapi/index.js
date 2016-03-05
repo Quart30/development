@@ -70,3 +70,14 @@ function isLoggedInBusiness(req, res, next) {
  * Exports router with new handlers when module is exported.
  */
 module.exports = router;
+
+module.exports = function(io) {
+	var app = require('express');
+	var router = app.Router();
+	
+	io.on('connection', function(socket) {
+		console.log('Yes, it worked!');
+	});
+	
+	return router;
+}
