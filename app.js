@@ -16,9 +16,12 @@ var passport = require('passport');
 var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var app = express();
+//var server = require('http').createServer(app).listen(8000);
+//var io = require('socket.io').listen(server);
+var io = require('./bin/www');
+
 var request = require('request');
-var server = require('http').createServer(app).listen(8000);
-var io = require('socket.io')(server);
+
 
 
 global.__base = __dirname + '/';
@@ -477,6 +480,7 @@ app.use(function (req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
+    console.log("We're in a development environment!!!");
     app.use(function (err, req, res) {
         console.error(err);
         console.error(err.stack);

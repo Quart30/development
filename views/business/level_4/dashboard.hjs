@@ -12,11 +12,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script>
         eid = "{{eid}}";
+        loc = window.document.location.host;
     </script>
     <script src="/javascripts/dashboard.js"></script>
-    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <!--if on localhost, comment this line-->
+    <!--<script src="/socket.io/socket.io.js"></script>-->
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script>
-        var socket = io.connect('http://localhost:8000/');
+        var socket;
+        socket = io.connect();
+//        try {
+//            socket = io.connect('http://quart30.herokuapp.com:8000/');
+//        }
+//        catch (err) {
+//            console.log('Yup, error, not heroku');
+//            socket = io.connect('http://localhost:8000/');
+//        }
+
         socket.on('create_appointment', function (data) {
             if (data.eid === eid) {
                 parseAppointmentData(data, function (apptId, columns) {
