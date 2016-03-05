@@ -24,7 +24,7 @@ exports.get = function (req, res) {
     //     }
     // });
 
-    appointments.find({employee: ObjectID(req.params.eid)}, function (err, results) {
+    /*appointments.find({employee: ObjectID(req.params.eid)}, function (err, results) {
         if (err) {
             console.error('MongoDB Error in /api/employee/:eid/appointments/today: ' + err);
             return res.send(500);
@@ -32,7 +32,7 @@ exports.get = function (req, res) {
         res.json(results);
     });
 
-    return;
+    return;*/
 
     appointments.find({
         employee: ObjectID(req.params.eid),
