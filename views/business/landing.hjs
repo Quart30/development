@@ -21,9 +21,6 @@ mixpanel.init("97eb64381c2a093fb8f51fc182157b1d");</script>
     <!-- end Mixpanel -->
 </head>
 <body>
-    <script type="text/javascript">
-        mixpanel.track("Page Visit");
-    </script>
     <div class="initial-screen">
 
         <div class = "top-bar-section" >
@@ -62,6 +59,14 @@ mixpanel.init("97eb64381c2a093fb8f51fc182157b1d");</script>
                 <a href="#" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Blog</a>
             </div>
         </div>
+
+    <!-- mixpanel landing page tracker -->
+    <script type="text/javascript">
+        mixpanel.track('page viewed', {
+            'page name': landing
+        });
+    </script>
+
     </div>
     <div class="page-wrap">
         <div class="middle-bar-section" id="foo">
