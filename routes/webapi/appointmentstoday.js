@@ -28,6 +28,16 @@ exports.get = function (req, res) {
             console.error('MongoDB Error in /api/employee/:eid/appointments/today: ' + err);
             return res.send(500);
         }
+
+        //Heroku likes to live in the past.
+        var app = require('../../app');
+        if (app.get('env') === 'production') {
+            console.log('Successfully detected production environment. Modifying dates.');
+            for (var i = 0; i < results.length; i++) {
+                results[i].date.setHours(results[i].date.getHours() + 8);
+            }
+        }
+
         res.json(results);
     });
 };

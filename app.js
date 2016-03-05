@@ -279,7 +279,7 @@ app.post('/createappointment', function(req, res) {
     if (params.day)
         date.setDate(params.day);
     if (params.hour)
-        date.setHours(Number(params.hour) + 8);
+        date.setHours(params.hour);
     if (params.minute)
         date.setMinutes(params.minute);
 
