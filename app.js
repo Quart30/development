@@ -283,6 +283,8 @@ app.post('/createappointment', function(req, res) {
     if (params.minute)
         date.setMinutes(params.minute);
 
+
+
     appointmentsDB.insert({
         employee: ObjectId(eid),
         fname: fname,
@@ -293,6 +295,8 @@ app.post('/createappointment', function(req, res) {
        if (result) {
            /*this will let the client know the appointments table changed so they can
            refresh it*/
+           if (app.get('env') === 'production')
+              date.setHours(date.getHours() + 8);
            app.io.emit('create_appointment',
                {eid: eid, _id: result._id, fname: fname, lname: lname, state: state, date: date});
            res.writeHead(200);
