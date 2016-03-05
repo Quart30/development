@@ -19,10 +19,6 @@
     for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
 mixpanel.init("97eb64381c2a093fb8f51fc182157b1d",{debug:true});</script>
     <!-- end Mixpanel -->
-    <!-- mixpanel landing page tracker -->
-    <script type="text/javascript">
-        mixpanel.track('landing page viewed');
-    </script>
 </head>
 <body>
     <div class="initial-screen">
@@ -64,6 +60,12 @@ mixpanel.init("97eb64381c2a093fb8f51fc182157b1d",{debug:true});</script>
             </div>
         </div>
     </div>
+
+    <!-- mixpanel landing page tracker -->
+    <script type="text/javascript">
+        mixpanel.track("landing page viewed");
+    </script>
+    
     <div class="page-wrap">
         <div class="middle-bar-section" id="foo">
             <h2 class="middle-bar-section-text">Herald is changing the way businesses do reception.</h2>
