@@ -17,10 +17,10 @@ exports.get = function (req, res) {
     var end = new Date();
     end.setHours(23, 59, 59, 999);
 
-    appointments.find({employee: ObjectID(req.params.eid)}, function(err, results) {
+    appointments.findOne({employee: ObjectID(req.params.eid)}, function(err, results) {
         if (results) {
             console.log('Here it is!!!');
-            console.log(results[0].date);
+            console.log(results.date);
         }
     });
 
