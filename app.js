@@ -306,8 +306,11 @@ app.post('/createappointment', function(req, res) {
            var employees = req.db.get('employees');
            var bid;
            employees.findOne({_id: ObjectId(eid)}, function(err, result) {
-			if (result) {
-				bid = result.business; // get the business ID
+				//gotta tell Randy about this
+				if (!result)
+					return;
+					
+               bid = result.business; // get the business ID
 
                // do another search for the slack url of a business
                var businesses = req.db.get('businesses');
@@ -351,8 +354,6 @@ app.post('/createappointment', function(req, res) {
                            });
                        }
                    }
-			}
-               
                });
            });
        }
