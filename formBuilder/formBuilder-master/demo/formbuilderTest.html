@@ -4,37 +4,61 @@
 
 <html>
 
-  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/form-builder.css">
-  <!-- Only include on form render page -->
+<link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-builder.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-render.min.css">
+
+<!-- Only include on form render page -->
 
 
-<body style='background-color: #0b97c4'>
+<body style='background-color: #89bdd3'>
+
 <div class="build-form">
-<h2> <strong> Add Elements to your Form here </strong> </h2>
-<form action="">
-<textarea name="formBuilder" id="formBuilder" cols="30" rows="10"> </textarea>
-</form>
-<br style="clear:both">
+    <h2> <strong> Add Elements to your Form here </strong> </h2>
+    <form action="">
+        <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"> </textarea>
+    </form>
+
+    <br style="clear:both">
 </div>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<div class="render-form">
+    <h2><strong>Render The Form</strong></h2>
+
+    <form id="rendered-form">
+        <p class="cta">Add some fields to the formBuilder above and render them here.</p>
+    </form>
+    <button id="render-form-button" class="btn btn-primary">Preview Form</button>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- <script src="js/formBuilder.js"></script>
 
 <!-- <link rel="stylesheet" href="css/formBuilder.css"> -->
 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-  <script src="assets/js/form-builder.js"></script>
-  <!-- Only include on form render page -->
+<script src="/formBuilder/formBuilder-master/demo/assets/js/form-builder.js"></script>
+<!-- Only include on form render page -->
+<!--<script src="formBuilder/formBuilder-master/demo/assets/js/form-render.min.js"></script> -->
+<script src="/formBuilder/formBuilder-master/demo/assets/js/form-render.js "
+<script>
+    jQuery(document).ready(function($) {
+        'use strict';
+        var template = document.getElementById('formBuilder'),
+            formContainer = document.getElementById('rendered-form'),
+            renderBtn = document.getElementById('render-form-button');
 
-  <script>
-  jQuery(document).ready(function($) {
-    'use strict';
-    var template = document.getElementById('formBuilder');
 
-    $(template).formBuilder();
+        $(template).formBuilder();
+        $(renderBtn).click(function(e) {
 
-  });
+            e.preventDefault();
+            $(template).formRender({
+                container: $(formContainer)
+            });
+        });
+
+    });
+    // add logic that if save button is pressed $(template).toXML() gets called and saved in the DB
 </script>
 
 </body>

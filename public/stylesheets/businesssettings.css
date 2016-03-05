@@ -1,12 +1,19 @@
 h1, h2, h3, h4, h5, h6, p, span, a, input, label, div, strong, li, ul, footer {
   color: white;
+  font-family: Lato, sans-serif;
 }
+
+
 body {
     background-color: #89bdd3;
 }
 html, body {
   height: 100%;
   overflow-y: hidden;
+}
+
+.business-setting-margin{
+  text-align: center;
 }
 
 .form {
@@ -40,6 +47,15 @@ li.active {
     border-style: solid;
     border-color: white;
 }
+.top-bar-section-secondary {
+    height: 10vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.3);
+}
+.navbar-secondary {
+  padding-top: 15px;
+  padding-right: 100px;
+}
 
 h1 {
   font-size: 60px;
@@ -62,7 +78,7 @@ h1 {
   white-space: nowrap;
   margin: 20px auto;
   border:1px white solid;
-
+  display: block;
 }
 
 .custom-button:hover {
@@ -90,4 +106,8 @@ h1 {
 .site-footer {
     background: rgba(0,0,0,0.5);
     text-align: center;
+}
+
+.slack-button{
+  display: block;
 }

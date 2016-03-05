@@ -404,6 +404,8 @@ a:hover {
 
 .subtitle {
   color: #808080;
+  font-size: 20px;
+
 }
 
 .table.registeredTable {
@@ -552,14 +554,14 @@ a:hover {
 }
 
 .logoRow {
-  border: 2px solid black;
+  border: 3px solid black;
 }
 
 .logoImage {
   width: inherit;
   margin-left: auto;
   margin-right: auto;
-  padding: 20px 20px 20px 20px;
+ /* padding: 20px 20px 20px 20px; */
 }
 
 .bottomOfPage {
@@ -658,7 +660,7 @@ a:hover {
   width: inherit;
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid black;
+  border: 3px solid black;
 }
 
 .paddingTopButton {

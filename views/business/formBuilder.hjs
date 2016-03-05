@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-builder.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-render.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/demo.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel='stylesheet' href='/stylesheets/customizetheme.css'/>
+
+<body style='background-color: #89bdd3'>
+      <!-- nav bar -->
+      <div class = "top-bar-section">
+        <div style="padding-top: 33px;">
+          <span class="shameless-plug">Herald</span>
+        </div>
+        <div class="form-container">
+          {{#message}}
+            <div style="color: #FFFFFF">{{message}}</div>
+          {{/message}}
+        </div>
+        <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
+          <li>
+            <a href="/dashboard" style="color: white;">Dashboard</a>
+          </li>
+          <li>
+            <a href="/addemployees" style="color: white;">Employees</a>
+          </li>
+          <li>
+            <a href="/accountSettings" style="color: white;">Account Settings</a>
+          </li>
+          <li class="active">
+            <a href="/businesssetting" style="color: white;">Company Settings</a>
+          </li>
+          <li>
+            <a href="/logout" style="color: white;">Logout</a>
+          </li>
+        </ul>
+      </div>
+      <div class="top-bar-section-secondary" id="secondary_navbar">
+          <ul class="nav navbar-nav navbar-right navbar-secondary">
+              <li class="active"><a href="/formbuilder" style="color: white;">Manage Forms</a></li>
+              <li><a href="/customizetheme" style="color: white;">Customize Theme</a></li>
+              <li><a href="/businesssetting" style="color: white;">Company Settings</a></li>
+          </ul>
+      </div>
+      <!-- end nav bar -->
+    {{#message}}
+   <div class="alert alert-danger">{{message}}</div>
+    {{/message}}
+
+
+
+
+<div style="padding: 20px 50px 50px 50px;">
+<!--
+<div class="demo-wrap">
+
+
+    <div id="main_content_wrap" class="outer">
+        <section id="main_content" class="inner">
+-->
+            <div class="build-form">
+                <h2><strong>Build The Form</strong></h2>
+                <form action="">
+                    <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"></textarea>
+                </form>
+                <br style="clear:both">
+                <button id="render-form-button" class="btn btn-primary">Preview Form</button>
+                <!-- TODO: create button that returns to page you were just on -->
+
+            </div>
+            <div class="render-form" >
+                <form id="rendered-form" style="border: solid; border-color: white">
+                    <p style="text-align: center">Preview the form your visitor will see when signing-in.</p>
+                </form>
+                <div class="render-description"> </div>
+              <!--  <div class="render-description">
+
+                    <button id="render-form-button" class="btn btn-primary">Render form</button>
+                </div>
+                -->
+            </div>
+            <br style="clear:both">
+
+<!--
+        </section>
+    </div>
+-->
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<!-- Only include on form edit page -->
+<script src="../../formBuilder/formBuilder-master/demo/assets/js/form-builder.js"></script>
+
+<!-- Only include on form render page -->
+<script src="../../formBuilder/formBuilder-master/demo/assets/js/form-render.js"></script>
+<script>
+        $.fn.gotoAnchor = function(anchor) {
+            location.href = this.selector;
+        }
+
+    jQuery(document).ready(function($) {
+        'use strict';
+        var template = document.getElementById('formBuilder'),
+            formContainer = document.getElementById('rendered-form'),
+            renderBtn = document.getElementById('render-form-button');
+        $(template).formBuilder();
+
+        $(renderBtn).click(function(e) {
+            e.preventDefault();
+            $(template).formRender({
+                container: $(formContainer)
+            });
+            $('#rendered-form').gotoAnchor();
+        });
+    });
+
+
+
+
+
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
+

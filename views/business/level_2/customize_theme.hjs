@@ -3,7 +3,8 @@
 <head>
     <title>Personalize</title>
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/landing.css'/>
     <link rel='stylesheet' href='/stylesheets/customizetheme.css'/>
     {{{ newrelic.getBrowserTimingHeader }}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -29,23 +30,24 @@
           <li>
             <a href="/addemployees">Employees</a>
           </li>
+          <li>
+            <a href="/accountSettings">Account Settings</a>
+          </li>
           <li class="active">
-            <a href="/accountSettings">Settings</a>
+            <a href="/businesssetting">Company Settings</a>
           </li>
           <li>
-            <a href="/businesssetting">Company Name</a>
+            <a href="/logout">Logout</a>
           </li>
         </ul>
       </div>
         <div class="top-bar-section-secondary" id="secondary_navbar">
             <ul class="nav navbar-nav navbar-right navbar-secondary">
-                <!--<li><a href="/registerDevice">Configurations</a></li>-->
-                <!--<li><a href="/manageforms">Manage Forms</a></li>-->
-                <li><a href="/uploadlogo">Upload Logo</a></li>
+                <li><a href="/formbuilder">Manage Forms</a></li>
                 <li class="active">
                     <a href="/customizetheme">Customize Theme</a>
                 </li>
-                <li><a href="/accountSettings">Account Settings</a></li>
+                <li><a href="/businesssetting">Company Settings</a></li>
             </ul>
         </div>
     {{#message}}
@@ -60,24 +62,28 @@
 
     <div class="row text-center">
         <div class="col-md-6">
-            <h3>Current Logo</h3>
+            <h3>Current Logo:</h3>
         <!--   <img class="logoImage logoRow" src="{{logo}}" style="width:inherit" alt="Company's Logo"/>  -->
-             <img class="logoImage logoRow" src="{{logo}}" alt="Company's Logo" width = "250" height="300"/>
+             <img class="logoImage logoRow" src="{{logo}}" alt="Company's Logo"/>
         </div>
         <div class="col-md-6">
-            <h3>Current Background Image</h3>
-            <img class="bgImage" src="{{bg}}" alt="Company's Custom Background Image" width = "250" height = "300"/>
+            <h3>Current Background Image:</h3>
+            <img class="bgImage" src="{{bg}}" alt="Company's Custom Background Image" style="height: 50%; width: 50%"/>
         </div>
     </div>
 
     <br/>
 
     <div class="text-center">
-        <a type="button" class="standard-btn" href="/theming">
-            &nbspCustomize My Theme
-        </a>
+        <a type="button" class="standard-btn" href="/theming">Customize Theme</a>
     </div>
 </div>
+        <form id="uploadForm" enctype="multipart/form-data" action="/uploadlogo" method="post" class="uploadFormCenterHack bottomOfPage">
+            <input type="file" name="userLogo" class="text-center" />
+            <br><br>
+            <input type="hidden" value="54eca979f2a2d47937757617" name="business" class="text-center"/>
+            <input class="btn custom-button" style="width:120px" type="submit" value="Upload Image" name="Upload Button"/>
+        </form>
 
 <!--Footer to display the about info,etc-->
 <footer class="footer site-footer">

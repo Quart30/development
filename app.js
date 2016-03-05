@@ -16,8 +16,13 @@ var passport = require('passport');
 var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var app = express();
+var request = require('request');
+var server = require('http').createServer(app).listen(8000);
+var io = require('socket.io')(server);
+
 
 global.__base = __dirname + '/';
+
 
 //Database
 var monk = require('monk');
@@ -132,7 +137,7 @@ app.use(function (req, res, next) {
 app.use('/office', require('./routes/webapp/checkin'));
 app.use('/', businessRoutes);
 
-
+app.use("/formBuilder", express.static(__dirname + '/formBuilder'));
 // Set Mobile Routes
 app.use('/', mobileAuth);
 app.use('/api/m/form', mobileForm);
@@ -280,10 +285,44 @@ app.post('/createappointment', function(req, res) {
         date: date
     }, function(err, result) {
        if (result) {
+           /*this will let the client know the appointments table changed so they can
+           refresh it*/
+           io.emit('create_appointment',
+               {eid: eid, _id: result._id, fname: fname, lname: lname, state: state, date: date});
            res.writeHead(200);
            res.write("Successfully inserted " + fname + " " +
                lname + " into the appointments table. Appt id = " + result._id.toString());
            res.end();
+
+           var hr = date.getHours();
+           var min = date.getMinutes();
+           var ampm = (hr >= 12) ? 'PM' : 'AM';
+           if (hr == 0)
+                hr = 12;
+           else if (hr > 12)
+                hr -= 12;
+
+           // add a 0 to mins
+           if (min <= 9)
+                min = '0' + min;
+
+           var text = { 'text': fname + ' ' + lname +
+                        ' has checked in for their appointment at ' +
+                        hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
+           };
+            // send to slack
+           var options = {
+               // this is the URL for quart30.slack.com
+               url: 'https://hooks.slack.com/services/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',
+               method: 'POST',
+               json: text
+           };
+
+           request.post(options, function (error, response, body) {
+               if (!error && response.statusCode == 200) {
+                   console.log(body.id); // Print the shortened url.
+               }
+           });
        }
     });
 });
@@ -306,6 +345,7 @@ app.delete('/deleteappointment', function(req, res) {
 
     if (apptId === "all") {
         appointmentsDB.remove({employee: ObjectId(eid)});
+        io.emit('delete_all_appointments', {eid: eid});
         res.writeHead(200);
         res.write("Removed all appointments for " + eid + ".");
         res.end();
@@ -314,8 +354,9 @@ app.delete('/deleteappointment', function(req, res) {
         appointmentsDB.findOne({_id: ObjectId(apptId)}, function(err, result) {
             if (result) {
                 appointmentsDB.remove({_id: ObjectId(apptId)});
+                io.emit('delete_one_appointment', {eid: result.employee, _id: apptId});
                 res.writeHead(200);
-                res.write("Removed appoimtent " + apptId);
+                res.write("Removed appointment " + apptId);
             }
             else {
                 res.writeHead(400);
@@ -326,6 +367,57 @@ app.delete('/deleteappointment', function(req, res) {
     }
 });
 
+
+/**
+ * API GET request after "Add to Slack" button is pressed
+ */
+app.get('/registerslack', function(req, res) {
+
+    var params = req.query;
+    var code = params.code;
+    var client_id = '23623886482.24011540304';
+    var client_secret = '06d85b7b64226c47238bd06fe61fc75c';
+
+    // pretty gross way of getting the slack integration
+    var url = 'https://slack.com/api/oauth.access?client_id=' + client_id + '&client_secret=' + client_secret + '&code=' + code;
+
+    request.post(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log('json: ' + body);
+
+            // get the necessary data by parsing the body
+            // likely add it to the database so we can correctly send messages
+            //JSON.parse(body, )
+
+        } else {
+            console.log(response.statusCode.toString() + ': ' + error);
+        }
+    });
+
+    res.redirect('/businesssetting/'); // redirect after processing data
+});
+
+/***********************************************************************************************
+{
+    "ok":true,
+    "access_token":"xoxp-23623886482-23625251793-24299768672-161a3ec268",
+    "scope":"identify,incoming-webhook,commands,bot",
+    "team_name":"quart30_cse112","team_id":"T0PJBS2E6",
+    "incoming_webhook":
+    {
+        "channel":"#general",
+        "channel_id":"C0PJ60W0L",
+        "configuration_url":"https:\/\/quart30.slack.com\/services\/B0Q8R9UDR",
+        "url":"https:\/\/hooks.slack.com\/services\/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"
+    },
+    "bot":
+    {
+        "bot_user_id":"U0Q8UFJNS",
+        "bot_access_token":
+        "xoxb-24300528774-XqsHsqbsaeHUSx0j9OGx3Q8j"
+    }
+}
+*************************************************************************************************/
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
