@@ -17,23 +17,6 @@ exports.get = function (req, res) {
     var end = new Date();
     end.setHours(23, 59, 59, 999);
 
-    // appointments.findOne({employee: ObjectID(req.params.eid)}, function(err, results) {
-    //     if (results) {
-    //         console.log('Here it is!!!');
-    //         console.log(results.date);
-    //     }
-    // });
-
-    /*appointments.find({employee: ObjectID(req.params.eid)}, function (err, results) {
-        if (err) {
-            console.error('MongoDB Error in /api/employee/:eid/appointments/today: ' + err);
-            return res.send(500);
-        }
-        res.json(results);
-    });
-
-    return;*/
-
     appointments.find({
         employee: ObjectID(req.params.eid),
         date: {
