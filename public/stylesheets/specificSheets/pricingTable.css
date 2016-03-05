@@ -114,15 +114,15 @@ body {
 }
 .hint{
     font-style: italic;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
 }
 .features{
     list-style-type: none;    
     background: #FFFFFF;
     text-align: left;
     color: #9C9C9C;
-    padding:30px 22%;
-    font-size: 0.9rem;
+    padding:30px 12%;
+    font-size: 1.2rem;
 }
 .features li{
     padding:15px 0;
