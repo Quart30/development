@@ -168,6 +168,7 @@ a:hover {
 .pricing-part {
     text-align: center;
     background-color: #c9c9c9;
+    padding-top: 27px;
 }
 .bottom-part {
     width: 100vw;
