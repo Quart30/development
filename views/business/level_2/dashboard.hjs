@@ -45,16 +45,13 @@
         </li>
         <li>
           <a href="/businesssetting">Company Settings</a>
+        </li>
         <li>
           <a href="/logout">Logout</a>
         </li>
-        </li>
-        <li>
-            <a href="/">Logout</a>
-        </li>
       </ul>
-      
-      
+
+
     </div>
 
   </nav>
@@ -78,7 +75,7 @@
       <div id="txt" class="text-center"></div>
     </div>
       <p id="demo" onclick="demo({{permissionLevel}})"></p>
-     
+
     </div>
 
   </div>
