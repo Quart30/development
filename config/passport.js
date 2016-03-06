@@ -91,6 +91,7 @@ module.exports = function (passport) {
                             lname: lname,
                             logo: '',
                             walkins: false,
+                            slack: 'none'
                         }, function (err, result) {
                             if (err) {
                                 throw err;
