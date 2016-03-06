@@ -1,3 +1,5 @@
+//want to keep this file for now
+
 exports.put = function (req, res, next) {
     var business = req.user[0].business;
     req.db.get('businesses').updateById(business._id, {
