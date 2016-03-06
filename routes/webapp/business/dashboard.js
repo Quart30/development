@@ -9,6 +9,7 @@ exports.get = function (req, res) {
     var employeePhone = req.user[0].phone;
     var employeePermission = req.user[0].permissionLevel;
     var walkinsAllowed = req.user[0].walkins;
+    var companyName = "";
 
     //console.log("First name: " + employeename);
 
@@ -29,7 +30,7 @@ exports.get = function (req, res) {
             page = 'business/level_4/dashboard';
             break;
     }
-    res.render(page, {title: 'Express',
+    res.render(page, {title: 'Dashboard',
 		eid: employeeId,
 		employeeName: employeename,
         employeeLast: employeeLastName,

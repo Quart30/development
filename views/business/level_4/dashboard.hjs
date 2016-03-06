@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/dashboard.css'/>
     <link rel='stylesheet' href='/stylesheets/tableStripeOverride.css'/>
+    <link rel='stylesheet' href='/stylesheets/index.css'/>
 
     {{{ newrelic.getBrowserTimingHeader }}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script>
         eid = "{{eid}}";
-        loc = window.document.location.host;
     </script>
     <script src="/javascripts/dashboard.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -48,6 +48,7 @@
 
 <div class="page-wrap">
     <!-- nav bar -->
+
     <div class="top-bar-section">
         <div style="padding-top: 33px;">
             <span class="shameless-plug">Herald</span>

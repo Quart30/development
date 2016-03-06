@@ -64,12 +64,14 @@
 -->
             <div class="build-form">
                 <h2><strong>Build The Form</strong></h2>
-                <form action="">
+                <form action="saveform" method="post">
                     <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"></textarea>
+                    <input type="hidden" name="saveData" id="saveData" value="">
+                    <input type="text" name=formName  id="formName" placeholder="Form Name:">
+                     <button id="saveButton" class="btn btn-primary">Save Form</button>
                 </form>
                 <br style="clear:both">
                 <button id="render-form-button" class="btn btn-primary">Preview Form</button>
-                <!-- TODO: create button that returns to page you were just on -->
 
             </div>
             <div class="render-form" >
@@ -108,8 +110,19 @@
         'use strict';
         var template = document.getElementById('formBuilder'),
             formContainer = document.getElementById('rendered-form'),
+            saveBtn = document.getElementById('saveButton'),
+            saveData = document.getElementById('saveData'),
             renderBtn = document.getElementById('render-form-button');
         $(template).formBuilder();
+
+
+        $(saveBtn).click(function(e){
+
+          $(saveData).attr("value", $(template).val());
+         // $(saveData).attr("value", "hi");
+          console.log($(template).val());
+          $(saveBtn).submit();
+        });
 
         $(renderBtn).click(function(e) {
             e.preventDefault();
