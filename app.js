@@ -268,6 +268,7 @@ app.post('/createappointment', function(req, res) {
     var fname = params.fname;
     var lname = params.lname;
     var state = params.state ? params.state : "scheduled";
+    var image = params.image ? params.image : "http://placehold.it/50x50";
     //for a list of the possible states and their order, look at appointment.controller.js
     var date = new Date();
     date.setSeconds(0);
@@ -287,7 +288,8 @@ app.post('/createappointment', function(req, res) {
         fname: fname,
         lname: lname,
         state: state,
-        date: date
+        date: date,
+        image: image
     }, function(err, result) {
        if (result) {
            /*this will let the client know the appointments table changed so they can
@@ -296,7 +298,7 @@ app.post('/createappointment', function(req, res) {
                date.setHours(date.getHours() + 8);
            }
            app.io.emit('create_appointment',
-               {eid: eid, _id: result._id, fname: fname, lname: lname, state: state, date: date});
+               {eid: eid, _id: result._id, fname: fname, lname: lname, state: state, date: date, image: image});
            res.writeHead(200);
            res.write("Successfully inserted " + fname + " " +
                lname + " into the appointments table. Appt id = " + result._id.toString());
