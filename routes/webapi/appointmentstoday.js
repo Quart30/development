@@ -10,6 +10,8 @@ exports.get = function (req, res) {
     var db = req.db;
     var appointments = db.get('appointments');
 
+    console.log('HELLO?');
+
     //Get the start and end of today
     var begin = new Date();
     begin.setHours(0,0,0,0);
