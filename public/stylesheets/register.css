@@ -50,7 +50,7 @@ body {
 
 
 .top-bar-section{
-    height: 9vh;
+    height: 100px;
     width: 100vw;
     background-color: rgba(0,0,0, 0.3);
 }

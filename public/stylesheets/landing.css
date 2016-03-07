@@ -88,13 +88,15 @@ a:hover {
 }
 .form-container{
 
-    float: right;
-    padding-right: 20px;
-    margin-top: -54px;
-
+/*
+  float: right;
+  padding-right: 20px;
+  margin-top: -54px;
+*/
     float: right;
     padding-right: 40px;
     margin-top: -30px;
+
 
 }
 
