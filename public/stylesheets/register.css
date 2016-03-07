@@ -111,14 +111,12 @@ body {
     border-color: white;
     color: white;
     font-size: 17px;
-    color: white;
     background: transparent;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     width:150px;
     overflow: auto;
     white-space: nowrap;
-    border:1px white solid;
     margin-top: 5px;
 }
 
@@ -166,7 +164,6 @@ body {
     border-color: white;
     color: #ffffff;
     font-size: 18px;
-    color: white;
     background: transparent;
     padding: 13px 25px 13px 25px;
     text-decoration: none;
@@ -178,7 +175,6 @@ body {
     overflow: auto;
     white-space: nowrap;
     margin:0px auto;
-    border:1px white solid;
 }
 
 .standard-btn-small {
