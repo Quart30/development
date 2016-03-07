@@ -4,9 +4,8 @@
     <title>{{ title }}</title>
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!--<link rel='stylesheet' href='/stylesheets/style.css'/>-->
-     <link rel='stylesheet' href='/stylesheets/register.css'/>
-     <link rel='stylesheet' href='/stylesheets/specificSheets/footer.css'/>
+    <link rel='stylesheet' href='/stylesheets/register.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/footer.css'/>
 
 
     {{#newrelic}}
@@ -22,7 +21,7 @@
     <div class="initial-screen">
         <div class = "top-bar-section">
             <div style="padding-top: 33px;">
-                <a class="shameless-plug">Herald</a>
+                <a class="shameless-plug" href="/">Herald</a>
             </div>
             <div class="form-container">
                 <form action="login" method="post">

@@ -1,10 +1,12 @@
 /* general */
 h1, h2, h3, h4, h5, h6, p, span, a, input, label, div, strong, li, ul, footer {
   color: white;
+  font-family: Lato, sans-serif;
 }
 html, body {
   height: 100%;
   overflow-x: hidden;
+  color: white;
 }
 body {
   background-color: #89bdd3;
@@ -63,3 +65,7 @@ li.active {
     background: rgba(0,0,0,0.5);
     text-align: center;
 }
+
+
+
+
