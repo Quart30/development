@@ -21,18 +21,10 @@ function dateToString(date) {
 
 }
 
-<<<<<<< HEAD
-function getDate(){
-	var currentdate = new Date();
-	var datetime = '';
-	datetime += dateToString(currentdate);
-=======
 function getDate() {
     var currentdate = new Date();
     var datetime = '';
     datetime += dateToString(currentdate);
->>>>>>> a9dae80535778e732c79b0fcfd5aa3ade9b55b48
-
 
     var $header = $('<h1/>');
     $header.append(datetime);
