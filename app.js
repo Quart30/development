@@ -134,6 +134,7 @@ app.use('/office', require('./routes/webapp/checkin'));
 app.use('/', businessRoutes);
 
 app.use("/formBuilder", express.static(__dirname + '/formBuilder'));
+app.use('/api', require('./routes/webapi'));
 
 var auth = require('./lib/auth');
 /**
