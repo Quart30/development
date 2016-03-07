@@ -2,7 +2,7 @@ var crypto = require('crypto');
 var baby = require('babyparse');
 var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
-//var transporter = require('nodemailer').createTransport('smtps://quart30dev%40gmail.com:cse112quart@smtp.gmail.com');
+var transporter = require('nodemailer').createTransport('smtps://quart30dev%40gmail.com:cse112quart@smtp.gmail.com');
 
 /**
  * Takes a req and res parameters and is inputted into function to get employee, notemployee, and business data.
@@ -25,7 +25,7 @@ exports.get = function(req,res){
                     if(!results) { return next(new Error('Error finding employee'));}
 
                     employeee = results;
-                    console.log(employeee);
+                    //console.log(employeee);
                     cb();
 
                 });
@@ -111,13 +111,21 @@ exports.post = function(req,res){
             /*password: pass*/ //will be added programmatically once the employee confirms
         });
 
+        var app = require('../../../app');
+        var registrationLink;
+        if (app.get('env') == 'production') {
+            registrationLink = 'http://quart30.herokuapp.com/employeeregister?token=' + token;
+        }
+        else {
+            registrationLink = 'http://localhost:4000/employeeregister?token=' + token
+        }
+
         var message = {
             to: email,
             from: 'quart30dev@gmail.com',
             subject: 'Employee Signup',
             text: 'Hello, ' + fname + ' ' + lname + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
-            'http://quart30.herokuapp.com/employeeregister?token=' + token
-            //'http://localhost:4000/employeeregister?token=' + token
+                registrationLink
         };
 
         // send mail with defined transport object
@@ -125,7 +133,7 @@ exports.post = function(req,res){
             if(error){
                 return console.log('Email error: ' + error);
             }
-            console.log('Message sent: ' + info.response);
+            console.log('Confirmation email sent: ' + info.response);
         });
     }
     res.redirect('/addemployees');
