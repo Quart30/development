@@ -63,11 +63,7 @@ a:hover {
 
 /* grey bar on top of landing page including login form */
 .top-bar-section{
-<<<<<<< HEAD
-    height: 70px;
-=======
-    height: 90px;
->>>>>>> aca5cdfff1ebb0c0f7f002af52b33a131f6f6855
+    height: 90px;/* 70? */
     width: 100vw;
     background-color: rgba(0,0,0, 0.3);
 }
@@ -91,16 +87,16 @@ a:hover {
     color: white;
 }
 .form-container{
-<<<<<<< HEAD
+/*
   float: right;
   padding-right: 20px;
   margin-top: -54px;
-=======
+*/
     float: right;
     padding-right: 40px;
     margin-top: -30px;
->>>>>>> aca5cdfff1ebb0c0f7f002af52b33a131f6f6855
 }
+
 .shameless-plug {
   font-size: 13pt;
   margin-left: 40px;
