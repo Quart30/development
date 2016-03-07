@@ -4,14 +4,14 @@ html *
 }
 /* general rules */
 h1, h2, h3, h4, h5, h6, p, span, a, input, label, div {
-  color: white;
+    color: white;
 }
 
 .initial-screen {
-  height: 100vh;
-  width: 100vw;
-  background-image: url('../images/landing-background.jpg');
-  background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../images/landing-background.jpg');
+    background-size: cover;
 }
 html {
     position: relative;
@@ -50,7 +50,7 @@ body {
 
 
 .top-bar-section{
-    height: 12vh;
+    height: 9vh;
     width: 100vw;
     background-color: rgba(0,0,0, 0.3);
 }
@@ -63,6 +63,8 @@ body {
     font-size: 1.2em;
     font-weight: bold;
 }
+
+
 .form-input{
     width: 230px;
     border: 1px solid #FFF;
@@ -71,7 +73,7 @@ body {
     background: white;
 }
 .form-input::placeholder-shown {
-  color: black;
+    color: black;
 }
 .form-container{
     float: right;
@@ -159,41 +161,41 @@ body {
 
 /*Login button stuff */
 .standard-btn {
-  border-width: 2px;
-  border-style: solid;
-  border-color: white;
-  color: #ffffff;
-  font-size: 18px;
-  color: white;
-  background: transparent;
-  padding: 13px 25px 13px 25px;
-  text-decoration: none;
-  text-align: center;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    color: #ffffff;
+    font-size: 18px;
+    color: white;
+    background: transparent;
+    padding: 13px 25px 13px 25px;
+    text-decoration: none;
+    text-align: center;
 
-  height: 36px;
-  width:160px;
-  display:inline-block;
-  overflow: auto;
-  white-space: nowrap;
-  margin:0px auto;
-  border:1px white solid;
+    height: 36px;
+    width:160px;
+    display:inline-block;
+    overflow: auto;
+    white-space: nowrap;
+    margin:0px auto;
+    border:1px white solid;
 }
 
 .standard-btn-small {
-  padding: 6px 25px 6px 25px;
-  font-size: 13px;
-  overflow: hidden;
+    padding: 6px 25px 6px 25px;
+    font-size: 13px;
+    overflow: hidden;
 }
 
 .standard-btn-large {
-  width: 300px;
-  font-size: 25px;
-  padding: 13px 25px 13px 25px;
-  overflow: hidden;
+    width: 300px;
+    font-size: 25px;
+    padding: 13px 25px 13px 25px;
+    overflow: hidden;
 }
 
 .standard-btn:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 /*Register Container Styling*/

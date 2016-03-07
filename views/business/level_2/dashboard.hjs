@@ -67,7 +67,7 @@
    <div class="alert alert-danger">{{message}}</div>
 {{/message}}
 
-  <h1><strong><div>Hi, {{employeeName}} {{employeeLast}} {{employeePermission}}</div></strong></h1>
+  <h1><strong><div>Hi, {{companyName}}  ({{employeePermission}})</div></strong></h1>
   <div class="dashboardTopInfo text-center">
 
       <h1 class="text-center">Today</h1>
