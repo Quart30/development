@@ -32,7 +32,7 @@
       </div>
       <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
         <li class="active">
-          <a href="/level_2/dashboard">Dashboard</a>
+          <a href="/dashboard">Dashboard</a>
         </li>
         <li>
           <a href="/queue">Queue</a>
