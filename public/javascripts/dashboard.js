@@ -21,17 +21,11 @@ function dateToString(date) {
 
 }
 
-<<<<<<< HEAD
-function getDate(){
-	var currentdate = new Date();
-	var datetime = '';
-	datetime += dateToString(currentdate);
-=======
+
 function getDate() {
     var currentdate = new Date();
     var datetime = '';
     datetime += dateToString(currentdate);
->>>>>>> a9dae80535778e732c79b0fcfd5aa3ade9b55b48
 
 
     var $header = $('<h1/>');
@@ -328,4 +322,65 @@ function drawTable() {
         columns[0] = i + 1; //this is the number shown in the first column of the table
         insRow(columns);
     }
+}
+
+
+function recordClick() {
+    // Configure an instance for your project
+    var client = new Keen({
+        projectId: "56dccd4ac1e0ab4d24f6c62e",
+        writeKey: "347629feb542cb08d47167810add3966c3c8b37c429f3a74961ad481b025f9ed7710e865db5ee8beeb84fb109092e82882e3c4f2d2c26f8b0c429c51a4b60478944074ffc09968f1239f058f3576498478f660f45e8ce3b76b40559e4886a0e9"
+    });
+
+// Create a data object with the properties you want to send
+    var clickLogout = {
+        user: "user",
+        level: "guess",
+        keen: {
+            timestamp: new Date().toISOString()
+        }
+    };
+
+// Send it to the "purchases" collection
+    client.addEvent("logout", clickLogout, function(err, res){
+        if (err) {
+            // there was an error!
+        }
+        else {
+            // see sample response below
+            alert("success: write");
+        }
+    });
+
+
+}
+
+function retrieveClick(){
+    // Create a client instance
+    var client = new Keen({
+        projectId: "56dccd4ac1e0ab4d24f6c62e",
+        readKey: "18b847b8b4f4aba961bd51cfc39b8f87743429164184584fd7dc29635311991ad99f185c359c90bed086c77fc3df6c9efb3587acc3081d627717e9d727a6761403b98cfa2caa1abf24c7cd6669d811e82109262bd6a296af6f62a4d1f40219ab"
+    });
+
+    Keen.ready(function(){
+
+        // Create a query instance
+        var countClicks = new Keen.Query("countlogged", {
+            event_collection: "logout",
+            group_by: "property",
+            timeframe: "this_7_days"
+        });
+
+        // Send query
+        client.run(count, function(err, res){
+            if (err) {
+                // there was an error!
+            }
+            else {
+                // do something with res.result
+                alert("success: read");
+            }
+        });
+
+    });
 }
