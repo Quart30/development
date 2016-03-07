@@ -46,6 +46,7 @@
 </head>
 <body>
 
+
 <div class="page-wrap">
     <!-- nav bar -->
 
@@ -71,8 +72,8 @@
     <!-- end nav bar -->
 
     <!-- begin transbox -->
-    <div class="container transbox">
-        {{#message}}
+    <div class="container transbox" style="box-shadow:  0px 0px 30px 15px rgba(0, 0, 0, 0.8)">
+    {{#message}}
         <div class="alert alert-danger">{{message}}</div>
         {{/message}}
         <h1><strong>

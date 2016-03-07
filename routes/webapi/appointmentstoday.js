@@ -10,8 +10,6 @@ exports.get = function (req, res) {
     var db = req.db;
     var appointments = db.get('appointments');
 
-    console.log('HELLO?');
-
     //Get the start and end of today
     var begin = new Date();
     begin.setHours(0,0,0,0);
@@ -30,8 +28,6 @@ exports.get = function (req, res) {
             console.error('MongoDB Error in /api/employee/:eid/appointments/today: ' + err);
             return res.send(500);
         }
-
-        console.log('haha');
 
         //Heroku likes to live in the past...or the future. I'm not too sure.
         var app = require('../../app');
