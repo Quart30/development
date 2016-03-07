@@ -35,7 +35,7 @@
       </div>
       <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
         <li class="active">
-          <a href="/level_2/dashboard">Dashboard</a>
+          <a href="/dashboard">Dashboard</a>
         </li>
         <li id="emptab">
             <a href="/addemployees">Employees</a>
@@ -46,6 +46,7 @@
         <li>
           <a href="/businesssetting">Company Settings</a>
         </li>
+        <li>
         <li>
           <a href="/logout">Logout</a>
         </li>

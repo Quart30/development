@@ -45,6 +45,14 @@ function startTime() {
         h = h - 12;
     }
 
+    if (h == 12) {
+        dn = 'PM';
+    }
+
+    if (h == 0) {
+        h = 12; //12 AM previously appeared as 00:XX:YY
+    }
+
     m = prependZero(m);
     s = prependZero(s);
     $('#txt').html('Current Time: ' + h + ':' + m + ':' + s + ' ' + dn);
@@ -108,7 +116,9 @@ function parseAppointmentData(data, callback) {
     //browsers like to mess with JavaScript's Date object...
     data.date = correctDate(data.date);
 
-    var $img = $('<img id="Image" src="http://placehold.it/50x50" />');
+    //var $img = $('<img id="Image" src="http://placehold.it/50x50" />');
+    var imgSource = data.image ? data.image : "http://placehold.it/50x50";
+    var $img = $('<img id="Image" src="' + imgSource + '" />');
 
     if (data.state === 'checkedIn' || data.state === 'roomed') {
 
