@@ -6,6 +6,7 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/dashboard.css'/>
+    <link rel='stylesheet' href='/stylesheets/tableStripeOverride.css'/>
     <link rel='stylesheet' href='/stylesheets/index.css'/>
 
     {{{ newrelic.getBrowserTimingHeader }}}
@@ -15,9 +16,9 @@
         eid = "{{eid}}";
     </script>
     <script src="/javascripts/dashboard.js"></script>
-    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
-        var socket = io.connect('http://localhost:8000/');
+        var socket = io();
         socket.on('create_appointment', function (data) {
             if (data.eid === eid) {
                 parseAppointmentData(data, function (apptId, columns) {
@@ -45,6 +46,7 @@
 </head>
 <body>
 
+
 <div class="page-wrap">
     <!-- nav bar -->
 
@@ -70,12 +72,12 @@
     <!-- end nav bar -->
 
     <!-- begin transbox -->
-    <div class="container transbox">
-        {{#message}}
+    <div class="container transbox" style="box-shadow:  0px 0px 30px 15px rgba(0, 0, 0, 0.8)">
+    {{#message}}
         <div class="alert alert-danger">{{message}}</div>
         {{/message}}
         <h1><strong>
-            <div>Hi, {{companyName}} ({{employeePermission}}) {{walkinsAllowed}}</div>
+            <div>Hi, {{employeeName}} of {{companyName}}! ({{employeePermission}}) {{walkinsAllowed}}</div>
         </strong></h1>
         <div class="dashboardTopInfo text-center">
 

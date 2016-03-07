@@ -21,18 +21,10 @@ function dateToString(date) {
 
 }
 
-<<<<<<< HEAD
-function getDate(){
-	var currentdate = new Date();
-	var datetime = '';
-	datetime += dateToString(currentdate);
-=======
 function getDate() {
     var currentdate = new Date();
     var datetime = '';
     datetime += dateToString(currentdate);
->>>>>>> a9dae80535778e732c79b0fcfd5aa3ade9b55b48
-
 
     var $header = $('<h1/>');
     $header.append(datetime);
@@ -49,6 +41,14 @@ function startTime() {
     if (h > 12) {
         dn = 'PM';
         h = h - 12;
+    }
+
+    if (h == 12) {
+        dn = 'PM';
+    }
+
+    if (h == 0) {
+        h = 12; //12 AM previously appeared as 00:XX:YY
     }
 
     m = prependZero(m);
@@ -114,7 +114,9 @@ function parseAppointmentData(data, callback) {
     //browsers like to mess with JavaScript's Date object...
     data.date = correctDate(data.date);
 
-    var $img = $('<img id="Image" src="http://placehold.it/50x50" />');
+    //var $img = $('<img id="Image" src="http://placehold.it/50x50" />');
+    var imgSource = data.image ? data.image : "http://placehold.it/50x50";
+    var $img = $('<img id="Image" src="' + imgSource + '" />');
 
     if (data.state === 'checkedIn' || data.state === 'roomed') {
 
