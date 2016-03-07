@@ -63,9 +63,7 @@ a:hover {
 
 /* grey bar on top of landing page including login form */
 .top-bar-section{
-
     height: 80px;
-
     width: 100vw;
     background-color: rgba(0,0,0, 0.3);
 }
@@ -90,15 +88,18 @@ a:hover {
 }
 .form-container{
 
-    float: right;
-    padding-right: 20px;
-    margin-top: -54px;
-
+/*
+  float: right;
+  padding-right: 20px;
+  margin-top: -54px;
+*/
     float: right;
     padding-right: 40px;
     margin-top: -30px;
 
+
 }
+
 .shameless-plug {
     font-size: 13pt;
     margin-left: 40px;
