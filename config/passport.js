@@ -100,8 +100,9 @@ module.exports = function (passport) {
                             var businessID = result._id.toString();
 
                             forms.insert({
-                                 business: ObjectId(businessID),
-                                form: {Name: "", Phone:""}
+                                 business: businessID,
+                                 name: 'Default',
+                                 data: ''
                             });
 
                             var company = result.companyName;
