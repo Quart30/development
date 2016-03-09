@@ -77,7 +77,7 @@
         <div class="alert alert-danger">{{message}}</div>
         {{/message}}
         <h1><strong>
-            <div>Hi, {{employeeName}} of {{companyName}}! ({{employeePermission}}) {{walkinsAllowed}}</div>
+            <div>Hi, {{employeeName}} of {{companyName}}! ({{employeePermission}}) ({{eid}}) {{walkinsAllowed}}</div>
         </strong></h1>
         <div class="dashboardTopInfo text-center">
 
