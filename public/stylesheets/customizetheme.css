@@ -8,12 +8,14 @@ html, body {
 
 .upload-form {
   margin-top: 20px;
-  border:1px white solid;
   height: 10px;
+  text-align: center;
 }
 .upload-form input {
-  display: inline-block;
-
+  display: block;
+  text-align: center;
+  margin-left: 100px;
+  margin-bottom: 10px;
 }
 
 .custom-button{
@@ -26,7 +28,7 @@ html, body {
   background: transparent;
   padding: 7px;
   text-decoration: none;
-  width:120px;
+  width:180px;
   overflow: auto;
   white-space: nowrap;
   margin-top: 0;

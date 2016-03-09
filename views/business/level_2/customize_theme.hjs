@@ -70,9 +70,9 @@
         </div>
         <div class="row">
           <form id="uploadForm" enctype="multipart/form-data" action="/uploadlogo" method="post" class="upload-form">
-            <button type="submit" class="custom-button" value="Upload Image" name="Upload Button">Upload Image</button>
             <input type="file" name="userLogo"/>
             <input type="hidden" value="54eca979f2a2d47937757617" name="business"/>
+            <button type="submit" class="custom-button" value="Upload Image" name="Upload Button">Upload New Image</button>
           </form>
         </div>
       </div>
@@ -87,7 +87,6 @@
       </div>
     </div>
   </div>
-
 </div> <!-- page-wrap -->
 
 <!--Footer to display the about info,etc-->
