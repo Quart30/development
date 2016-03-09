@@ -50,10 +50,10 @@
 
     <div class="container">
         <h2>Register Employees</h2>
-        <h4>Register all your employee(s) through a CSV file!</h4>
+        <h4>Register all your employee(s)!</h4>
         <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
-            <textarea style="color: black;" type="text"name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
-            <input style="margin-top: -39px;" class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
+            <textarea style="color: black;" type="text"name="csvEmployees" placeholder="Enter: Name, Email" required></textarea>
+            <input style="margin-top: -39px;" class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Submit">
         </form>
 
         <div class="row" id="regis-container">
@@ -65,12 +65,14 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             {{#signed}}
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
+                                <td> <button><a href="/dashboard"> delete</a> </button> </td>
                             </tr>
                             {{/signed}}
                         </table>
@@ -82,12 +84,14 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th> </th>
                                 </tr>
                             </thead>
                             {{#notsigned}}
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
+                                <td> <button><a href="/dashboard"> delete</a> </button> </td>
                             </tr>
                             {{/notsigned}}
                         </table>

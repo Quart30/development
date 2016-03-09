@@ -40,6 +40,7 @@ module.exports = function (passport) {
                 || phone === '' || password === ''
                 || !checkEqual(req.body.email, req.body.email2)
                 || !checkEqual(req.body.password, req.body.password2)) {
+
                 /*
                 IMPORTANT: Currently, I don't know how to get "res" in here, and we need it
                 to inform the user they didn't fill the form in correctly. Need to come back
