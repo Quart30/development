@@ -11,20 +11,14 @@ exports.get = function (req, res) {
     var walkinsAllowed = req.user[0].walkins;
     var companyName = "";
 
-    //console.log("First name: " + employeename);
-
     var companyName = req.user[0].company;
-
-    console.log('employee id: ' + employeeId);
 
     var page; // page to load
     switch (req.user[0].permissionLevel) {
         case 1:
-        case 2:
-            page = 'business/level_2/dashboard';
-            break;
+        case 2: // level2/3 have the same views
         case 3:
-            page = 'business/level_3/dashboard';
+            page = 'business/level_2/dashboard';
             break;
         default: // default level 4
             page = 'business/level_4/dashboard';
@@ -38,6 +32,6 @@ exports.get = function (req, res) {
         employeePermission: employeePermission,
         walkinsAllowed: walkinsAllowed,
         companyName: companyName,
-		message: req.flash("permission"),
+		message: req.flash("permission")
 	});
 };

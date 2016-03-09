@@ -117,7 +117,6 @@ module.exports = function (passport) {
                                 email: result.email,
                                 smsNotify: true,
                                 emailNotify: true,
-                                admin: true,
                                 permissionLevel: 2,
                                 company: company
                             }, function (err, user) {

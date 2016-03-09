@@ -149,7 +149,6 @@ var auth = require('./lib/auth');
  * @param lname last name
  * @param email email
  * @param permission permission level
- * @param admin does this user have admin priveleges?
  * @param company the employee's company
  * @param phone phone number
  */
@@ -161,12 +160,10 @@ app.post('/createemployee', function (req, res) {
     var lname = params.lname ? params.lname : "Last";
     var email = params.email ? params.email : "placeholder@mailinator.com";
     var permission = params.permission ? Number(params.permission) : 3;
-    var admin = params.admin ? Boolean(params.admin) : false;
     var company = params.company ? params.company : "Placeholder Company";
     var password = params.password ? params.password : "placeholder";
     var phone = params.phone ? params.phone : "1234567890";
     //var newEmployee = {bid: bid, fname: fname, lname: lname, email: email, permissionLevel: permission,
-    //admin: admin, company: company, password: password, phone: phone};
 
     employeeDB.findOne({email: email}, function (err, result) {
         if (err) {
@@ -184,7 +181,6 @@ app.post('/createemployee', function (req, res) {
                     email: email,
                     smsNotify: true, //needed?
                     emailNotify: true, //not in use currently
-                    admin: admin,
                     permissionLevel: permission,
                     company: company //Permission 1 users don't require company
                 }, function(err, result) {

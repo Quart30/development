@@ -53,19 +53,17 @@
 				<hr></hr>
 			</div>
 		</div>
-		<!--
 		<div class="form-inline">
 			<form class="form-horizontal" action="" method="post">
 				<label class="col-md-2 col-md-offset-2 control-label editName">Name</label>
 				<div class="col-md-3">
-					<input type="text" id="editName" name="editName" value="{{ fname }} {{lname}}" class="form-control" readonly>
+					<input class="std-input" id="editName" name="editName" value="{{ fname }} {{lname}}" class="form-control">
 				</div>
 				<div class="col-md-2">
 					<button type="password" class="btn custom-button" type="submit">Update</button>
 				</div>
 			</form>
 		</div>
-		-->
 		<div class="form-inline">
 			<form class="form-horizontal" action="" method="post">
 				<label class="col-md-2 col-md-offset-2 control-label editPassword">Password</label>

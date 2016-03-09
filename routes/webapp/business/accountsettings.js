@@ -9,11 +9,9 @@ var auth = require('../../../lib/auth');
 function getPage(employee) {
     switch (employee.permissionLevel) {
         case 1: // place holder
-        case 2:
-            return 'business/level_2/accountsettings';
-            break;
+        case 2: // level 2 and 3 users have same views
         case 3:
-            return 'business/level_3/accountsettings';
+            return 'business/level_2/accountsettings';
             break;
         default: // default level 4
             return 'business/level_4/accountsettings';
