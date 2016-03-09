@@ -89,8 +89,22 @@ exports.post = function(req,res){
 
 
     for(var i = 0; i < rows.length; i++){
+        /*TODO: Add constrains for text fields*/
+
+
         var username = rows[i][0];
+
+        /*Check for valid inputs */
+        if (rows[i].length  < 2 ) {
+            //TODO: Error print statements
+            break;
+        }
         var email = rows[i][1].trim();
+        /*Check for valid email*/
+        if (email.indexOf("@")  === -1) {
+            /*TODO: ERROR */
+            break;
+        }
         var nameArr = username.split(' ');
         var fname = nameArr[0];
         var lname = nameArr[1];
@@ -106,7 +120,7 @@ exports.post = function(req,res){
             registered: false,
             smsNotify: true, //added to match passport
             emailNotify: true, //added to match passport
-            phone: 1234567890 //TODO: maybe add phone number to employee confirmation page?
+            phone: "1234567890" //TODO: maybe add phone number to employee confirmation page?
             /*password: pass*/ //will be added programmatically once the employee confirms
         });
 

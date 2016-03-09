@@ -47,9 +47,9 @@
           </ul>
       </div>
       <!-- end nav bar -->
-    {{#message}}
-   <div class="alert alert-danger">{{message}}</div>
-    {{/message}}
+    {{#error}}
+   <div class="alert alert-danger">{{error}}</div>
+    {{/error}}
 
 
 
