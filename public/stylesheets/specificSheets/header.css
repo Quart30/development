@@ -1,5 +1,5 @@
 .top-bar-section {
-    height: 12vh;
+    height: 95px;
     width: 100vw;
     background-color: rgba(0,0,0,0.5);
 }
@@ -22,7 +22,7 @@ li.active {
 }
 
 .top-bar-section-secondary {
-    height: 10vh;
+    height: 80px;
     width: 100vw;
     background-color: rgba(0,0,0,0.3);
 }

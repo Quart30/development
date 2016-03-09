@@ -6,6 +6,16 @@ html, body {
   overflow-x: hidden;
 }
 
+.upload-form {
+  margin-top: 20px;
+  border:1px white solid;
+  height: 10px;
+}
+.upload-form input {
+  display: inline-block;
+
+}
+
 .custom-button{
   border-width: 2px;
   border-style: solid;
@@ -19,7 +29,6 @@ html, body {
   width:120px;
   overflow: auto;
   white-space: nowrap;
-  margin:20px auto;
   margin-top: 0;
   border:1px white solid;
   color: white;
@@ -121,67 +130,7 @@ a.standard-btn {
 
 }
 
-.top-bar-section {
-    height: 12vh;
-    width: 100vw;
-    background-color: rgba(0,0,0,0.5);
-  color: white;
-}
-.shameless-plug {
-  font-size: 18pt;
-  margin-left: 10%;
-  padding-top: 33px;
-  color: white;
-}
-.shameless-plug:hover {
-    color:white;
-  color: white;
-}
-.nav-links {
-    margin-top: -40px;
-    margin-right: 30px;
-  color: white;
-}
-li.active {
-    border-width: 1px;
-    border-style: solid;
-    border-color: white;
-  color: white;
-}
-
 .linkey {
-  color: white;
-}
-
-.top-bar-section-secondary {
-    height: 10vh;
-    width: 100vw;
-    background-color: rgba(0,0,0,0.3);
-  color: white;
-}
-.navbar-secondary {
-  padding-top: 15px;
-  padding-right: 100px;
-  color: white;
-}
-
-.page-wrap {
-  min-height: 100%;
-  margin-bottom: -80px; 
-  color: white;
-}
-.page-wrap:after {
-  display: block;
-  color: white;
-}
-
-.site-footer, .page-wrap:after {
-  height: 80px; 
-  color: white;
-}
-.site-footer {
-    background: rgba(0,0,0,0.5);
-    text-align: center;
   color: white;
 }
 
