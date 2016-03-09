@@ -62,7 +62,7 @@
         <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
             <li class="active">
                 <a href="/dashboard">Dashboard</a>
-            </li>
+
             <li>
                 <a href="/accountSettings">Settings</a>
             </li>

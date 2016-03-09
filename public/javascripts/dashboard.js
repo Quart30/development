@@ -335,7 +335,7 @@ function drawTable() {
 }
 
 
-function recordClick() {
+function recordClick(userid, username, userlevel, companyname) {
     // Configure an instance for your project
     var client = new Keen({
         projectId: "56dccd4ac1e0ab4d24f6c62e",
@@ -344,8 +344,10 @@ function recordClick() {
 
 // Create a data object with the properties you want to send
     var clickLogout = {
-        user: "user",
-        level: "guess",
+        user: userid,
+        name: username,
+        level: userlevel,
+        company: companyname,
         keen: {
             timestamp: new Date().toISOString()
         }
@@ -355,6 +357,7 @@ function recordClick() {
     client.addEvent("logout", clickLogout, function(err, res){
         if (err) {
             // there was an error!
+            alert("error: write");
         }
         else {
             // see sample response below
@@ -370,21 +373,25 @@ function retrieveClick(){
     var client = new Keen({
         projectId: "56dccd4ac1e0ab4d24f6c62e",
         readKey: "18b847b8b4f4aba961bd51cfc39b8f87743429164184584fd7dc29635311991ad99f185c359c90bed086c77fc3df6c9efb3587acc3081d627717e9d727a6761403b98cfa2caa1abf24c7cd6669d811e82109262bd6a296af6f62a4d1f40219ab"
+
     });
 
     Keen.ready(function(){
 
-        // Create a query instance
-        var countClicks = new Keen.Query("countlogged", {
-            event_collection: "logout",
-            group_by: "property",
-            timeframe: "this_7_days"
+        var countClicks = new Keen.Query("count", {
+            eventCollection: "logout",
+            groupBy: [
+                "company"
+            ],
+            timeframe: "this_14_days",
+            timezone: "UTC"
         });
 
         // Send query
-        client.run(count, function(err, res){
+        client.run(countClicks, function(err, res){
             if (err) {
                 // there was an error!
+                alert("error: read");
             }
             else {
                 // do something with res.result
@@ -392,5 +399,38 @@ function retrieveClick(){
             }
         });
 
+        client.draw(countClicks, document.getElementById("my_chart"), {
+            // Custom configuration here
+        });
+    });
+}
+
+function onloadpageview() {
+    // Configure an instance for your project
+    var client = new Keen({
+        projectId: "56dccd4ac1e0ab4d24f6c62e",
+        writeKey: "347629feb542cb08d47167810add3966c3c8b37c429f3a74961ad481b025f9ed7710e865db5ee8beeb84fb109092e82882e3c4f2d2c26f8b0c429c51a4b60478944074ffc09968f1239f058f3576498478f660f45e8ce3b76b40559e4886a0e9"
+    });
+
+// Create a data object with the properties you want to send
+    var clickLogout = {
+        user: "user",
+        level: "guess",
+        page: "dashboard",
+        keen: {
+            timestamp: new Date().toISOString()
+        }
+    };
+
+// Send it to the "purchases" collection
+    client.addEvent("pageview", clickLogout, function(err, res){
+        if (err) {
+            // there was an error!
+            alert("error: write");
+        }
+        else {
+            // see sample response below
+            alert("success: write");
+        }
     });
 }

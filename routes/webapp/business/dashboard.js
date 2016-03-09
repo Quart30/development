@@ -9,7 +9,6 @@ exports.get = function (req, res) {
     var employeePhone = req.user[0].phone;
     var employeePermission = req.user[0].permissionLevel;
     var walkinsAllowed = req.user[0].walkins;
-    var companyName = "";
 
     //console.log("First name: " + employeename);
 
