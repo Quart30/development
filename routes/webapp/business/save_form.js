@@ -1,30 +1,39 @@
- var isUnique = function(formName,  nameList){
-
-     for(var i = 0; i < nameList.length; i++){
-         if( formName == nameList[i])
-            return false;
-     }
-     return true;
- }
-
 exports.post = function (req, res) {
     var formData = (req.body.saveData);
     var formName = (req.body.formName);
-    formName = formName.trim();
-    var db = req.db;
-    var formNameList;
-    console.log("formName: " + formName + "\n formData: " + formData);
+    var bid = req.user[0].business;
+    var formDB = req.db.get('forms');
+    var message;
 
-    if( formName == null || formData == null){
+    // make sure valid data provided
+    if (!formName || !formData || !bid) {
         //send error message, stay on same page
+        res.render('business/formBuilder', {title: 'Express', error: 'Please fill in all fields.'});
+        return;
     }
-    else if( !isUnique(formName, formNameList)) { // elif formName isn't unique
-        // send error message
-    }
-    else{
-        // function to prevent sql injection needed?
-        // add {formData : formName} to data base
-       //temp redirect to success page or just post success message
-    }
-    res.render('business/formBuilder', {title: 'Express'});
+
+    // check if a form with this name already exists
+    formDB.find({business: bid, name: formName}, function (err, result) {
+        if (err) {
+            res.render('business/formBuilder', {title: 'Express', error: 'Error occurred, please try again.'});
+            return;
+        }
+
+        if (result.length > 0) {
+            console.log(result)
+            res.render('business/formBuilder', {title: 'Express', error: 'Form with this name already exists.'});
+            return;
+        }
+
+        // insert form into database
+        formDB.insert({business: bid, name: formName, data: formData}, function (err, result) {
+
+            if (err) {
+                res.render('business/formBuilder', {title: 'Express', error: 'Error occurred, please try again.'});
+                return;
+            }
+            console.log("Inserted formName: " + formName + "\n formData: " + formData + "business: " + bid);
+            res.render('business/formBuilder', {title: 'Express', error: 'Form successfully saved.'});
+        });
+    });
 };
