@@ -107,7 +107,7 @@ exports.post = function(req,res){
             registered: false,
             smsNotify: true, //added to match passport
             emailNotify: true, //added to match passport
-            phone: 1234567890 //TODO: maybe add phone number to employee confirmation page?
+            phone: '1234567890' //TODO: maybe add phone number to employee confirmation page?
             /*password: pass*/ //will be added programmatically once the employee confirms
         });
 

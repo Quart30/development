@@ -106,8 +106,6 @@ module.exports = function (passport) {
 
                             var company = result.companyName;
 
-                            //console.log('Company is ' + company);
-
                             employees.insert({
                                 business: ObjectId(businessID),
                                 password: result.password,

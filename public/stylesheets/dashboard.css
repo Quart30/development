@@ -45,6 +45,7 @@ li.active {
 .transbox {
   background-color: rgba(0,0,0,0.5);
   margin-top: 5%;
+    margin-bottom: 10%;
 }
 
 /* footer */
