@@ -27,11 +27,31 @@ body {
 }
 
 .transbox {
-  background-color: rgba(0,0,0,0.5);
+     background-color: rgba(0,0,0,0.5);
+
 }
 
 td {
     text-align: left;
+    background-color: rgba(24, 44, 73, 0.5);
+
+}
+
+#table_delete1 {
+   background-color: #ae1224;
+   border-color:  #ae1224;
+
+}
+
+#table_delete2 {
+    background-color: #ae1224;
+    border-color:  #ae1224;
+}
+
+
+#bt_resend {
+    background-color: #00A000;
+    border-color: #00A000;
 }
 
 .tableheader {
@@ -40,4 +60,8 @@ td {
 
 .not-registered {
     margin-top: 40px;
+}
+
+.footer {
+    margin-top: 150px;
 }
