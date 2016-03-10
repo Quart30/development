@@ -133,7 +133,7 @@ body {
 }
 /*PERSONAL*/
 .personal .title{        
-    background: #78CFBF;    
+    background: #82DACA;    
 }
 .personal .content,.personal .pt-footer{
     background: #82DACA;
@@ -146,7 +146,7 @@ body {
 }
 /*PROFESSIONAL*/
 .professional .title{
-    background: #3EC6E0;
+    background: #53CFE9;
 }
 .professional .content,.professional .pt-footer{
     background: #53CFE9;
@@ -159,7 +159,7 @@ body {
 }
 /*BUSINESS*/
 .business .title{
-    background: #E3536C;
+    background: #EB6379;
 }
 .business .content,.business .pt-footer{
     background: #EB6379;
