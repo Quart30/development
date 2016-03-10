@@ -99,7 +99,7 @@ exports.post = function(req, res) {
                             // text
                             var text = { 'text': fname + ' ' + lname +
                             ' has checked in for their appointment at ' +
-                            hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://quart30.herokuapp.com/dashboard>'
+                            hr + ':' + min + ' ' + ampm + '\nCheck it out: <https://heraldcheckin.herokuapp.com/dashboard>'
                             };
 
                             var options = {
