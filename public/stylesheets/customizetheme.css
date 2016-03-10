@@ -47,7 +47,7 @@ html, body {
 }
 
 .notifSet{
-  margin-top: 50px; 
+  margin-top: 50px;
 }
 
 .std-input {
@@ -106,7 +106,7 @@ a.standard-btn {
 
 .container{
     /*background-image: url('../images/blue-blur.jpg');*/
-   background-color: #89bdd3; 
+   background-color: #89bdd3;
     background-size: cover;
     width: 100vw;
     height: 68vh;
@@ -167,7 +167,7 @@ li.active {
 
 .page-wrap {
   min-height: 100%;
-  margin-bottom: -80px; 
+  margin-bottom: -80px;
   color: white;
 }
 .page-wrap:after {
@@ -176,7 +176,7 @@ li.active {
 }
 
 .site-footer, .page-wrap:after {
-  height: 80px; 
+  height: 80px;
   color: white;
 }
 .site-footer {
@@ -192,8 +192,9 @@ li.active {
 
 }
 
-#uploadForm  {
-  display: inline-block;
-  text-align: center;
-  padding-bottom: 100px;
+#uploadForm {
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 100px;
+}
 
