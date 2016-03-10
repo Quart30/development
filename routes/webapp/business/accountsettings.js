@@ -9,11 +9,9 @@ var auth = require('../../../lib/auth');
 function getPage(employee) {
     switch (employee.permissionLevel) {
         case 1: // place holder
-        case 2:
-            return 'business/level_2/accountsettings';
-            break;
+        case 2: // level 2 and 3 users have same views
         case 3:
-            return 'business/level_3/accountsettings';
+            return 'business/level_2/accountsettings';
             break;
         default: // default level 4
             return 'business/level_4/accountsettings';
@@ -42,6 +40,8 @@ exports.get = function (req,res) {
     employees.find({_id: eid}, function (err, result) {
         var emp = result[0];
         var phone = emp.phone;
+        phone = "" + phone;
+
         phone = phone.replace('1', '');
 				phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
 

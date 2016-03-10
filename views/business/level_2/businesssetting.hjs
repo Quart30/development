@@ -5,6 +5,8 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/businesssettings.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/footer.css'>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/header.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
@@ -86,17 +88,17 @@
                         <div class="row">
                           <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                              <label class = "label">Phone Number </label>
+                              <label class = "label">Phone Number</label>
                               <input type="text" id="phone" name ="phone"class="form-control input-lg" value="{{phone}}">
                             </div>
                           </div>
                         </div>
-                        <div class="save-slack-buttons">
                         <button type="submit" class="custom-button">Save</button>
-
-                          <!-- slack button -->
-                          <span class="slack-button"><a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=23623886482.24011540304"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a></span>
-                        <div>
+                        <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=23623886482.24011540304" type="submit" class="custom-button">Add to Slack</a>
+                            <!-- slack button -->
+                            <!--
+                          <span><a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=23623886482.24011540304"><img alt="Add to Slack" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a></span>
+                        -->
                       </form>
                     </div>
                   </div>
@@ -107,6 +109,7 @@
         </div>
       </div>
     </div>
+    <!--
     <footer class="footer site-footer">
       <ul class="list-inline">
         <li><a href="#" class="whitetext">Privacy</a></li>
@@ -115,5 +118,6 @@
         <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
       </ul>
     </footer>
+  -->
   </body>
 </html>

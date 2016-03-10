@@ -5,6 +5,8 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/accountsettings.css'/>
+    <link rel='stylesheet' href= '/stylesheets/specificSheets/footer.css'>
+    <link rel='stylesheet' href= '/stylesheets/specificSheets/header.css'>
     {{{ newrelic.getBrowserTimingHeader }}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -62,19 +64,17 @@
 				<hr></hr>
 			</div>
 		</div>
-		<!--
 		<div class="form-inline">
 			<form class="form-horizontal" action="" method="post">
 				<label class="col-md-2 col-md-offset-2 control-label editName">Name</label>
 				<div class="col-md-3">
-					<input type="text" id="editName" name="editName" value="{{ fname }} {{lname}}" class="form-control" readonly>
+					<input type="std-input" id="editName" name="editName" value="{{ fname }} {{lname}}" class="form-control">
 				</div>
 				<div class="col-md-2">
 					<button type="password" class="btn custom-button" type="submit">Update</button>
 				</div>
 			</form>
 		</div>
-		-->
 		<div class="form-inline">
 			<form class="form-horizontal" action="" method="post">
 				<label class="col-md-2 col-md-offset-2 control-label editPassword">Password</label>
