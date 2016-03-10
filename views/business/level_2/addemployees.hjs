@@ -72,7 +72,7 @@
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
-                                <td> <button id="table_delete1"><a href="/dashboard"> delete</a> </button> </td>
+                                <td> <button id="table_delete1"><a href="/dashboard"> X</a> </button> </td>
                             </tr>
                             {{/signed}}
                         </table>
@@ -92,7 +92,7 @@
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
                                 <td> <button id="bt_resend"><a href= "/dashboard">Resend Email</a> </button></td>
-                                <td> <button id="table_delete2" ><a href="/dashboard"> Delete</a> </button> </td>
+                                <td> <button id="table_delete2" ><a href="/dashboard"> X</a> </button> </td>
                             </tr>
                             {{/notsigned}}
                         </table>
