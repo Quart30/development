@@ -31,6 +31,7 @@ exports.get = function(req, res) {
     // pretty gross way of getting the slack integration
     var url = 'https://slack.com/api/oauth.access?client_id=' + client_id + '&client_secret=' + client_secret + '&code=' + code;
 
+    var request = require('request');
     request.post(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             // get the necessary data by parsing the body
