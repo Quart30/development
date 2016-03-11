@@ -1,25 +1,44 @@
 
 exports.get = function (req, res) {
-    res.render('business/formBuilder', {title: 'Express'});
-   // res.sendFile('/../../views/business/formbuilderTest.html');
-   // res.sendFile('business/formbuilderTest.html', { root: 'views' });
+    res.render('business/formBuilder');
 };
 
-/*
+exports.post = function (req, res) {
+    var formData = (req.body.saveData);
+    var formName = (req.body.formName);
+    var bid = req.user[0].business;
+    var formDB = req.db.get('forms');
 
-exports.get = function (req, res, next) {
-    var forms = req.db.get('forms');
-    var businessID = req.user[0].business;
-    forms.findOne({business: businessID}, function (err, form, findID) {
+    if (!formName || !formData) {
+        return res.render('business/formBuilder', {error: 'Please fill in all fields.'});
+    }
+
+    var query = {
+        query: {business: bid},
+        update: {$set: {data: formData}}
+    };
+
+    var insertFormCallback = function (err, result) {
+      if (err) {
+          throw err;
+      }
+      console.log("Inserted form successfully.");
+      console.log("insert result: " + result);
+      return res.render('business/formBuilder', {error: 'Form successfully saved.'});
+    };
+
+    var saveFormCallback = function (err, result) {
         if (err) {
-            return next(err);
+            throw err;
         }
-        res.render('business/level_2/formbuilder', {
-            title: 'Express',
-            form: JSON.stringify(form),
-            findID: businessID
-        });
-    });
-};
+        if (result === null) {
+            return formDB.insert({business: bid, data: formData}, insertFormCallback);
+        }
+        console.log("Updated form successfully.");
+        console.log("findAndModify result: " + result);
+        return res.render('business/formBuilder', {error: 'Form successfully saved.'});
+    };
 
-*/
+    console.log(formName + " " + formData);
+    formDB.findAndModify(query, saveFormCallback);
+};

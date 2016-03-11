@@ -7,7 +7,6 @@ var landing = require('./landing');
 var theming = require('./theming');
 var login = require('./login');
 var formbuilder = require('./formbuilder');
-var saveForm  = require('./save_form');
 var accountSettings = require('./accountsettings');
 var uploadLogo = require('./uploadlogo');
 var register = require('./register');
@@ -38,8 +37,8 @@ module.exports = function (passport) {
     }));
 
    // router.get('/saveform', isLoggedIn, saveForm.get);
-    router.post('/saveform', isLoggedIn, saveForm.post);
     router.get('/formbuilder',isLoggedIn, formbuilder.get);
+    router.post('/formbuilder', isLoggedIn, formbuilder.post);
 
 
     router.get('/accountSettings', isLoggedIn, accountSettings.get);

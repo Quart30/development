@@ -128,7 +128,7 @@ app.use(function (req, res, next) {
 app.use('/office', require('./routes/webapp/checkin'));
 app.use('/', businessRoutes);
 
-app.use("/formBuilder", express.static(__dirname + '/formBuilder'));
+//app.use("/formBuilder", express.static(__dirname + '/formBuilder'));
 app.use('/api', require('./routes/webapi'));
 
 // catch 404 and forward to error handler

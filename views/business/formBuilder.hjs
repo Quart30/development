@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html>
   <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
-
-  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-builder.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-render.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/demo.css">
   <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel='stylesheet' href='/stylesheets/customizetheme.css'/>
+  <link rel="stylesheet" href='/stylesheets/customizetheme.css'/>
+  <link rel="stylesheet" type="text/css" href='/javascripts/form-render.min.css'></script>
+  <link rel="stylesheet" type="text/css" href='javascripts/form-builder.min.css'></script>
+
+
 
 <body style='background-color: #89bdd3'>
       <!-- nav bar -->
@@ -64,7 +64,7 @@
 -->
             <div class="build-form">
                 <h2><strong>Build The Form</strong></h2>
-                <form action="saveform" method="post">
+                <form action="formbuilder" method="post">
                     <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"></textarea>
                     <input type="hidden" name="saveData" id="saveData" value="">
                     <input type="text" name=formName  id="formName" placeholder="Form Name:">
@@ -96,11 +96,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-<!-- Only include on form edit page -->
-<script src="../../formBuilder/formBuilder-master/demo/assets/js/form-builder.js"></script>
+<script src='javascripts/form-builder.min.js'></script>
+<script src='javascripts/form-builder.min.js'></script>
 
-<!-- Only include on form render page -->
-<script src="../../formBuilder/formBuilder-master/demo/assets/js/form-render.js"></script>
 <script>
         $.fn.gotoAnchor = function(anchor) {
             location.href = this.selector;
@@ -142,9 +140,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
