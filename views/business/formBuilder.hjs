@@ -8,8 +8,6 @@
   <link rel="stylesheet" type="text/css" href='/javascripts/form-render.min.css'></script>
   <link rel="stylesheet" type="text/css" href='javascripts/form-builder.min.css'></script>
 
-
-
 <body style='background-color: #89bdd3'>
       <!-- nav bar -->
       <div class = "top-bar-section">
@@ -47,50 +45,30 @@
           </ul>
       </div>
       <!-- end nav bar -->
-    {{#error}}
-   <div class="alert alert-danger">{{error}}</div>
-    {{/error}}
 
-
-
+{{#error}}
+  <div class="alert alert-danger">{{error}}</div>
+{{/error}}
 
 <div style="padding: 20px 50px 50px 50px;">
-<!--
-<div class="demo-wrap">
+    <div class="build-form">
+        <h2><strong>Build The Form</strong></h2>
+        <form action="formbuilder" method="post" id="formsubmit">
+            <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"></textarea>
+            <input type="hidden" name="formData" id="formData" value="">
+            <button type="submit" id="saveButton" class="btn btn-primary">Save Form</button>
+        </form>
+        <br style="clear:both">
+        <button id="render-form-button" class="btn btn-primary">Preview Form</button>
 
-
-    <div id="main_content_wrap" class="outer">
-        <section id="main_content" class="inner">
--->
-            <div class="build-form">
-                <h2><strong>Build The Form</strong></h2>
-                <form action="formbuilder" method="post">
-                    <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"></textarea>
-                    <input type="hidden" name="saveData" id="saveData" value="">
-                    <input type="text" name=formName  id="formName" placeholder="Form Name:">
-                     <button id="saveButton" class="btn btn-primary">Save Form</button>
-                </form>
-                <br style="clear:both">
-                <button id="render-form-button" class="btn btn-primary">Preview Form</button>
-
-            </div>
-            <div class="render-form" >
-                <form id="rendered-form" style="border: solid; border-color: white">
-                    <p style="text-align: center">Preview the form your visitor will see when signing-in.</p>
-                </form>
-                <div class="render-description"> </div>
-              <!--  <div class="render-description">
-
-                    <button id="render-form-button" class="btn btn-primary">Render form</button>
-                </div>
-                -->
-            </div>
-            <br style="clear:both">
-
-<!--
-        </section>
     </div>
--->
+    <div class="render-form" >
+        <form id="rendered-form" style="border: solid; border-color: white">
+            <p style="text-align: center">Preview the form your visitor will see when signing-in.</p>
+        </form>
+        <div class="render-description"> </div>
+    </div>
+    <br style="clear:both">
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -100,24 +78,24 @@
 <script src='javascripts/form-builder.min.js'></script>
 
 <script>
-        $.fn.gotoAnchor = function(anchor) {
-            location.href = this.selector;
-        }
+    $.fn.gotoAnchor = function(anchor) {
+        location.href = this.selector;
+    }
 
     jQuery(document).ready(function($) {
         'use strict';
         var template = document.getElementById('formBuilder'),
             formContainer = document.getElementById('rendered-form'),
             saveBtn = document.getElementById('saveButton'),
-            saveData = document.getElementById('saveData'),
+            formData = document.getElementById('formData'),
             renderBtn = document.getElementById('render-form-button');
         $(template).formBuilder();
 
 
         $(saveBtn).click(function(e){
 
-          $(saveData).attr("value", $(template).val());
-         // $(saveData).attr("value", "hi");
+          $(formData).attr("value", $(template).val());
+         // $(formData).attr("value", "hi");
           console.log($(template).val());
           $(saveBtn).submit();
         });
@@ -130,11 +108,6 @@
             $('#rendered-form').gotoAnchor();
         });
     });
-
-
-
-
-
 </script>
 
 </body>
