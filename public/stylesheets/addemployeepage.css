@@ -37,22 +37,19 @@ td {
 
 }
 
-#table_delete1 {
-   background-color: #ae1224;
-   border-color:  #ae1224;
-
+.emp_edit {
+    /*color: #777;*/
 }
 
-#table_delete2 {
-    background-color: #ae1224;
-    border-color:  #ae1224;
+/* Delete button (employees) */
+.emp_del {
+    color: #ff2523;
 }
 
-
-#bt_resend {
-    background-color: #00A000;
-    border-color: #00A000;
+.resend_email {
+    color: #49ff2c;
 }
+
 
 .tableheader {
     margin-top: 40px;
