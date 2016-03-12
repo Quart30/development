@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href='/stylesheets/specificSheets/header.css'/>
   <link rel="stylesheet" type="text/css" href='/javascripts/form-render.min.css'></script>
-  <link rel="stylesheet" type="text/css" href='javascripts/form-builder.min.css'></script>
+  <link rel="stylesheet" type="text/css" href='javascripts/form-builder.css'></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -66,7 +66,7 @@
         </form>
         <br style="clear:both">
     </div>
-    
+
     <div class="render-form" >
         <form id="rendered-form" style="border: solid; border-color: white">
             <p style="text-align: center">Visitors will be greeted with this form.</p>
@@ -91,9 +91,9 @@
         $(saveBtn).click(function(e){
           $(formData).attr("value", $(template).val());
           console.log($(template).val());
-          
+
           $(saveBtn).submit();
-          
+
         });
     });
 </script>
