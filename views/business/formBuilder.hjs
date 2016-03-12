@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href='/stylesheets/specificSheets/header.css'/>
   <link rel="stylesheet" type="text/css" href='/javascripts/form-render.min.css'></script>
-  <link rel="stylesheet" type="text/css" href='javascripts/form-builder.min.css'></script>
+  <link rel="stylesheet" type="text/css" href='/javascripts/form-builder.min.css'></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -45,7 +45,7 @@
       </div>
       <div class="top-bar-section-secondary" id="secondary_navbar">
           <ul class="nav navbar-nav navbar-right navbar-secondary">
-              <li class="active"><a href="/formbuilder" style="color: white;">Manage Forms</a></li>
+              <li class="active"><a href="/formbuilder" style="color: white;">Edit Form</a></li>
               <li><a href="/customizetheme" style="color: white;">Customize Theme</a></li>
               <li><a href="/businesssetting" style="color: white;">Company Settings</a></li>
           </ul>
