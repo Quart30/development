@@ -41,7 +41,7 @@ exports.post = function (req, res) {
 
     console.log(formData);
     formDB.findAndModify(query, updateFormCallback);
-    res.render('business/formBuilder', {currentForm: formData, error: 'Success'});
+    res.render('business/formBuilder', {form: formData, error: 'Form successfully updated.'});
 };
 
 
@@ -57,8 +57,8 @@ function sendPageWithCurrentForm(req, res, message) {
         }
         console.log(result);
         console.log(result[0].data);
-        res.render('business/formBuilder', {currentForm: result[0].data, error: message});
-    }
+        res.render('business/formBuilder', {form: result[0].data, error: message});
+    };
 
     formDB.find(query, findFormCallback);
-};
+}

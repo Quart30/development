@@ -64,13 +64,12 @@
             <button type="submit" id="saveButton" class="btn btn-primary">Save Form</button>
         </form>
         <br style="clear:both">
-<!--         <button id="render-form-button" class="btn btn-primary">Preview Form</button>
- -->
     </div>
+    
     <div class="render-form" >
         <form id="rendered-form" style="border: solid; border-color: white">
             <p style="text-align: center">Visitors will be greeted with this form.</p>
-            <textarea id="currentForm">{{{currentForm}}}</textarea>
+            <textarea id="currentForm">{{form}}</textarea>
         </form>
         <div class="render-description"> </div>
     </div>
@@ -78,22 +77,15 @@
 </div>
 
 <script>
-    $.fn.gotoAnchor = function(anchor) {
-        location.href = this.selector;
-    }
-
     jQuery(document).ready(function($) {
         'use strict';
         var template = document.getElementById('formBuilder'),
             currentTemplate = document.getElementById('currentForm'),
-            formContainer = document.getElementById('rendered-form'),
             saveBtn = document.getElementById('saveButton'),
             formData = document.getElementById('formData');
-            //renderBtn = document.getElementById('render-form-button');
 
         $(template).formBuilder();
-        $(currentTemplate).formRender({container: currentForm});
-
+        $(currentTemplate).formRender();
 
         $(saveBtn).click(function(e){
           $(formData).attr("value", $(template).val());
@@ -102,14 +94,6 @@
           $(saveBtn).submit();
           
         });
-
-        // $(renderBtn).click(function(e) {
-        //     e.preventDefault();
-        //     $(template).formRender({
-        //         container: $(formContainer)
-        //     });
-        //     $('#rendered-form').gotoAnchor();
-        // });
     });
 </script>
 

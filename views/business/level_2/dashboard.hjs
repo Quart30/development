@@ -44,6 +44,8 @@
           <a href="/businesssetting">Company Settings</a>
         </li>
         <li>
+          <a href="/checkin">Check-in Page</a>
+        </li
         <li>
           <a href="/logout">Logout</a>
         </li>
