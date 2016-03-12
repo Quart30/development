@@ -10,7 +10,7 @@ exports.get = function (req, res, next) {
 
         res.render('business/level_2/customize_theme', {
             message: req.flash('permission'),
-            logo: "images/thumb/cow.png", //business.logo,
+            logo: business.logo,//"images/thumb/cow.png", //business.logo,
             bg: "images/bg.jpg"  // + business.style.bg
         });
     });
