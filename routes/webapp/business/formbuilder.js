@@ -1,6 +1,6 @@
 
 exports.get = function (req, res) {
-    res.render('business/formBuilder');
+    sendPageWithCurrentForm(req, res, '');
 };
 
 exports.post = function (req, res) {
@@ -10,13 +10,13 @@ exports.post = function (req, res) {
 
     if (!formData) {
         console.log('Empty form data.');
-        res.render('business/formBuilder', {error: 'Please fill in all fields.'});        
+        sendPageWithCurrentForm(req, res, 'Please create a new form.');
         return;
     }
 
     var query = {
         query: {business: bid},
-        update: {$set: {data: formData}}
+        update: {$set: {data: formData}},
     };
 
     var insertFormCallback = function (err, result) {
@@ -25,10 +25,9 @@ exports.post = function (req, res) {
       }
       console.log("Inserted form successfully.");
       console.log("insert result: " + result);
-      res.render('business/formBuilder', {error: 'Form successfully saved.'});
     };
 
-    var saveFormCallback = function (err, result) {
+    var updateFormCallback = function (err, result) {
         if (err) {
             throw err;
         }
@@ -37,10 +36,29 @@ exports.post = function (req, res) {
             return;
         }
         console.log("Updated form successfully.");
-        console.log("findAndModify result: " + result);
-        res.render('business/formBuilder', {error: 'Form successfully saved.'});
+        console.log("findAndModify result: " + result.data);
     };
 
     console.log(formData);
-    formDB.findAndModify(query, saveFormCallback);
+    formDB.findAndModify(query, updateFormCallback);
+    res.render('business/formBuilder', {currentForm: formData, error: 'Success'});
+};
+
+
+function sendPageWithCurrentForm(req, res, message) {
+    var bid = req.user[0].business;
+    var formDB = req.db.get('forms');
+
+    var query = {business: bid};
+    var findFormCallback = function (err, result) {
+        if (err || result.length === 0) {
+            res.render('business/formBuilder');
+            return;
+        }
+        console.log(result);
+        console.log(result[0].data);
+        res.render('business/formBuilder', {currentForm: result[0].data, error: message});
+    }
+
+    formDB.find(query, findFormCallback);
 };

@@ -7,6 +7,11 @@
   <link rel="stylesheet" href='/stylesheets/customizetheme.css'/>
   <link rel="stylesheet" type="text/css" href='/javascripts/form-render.min.css'></script>
   <link rel="stylesheet" type="text/css" href='javascripts/form-builder.min.css'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script src='javascripts/form-builder.min.js'></script>
+  <script src='javascripts/form-render.min.js'></script>
 
 <body style='background-color: #89bdd3'>
       <!-- nav bar -->
@@ -59,23 +64,18 @@
             <button type="submit" id="saveButton" class="btn btn-primary">Save Form</button>
         </form>
         <br style="clear:both">
-        <button id="render-form-button" class="btn btn-primary">Preview Form</button>
-
+<!--         <button id="render-form-button" class="btn btn-primary">Preview Form</button>
+ -->
     </div>
     <div class="render-form" >
         <form id="rendered-form" style="border: solid; border-color: white">
-            <p style="text-align: center">Preview the form your visitor will see when signing-in.</p>
+            <p style="text-align: center">Visitors will be greeted with this form.</p>
+            <textarea id="currentForm">{{{currentForm}}}</textarea>
         </form>
         <div class="render-description"> </div>
     </div>
     <br style="clear:both">
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-<script src='javascripts/form-builder.min.js'></script>
-<script src='javascripts/form-builder.min.js'></script>
 
 <script>
     $.fn.gotoAnchor = function(anchor) {
@@ -85,28 +85,31 @@
     jQuery(document).ready(function($) {
         'use strict';
         var template = document.getElementById('formBuilder'),
+            currentTemplate = document.getElementById('currentForm'),
             formContainer = document.getElementById('rendered-form'),
             saveBtn = document.getElementById('saveButton'),
-            formData = document.getElementById('formData'),
-            renderBtn = document.getElementById('render-form-button');
+            formData = document.getElementById('formData');
+            //renderBtn = document.getElementById('render-form-button');
+
         $(template).formBuilder();
+        $(currentTemplate).formRender({container: currentForm});
 
 
         $(saveBtn).click(function(e){
-
           $(formData).attr("value", $(template).val());
-         // $(formData).attr("value", "hi");
           console.log($(template).val());
+          
           $(saveBtn).submit();
+          
         });
 
-        $(renderBtn).click(function(e) {
-            e.preventDefault();
-            $(template).formRender({
-                container: $(formContainer)
-            });
-            $('#rendered-form').gotoAnchor();
-        });
+        // $(renderBtn).click(function(e) {
+        //     e.preventDefault();
+        //     $(template).formRender({
+        //         container: $(formContainer)
+        //     });
+        //     $('#rendered-form').gotoAnchor();
+        // });
     });
 </script>
 
