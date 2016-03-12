@@ -57,8 +57,9 @@ exports.post = function(req, res, next){
                     return next(err);
                 }
 
-                res.render('business//level_2/uploadLogo',{
+                res.render('business//level_2/customize_theme',{
                     success:'Succesfully uploaded file: '+req.files.userLogo.originalname,
+                    bg: "images/bg.jpg",  // + business.style.bg
                     logo:'/images/uploads/'+req.files.userLogo.name
                 });
 
@@ -76,15 +77,17 @@ exports.post = function(req, res, next){
 
                 if(results.logo){
 
-                    res.render('business//level_2/uploadLogo',{
+                    res.render('business//level_2/customize_theme',{
                         title:'Upload Logo',
                         logo:results.logo,
+                        bg: "images/bg.jpg",  // + business.style.bg
                         error:'Please select a valid image(png,jpg) file to upload.'
                     });
                 }
                 else{
-                    res.render('business//level_2/uploadLogo',{
+                    res.render('business//level_2/customize_theme',{
                         title:'Upload Logo',
+                        bg: "images/bg.jpg",  // + business.style.bg
                         error:'Please select a valid image(png,jpg) file to upload.'
                     });
                 }
