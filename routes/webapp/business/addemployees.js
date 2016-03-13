@@ -122,7 +122,7 @@ exports.post = function(req,res){
             /*password: pass*/ //will be added programmatically once the employee confirms
         });
 
-        sendMail(fname, lname, email);
+        sendEmail(fname, lname, email);
     }
     res.redirect('/addemployees');
 };
