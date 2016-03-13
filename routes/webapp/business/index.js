@@ -44,10 +44,11 @@ module.exports = function (passport) {
     router.post('/uploadlogo', isLoggedIn, uploadLogo.post);
 
     router.get('/register', register.get);
-    router.post('/register',passport.authenticate('local-signup',{
-        successRedirect : '/dashboard', // redirect to the secure profile section
-        failureRedirect : '/register' // redirect back to the signup page if there is an error
-    }));
+    // router.post('/register',passport.authenticate('local-signup',{
+    //     successRedirect : '/dashboard', // redirect to the secure profile section
+    //     failureRedirect : '/register' // redirect back to the signup page if there is an error
+    // }));
+    router.post('/register', register.post);
 
     router.get('/dashboard', isLoggedIn, dashboard.get);
 
