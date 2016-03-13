@@ -53,7 +53,8 @@ module.exports = function (passport) {
 
     router.get('/addemployees',isLoggedIn, addEmployees.get);
     router.post('/addemployees',isLoggedIn, addEmployees.post);
-    router.get('/addemployees/delete', isLoggedIn, addEmployees.delete);
+    router.get('/addemployees/delete', isLoggedIn, addEmployees.delete); // note view calls GET but this directs it to a DELETE
+    //router.get('/addemplyees/resend', isLoggedIn, addEmployees.post);
 
     router.get('/customizetheme', isLoggedIn, customizeTheme.get);
 
