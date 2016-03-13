@@ -335,6 +335,10 @@ function drawTable() {
 }
 
 
+/**
+ * Keen.io for javascript
+ */
+
 function recordClick(userid, username, userlevel, companyname) {
     // Configure an instance for your project
     var client = new Keen({
@@ -343,7 +347,7 @@ function recordClick(userid, username, userlevel, companyname) {
     });
 
 // Create a data object with the properties you want to send
-    var clickLogout = {
+    var pageviews = {
         user: userid,
         name: username,
         level: userlevel,
@@ -354,7 +358,7 @@ function recordClick(userid, username, userlevel, companyname) {
     };
 
 // Send it to the "purchases" collection
-    client.addEvent("logout", clickLogout, function(err, res){
+    client.addEvent("pageviews", pageviews, function(err, res){
         if (err) {
             // there was an error!
             alert("error: write");
@@ -399,8 +403,10 @@ function retrieveClick(){
             }
         });
 
-        client.draw(countClicks, document.getElementById("my_chart"), {
+        client.draw(countClicks, document.getElementById("chart-01"), {
             // Custom configuration here
+            chartType: "columnchart",
+            title: "Custom chart title"
         });
     });
 }
@@ -432,5 +438,107 @@ function onloadpageview() {
             // see sample response below
             alert("success: write");
         }
+    });
+}
+
+function testkeenio() {
+    var client = new Keen({
+        projectId: "56dccd4ac1e0ab4d24f6c62e",
+        readKey: "18b847b8b4f4aba961bd51cfc39b8f87743429164184584fd7dc29635311991ad99f185c359c90bed086c77fc3df6c9efb3587acc3081d627717e9d727a6761403b98cfa2caa1abf24c7cd6669d811e82109262bd6a296af6f62a4d1f40219ab"
+
+    });
+    Keen.ready(function(){
+        // ----------------------------------------
+        // Sample one
+        // ----------------------------------------
+        var pageviews_timeline = new Keen.Query("count", {
+            event_collection: "pageviews",
+            interval: "hourly",
+            group_by: "user.device_info.browser.family",
+            timeframe: {
+                start: "2014-05-04T00:00:00.000Z",
+                end: "2017-05-05T00:00:00.000Z"
+            }
+        });
+        client.draw(pageviews_timeline, document.getElementById("chart-01"), {
+            chartType: "areachart",
+            title: false,
+            height: 250,
+            width: "auto",
+            chartOptions: {
+                chartArea: {
+                    height: "85%",
+                    left: "5%",
+                    top: "5%",
+                    width: "80%"
+                },
+                isStacked: true
+            }
+        });
+        // ----------------------------------------
+        //  End sample one
+        // ----------------------------------------
+        // ----------------------------------------
+        // Sample two
+        // ----------------------------------------
+        var pageviews_static = new Keen.Query("count", {
+            event_collection: "pageviews",
+            group_by: "user.device_info.browser.family",
+            timeframe: {
+                start: "2014-05-01T00:00:00.000Z",
+                end: "2017-05-05T00:00:00.000Z"
+            }
+        });
+        client.draw(pageviews_static, document.getElementById("chart-02"), {
+            chartType: "piechart",
+            title: false,
+            height: 250,
+            width: "auto",
+            chartOptions: {
+                chartArea: {
+                    height: "85%",
+                    left: "5%",
+                    top: "5%",
+                    width: "100%"
+                },
+                pieHole: .4
+            }
+        });
+        // ----------------------------------------
+        // End sample two
+        // ----------------------------------------
+        // ----------------------------------------
+        // Sample three
+        // ----------------------------------------
+        var impressions_timeline = new Keen.Query("count", {
+            event_collection: "impressions",
+            group_by: "ad.advertiser",
+            interval: "hourly",
+            timeframe: {
+                start: "2014-05-04T00:00:00.000Z",
+                end: "2017-05-05T00:00:00.000Z"
+            }
+        });
+        client.draw(impressions_timeline, document.getElementById("chart-03"), {
+            chartType: "columnchart",
+            title: false,
+            height: 250,
+            width: "auto",
+            chartOptions: {
+                chartArea: {
+                    height: "75%",
+                    left: "10%",
+                    top: "5%",
+                    width: "60%"
+                },
+                bar: {
+                    groupWidth: "85%"
+                },
+                isStacked: true
+            }
+        });
+        // ----------------------------------------
+        // End sample three
+        // ----------------------------------------
     });
 }
