@@ -61,6 +61,7 @@ module.exports = function (passport) {
 
     router.get('/addemployees',isLoggedIn, addEmployees.get);
     router.post('/addemployees',isLoggedIn, addEmployees.post);
+    router.get('/addemployees/delete', isLoggedIn, addEmployees.delete);
 
     router.get('/customizetheme', isLoggedIn, customizeTheme.get);
 

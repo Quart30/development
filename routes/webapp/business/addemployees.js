@@ -77,8 +77,6 @@ exports.get = function(req,res){
  * @returns The appropriate data about the employee
  */
 
-
-
 exports.post = function(req,res){
     var parsed = baby.parse(req.body.csvEmployees);
     var rows = parsed.data;
@@ -152,6 +150,25 @@ exports.post = function(req,res){
     res.redirect('/addemployees');
 };
 
+/** Deletes an employee from the database
+ *
+ * @param email email to be deleted
+ * @param res and req
+ */
+exports.delete = function (req, res) {
+    var employeeDB = req.db.get("employees");
+    var bid = req.user[0].business;
+    var params = req.query;
+    var email = params.email;
+
+    employeeDB.findOne({business: bid, email: email}, function (err, result) {
+        if (result) {
+            employeeDB.remove(result, {justOne: true});
+        }
+    });
+
+    res.redirect('/addemployees');
+};
 
 function randomToken() {
     return crypto.randomBytes(24).toString('hex');
