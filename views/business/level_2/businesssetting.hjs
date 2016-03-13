@@ -42,7 +42,7 @@
       </div>
       <div class="top-bar-section-secondary" id="secondary_navbar">
           <ul class="nav navbar-nav navbar-right navbar-secondary">
-              <li><a href="/formbuilder">Manage Forms</a></li>
+              <li><a href="/formbuilder">Edit Form</a></li>
               <li><a href="/customizetheme">Customize Theme</a></li>
               <li class="active"><a href="/businesssetting">Company Settings</a></li>
           </ul>

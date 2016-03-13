@@ -13,5 +13,6 @@ mongo.log
 newrelic_agent.log
 *.sw?
 npm-debug.*
+public/images/uploads/*
 
 apidoc/

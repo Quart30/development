@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-// note: .js isn't necessary
-//Define the controllers for checkin process
 var landing = require('./landing');
 var theming = require('./theming');
 var login = require('./login');
@@ -17,11 +15,9 @@ var viewForm = require('./viewform');
 var customizeTheme = require('./customize_theme');
 var manageForms = require('./manage_forms');
 var businesssetting = require('./businesssetting');
+var checkin = require('./checkin');
+
 module.exports = function (passport) {
-
-
-
-    //Pass in passport
 
     //Setup the routes
     router.get('/', landing.get);
@@ -29,24 +25,20 @@ module.exports = function (passport) {
 
     router.get('/theming', isLoggedIn, theming.get);
 
-   // router.get('/login', landing.get);
     router.post('/login',passport.authenticate('local-login',{
         successRedirect : '/dashboard',
         failureRedirect : '/',
         failureFlash: true
     }));
 
-   // router.get('/saveform', isLoggedIn, saveForm.get);
     router.get('/formbuilder',isLoggedIn, formbuilder.get);
     router.post('/formbuilder', isLoggedIn, formbuilder.post);
-
 
     router.get('/accountSettings', isLoggedIn, accountSettings.get);
     router.post('/accountSettings', isLoggedIn, accountSettings.post);
 
     router.get('/businesssetting', isLoggedIn, businesssetting.get);
     router.post('/businesssetting', isLoggedIn,businesssetting.post);
-
 
     router.get('/uploadlogo', isLoggedIn, uploadLogo.get);
     router.post('/uploadlogo', isLoggedIn, uploadLogo.post);
@@ -75,6 +67,9 @@ module.exports = function (passport) {
 
     router.get('/viewform/:id', viewForm.get);
 
+    router.get('/checkin', isLoggedIn, checkin.get);
+    router.post('/checkin', isLoggedIn, checkin.post);
+
     router.get('/logout', logOutUser);
 
     function logOutUser(req, res) {
@@ -89,18 +84,6 @@ module.exports = function (passport) {
 
         res.redirect('/');
     }
-
-// route middleware to make sure a user is logged in
-//function isLoggedInBusiness(req, res, next) {
-//    // if user is authenticated in the session, carry on
-//    if (req.isAuthenticated()){
-//        return next();
-//    }
-//    //req.flash("permission", "You do not have permission to access that page");
-//    // if they aren't redirect them to the home page
-//    res.redirect('back');
-//}
-
 
     return router;
 };
