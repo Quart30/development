@@ -234,7 +234,7 @@ gulp.task('checkLocal', ['lint'], function(callback) {
 });
 
 gulp.task('watch-check', function() {
-    gulp.watch('public/**/*.*', ['lint']);
-    gulp.watch('views/**/*.*', ['lint']);
+    gulp.watch('public/!images/**/*.*');
+    gulp.watch('views/**/*.*');
     gulp.watch('public/javascripts/*.js', ['lint']);
 });

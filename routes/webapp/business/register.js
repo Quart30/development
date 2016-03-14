@@ -61,7 +61,8 @@ exports.post = function (req, res) {
 		phone: req.body.phone,
 		fname: req.body.fname,
 		lname: req.body.lname,
-		logo: '',
+		logo: 'images/dentalLogo.jpg',
+		bg: 'images/dark-blur.jpg',
 		walkins: false,
 		slack: 'none'
 	};

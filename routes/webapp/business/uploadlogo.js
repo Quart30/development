@@ -41,8 +41,8 @@ exports.post = function(req, res, next){
                 if(err){
                     return next(err);
                 }
-
-                fs.unlink('public/'+results.logo);
+                if (results.logo !== 'images/dentalLogo.jpg')
+                  fs.unlink('public/'+results.logo);
             }
         );
 
