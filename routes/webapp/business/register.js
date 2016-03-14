@@ -42,7 +42,7 @@ exports.get = function (req, res) {
 };
 
 exports.post = function (req, res) {
-	console.log('Incomine request fields: ' + Object.getOwnPropertyNames(req.body));
+	console.log('Incoming request fields: ' + Object.getOwnPropertyNames(req.body));
 
 	var businessDB = req.db.get('businesses');
 	var employeeDB = req.db.get('employees');
