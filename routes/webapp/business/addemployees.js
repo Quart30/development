@@ -122,7 +122,7 @@ exports.post = function(req,res){
             /*password: pass*/ //will be added programmatically once the employee confirms
         });
 
-        sendEmail(fname, lname, email);
+        sendEmail(fname, lname, email, token);
     }
     res.redirect('/addemployees');
 };
@@ -134,7 +134,7 @@ exports.post = function(req,res){
  * @param lname last name
  * @param email email
  */
-function sendEmail(fname, lname, email) {
+function sendEmail(fname, lname, email, token) {
     var app = require('../../../app');
     var registrationLink;
     if (app.get('env') == 'production') {
