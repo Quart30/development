@@ -34,7 +34,7 @@ module.exports = function (passport) {
       new: true
     };
 
-    employee.findAndModify(query, function (err, employee) {
+    employeeDB.findAndModify(query, function (err, employee) {
       if (err){
         throw err;
       }
