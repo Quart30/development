@@ -29,7 +29,7 @@
             <a href="/dashboard">Dashboard</a>
           </li>
           <li class="active">
-            <a href="/addAppointments">Add Appointment</a>
+            <a href="/addAppointment">Add Appointment</a>
           </li>
           <li>
             <a href="/accountSettings">Account Settings</a>
