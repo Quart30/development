@@ -10,6 +10,7 @@ var uploadLogo = require('./uploadlogo');
 var register = require('./register');
 var dashboard = require('./dashboard');
 var addEmployees = require('./addemployees');
+var modifyEmployees = require('./modifyemployees');
 var employeeRegister = require('./employeeregister');
 var viewForm = require('./viewform');
 var customizeTheme = require('./customize_theme');
@@ -55,8 +56,9 @@ module.exports = function (passport) {
 
     router.get('/addemployees',isLoggedIn, addEmployees.get);
     router.post('/addemployees',isLoggedIn, addEmployees.post);
-    router.get('/addemployees/delete', isLoggedIn, addEmployees.delete); // note view calls GET but this directs it to a DELETE
-    //router.get('/addemplyees/resend', isLoggedIn, addEmployees.post);
+    router.post('/addemployees/delete', isLoggedIn, addEmployees.delete); // html can only call GET or POST
+    router.post('/addemployees/mod', isLoggedIn, modifyEmployees.post);
+    router.post('/employeeregister/resend', isLoggedIn, employeeRegister.post);
 
     router.get('/addAppointment', isLoggedIn, addAppointment.get);
 

@@ -31,7 +31,7 @@ h1 {
 }
 
 .custom-button{
-  
+
   border-width: 2px;
   border-style: solid;
   border-color: white;
@@ -64,13 +64,13 @@ h1 {
 }
 .page-wrap {
   min-height: 100%;
-  margin-bottom: -80px; 
+  margin-bottom: -80px;
 }
 .page-wrap:after {
   display: block;
 }
 .site-footer, .page-wrap:after {
-  height: 80px; 
+  height: 80px;
 }
 .site-footer {
     background: rgba(0,0,0,0.5);

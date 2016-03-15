@@ -21,6 +21,7 @@ body {
     overflow: auto;
     white-space: nowrap;
     border:1px white solid;
+    display: block;
 }
 .custom-button:hover {
     color: white;
@@ -37,17 +38,31 @@ td {
 
 }
 
-.emp_edit {
-    /*color: #777;*/
+/* button for increasing an employee's permission level */
+.emp_up {
+    color: #4fff27;
+    background-color: Transparent;
+    border: none;
+}
+
+/* button for decreasing an employee's permission level */
+.emp_down {
+    color: #ff9d1c;
+    background-color: Transparent;
+    border: none;
 }
 
 /* Delete button (employees) */
 .emp_del {
     color: #ff2523;
+    background-color: Transparent;
+    border: none;
 }
 
 .resend_email {
     color: #49ff2c;
+    background-color: Transparent;
+    border: none;
 }
 
 
