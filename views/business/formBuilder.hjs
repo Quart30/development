@@ -66,7 +66,6 @@
         </form>
         <br style="clear:both">
     </div>
-
     <div class="render-form" >
         <form id="rendered-form" style="border: solid; border-color: white">
             <p style="text-align: center">Visitors will be greeted with this form.</p>

@@ -803,7 +803,7 @@
                 field += selectFieldOptions(values.values[i], name, values.values[i].selected, values.multiple);
             }
             field += '</ol>';
-            field += '<div class="field_actions"><a href="javascript: void(0);" class="add add_opt"><strong>' + opts.messages.add + '</strong></a> | <a href="javascript: void(0);" class="close-field">' + opts.messages.close + '</a></div>';
+            field += '<div class="field_actions"><a href="javascript: void(0);" class="add add_opt"><strong style="color: #337ab7">' + opts.messages.add + '</strong></a> | <a href="javascript: void(0);" class="close-field">' + opts.messages.close + '</a></div>';
             field += '</div>';
             appendFieldLi(opts.messages.select, field, values);
 

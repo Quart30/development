@@ -14,7 +14,7 @@
 
       <div class="renderForm">
         <h2><strong>Check-in Form</strong></h2>
-        <form id="rendered-form" action="checkin2" method="post">
+        <form id="rendered-form" action="" method="post">
           <textarea id="currentForm">{{form}}</textarea>
             <button type="submit" id="checkinbutton" class="btn btn-primary">Check in</button>
         </form>

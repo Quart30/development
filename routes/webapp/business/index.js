@@ -16,6 +16,7 @@ var customizeTheme = require('./customize_theme');
 var manageForms = require('./manage_forms');
 var businesssetting = require('./businesssetting');
 var checkin = require('./checkin');
+var addAppointment = require('./addAppointment');
 
 module.exports = function (passport) {
 
@@ -56,6 +57,8 @@ module.exports = function (passport) {
     router.post('/addemployees',isLoggedIn, addEmployees.post);
     router.get('/addemployees/delete', isLoggedIn, addEmployees.delete); // note view calls GET but this directs it to a DELETE
     //router.get('/addemplyees/resend', isLoggedIn, addEmployees.post);
+
+    router.get('/addAppointment', isLoggedIn, addAppointment.get);
 
     router.get('/customizetheme', isLoggedIn, customizeTheme.get);
 
