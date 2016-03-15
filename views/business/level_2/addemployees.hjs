@@ -36,10 +36,10 @@
           <a href="/addemployees" style="color: white;">Employees</a>
         </li>
         <li>
-          <a href="/accountSettings"style="color: white;">Account Settings</a>
+          <a href="/accountSettings" style="color: white;">Account Settings</a>
         </li>
         <li>
-          <a href="/businesssetting"style="color: white;">Company Settings</a>
+          <a href="/businesssetting" style="color: white;">Company Settings</a>
         </li>
         <li>
           <a href="/logout">Logout</a>
@@ -50,10 +50,10 @@
 
     <div class="container">
         <h2>Register Employees</h2>
-        <h4>Register all your employee(s)!</h4>
+        <h4>Register all your employee(s) manually or copy and a CSV file!</h4>
         <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
-            <textarea style="color: black;" type="text"name="csvEmployees" placeholder="Enter: Name, Email" required></textarea>
-            <input style="margin-top: -39px;" class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Submit">
+            <textarea style="color: black;" rows="4" cols="65" type="text" name="csvEmployees" placeholder="FirstName LastName, Email" required></textarea>
+            <input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Submit">
         </form>
 
         <div class="row" id="regis-container">
@@ -109,7 +109,7 @@
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
                                 <td>
-                                    <form action="#" method="get">
+                                    <form action="/employeeregister/resend?email={{email}}" method="post">
                                         <input type="submit" class="resend_email" value="Resend Email">
                                     </form>
                                 </td>

@@ -44,10 +44,10 @@
 
     <div class="container">
         <h2>Register Employees</h2>
-        <h4>Register all your employee(s) through a CSV file!</h4>
+        <h4>Register all your employee(s) manually or paste a CSV file!</h4>
         <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
-            <textarea type="text"name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
-            <input style="margin-top: -39px;" class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
+            <textarea type="text" rows="4" cols="65" name="csvEmployees" placeholder="FirstName LastName, Email" required></textarea>
+            <input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
         </form>
 
         <div class="row" id="regis-container">
@@ -84,7 +84,11 @@
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
-                                <td> <a href="#" class="resend_email">Resend Email</a></td>
+                                <td>
+                                    <form action="/employeeregister/resend?email={{email}}" method="post">
+                                        <input type="submit" class="resend_email" value="Resend Email">
+                                    </form>
+                                </td>
                                 <td>
                                     <form action="/addemployees/delete?email={{email}}" method="post">
                                         <input type="submit" class="emp_del" value="X">

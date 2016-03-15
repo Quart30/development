@@ -21,6 +21,7 @@ body {
     overflow: auto;
     white-space: nowrap;
     border:1px white solid;
+    display: block;
 }
 .custom-button:hover {
     color: white;

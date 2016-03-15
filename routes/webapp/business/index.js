@@ -57,7 +57,7 @@ module.exports = function (passport) {
     router.post('/addemployees',isLoggedIn, addEmployees.post);
     router.post('/addemployees/delete', isLoggedIn, addEmployees.delete); // html can only call GET or POST
     router.post('/addemployees/mod', isLoggedIn, modifyEmployees.post);
-    //router.get('/addemplyees/resend', isLoggedIn, addEmployees.post);
+    router.post('/employeeregister/resend', isLoggedIn, employeeRegister.post);
 
     router.get('/customizetheme', isLoggedIn, customizeTheme.get);
 
