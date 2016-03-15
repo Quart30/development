@@ -5,14 +5,14 @@
   <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href='/stylesheets/specificSheets/header.css'/>
-  <link rel="stylesheet" type="text/css" href='/javascripts/form-render.min.css'></script>
+  <link rel="stylesheet" type="text/css" href='/javascripts/form-render.css'></script>
   <link rel="stylesheet" type="text/css" href='javascripts/form-builder.css'></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script src='javascripts/form-builder.js'></script>
-  <script src='javascripts/form-render.min.js'></script>
+  <script src='javascripts/form-render.js'></script>
 
 <body style='background-color: #89bdd3'>
       <!-- nav bar -->
