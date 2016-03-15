@@ -107,22 +107,31 @@ exports.post = function(req,res){
         var fname = nameArr[0];
         var lname = nameArr[1];
         var token = randomToken();
-        employeeDB.insert({
-            business: ObjectId(businessID),
-            company: companyName,
-            fname: fname,
-            lname: lname,
-            email: email,
-            registrationToken : token, //will be removed programmatically once the employee confirms
-            permissionLevel: 4,
-            registered: false,
-            smsNotify: true, //added to match passport
-            emailNotify: true, //added to match passport
-            phone: '1234567890' //TODO: maybe add phone number to employee confirmation page?
-            /*password: pass*/ //will be added programmatically once the employee confirms
+
+        employeeDB.find({business: ObjectId(businessID), email: email}, {limit: 1}, function(err, result) {
+            if (result == '') {
+                employeeDB.insert({
+                    business: ObjectId(businessID),
+                    company: companyName,
+                    fname: fname,
+                    lname: lname,
+                    email: email,
+                    registrationToken : token, //will be removed programmatically once the employee confirms
+                    permissionLevel: 4,
+                    registered: false,
+                    smsNotify: true, //added to match passport
+                    emailNotify: true, //added to match passport
+                    phone: '1234567890' //TODO: maybe add phone number to employee confirmation page?
+                    /*password: pass*/ //will be added programmatically once the employee confirms
+                });
+
+                sendEmail(fname, lname, email, token);
+            }
+            else {
+                // else employee already exists
+            }
         });
 
-        sendEmail(fname, lname, email, token);
     }
     res.redirect('/addemployees');
 };
@@ -133,12 +142,13 @@ exports.post = function(req,res){
  * @param fname first name
  * @param lname last name
  * @param email email
+ * @param token the token link the employee uses
  */
 function sendEmail(fname, lname, email, token) {
     var app = require('../../../app');
     var registrationLink;
     if (app.get('env') == 'production') {
-        registrationLink = 'http://quart30.herokuapp.com/employeeregister?token=' + token;
+        registrationLink = 'http://heraldcheckin.herokuapp.com/employeeregister?token=' + token;
     }
     else {
         registrationLink = 'http://localhost:4000/employeeregister?token=' + token
@@ -168,18 +178,24 @@ function sendEmail(fname, lname, email, token) {
  */
 exports.delete = function (req, res) {
     var employeeDB = req.db.get("employees");
+    var businessDB = req.db.get("businesses");
     var bid = req.user[0].business;
+    var reqEmail = req.user[0].email;
     var params = req.query;
     var email = params.email;
 
-    // so you don't delete yourself
-    if (email !== req.user[0].email) {
-        employeeDB.findOne({business: bid, email: email}, function (err, result) {
-            if (result) {
-                employeeDB.remove(result, {justOne: true});
-            }
+    var owner = 0; // is this an owner of the business
+    businessDB.find({_id: bid}, {limit: 1}, function (err, result) {
+        if (result[0].email == reqEmail) // if it's an owners account
+            owner = 1;
+
+        employeeDB.find({business: bid, email: email}, {limit: 1}, function (err, result) {
+
+            // only owners can fire everyone
+            if (result[0].permissionLevel !== 2 || owner === 1)
+                employeeDB.remove(result[0], {justOne: true});
         });
-    }
+    });
 
     res.redirect('/addemployees');
 };

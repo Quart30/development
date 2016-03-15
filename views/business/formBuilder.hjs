@@ -30,7 +30,7 @@
             <a href="/dashboard" style="color: white;">Dashboard</a>
           </li>
           <li>
-            <a href="/addemployees" style="color: white;">Employees</a>
+            <a href="/addAppointment" style="color: white;">Add Appointments</a>
           </li>
           <li>
             <a href="/accountSettings" style="color: white;">Account Settings</a>
@@ -66,7 +66,6 @@
         </form>
         <br style="clear:both">
     </div>
-
     <div class="render-form" >
         <form id="rendered-form" style="border: solid; border-color: white">
             <p style="text-align: center">Visitors will be greeted with this form.</p>
