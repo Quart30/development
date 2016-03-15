@@ -1,3 +1,5 @@
+var ObjectId = require('mongodb').ObjectID;
+
 exports.get = function (req, res){
 
   res.render('business/signin');
@@ -45,10 +47,31 @@ exports.post = function (req, res) {
             res.render('business/formBuilder', {error: "Please create a form."});
             return;
         }
+
+        var spaceIndex = req.body.name.indexOf(' ');
+        var fname = req.body.name.substring(0, spaceIndex);
+        var lname = req.body.name.substring(spaceIndex + 1);
+        var name = fname + ' ' + lname;
+        var appointmentsDB = req.db.get('appointments');
+        appointmentsDB.findOne({fname: fname, lname: lname, phone: req.body.phone}, function(err, apptResult) {
+            if (apptResult) {
+                var employeesDB = req.db.get('employees');
+                employeesDB.findOne({_id: ObjectId(apptResult.employee), business: ObjectId(bid)}, function(err, result) {
+                    if (result) {
+                        console.log("This is a successful checkin for " + name + " under employee " + result.fname);
+                        var app = require('../../../app');
+                        app.io.emit('appointment_changed', {apptId: apptResult._id, eid: apptResult.employee, state: 'checkedIn'});
+                        //TODO finish this
+                        appointmentsDB.findAndModify({query: apptResult, update: {$set: {state:'checkedIn'}}});
+                    }
+                });
+            }
+        });
+
         console.log(result);
         console.log(result[0].data);
         res.render('business/checkin', {form: result[0].data});
-    }
+    };
 
     formDB.find(query, findFormCallback);
 };

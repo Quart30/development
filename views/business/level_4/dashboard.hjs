@@ -41,6 +41,13 @@
                 drawTable();
             }
         });
+
+        socket.on('appointment_changed', function(data) {
+            if (data.eid === eid) {
+                appointmentsList[data.apptId][4] = data.state;
+                drawTable();
+            }
+        });
     </script>
 
 </head>
