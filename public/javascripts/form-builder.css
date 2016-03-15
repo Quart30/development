@@ -506,10 +506,13 @@ textarea.idea-template {
     width: 98%;
     height: 92%; }
 
-.form-wrap:after {
+
+.form-wrap:before {
+    border-radius: 3px;
     content: "";
     display: table;
     clear: both; }
+
 
 .cb-wrap,
 .stage-wrap {

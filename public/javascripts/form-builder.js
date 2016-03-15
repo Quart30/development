@@ -133,7 +133,7 @@
                 radio: 'Radio',
                 removeMessage: 'Remove Element',
                 remove: '&#215;',
-                required: 'Required',
+                required: 'Require your guest to fill out this field?',
                 richText: 'Rich Text Editor',
                 roles: 'Access',
                 save: 'Save Template',
@@ -322,8 +322,9 @@
 
             var maxlength = $('.fld-maxlength', field);
             if (maxlength) {
-                previewData.maxlength = maxlength.val();
+                  previewData.maxlength = maxlength.val();
             }
+
 
             var placeholder = $('.fld-placeholder', field).val();
             if (placeholder) {
@@ -465,14 +466,18 @@
                 className: 'radio-group',
                 name: 'radio-group'
             }
-        }, {
+        },
+            /*
+            {
             label: opts.messages.hidden,
             attrs: {
                 type: 'hidden',
                 className: 'hidden-input',
                 name: 'hidden-input'
             }
-        }, {
+        },
+        */
+        {
             label: opts.messages.dateField,
             attrs: {
                 type: 'date',
@@ -486,21 +491,28 @@
                 className: 'checkbox-group',
                 name: 'checkbox-group'
             }
-        }, {
+        }
+            /*
+            , {
             label: opts.messages.checkbox,
             attrs: {
                 type: 'checkbox',
                 className: 'checkbox',
                 name: 'checkbox'
             }
-        }, {
+        }
+        */
+            /*
+            , {
             label: opts.messages.autocomplete,
             attrs: {
                 type: 'autocomplete',
                 className: 'autocomplete',
                 name: 'autocomplete'
             }
-        }];
+        }
+        */
+        ];
 
         // Create draggable fields for formBuilder
         var cbUL = $('<ul/>', {
@@ -861,12 +873,17 @@
 
             advFields += getPlaceholder(values.type);
 
-            advFields += '<div class="frm-fld name-wrap"><label>' + opts.messages.name + ' <span class="required">*</span></label>';
-            advFields += '<input type="text" name="name" value="' + values.name + '" class="fld-name form-control" id="title-' + lastID + '" /></div>';
+         //   advFields += '<div style="hidden" class="frm-fld name-wrap"><label>' + opts.messages.name + ' <span class="required">*</span></label>';
 
-            advFields += '<div class="frm-fld access-wrap"><label>' + opts.messages.roles + '</label>';
+            /* copied this line but got rid of the display of the name.
+            advFields += '<input style="hidden" type="text" name="name" value="' + values.name + '" class="fld-name form-control" id="title-' + lastID + '" /></div>';
+            */
+            advFields += '<input style="hidden" type="hidden" type="text" name="name" value="' + values.name + '" class="fld-name form-control" id="title-' + lastID + '" /></div>';
 
-            advFields += '<input type="checkbox" name="enable_roles" value="" ' + (values.role !== undefined ? 'checked' : '') + ' id="enable_roles-' + lastID + '"/> <label for="enable_roles-' + lastID + '" class="roles-label">' + opts.messages.limitRole + '</label>';
+            //  advFields += '<div class="frm-fld access-wrap"><label>' + opts.messages.roles + '</label>';
+
+          //  advFields += '<input type="checkbox" name="enable_roles" value="" ' + (values.role !== undefined ? 'checked' : '') + ' id="enable_roles-' + lastID + '"/> <label for="enable_roles-' + lastID + '" class="roles-label">' + opts.messages.limitRole + '</label>';
+/*
             advFields += '<div class="frm-fld available-roles" ' + (values.role !== undefined ? 'style="display:block"' : '') + '>';
 
             for (key in opts.roles) {
@@ -874,14 +891,18 @@
                     advFields += '<input type="checkbox" name="roles[]" value="' + key + '" id="fld-' + lastID + '-roles-' + key + '" ' + ($.inArray(key, roles) !== -1 ? 'checked' : '') + ' class="roles-field" /><label for="fld-' + lastID + '-roles-' + key + '">' + opts.roles[key] + '</label><br/>';
                 }
             }
-            advFields += '</div></div>';
+*/
+    //        advFields += '</div></div>';
 
+/*
             // if field type is not checkbox, checkbox/radio group or select list, add max length
             if ($.inArray(values.type, ['checkbox', 'select', 'checkbox-group', 'date', 'autocomplete', 'radio-group', 'hidden']) < 0) {
                 advFields += '<div class="frm-fld"><label class="maxlength-label">' + opts.messages.maxlength + '</label>';
                 advFields += '<input type="text" name="maxlength" maxlength="4" value="' + (values.maxlength !== undefined ? values.maxlength : '') + '" class="fld-maxlength form-control" id="maxlength-' + lastID + '" /></div>';
             }
 
+            //end here
+            */
             return advFields;
         };
 
@@ -913,7 +934,8 @@
                 placeholder = '<div class="frm-fld placeholder-wrap">' + placeholderLabel + ' ' + placeholder + '</div>';
             }
 
-            return placeholder;
+         //   return placeholder;
+            return '';
         };
 
         // Append the new field to the editor
@@ -930,7 +952,7 @@
             li += '<li id="frm-' + lastID + '-item" class="' + values.type + ' form-field">';
             li += '<div class="legend">';
             li += delBtn;
-            li += '<span id="txt-title-' + lastID + '" class="field-label">' + label + '</span>' + tooltip + '<span class="required-asterisk" ' + (required === 'true' ? 'style="display:inline"' : '') + '> *</span>' + toggleBtn;
+            li += '<span id="txt-title-' + lastID + '" class="field-label">' + label + '</span>'  + tooltip  + '<span class="required-asterisk" ' + (required === 'true' ? 'style="display:inline"' : '') + '> *</span>' + toggleBtn;
             li += '</div>';
             li += '<div class="prev-holder">' + fieldPreview(values) + '</div>';
             li += '<div id="frm-' + lastID + '-fld" class="frm-holder">';
