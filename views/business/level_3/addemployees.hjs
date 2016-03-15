@@ -76,12 +76,20 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th> </th>
+                                    <th> </th>
                                 </tr>
                             </thead>
                             {{#notsigned}}
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
+                                <td> <a href="#" class="resend_email">Resend Email</a></td>
+                                <td>
+                                    <form action="/addemployees/delete?email={{email}}" method="post">
+                                        <input type="submit" class="emp_del" value="X">
+                                    </form>
+                                </td>
                             </tr>
                             {{/notsigned}}
                         </table>

@@ -65,7 +65,8 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th> </th>
+                                    <th>Permissions</th>
+                                    <!--<th> </th>-->
                                     <th> </th>
                                 </tr>
                             </thead>
@@ -73,8 +74,21 @@
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
-                                <td><a href="#" class="emp_edit">Edit</a> </td>
-                                <td> <a href="/addemployees/delete?email={{email}}" class="emp_del">X</a></td>
+                                <td>
+                                    <form action="/addemployees/mod?email={{email}}&lvl=up" method="post">
+                                        <input type="submit" class="emp_up" value="Up">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/addemployees/mod?email={{email}}&lvl=down" method="post">
+                                        <input type="submit" class="emp_down" value="Down">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/addemployees/delete?email={{email}}" method="post">
+                                        <input type="submit" class="emp_del" value="X">
+                                    </form>
+                                </td>
                             </tr>
                             {{/signed}}
                         </table>
@@ -87,15 +101,23 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th> </th>
-                                    <th> </th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             {{#notsigned}}
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
-                                <td> <a href="#" class="resend_email">Resend Email</a></td>
-                                <td> <a href="/addemployees/delete?email={{email}}" class="emp_del">X</a></td>
+                                <td>
+                                    <form action="#" method="get">
+                                        <input type="submit" class="resend_email" value="Resend Email">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/addemployees/delete?email={{email}}" method="post">
+                                        <input type="submit" class="emp_del" value="X">
+                                    </form>
+                                </td>
                             </tr>
                             {{/notsigned}}
                         </table>

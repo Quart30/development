@@ -133,6 +133,7 @@ exports.post = function(req,res){
  * @param fname first name
  * @param lname last name
  * @param email email
+ * @param token the token link the employee uses
  */
 function sendEmail(fname, lname, email, token) {
     var app = require('../../../app');
@@ -168,18 +169,25 @@ function sendEmail(fname, lname, email, token) {
  */
 exports.delete = function (req, res) {
     var employeeDB = req.db.get("employees");
+    var businessDB = req.db.get("businesses");
     var bid = req.user[0].business;
+    var reqEmail = req.user[0].email;
     var params = req.query;
     var email = params.email;
+    var lvl = params.lvl;
 
-    // so you don't delete yourself
-    if (email !== req.user[0].email) {
-        employeeDB.findOne({business: bid, email: email}, function (err, result) {
-            if (result) {
-                employeeDB.remove(result, {justOne: true});
-            }
-        });
-    }
+    var owner; // is this an owner of the business
+    businessDB.findOne({_id: bid}, function (err, result) {
+        if (result.email == reqEmail) // if it's an owners account
+            owner = 1;
+    });
+
+    employeeDB.findOne({business: bid, email: email}, function (err, result) {
+
+        // only owners can fire everyone
+        if (result.permissionLevel !== 2 || owner === 1)
+            employeeDB.remove(result, {justOne: true});
+    });
 
     res.redirect('/addemployees');
 };
