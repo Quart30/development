@@ -22,8 +22,10 @@ exports.post = function(req, res) {
         var emp_level = result.permissionLevel;
         // only owners can modify everyone
         if (emp_level !== 2 || owner === 1) {
-            if (lvl == 'up' && emp_level > 2)
-                mod(employeeDB, result, --emp_level);
+            if (lvl == 'up' && emp_level > 2) {
+                if (owner === 1 || emp_level == 3) // only owner can make other level 2 accounts
+                    mod(employeeDB, result, --emp_level);
+            }
             else if (lvl == 'down' && emp_level < 4)
                 mod(employeeDB, result, ++emp_level);
 
