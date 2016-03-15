@@ -20,7 +20,7 @@
         <!--
         <div class="form-container">
           {{#message}}
-            <div style="color: #A0A0A0">{{message}}</div>
+            <div style="color: #FFF000">{{message}}</div>
           {{/message}}
         </div>
         -->
@@ -28,13 +28,13 @@
           <li>
             <a href="/dashboard">Dashboard</a>
           </li>
-          <li>
-            <a href="/addemployees">Employees</a>
+          <li class="active">
+            <a href="/addAppointments">Add Appointment</a>
           </li>
           <li>
             <a href="/accountSettings">Account Settings</a>
           </li>
-          <li class="active">
+          <li>
             <a href="/businesssetting">Company Settings</a>
           </li>
           <li>

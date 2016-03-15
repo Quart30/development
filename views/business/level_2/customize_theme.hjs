@@ -29,7 +29,7 @@
         <a href="/dashboard">Dashboard</a>
       </li>
       <li>
-        <a href="/addemployees">Employees</a>
+        <a href="/addAppointment">Add Appointments</a>
       </li>
       <li>
         <a href="/accountSettings">Account Settings</a>
@@ -107,6 +107,6 @@
       <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
     </ul>
 </footer>
-  
+
 </body>
 </html>
