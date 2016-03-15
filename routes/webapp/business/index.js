@@ -44,15 +44,18 @@ module.exports = function (passport) {
     router.post('/uploadlogo', isLoggedIn, uploadLogo.post);
 
     router.get('/register', register.get);
-    router.post('/register',passport.authenticate('local-signup',{
-        successRedirect : '/dashboard', // redirect to the secure profile section
-        failureRedirect : '/register' // redirect back to the signup page if there is an error
-    }));
+    // router.post('/register',passport.authenticate('local-signup',{
+    //     successRedirect : '/dashboard', // redirect to the secure profile section
+    //     failureRedirect : '/register' // redirect back to the signup page if there is an error
+    // }));
+    router.post('/register', register.post);
 
     router.get('/dashboard', isLoggedIn, dashboard.get);
 
     router.get('/addemployees',isLoggedIn, addEmployees.get);
     router.post('/addemployees',isLoggedIn, addEmployees.post);
+    router.get('/addemployees/delete', isLoggedIn, addEmployees.delete); // note view calls GET but this directs it to a DELETE
+    //router.get('/addemplyees/resend', isLoggedIn, addEmployees.post);
 
     router.get('/customizetheme', isLoggedIn, customizeTheme.get);
 

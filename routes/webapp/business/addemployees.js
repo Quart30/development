@@ -77,8 +77,6 @@ exports.get = function(req,res){
  * @returns The appropriate data about the employee
  */
 
-
-
 exports.post = function(req,res){
     var parsed = baby.parse(req.body.csvEmployees);
     var rows = parsed.data;
@@ -124,34 +122,67 @@ exports.post = function(req,res){
             /*password: pass*/ //will be added programmatically once the employee confirms
         });
 
-        var app = require('../../../app');
-        var registrationLink;
-        if (app.get('env') == 'production') {
-            registrationLink = 'http://quart30.herokuapp.com/employeeregister?token=' + token;
-        }
-        else {
-            registrationLink = 'http://localhost:4000/employeeregister?token=' + token
-        }
-
-        var message = {
-            to: email,
-            from: 'quart30dev@gmail.com',
-            subject: 'Employee Signup',
-            text: 'Hello, ' + fname + ' ' + lname + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
-                registrationLink
-        };
-
-        // send mail with defined transport object
-        transporter.sendMail(message, function(error, info){
-            if(error){
-                return console.log('Email error: ' + error);
-            }
-            console.log('Confirmation email sent: ' + info.response);
-        });
+        sendEmail(fname, lname, email, token);
     }
     res.redirect('/addemployees');
 };
 
+
+/**
+ * Sends an email using nodemailer (registration link)
+ * @param fname first name
+ * @param lname last name
+ * @param email email
+ */
+function sendEmail(fname, lname, email, token) {
+    var app = require('../../../app');
+    var registrationLink;
+    if (app.get('env') == 'production') {
+        registrationLink = 'http://quart30.herokuapp.com/employeeregister?token=' + token;
+    }
+    else {
+        registrationLink = 'http://localhost:4000/employeeregister?token=' + token
+    }
+
+    var message = {
+        to: email,
+        from: 'quart30dev@gmail.com',
+        subject: 'Employee Signup',
+        text: 'Hello, ' + fname + ' ' + lname + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
+        registrationLink
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(message, function(error, info){
+        if(error){
+            return console.log('Email error: ' + error);
+        }
+        console.log('Confirmation email sent: ' + info.response);
+    });
+}
+
+/** Deletes an employee from the database
+ *
+ * @param email email to be deleted
+ * @param res and req
+ */
+exports.delete = function (req, res) {
+    var employeeDB = req.db.get("employees");
+    var bid = req.user[0].business;
+    var params = req.query;
+    var email = params.email;
+
+    // so you don't delete yourself
+    if (email !== req.user[0].email) {
+        employeeDB.findOne({business: bid, email: email}, function (err, result) {
+            if (result) {
+                employeeDB.remove(result, {justOne: true});
+            }
+        });
+    }
+
+    res.redirect('/addemployees');
+};
 
 function randomToken() {
     return crypto.randomBytes(24).toString('hex');

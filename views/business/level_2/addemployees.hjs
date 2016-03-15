@@ -74,7 +74,7 @@
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
                                 <td><a href="#" class="emp_edit">Edit</a> </td>
-                                <td><a href="#" class="emp_del"> X </a></td>
+                                <td> <a href="/addemployees/delete?email={{email}}" class="emp_del">X</a></td>
                             </tr>
                             {{/signed}}
                         </table>
@@ -95,7 +95,7 @@
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
                                 <td> <a href="#" class="resend_email">Resend Email</a></td>
-                                <td> <a href="#" class="emp_del">X</a></td>
+                                <td> <a href="/addemployees/delete?email={{email}}" class="emp_del">X</a></td>
                             </tr>
                             {{/notsigned}}
                         </table>
@@ -103,7 +103,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
   <footer class="footer site-footer">
     <ul class="list-inline">

@@ -7,7 +7,6 @@
     <link rel='stylesheet' href='/stylesheets/register.css'/>
     <link rel='stylesheet' href='/stylesheets/specificSheets/footer.css'/>
 
-
     {{#newrelic}}
         {{{ newrelic.getBrowserTimingHeader }}}
     {{/newrelic}}
@@ -44,9 +43,15 @@
             <div class="row" id="regis-container">
                 <div class="col-md-12" style="text-align: center;">
                     <h2>Create An Account</h2>
-                    <form method="post" action="" enctype="application/x-www-form-urlencoded">
+                    <form method="post" id="usersubmission" action="" enctype="application/x-www-form-urlencoded">
                         <div>
                             <input class="regis form-input" type="text" name="companyName" value="{{ companyName }}" placeholder="Company Name" required>
+                        </div>
+                        <div>
+                            <input class="regis form-input" type="text" name="fname" value="{{ fname }}" placeholder="First name" required>
+                        </div>
+                        <div>
+                            <input class="regis form-input" type="text" name="lname" value="{{ lname }}" placeholder="Last Name" required>
                         </div>
                         <div>
                             <input class="regis form-input" type="tel" name="phone" value="{{ phone }}" placeholder="Phone Number">
@@ -67,7 +72,7 @@
 
 
                         <div>
-                            <input class="btn custom-button" name="submit" type="submit" value="Sign Up">
+                            <input class="btn custom-button" name="submit" type="submit" id="submitbutton" value="Sign Up">
                         </div>
                     </form>
                 </div>
@@ -75,6 +80,22 @@
         </div>
     </div>
 </div>
+
+<script>
+  $('#submitbutton').click(function(event) {
+    event.preventDefault();
+    var userdata = $('#usersubmission');
+    $.ajax({
+      type: "POST",
+      url: "/register",
+      data: userdata.serialize(),
+      success: function (result) {
+        alert(result.message);
+      }
+    });
+  });
+</script>
+
 <!--Footer to display the about info,etc-->
 <footer class="footer site-footer">
     <ul class="list-inline">
