@@ -28,6 +28,9 @@
             <li>
                 <a href="/dashboard">Dashboard</a>
             </li>
+            <li>
+                <a href="/addAppointment">Add Appointments</a>
+            </li>
             <li class="active">
                 <a href="/accountSettings">Account Settings</a>
             </li>

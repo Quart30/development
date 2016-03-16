@@ -30,6 +30,9 @@
             <a href="/dashboard" style="color: white;">Dashboard</a>
           </li>
           <li>
+            <a href="/addemployees" style="color: white;">Employees</a>
+          </li>
+          <li>
             <a href="/addAppointment" style="color: white;">Add Appointments</a>
           </li>
           <li>

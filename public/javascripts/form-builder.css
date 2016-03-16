@@ -804,7 +804,7 @@ a.btn.toggle-form:before {
 
 ul.frmb {
     list-style-type: none;
-    min-height: 360px;
+    min-height: 350px;
     border: 3px dotted #efefef;
     margin: 0 0 5px;
     padding: 5px 5px 0; }

@@ -29,6 +29,9 @@
             <a href="/dashboard">Dashboard</a>
           </li>
           <li>
+            <a href="/addemployees">Employees</a>
+          </li>
+          <li>
             <a href="/addAppointment">Add Appointments</a>
           </li>
           <li class="active">
