@@ -12,7 +12,7 @@
 function getPage(employee) {
     switch (employee.permissionLevel) {
         case 2: // place holder
-        case 3: return 'business/level_2/accountsettings';
+        case 3: return 'business/level_2/customize_theme';
         default: return 'error';
     }
 }
