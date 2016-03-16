@@ -68,7 +68,7 @@ exports.get = function(req, res){
 
             // load the page
             employeeDB.find({_id: req.user[0]._id}, {limit: 1}, function (err, result) {
-                res.render(getPage(result[0]), {title: 'Express',notsigned: notemployee, signed: employeee});
+                res.render(getPage(result[0]), {title: 'Express', notsigned: notemployee, signed: employeee});
             });
 
         });
@@ -111,7 +111,12 @@ exports.post = function(req,res){
         var token = randomToken();
 
         employeeDB.find({business: ObjectId(businessID), email: email}, {limit: 1}, (function(err, result) {
+
             if (result == '') {
+
+                console.log('fname,lname,email,token');
+                console.log(fname + ', ' + lname + ', ' + email, + ', ' + token);
+
                 employeeDB.insert({
                     business: ObjectId(businessID),
                     company: companyName,
@@ -120,6 +125,7 @@ exports.post = function(req,res){
                     email: email,
                     registrationToken : token, //will be removed programmatically once the employee confirms
                     permissionLevel: 4,
+                    permissionName: 'Provider',
                     registered: false,
                     smsNotify: true, //added to match passport
                     emailNotify: true, //added to match passport
@@ -185,17 +191,11 @@ exports.delete = function (req, res) {
     var params = req.query;
     var email = params.email;
 
-    var owner = 0; // is this an owner of the business
-    businessDB.find({_id: bid}, {limit: 1}, function (err, result) {
-        if (result[0].email == reqEmail) // if it's an owners account
-            owner = 1;
+    employeeDB.find({business: bid, email: email}, {limit: 1}, function (err, result) {
 
-        employeeDB.find({business: bid, email: email}, {limit: 1}, function (err, result) {
-
-            // only owners can fire everyone
-            if (result[0].permissionLevel !== 2 || owner === 1)
-                employeeDB.remove(result[0], {justOne: true});
-        });
+        // only delete accounts of lower level
+        if (req.user[0].permissionLevel > result[0].permissionLevel)
+            employeeDB.remove(result[0], {justOne: true});
     });
 
     res.redirect('/addemployees');

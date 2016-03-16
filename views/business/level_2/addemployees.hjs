@@ -80,6 +80,7 @@
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
+                                <td>{{permissionName}}</td>
                                 <td>
                                     <form action="/addemployees/mod?email={{email}}&lvl=up" method="post">
                                         <input type="submit" class="emp_up" value="Up">
