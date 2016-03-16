@@ -14,7 +14,7 @@ function getPage(employee) {
             return 'business/level_3/addAppointment';
             break;
         default: // default level 4
-            return 'business/level2/addAppointment';
+            return 'business/level_2/addAppointment';
             break;
     }
 }
@@ -30,5 +30,3 @@ exports.get = function(req, res){
         res.render(getPage(emp));
     });
 };
-
-
