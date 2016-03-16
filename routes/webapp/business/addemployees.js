@@ -110,13 +110,9 @@ exports.post = function(req,res){
         var lname = nameArr[1];
         var token = randomToken();
 
-        employeeDB.find({business: ObjectId(businessID), email: email}, {limit: 1}, (function(err, result) {
+        employeeDB.find({business: ObjectId(businessID), email: email}, function(err, result) {
 
             if (result == '') {
-
-                console.log('fname,lname,email,token');
-                console.log(fname + ', ' + lname + ', ' + email, + ', ' + token);
-
                 employeeDB.insert({
                     business: ObjectId(businessID),
                     company: companyName,
@@ -137,8 +133,7 @@ exports.post = function(req,res){
             else {
                 // else employee already exists
             }
-        })(fname, lname, email, token));
-        // anon wrapper used above (since we are using fname,lname,email,token from outside)
+        });
     }
     res.redirect('/addemployees');
 };
