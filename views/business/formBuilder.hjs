@@ -2,13 +2,17 @@
 <!DOCTYPE html>
 <html>
   <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
-
-  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-builder.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/form-render.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="/formBuilder/formBuilder-master/demo/assets/css/demo.css">
   <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel='stylesheet' href='/stylesheets/customizetheme.css'/>
+  <link rel="stylesheet" href='/stylesheets/specificSheets/header.css'/>
+  <link rel="stylesheet" type="text/css" href='/javascripts/form-render.css'></script>
+  <link rel="stylesheet" type="text/css" href='javascripts/form-builder.css'></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script src='javascripts/form-builder.js'></script>
+  <script src='javascripts/form-render.js'></script>
 
 <body style='background-color: #89bdd3'>
       <!-- nav bar -->
@@ -29,6 +33,9 @@
             <a href="/addemployees" style="color: white;">Employees</a>
           </li>
           <li>
+            <a href="/addAppointment" style="color: white;">Add Appointments</a>
+          </li>
+          <li>
             <a href="/accountSettings" style="color: white;">Account Settings</a>
           </li>
           <li class="active">
@@ -41,110 +48,58 @@
       </div>
       <div class="top-bar-section-secondary" id="secondary_navbar">
           <ul class="nav navbar-nav navbar-right navbar-secondary">
-              <li class="active"><a href="/formbuilder" style="color: white;">Manage Forms</a></li>
+              <li class="active"><a href="/formbuilder" style="color: white;">Edit Form</a></li>
               <li><a href="/customizetheme" style="color: white;">Customize Theme</a></li>
               <li><a href="/businesssetting" style="color: white;">Company Settings</a></li>
           </ul>
       </div>
       <!-- end nav bar -->
-    {{#message}}
-   <div class="alert alert-danger">{{message}}</div>
-    {{/message}}
 
-
-
+{{#error}}
+  <div class="alert alert-danger">{{error}}</div>
+{{/error}}
 
 <div style="padding: 20px 50px 50px 50px;">
-<!--
-<div class="demo-wrap">
-
-
-    <div id="main_content_wrap" class="outer">
-        <section id="main_content" class="inner">
--->
-            <div class="build-form">
-                <h2><strong>Build The Form</strong></h2>
-                <form action="saveform" method="post">
-                    <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"></textarea>
-                    <input type="hidden" name="saveData" id="saveData" value="">
-                    <input type="text" name=formName  id="formName" placeholder="Form Name:">
-                     <button id="saveButton" class="btn btn-primary">Save Form</button>
-                </form>
-                <br style="clear:both">
-                <button id="render-form-button" class="btn btn-primary">Preview Form</button>
-
-            </div>
-            <div class="render-form" >
-                <form id="rendered-form" style="border: solid; border-color: white">
-                    <p style="text-align: center">Preview the form your visitor will see when signing-in.</p>
-                </form>
-                <div class="render-description"> </div>
-              <!--  <div class="render-description">
-
-                    <button id="render-form-button" class="btn btn-primary">Render form</button>
-                </div>
-                -->
-            </div>
-            <br style="clear:both">
-
-<!--
-        </section>
+    <div class="build-form">
+        <h2><strong>Build The Form</strong></h2>
+        <form action="formbuilder" method="post" id="formsubmit">
+            <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"></textarea>
+            <input type="hidden" name="formData" id="formData" value="">
+            <button type="submit" id="saveButton" class="btn btn-primary">Save Form</button>
+        </form>
+        <br style="clear:both">
     </div>
--->
+    <div class="render-form" >
+        <form id="rendered-form" style="border: solid; border-color: white">
+            <p style="text-align: center">Visitors will be greeted with this form.</p>
+            <textarea id="currentForm">{{form}}</textarea>
+        </form>
+        <div class="render-description"> </div>
+    </div>
+    <br style="clear:both">
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-<!-- Only include on form edit page -->
-<script src="../../formBuilder/formBuilder-master/demo/assets/js/form-builder.js"></script>
-
-<!-- Only include on form render page -->
-<script src="../../formBuilder/formBuilder-master/demo/assets/js/form-render.js"></script>
 <script>
-        $.fn.gotoAnchor = function(anchor) {
-            location.href = this.selector;
-        }
-
     jQuery(document).ready(function($) {
         'use strict';
         var template = document.getElementById('formBuilder'),
-            formContainer = document.getElementById('rendered-form'),
+            currentTemplate = document.getElementById('currentForm'),
             saveBtn = document.getElementById('saveButton'),
-            saveData = document.getElementById('saveData'),
-            renderBtn = document.getElementById('render-form-button');
-        $(template).formBuilder();
+            formData = document.getElementById('formData');
 
+        $(template).formBuilder();
+        $(currentTemplate).formRender();
 
         $(saveBtn).click(function(e){
-
-          $(saveData).attr("value", $(template).val());
-         // $(saveData).attr("value", "hi");
+          $(formData).attr("value", $(template).val());
           console.log($(template).val());
-          $(saveBtn).submit();
-        });
 
-        $(renderBtn).click(function(e) {
-            e.preventDefault();
-            $(template).formRender({
-                container: $(formContainer)
-            });
-            $('#rendered-form').gotoAnchor();
+          $(saveBtn).submit();
+
         });
     });
-
-
-
-
-
 </script>
 
 </body>
 
 </html>
-
-
-
-
-
-

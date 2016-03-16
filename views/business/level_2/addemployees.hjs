@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href= '/stylesheets/addemployeepage.css'>
     <link rel='stylesheet' href= '/stylesheets/specificSheets/footer.css'>
+    <link rel='stylesheet' href= '/stylesheets/specificSheets/header.css'>
 
     {{#newrelic}}
         {{{ newrelic.getBrowserTimingHeader }}}
@@ -35,10 +36,13 @@
           <a href="/addemployees" style="color: white;">Employees</a>
         </li>
         <li>
-          <a href="/accountSettings"style="color: white;">Account Settings</a>
+          <a href="/addAppointment" style="color: white;">Add Appointment</a>
         </li>
         <li>
-          <a href="/businesssetting"style="color: white;">Company Settings</a>
+          <a href="/accountSettings" style="color: white;">Account Settings</a>
+        </li>
+        <li>
+          <a href="/businesssetting" style="color: white;">Company Settings</a>
         </li>
         <li>
           <a href="/logout">Logout</a>
@@ -49,10 +53,10 @@
 
     <div class="container">
         <h2>Register Employees</h2>
-        <h4>Register all your employee(s) through a CSV file!</h4>
+        <h4>Register all your employee(s) manually or copy and a CSV file!</h4>
         <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
-            <textarea style="color: black;" type="text"name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
-            <input style="margin-top: -39px;" class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
+            <textarea style="color: black;" rows="4" cols="65" type="text" name="csvEmployees" placeholder="FirstName LastName, Email" required></textarea>
+            <input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Submit">
         </form>
 
         <div class="row" id="regis-container">
@@ -64,12 +68,30 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Permissions</th>
+                                    <!--<th> </th>-->
+                                    <th> </th>
                                 </tr>
                             </thead>
                             {{#signed}}
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
+                                <td>
+                                    <form action="/addemployees/mod?email={{email}}&lvl=up" method="post">
+                                        <input type="submit" class="emp_up" value="Up">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/addemployees/mod?email={{email}}&lvl=down" method="post">
+                                        <input type="submit" class="emp_down" value="Down">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/addemployees/delete?email={{email}}" method="post">
+                                        <input type="submit" class="emp_del" value="X">
+                                    </form>
+                                </td>
                             </tr>
                             {{/signed}}
                         </table>
@@ -81,12 +103,24 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th> </th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             {{#notsigned}}
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
+                                <td>
+                                    <form action="/employeeregister/resend?email={{email}}" method="post">
+                                        <input type="submit" class="resend_email" value="Resend Email">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/addemployees/delete?email={{email}}" method="post">
+                                        <input type="submit" class="emp_del" value="X">
+                                    </form>
+                                </td>
                             </tr>
                             {{/notsigned}}
                         </table>
@@ -94,7 +128,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
   <footer class="footer site-footer">
     <ul class="list-inline">

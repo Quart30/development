@@ -1,5 +1,24 @@
 var auth = require('../../../lib/auth');
 
+var accountType = function( level){
+    var name;
+    // note: level 4 has no dashboard so doesn't need to display this
+    switch(level){
+        case 1:
+            name = "Admin Account";
+            break;
+        case 2:
+            name = "General Account";
+            break;
+        case 3:
+            name = "Provider Account";
+            break;
+        default:
+            name = "";
+            break
+    }
+    return name;
+}
 exports.get = function (req, res) {
 	var employeeId = req.user[0]._id;
 	var employeename = req.user[0].fname;
@@ -10,22 +29,19 @@ exports.get = function (req, res) {
     var employeePermission = req.user[0].permissionLevel;
     var walkinsAllowed = req.user[0].walkins;
 
-    //console.log("First name: " + employeename);
-
     var companyName = req.user[0].company;
 
-    console.log('employee id: ' + employeeId);
-
     var page; // page to load
-    switch (req.user[0].permissionLevel) {
+    switch (employeePermission) {
         case 1:
-        case 2:
+        case 2: // level2/3 have the same views
             page = 'business/level_2/dashboard';
             break;
         case 3:
             page = 'business/level_3/dashboard';
             break;
         default: // default level 4
+            //TODO: go striaght to signin page
             page = 'business/level_4/dashboard';
             break;
     }
@@ -34,9 +50,9 @@ exports.get = function (req, res) {
 		employeeName: employeename,
         employeeLast: employeeLastName,
         employeePhone: employeePhone,
-        employeePermission: employeePermission,
+        employeePermission: accountType(employeePermission),
         walkinsAllowed: walkinsAllowed,
         companyName: companyName,
-		message: req.flash("permission"),
+		message: req.flash("permission")
 	});
 };

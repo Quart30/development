@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/dashboard.css'/>
     <link rel='stylesheet' href='/stylesheets/index.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/header.css'/>
+    <link rel='stylesheet' href='/stylesheets/tableStripeOverride.css'/>
+
 
 
 
@@ -18,6 +21,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script> eid = "{{eid}}"; </script>
     <script src="/javascripts/dashboard.js"></script>
+
     <script> function demo(str){document.getElementById("demo").innerHTML = "PermissionLevel = " + str;}</script>
 
     <script type="text/javascript">
@@ -64,7 +68,10 @@
         </li>
         <li id="emptab">
             <a href="/addemployees">Employees</a>
-          </li>
+        </li>
+        <li>
+          <a href="/addAppointment">Add Appointments</a>
+        </li>
         <li>
           <a href="/accountSettings">Account Settings</a>
         </li>
@@ -72,6 +79,8 @@
           <a href="/businesssetting">Company Settings</a>
         </li>
 
+          <a href="/checkin">Check-in Page</a>
+        </li>
         <li>
           <a href="/logout">Logout</a>
         </li>
@@ -180,8 +189,51 @@
   </div> <!-- end transbox bottom -->
 
 
+  <!-- begin transbox -->
+  <div class="container transbox" style="box-shadow:  0px 0px 30px 5px rgba(0, 0, 0, 0.8)">
+  {{#message}}
+      <div class="alert alert-danger">{{message}}</div>
+      {{/message}}
+      <h1><strong>
+          Hi, {{employeeName}} of {{companyName}}!
+      </strong></h1>
+      <div class="dashboardTopInfo text-center">
 
-  </div> <!-- end page -->
+          <h1 class="text-center">Today</h1>
+          <h1 class="text-center" id="currentDate"></h1>
+          <div id="txt" class="text-center"></div>
+      </div>
+      <p></p>
+      <div class="row">
+          <table class="table table-striped whitetext">
+              <thead>
+              <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th></th>
+                  <th>Appointment Time</th>
+                  <th>Status</th>
+                  <th></th>
+                  <th>Picture</th>
+                  <th></th>
+              </tr>
+              </thead>
+              <tbody id="tblBody">
+              <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+  <!-- end transbox -->
 
 
   <footer class="footer site-footer">

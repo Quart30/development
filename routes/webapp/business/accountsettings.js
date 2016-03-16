@@ -11,7 +11,7 @@ function getPage(employee) {
         case 1: // place holder
         case 2:
             return 'business/level_2/accountsettings';
-            break;
+            break
         case 3:
             return 'business/level_3/accountsettings';
             break;
@@ -42,6 +42,8 @@ exports.get = function (req,res) {
     employees.find({_id: eid}, function (err, result) {
         var emp = result[0];
         var phone = emp.phone;
+        phone = "" + phone;
+
         phone = phone.replace('1', '');
 				phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
 
