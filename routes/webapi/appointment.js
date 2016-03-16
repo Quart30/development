@@ -59,11 +59,11 @@ exports.post = function(req, res) {
             app.io.emit('create_appointment',
                 {eid: eid, _id: result._id, fname: fname, lname: lname, state: state, date: date, image: image,
                 phone: phone});
-            res.writeHead(200);
-            res.write("Successfully inserted " + fname + " " +
-                lname + " into the appointments table. Appt id = " + result._id.toString());
-            res.end();
-
+            //res.writeHead(200);
+            //res.write("Successfully inserted " + fname + " " +
+            //    lname + " into the appointments table. Appt id = " + result._id.toString());
+            //res.end();
+            res.render('business/level_2/addAppointment', {message: "Appointment for " + fname + ' ' + lname + " Added!"});
 
             // ---- slack message ---- //
 
