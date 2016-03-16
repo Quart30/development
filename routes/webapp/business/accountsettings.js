@@ -22,14 +22,17 @@ function getPage(employee) {
 
 function phoneString(phoneNumber) {
     var length = phoneNumber.length;
-    var return_string = phoneNumber;
+    var current_string = phoneNumber;
+    var new_string;
 
     phone = phone.replace('1', '');
     phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
 
     switch (length) {
-        case 11: return_string = return_string.substring(1,10);
-        case 10: return_string = "(" + return_string.substring(1,3)
+        case 11: current_string = return_string.substring(1,10);
+        case 10: return_string = "(" + return_string.substring(1,3);
+        //case  7: return_string =
+            break;
     }
 }
 
