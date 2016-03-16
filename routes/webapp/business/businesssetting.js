@@ -1,4 +1,24 @@
 var auth = require ('../../../lib/auth');
+
+/**
+ * Find out which account settings page to load based on user level
+ *
+ * @param employee
+ *          1: error
+ *          2: load everything
+ *          3: load everything minus credit card info
+ *          4: error
+ * @returns hjs file to render
+ */
+function getPage(employee) {
+    switch (employee.permissionLevel) {
+        case 2:
+        case 3: return 'business/level_2/businesssetting';
+        default: return 'error';
+    }
+}
+
+
 exports.get = function (req,res) {
     var bid = req.user[0].business;
     console.log(bid);
@@ -12,7 +32,8 @@ exports.get = function (req,res) {
         var phone = dbBusiness.phone;
         phone = phone.replace('1', '');
         phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-        res.render('business/level_2/businesssetting', {
+
+        res.render(getPage(req.user[0]), {
             companyName: dbBusiness.companyName,
             phone: phone
         });
@@ -44,7 +65,7 @@ exports.post = function (req, res) {
                 //removing country code 1 from phone
                 phone = phone.replace('1', '');
                 phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                res.render('business/level_2/businesssetting', {
+                res.render(getPage(req.user[0]), {
                     error: 'You must fill in all fields.',
                     companyName: dbBusiness.companyName,
                     phone: phone
@@ -65,7 +86,7 @@ exports.post = function (req, res) {
                     });
                     phone = phone.replace('1', '');
                     phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                    res.render('business/level_2/businesssetting', {
+                    res.render(getPage(req.user[0]), {
                         companyName: companyName,
                         phone: phone,
                         edited: 'change successfully done.'
@@ -75,7 +96,7 @@ exports.post = function (req, res) {
                     phone = dbBusiness.phone;
                     phone = phone.replace('1', '');
                     phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                    res.render('business/level_2/businesssetting', {
+                    res.render(getPage(req.user[0]), {
                         companyName: dbBusiness.companyName,
                         phone: phone,
                         error: 'phone number should be in 1 xxx-xxx-xxxx format'
@@ -98,7 +119,7 @@ exports.post = function (req, res) {
                     phone = dbBusiness.phone;
                     phone = phone.replace('1', '');
                     phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                    res.render('business/level_2/businesssetting', {
+                    res.render(getPage(req.user[0]), {
                         companyName: dbBusiness.companyName,
                         phone: phone,
                         edited: 'password successfully changed.'
@@ -108,7 +129,7 @@ exports.post = function (req, res) {
                     phone = dbBusiness.phone;
                     phone = phone.replace('1', '');
                     phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-                    res.render('business/level_2/businesssetting', {
+                    res.render(getPage(req.user[0]), {
                         companyName: dbBusiness.companyName,
                         phone: phone,
                         error: 'password does not match'
@@ -119,7 +140,7 @@ exports.post = function (req, res) {
             phone = dbBusiness.phone;
             phone = phone.replace('1', '');
             phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-            res.render('business/level_2/businesssetting', {
+            res.render(getPage(req.user[0]), {
                 error: 'You must fill in all fields.',
                 companyName: dbBusiness.companyName,
                 phone: phone
