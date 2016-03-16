@@ -69,12 +69,20 @@
                 <div class="col-md-8 col-md-offset-2">
                    <h2 style="color: #FF0000"> {{message}} </h2>
                     <div class="panel-body">
-                      <form class="form" action="" method="post">
+                      <form class="form" action="/api/appointment/create" method="post">
                         <div class="row">
                           <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                              <label class = "label" for="email">Name</label>
-                              <input type="text" id="name" name="name" class="form-control input-lg">
+                              <label class = "label" for="email">First Name</label>
+                              <input type="text" id="name" name="fname" class="form-control input-lg">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                              <label class = "label" for="email">Last Name</label>
+                              <input type="text" id="name" name="lname" class="form-control input-lg">
                             </div>
                           </div>
                         </div>
@@ -82,7 +90,7 @@
                           <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                               <label class = "label">Phone Number</label>
-                              <input type="number" id="phone" name ="phone"class="form-control input-lg"">
+                              <input type="number" id="phone" name ="phone"class="form-control input-lg">
                             </div>
                           </div>
                         </div>
@@ -90,7 +98,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                <div class="form-group">
                                   <label class = "label">Appointment Date</label>
-                                  <input type="date" id="date" name ="date"class="form-control input-lg"">
+                                  <input type="date" id="date" name ="date"class="form-control input-lg">
                                </div>
                             </div>
                         </div>
@@ -98,7 +106,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                <div class="form-group">
                                   <label class = "label">Appointment Time</label>
-                                  <input type="time" id="time" name ="time" class="form-control input-lg"">
+                                  <input type="time" id="time" name ="time" class="form-control input-lg">
                                </div>
                             </div>
                         </div>

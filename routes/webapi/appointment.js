@@ -18,26 +18,28 @@ var ObjectId = require('mongodb').ObjectID;
  * @param minute minute of the hour (0-59)
  */
 exports.post = function(req, res) {
+
     var app = require('../../app');
     var appointmentsDB = req.db.get("appointments");
-    var params = req.query;
-    var eid = params.eid;
+    var params = req.body;
+    var eid = req.user[0]._id;
     var fname = params.fname;
     var lname = params.lname;
     var state = params.state ? params.state : "scheduled";
     var image = params.image ? params.image : "http://placehold.it/50x50";
     var phone = params.phone ? params.phone : "12321";
     //for a list of the possible states and their order, look at appointment.controller.js
-    var date = new Date();
-    date.setSeconds(0);
-    if (params.month)
-        date.setMonth(params.month - 1);
-    if (params.day)
-        date.setDate(params.day);
-    if (params.hour)
-        date.setHours(params.hour);
-    if (params.minute)
-        date.setMinutes(params.minute);
+    // var date = new Date();
+    // date.setSeconds(0);
+    // if (params.month)
+    //     date.setMonth(params.month - 1);
+    // if (params.day)
+    //     date.setDate(params.day);
+    // if (params.hour)
+    //     date.setHours(params.hour);
+    // if (params.minute)
+    //     date.setMinutes(params.minute);
+    var date = new Date(req.body.date + ' ' + req.body.time);
 
     appointmentsDB.insert({
         employee: ObjectId(eid),
