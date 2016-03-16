@@ -4,20 +4,19 @@ var auth = require('../../../lib/auth');
  * Find out which account settings page to load based on user level
  *
  * @param employee
+ *          1: load everything
+ *          2: load everything
+ *          3: load everything
+ *          4: load everything (with correct nav bar)
  * @returns hjs file to render
  */
 function getPage(employee) {
     switch (employee.permissionLevel) {
-        case 1: // place holder
-        case 2:
-            return 'business/level_2/accountsettings';
-            break
-        case 3:
-            return 'business/level_3/accountsettings';
-            break;
-        default: // default level 4
-            return 'business/level_4/accountsettings';
-            break;
+        case 1: return 'business/level_1/accountsettings';
+        case 2: // place holder
+        case 3: return 'business/level_2/accountsettings';
+        case 4: return 'business/level_4/accountsettings';
+        default: return 'error';
     }
 }
 
