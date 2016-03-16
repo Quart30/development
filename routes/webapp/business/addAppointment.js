@@ -23,5 +23,3 @@ exports.get = function(req, res){
 
     res.render(getPage(req.user[0]));
 };
-
-
