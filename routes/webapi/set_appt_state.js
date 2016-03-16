@@ -1,3 +1,6 @@
+//want to keep this file for now
+
+
 /**
  * Finds user's appointment in database and updates state accordingly:
  * if checked in, state is set to roomed; if roomed, state is set to done.

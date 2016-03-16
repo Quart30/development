@@ -25,7 +25,7 @@ exports.get = function(req,res){
                     if(!results) { return next(new Error('Error finding employee'));}
 
                     employeee = results;
-                    console.log(employeee);
+                    //console.log(employeee);
                     cb();
 
                 });
@@ -77,8 +77,6 @@ exports.get = function(req,res){
  * @returns The appropriate data about the employee
  */
 
-
-
 exports.post = function(req,res){
     var parsed = baby.parse(req.body.csvEmployees);
     var rows = parsed.data;
@@ -89,48 +87,118 @@ exports.post = function(req,res){
 
 
     for(var i = 0; i < rows.length; i++){
+        /*TODO: Add constrains for text fields*/
+
+
         var username = rows[i][0];
+
+        /*Check for valid inputs */
+        if (rows[i].length  < 2 ) {
+            //TODO: Error print statements
+            break;
+        }
         var email = rows[i][1].trim();
+        /*Check for valid email*/
+        if (email.indexOf("@")  === -1) {
+            /*TODO: ERROR */
+            break;
+        }
         var nameArr = username.split(' ');
         var fname = nameArr[0];
         var lname = nameArr[1];
         var token = randomToken();
-        employeeDB.insert({
-            business: ObjectId(businessID),
-            company: companyName,
-            fname: fname,
-            lname: lname,
-            email: email,
-            registrationToken : token, //will be removed programmatically once the employee confirms
-            admin: false,
-            permissionLevel: 3,
-            registered: false,
-            smsNotify: true, //added to match passport
-            emailNotify: true, //added to match passport
-            phone: 1234567890 //TODO: maybe add phone number to employee confirmation page?
-            /*password: pass*/ //will be added programmatically once the employee confirms
-        });
 
-        var message = {
-            to: email,
-            from: 'quart30dev@gmail.com',
-            subject: 'Employee Signup',
-            text: 'Hello, ' + fname + ' ' + lname + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
-            //'http://quart30.herokuapp.com/employeeregister?token=' + token
-            'http://localhost:4000/employeeregister?token=' + token
-        };
+        employeeDB.find({business: ObjectId(businessID), email: email}, {limit: 1}, function(err, result) {
+            if (result == '') {
+                employeeDB.insert({
+                    business: ObjectId(businessID),
+                    company: companyName,
+                    fname: fname,
+                    lname: lname,
+                    email: email,
+                    registrationToken : token, //will be removed programmatically once the employee confirms
+                    permissionLevel: 4,
+                    registered: false,
+                    smsNotify: true, //added to match passport
+                    emailNotify: true, //added to match passport
+                    phone: '1234567890' //TODO: maybe add phone number to employee confirmation page?
+                    /*password: pass*/ //will be added programmatically once the employee confirms
+                });
 
-        // send mail with defined transport object
-        transporter.sendMail(message, function(error, info){
-            if(error){
-                return console.log('Email error: ' + error);
+                sendEmail(fname, lname, email, token);
             }
-            console.log('Message sent: ' + info.response);
+            else {
+                // else employee already exists
+            }
         });
+
     }
     res.redirect('/addemployees');
 };
 
+
+/**
+ * Sends an email using nodemailer (registration link)
+ * @param fname first name
+ * @param lname last name
+ * @param email email
+ * @param token the token link the employee uses
+ */
+function sendEmail(fname, lname, email, token) {
+    var app = require('../../../app');
+    var registrationLink;
+    if (app.get('env') == 'production') {
+        registrationLink = 'http://heraldcheckin.herokuapp.com/employeeregister?token=' + token;
+    }
+    else {
+        registrationLink = 'http://localhost:4000/employeeregister?token=' + token
+    }
+
+    var message = {
+        to: email,
+        from: 'quart30dev@gmail.com',
+        subject: 'Employee Signup',
+        text: 'Hello, ' + fname + ' ' + lname + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
+        registrationLink
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(message, function(error, info){
+        if(error){
+            return console.log('Email error: ' + error);
+        }
+        console.log('Confirmation email sent: ' + info.response);
+    });
+}
+
+/** Deletes an employee from the database
+ *
+ * @param email email to be deleted
+ * @param res and req
+ */
+exports.delete = function (req, res) {
+    var employeeDB = req.db.get("employees");
+    var businessDB = req.db.get("businesses");
+    var bid = req.user[0].business;
+    var reqEmail = req.user[0].email;
+    var params = req.query;
+    var email = params.email;
+
+    var owner = 0; // is this an owner of the business
+    businessDB.find({_id: bid}, {limit: 1}, function (err, result) {
+        if (result[0].email == reqEmail) // if it's an owners account
+            owner = 1;
+
+        employeeDB.find({business: bid, email: email}, {limit: 1}, function (err, result) {
+
+            // only owners can fire everyone
+            if (result[0].permissionLevel !== 2 || owner === 1)
+                employeeDB.remove(result[0], {justOne: true});
+        });
+    });
+
+    res.redirect('/addemployees');
+};
 
 function randomToken() {
     return crypto.randomBytes(24).toString('hex');

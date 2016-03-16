@@ -6,14 +6,15 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/dashboard.css'/>
+    <link rel='stylesheet' href='/stylesheets/index.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/header.css'/>
 
     {{{ newrelic.getBrowserTimingHeader }}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script>
-      eid = "{{eid}}";
-    </script>
+    <script> eid = "{{eid}}"; </script>
     <script src="/javascripts/dashboard.js"></script>
+ <script> function demo(str){document.getElementById("demo").innerHTML = "PermissionLevel = " + str;}</script>
 
 </head>
 <body>
@@ -33,56 +34,50 @@
         <li class="active">
           <a href="/dashboard">Dashboard</a>
         </li>
+        <li id="emptab">
+            <a href="/addAppointment">Add Appointments</a>
+          </li>
         <li>
-          <a href="/accountSettings">Settings</a>
+          <a href="/accountSettings">Account Settings</a>
+        </li>
+        <li>
+          <a href="/formBuilder">Manage Forms</a>
+        </li>
+        <li>
+          <a href="/checkin">Check-in Page</a>
+        </li>
+        <li>
+          <a href="/logout">Logout</a>
         </li>
       </ul>
-    </div>
-    <!-- end nav bar -->
 
-    <!-- begin transbox -->
-    <div class="container transbox">
-      {{#message}}
-         <div class="alert alert-danger">{{message}}</div>
-      {{/message}}
-      <h1><strong><div>Hi, {{companyName}} ({{employeePermission}}) {{walkinsAllowed}}</div></strong></h1>
-      <div class="dashboardTopInfo text-center">
 
-        <h1 class="text-center">Today</h1>
-        <h1 class="text-center" id="currentDate" ></h1>
-        <div id="txt" class="text-center"></div>
-      </div>
-        <p></p>
-        <div class="row">
-        <table class="table table-striped whitetext">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th></th>
-              <th>Appointment Time</th>
-              <th>Status</th>
-              <th></th>
-              <th>Picture</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="tblBody">
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
-    <!-- end transbox -->
+
+  </nav>
+  <div class="container container-margin-no-secondary">
+
+
+  </div>
+
+<div class="container transbox" style="box-shadow:  0px 0px 30px 15px rgba(0, 0, 0, 0.8)">
+
+
+{{#message}}
+   <div class="alert alert-danger">{{message}}</div>
+{{/message}}
+
+  <h1><strong><div>Hi, {{companyName}}  ({{employeePermission}})</div></strong></h1>
+  <div class="dashboardTopInfo text-center">
+
+      <h1 class="text-center">Today</h1>
+      <h1 class="text-center" id="currentDate" ></h1>
+      <div id="txt" class="text-center"></div>
+    </div>
+      <p id="demo" onclick="demo({{permissionLevel}})"></p>
+
+    </div>
+
   </div>
 
   <footer class="footer site-footer">
@@ -94,4 +89,5 @@
     </ul>
   </footer>
 </body>
+
 </html>

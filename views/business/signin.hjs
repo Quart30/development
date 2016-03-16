@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+<h2 style="text-align: center;"> Sign in! </h2>
+
+
+
+<form   method="post" name="shit" action="checkin" enctype="application/x-www-form-urlencoded">
+                        <div>
+                            <input class="regis form-input" type="text" name="name" value="{{ companyName }}" placeholder="Name" required>
+                        </div>
+                        <div>
+                            <input class="regis form-input" type="tel" name="phone" value="{{ phone }}" placeholder="Phone Number">
+                        </div>
+                        <div>
+                            <input class="regis form-input" type="email" name="email" value="{{ email }}" placeholder="Company Email" required>
+                        </div>
+
+                        <div>
+                            <input class="btn custom-button" name="submit" type="submit" value="Sign In">
+                        </div>
+                    </form>
+</body>
+</html>

@@ -1,3 +1,6 @@
+//want to keep this file for now
+
+
 /**
  * GraphicsMagick plugin
  */
@@ -18,12 +21,12 @@ exports.getDefault = function (req, res) {
 /**
  * Creates an image by converting the a String (the user's input) into an
  * image. The image is created by drawing the user's input as text with a
- * cursive font on a transparent background, and serves as an electronic 
+ * cursive font on a transparent background, and serves as an electronic
  * signature.
  *
  * @param req
  * @param res
- * @returns {Object} A Buffer object containing an image of the user's 
+ * @returns {Object} A Buffer object containing an image of the user's
  * 'signature' in PNG format.
  */
 exports.get = function (req, res) {

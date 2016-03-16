@@ -1,48 +1,23 @@
 /* general */
 h1, h2, h3, h4, h5, h6, p, span, a, input, label, div, strong, li, ul, footer {
   color: white;
+  font-family: Lato, sans-serif;
 }
 html, body {
   height: 100%;
-  overflow-y: hidden;
+  overflow-x: hidden;
+  color: white;
 }
 body {
   background-color: #89bdd3;
 }
 
-/* nav bar */
-.top-bar-section{
-    height: 12vh;
-    width: 100vw;
-    background-color: rgba(0,0,0,0.5);
-}
-.shameless-plug {
-  font-size: 18pt;
-  margin-left: 10%;
-  padding-top: 33px;
-}
-.shameless-plug:hover {
-    color:white;
-}
-.form-container{
-  float: right;
-  padding-right: 40px;
-  margin-top: -48px;
-}
-li.active {
-    border-width: 1px;
-    border-style: solid;
-    border-color: white;
-}
-.nav-links {
-    margin-top: -40px;
-    margin-right: 30px;
-}
 
 /* box */
 .transbox {
   background-color: rgba(0,0,0,0.5);
   margin-top: 5%;
+    margin-bottom: 10%;
 }
 
 /* footer */
@@ -51,15 +26,19 @@ li.active {
 }
 .page-wrap {
   min-height: 100%;
-  margin-bottom: -80px; 
+  margin-bottom: -80px;
 }
 .page-wrap:after {
   display: block;
 }
 .site-footer, .page-wrap:after {
-  height: 80px; 
+  height: 80px;
 }
 .site-footer {
     background: rgba(0,0,0,0.5);
     text-align: center;
 }
+
+
+
+

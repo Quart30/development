@@ -14,6 +14,22 @@ var formResponse = require('./form_response');
 var signature = require('./signature');
 var form = require('./form_request');
 var updateStyle = require('./update_style');
+var employee = require('./employee');
+var appointment = require('./appointment');
+var slack = require('./slack');
+var businesses = require('./business');
+
+router.post('/employee/create', employee.post);
+
+router.delete('/employee/delete', employee.delete);
+
+router.post('/appointment/create', appointment.post);
+
+router.delete('/appointment/delete', appointment.delete);
+
+router.get('/slack', slack.get);
+
+router.get('/businesses', businesses.get);
 
 /**
  * Routes get request for url /employee/:eid/appointments/today to the get
@@ -57,7 +73,7 @@ router.put('/style', isLoggedInBusiness, updateStyle.put);
 function isLoggedInBusiness(req, res, next) {
 
     // if user is authenticated in the session, carry on
-    if (req.isAuthenticated()&& (req.user[0].admin === true)){
+    if (req.isAuthenticated()){
         return next();
     }
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href='/javascripts/form-render.css'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src='javascripts/form-render.js'></script>
+  </head>
+
+  <body style='background-color: #89bdd3' class = "customBG">
+    <div style="padding: 2px 5px 5px 5px; background-color: #FFFFFF height: 50% width:60%">
+
+      <div class="renderForm">
+        <h2><strong>Check-in Form</strong></h2>
+        <form id="rendered-form" action="" method="post">
+          <textarea id="currentForm">{{form}}</textarea>
+            <button type="submit" id="checkinbutton" class="btn btn-primary">Check in</button>
+        </form>
+        <br style="clear:both">
+      </div>
+
+    <script>
+      jQuery(document).ready(function($) {
+        var template = document.getElementById('currentForm');
+        var checkinBtn = document.getElementById('checkinbutton');
+        $(template).formRender();
+
+      });
+
+      $('#checkinbutton').click(function(event) {
+        event.preventDefault();
+        var userdata = $('#rendered-form');
+        $.ajax({
+          type: "POST",
+          url: "/checkin2",
+          data: userdata.serialize(),
+          success: function (result) {
+            alert(result.message);
+          }
+        });
+      });
+    </script>
+
+  </body>
+</html>
+

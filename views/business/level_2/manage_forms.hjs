@@ -29,6 +29,7 @@
                 <a href="/accountSettings">Settings</a>
             </li>
             <li><a href="/businesssetting">Company Name</a></li>
+            <li><a href="/logout">Logout</a></li>
         </ul>
     </div>
     <!--Secondary navbar for the Settings tab-->
