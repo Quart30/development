@@ -42,7 +42,7 @@
             <a href="/businesssetting" style="color: white;">Company Settings</a>
           </li>
           <li>
-            <a href="/checkin">Check-in Page</a>
+            <a href="/checkin" style="color: white;">Check-in Page</a>
           </li>
           <li>
             <a href="/logout" style="color: white;">Logout</a>

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <html>
 
 <body>
@@ -10,18 +12,48 @@
 
 <form   method="post" name="shit" action="checkin" enctype="application/x-www-form-urlencoded">
                         <div>
-                            <input class="regis form-input" type="text" name="name" value="{{ companyName }}" placeholder="Name" required>
+                            <input class="regis form-input" type="text" name="firstName"  placeholder="First Name" required>
                         </div>
                         <div>
-                            <input class="regis form-input" type="tel" name="phone" value="{{ phone }}" placeholder="Phone Number">
+                            <input class="regis form-input" type="text" name="lastName" placeholder="Last Name" required>
                         </div>
                         <div>
-                            <input class="regis form-input" type="email" name="email" value="{{ email }}" placeholder="Company Email" required>
+                            <input class="regis form-input" type="tel" name="phone"  placeholder="Phone Number">
                         </div>
-
                         <div>
-                            <input class="btn custom-button" name="submit" type="submit" value="Sign In">
+                            <input class="regis form-input" type="hidden" id="date" name="date">
+                        </div>
+                        <div>
+                            <input class="regis form-input" type="hidden" id="time " name="time">
+                        </div>
+                        <div>
+                            <button type="submit" id="signinButton" class="btn btn-primary">Check-In</button>
                         </div>
                     </form>
+
+    <script>
+    jQuery(document).ready(function($) {
+        'use strict';
+         console.log('nigga');
+           var signinButton = document.getElementById('signinButton'),
+            date = document.getElementById('date'),
+            time = document.getElementById('time');
+
+
+        $(signinButton).click(function(e){
+            var dateObj = new Date();
+            var currDate = "" + (dateObj.getMonth() + 1) +"," + dateObj.getDate() + "," + dateObj.getFullYear();
+            console.log(currDate);
+            var currTime = "" + ( ((dateObj.getHours() + 11) % 12) + 1) + "," + dateObj.getMinutes();
+            console.log(currTime);
+            $(date).attr("value", currDate);
+            $(time).attr("value", currTime);
+
+
+            $(signinButton).submit();
+
+        });
+    });
+   </script>
 </body>
 </html>
