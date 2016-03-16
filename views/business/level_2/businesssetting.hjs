@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class="page-wrap">
+    <div >
       <!-- nav bar -->
       <div class = "top-bar-section">
         <div style="padding-top: 33px;">
@@ -111,14 +111,13 @@
           </div>
         </div>
       </div>
-    </div>
-    <footer class="footer site-footer">
-      <ul class="list-inline">
-        <li><a href="#" class="whitetext">Privacy</a></li>
-        <li><a href="#" class="whitetext">Terms</a></li>
-        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
-        <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
-      </ul>
-    </footer>
+  <footer class="footer site-footer" >
+    <ul class="list-inline">
+      <li><a href="#" class="whitetext">Privacy</a></li>
+      <li><a href="#" class="whitetext">Terms</a></li>
+      <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
+      <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
+    </ul>
+  </footer>
   </body>
 </html>
