@@ -22,18 +22,33 @@ function getPage(employee) {
 
 function phoneString(phoneNumber) {
     var length = phoneNumber.length;
-    var current_string = phoneNumber;
-    var new_string;
-
-    phone = phone.replace('1', '');
-    phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+    var phone_str = phoneNumber;
 
     switch (length) {
-        case 11: current_string = return_string.substring(1,10);
-        case 10: return_string = "(" + return_string.substring(1,3);
-        //case  7: return_string =
+        case 11: phone_str = phone_str.slice(1,12);
+        case 10: return '(' + phone_str.slice(0,3) + ') ' + phone_str.slice(3,6) + '-' + phone_str.slice(6);
+        default: // no default
             break;
     }
+}
+
+function reload(employees, eid, message) {
+    employees.find({_id: eid}, {limit: 1}, function (err, result) {
+        var emp = result[0];
+        var phone = phoneString("" + emp.phone);
+
+        res.render(getPage(emp), {
+            title: 'Express',
+            fname: emp.fname,
+            lname: emp.lname,
+            password: emp.password,
+            phone: phone,
+            email: emp.email,
+            smsNotify: emp.smsNotify,
+            emailNotify: emp.emailNotify,
+            edited: message
+        });
+    });
 }
 
 /**
@@ -56,11 +71,7 @@ exports.get = function (req,res) {
     //calls find method to find the correct employee to pull results
     employees.find({_id: eid}, function (err, result) {
         var emp = result[0];
-        var phone = emp.phone;
-        phone = "" + phone;
-
-        phone = phone.replace('1', '');
-				phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+        var phone = phoneString("" + emp.phone);
 
         res.render(getPage(emp), {
             title: 'Express',
@@ -95,69 +106,34 @@ exports.post = function (req, res) {
     var textNotify = req.body.sendText;
     var emailNotify = req.body.sendEmail;
 
-    //if (inputName != null)
-    //{
-    //    var name = inputName.split(' ');
-    //
-    //    employees.findAndModify({_id: eid}, { $set: {fname: name[0], lname: name[1]}}, function(err, result) {
-    //       if (err) { return handleError(res, err); }
-    //
-    //        employees.find({_id: eid}, {limit: 1}, function (err, result) {
-    //           var emp = result[0];var phone = emp.phone;
-    //        });
-    //    });
-    //}
+    if (inputName != null)
+    {
+        var name = inputName.split(' ');
+
+        employees.findAndModify({_id: eid}, { $set: {fname: name[0], lname: name[1]}}, function(err, result) {
+           if (err) { return handleError(res, err); }
+
+            employees.find({_id: eid}, {limit: 1}, function (err, result) {
+               var emp = result[0];var phone = emp.phone;
+            });
+        });
+    }
 
     if (inputPass != null)
     {
         if(inputPass === req.user.Employee[0].password)
         {
-            //find employees based on id
-            employees.find({_id: eid}, function (err, result) {
-                var emp = result[0];
-                var phone = emp.phone;
-                phone = phone.replace('1', '');
-                phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-
-        		res.render(getPage(emp), {
-                    title: 'Express',
-                    fname: emp.fname,
-                    lname: emp.lname,
-                    password: emp.password,
-                    phone: phone,
-                    email: emp.email,
-                    smsNotify: emp.smsNotify,
-                    emailNotify: emp.emailNotify,
-                                edited: 'Password successfully changed!'
-                });
-            });
+            reload(employees, eid, 'Password successfully changed!');
         }
 		else
 		{
 			inputPass = auth.hashPassword(inputPass);
 			employees.findAndModify({_id: eid}, { $set: {password: inputPass}}, function(err, data) {
-           	if (err) { return handleError(res, err);}
-		   //find employees based on id
-           	employees.find({_id: eid}, function (err, result) {
-             	var emp = result[0];
-             	var phone = emp.phone;
-             	phone = phone.replace('1', '');
-							phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+           	    if (err) { return handleError(res, err); }
 
-             	res.render(getPage(emp), {
-                 	title: 'Express',
-                 	fname: emp.fname,
-                 	lname: emp.lname,
-                 	password: emp.password,
-                 	phone: phone,
-                 	email: emp.email,
-                 	smsNotify: emp.smsNotify,
-                 	emailNotify: emp.emailNotify,
-                 	edited: 'Password successfully changed!',
-             	});
-           	});
+                reload(employees, eid, 'Password successfully changed!');
         	});
-				}
+        }
     }
 
     if (inputEmail != null)
@@ -165,25 +141,8 @@ exports.post = function (req, res) {
         employees.findAndModify({_id: eid}, { $set: {email: inputEmail}}, function(err, data)
         {
             if (err) { return handleError(res, err);}
-		    //find employees based on id
-            employees.find({_id: eid}, function (err, result) {
-                var emp = result[0];
-                var phone = emp.phone;
-                phone = phone.replace('1', '');
-								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
 
-                res.render(getPage(emp), {
-                    title: 'Express',
-                    fname: emp.fname,
-                    lname: emp.lname,
-                    password: emp.password,
-                    phone: phone,
-                    email: emp.email,
-                    smsNotify: emp.smsNotify,
-                    emailNotify: emp.emailNotify,
-                    edited: 'Email successfully changed!'
-                });
-            });
+            reload(employees, eid, 'Email successfully changed!');
         });
 
         // if owner, change business email
@@ -197,56 +156,19 @@ exports.post = function (req, res) {
 
     if (inputPhone != null)
     {
-        inputPhone = inputPhone.replace(/-/g, '');
+        inputPhone = inputPhone.replace(/\D/g,''); // numbers only
 
         if (inputPhone.length === 10)
         {
-            inputPhone = '1' + inputPhone;
-						employees.findAndModify({_id: eid}, { $set: {phone: inputPhone}}, function(err, data)
-            {
+            employees.findAndModify({_id: eid}, { $set: {phone: inputPhone}}, function(err, data) {
                 if (err) { return handleError(res, err);}
-		        //find employees based on id
-                employees.find({_id: eid}, function (err, result) {
-                    var emp = result[0];
-                    var phone = emp.phone;
-                    phone = phone.replace('1', '');
-										phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
 
-                    res.render(getPage(emp), {
-                        title: 'Express',
-                        fname: emp.fname,
-                        lname: emp.lname,
-                        password: emp.password,
-                        phone: phone,
-                        email: emp.email,
-                        smsNotify: emp.smsNotify,
-                        emailNotify: emp.emailNotify,
-                        edited: 'Phone number successfully changed!'
-                    });
-                });
+                reload(employees, eid, 'Phone number successfully changed!');
             });
         }
         else
         {
-            //find employees based on id
-            employees.find({_id: eid}, function (err, result) {
-                var emp = result[0];
-                var phone = emp.phone;
-                phone = phone.replace('1', '');
-								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-
-                res.render(getPage(emp), {
-                    title: 'Express',
-                    fname: emp.fname,
-                    lname: emp.lname,
-                    password: emp.password,
-                    phone: phone,
-                    email: emp.email,
-                    smsNotify: emp.smsNotify,
-                    emailNotify: emp.emailNotify,
-                    alert: 'Incorrect phone number format'
-                });
-            });
+            reload(employees, eid, 'Incorrect phone length');
         }
     }
 
@@ -264,25 +186,8 @@ exports.post = function (req, res) {
         employees.findAndModify({_id: eid}, { $set: {smsNotify: smsSet}}, function(err, data)
         {
             if (err) { return handleError(res, err);}
-	        //find the employee based off ids
-            employees.find({_id: eid}, function (err, result) {
-                var emp = result[0];
-                var phone = emp.phone;
-                phone = phone.replace('1', '');
-								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
 
-                res.render(getPage(emp), {
-                    title: 'Express',
-                    fname: emp.fname,
-                    lname: emp.lname,
-                    password: emp.password,
-                    phone: phone,
-                    email: emp.email,
-                    smsNotify: emp.smsNotify,
-                    emailNotify: emp.emailNotify,
-                    edited: 'SMS notification settings successfully changed!'
-                });
-            });
+            reload(employees, eid, 'SMS notification settings successfully changed!');
         });
     }
 
@@ -301,24 +206,7 @@ exports.post = function (req, res) {
         {
             if (err) { return handleError(res, err);}
 
-            employees.find({_id: eid}, function (err, result) {
-                var emp = result[0];
-                var phone = emp.phone;
-                phone = phone.replace('1', '');
-								phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
-
-                res.render(getPage(emp), {
-                    title: 'Express',
-                    fname: emp.fname,
-                    lname: emp.lname,
-                    password: emp.password,
-                    phone: phone,
-                    email: emp.email,
-                    smsNotify: emp.smsNotify,
-                    emailNotify: emp.emailNotify,
-                    edited: 'Email notification settings successfully changed!'
-                });
-            });
+            reload(employees, eid, 'Email notification settings successfully changed!');
         });
     }
 

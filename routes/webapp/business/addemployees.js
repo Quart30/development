@@ -4,6 +4,13 @@ var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var transporter = require('nodemailer').createTransport('smtps://quart30dev%40gmail.com:cse112quart@smtp.gmail.com');
 
+
+function debug(message) {
+    var app = require('../../../app');
+    if (app.get('env') === 'development')
+        console.log(message);
+}
+
 /**
  * Find out which account settings page to load based on user level
  *
@@ -180,17 +187,17 @@ function sendEmail(fname, lname, email, token) {
  */
 exports.delete = function (req, res) {
     var employeeDB = req.db.get("employees");
-    var businessDB = req.db.get("businesses");
     var bid = req.user[0].business;
-    var reqEmail = req.user[0].email;
     var params = req.query;
     var email = params.email;
 
     employeeDB.find({business: bid, email: email}, {limit: 1}, function (err, result) {
 
-        // only delete accounts of lower level
-        if (req.user[0].permissionLevel > result[0].permissionLevel)
+        // only delete accounts of lower level -- note lower number = higher level
+        if (req.user[0].permissionLevel < result[0].permissionLevel) {
+            debug(result[0]);
             employeeDB.remove(result[0], {justOne: true});
+        }
     });
 
     res.redirect('/addemployees');
