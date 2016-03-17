@@ -8,7 +8,11 @@
 <body>
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
-<tr><td><a href="landingpage-title.html">landingpage-title</a></td></tr>
+<tr><td><a href="addemployee-sameEntry.html">addemployee-sameEntry</a></td></tr>
+<tr><td><a href="addemployee-onlyemail.html">addemployee-onlyemail</a></td></tr>
+<tr><td><a href="addemployee-anotherEmail.html">addemployee-anotherEmail</a></td></tr>
+<tr><td><a href="addemployee-deleteEmployee.html">addemployee-deleteEmployee</a></td></tr>
+<tr><td><a href="addemployee-numbers.html">addemployee-numbers</a></td></tr>
 </tbody></table>
 </body>
 </html>
