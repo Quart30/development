@@ -37,7 +37,8 @@
           url: "/checkin2",
           data: userdata.serialize(),
           success: function (result) {
-            alert(result.message);
+            alert('You are checked in, please have a seat!');
+            window.location.href = '/checkin';
           }
         });
       });
@@ -45,4 +46,3 @@
 
   </body>
 </html>
-

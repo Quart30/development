@@ -36,7 +36,7 @@
           <a href="/addemployees" style="color: white;">Employees</a>
         </li>
         <li>
-          <a href="/addAppointment" style="color: white;">Add Appointment</a>
+          <a href="/addAppointment" style="color: white;">Add Appointments</a>
         </li>
         <li>
           <a href="/accountSettings" style="color: white;">Account Settings</a>

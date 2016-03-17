@@ -46,8 +46,12 @@ exports.post = function (req, res) {
             return;
         }
 
-        var fname = req.body.firstName;
-        var lname = req.body.lastName;
+        var fname = (req.body.firstName).trim();
+        var lname = (req.body.lastName).trim();
+        fname = fname.toLowerCase();
+        lname = lname.toLocaleLowerCase();
+        fname = fname.charAt(0).toUpperCase() + fname.slice(1);
+        lname = lname.charAt(0).toUpperCase() + lname.slice(1);
         var name = fname + ' ' + lname;
         var appointmentsDB = req.db.get('appointments');
         appointmentsDB.findOne({fname: fname, lname: lname, phone: req.body.phone}, function(err, apptResult) {
@@ -72,4 +76,3 @@ exports.post = function (req, res) {
 
     formDB.find(query, findFormCallback);
 };
-

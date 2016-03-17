@@ -17,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="background-color: #c9c9c9;">
     <div class="initial-screen">
 
         <div class = "top-bar-section" >
@@ -60,68 +60,72 @@
     <div class="middle-bar-section" id="foo">
         <h2 class="middle-bar-section-text">Herald is changing the way businesses do reception.</h2>
     </div>
-    <div class="pricing-part" style="text-align: center;">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-2">
-                <h2>What is Herald?</h2>
-                <p class="about-p">Herald, powered by an epic collaboration of Quart 3.0 and Peter Venkman, is your
-                    automated receptionist. With Herald, customers keep track of themselves, allowing your business to
-                    use human resources on things other than appointment times and check-in. It's your guestbook, your
-                    customer database, your calendar.</p>
-            </div>
-            <div class="col-md-4">
-                <h2>How does it work?</h2>
-                <p class="about-p">To be: the have, to oth make calamity of respect that is sicklied of time, than fles
-                    that is sicklied of somethis rath, to troubler 'tis ressor's wrong, the question. To die: to sleep;
-                    not the retural shuffled of soment a sea of some with make calamity of that sleep: perchan flesh is
-                    may consummative under 'tis returns of somenter to, 'tis a sleep of?</p>
+    <div class="container">
+        <div style="text-align: center;">
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-md-5 textbox">
+                    <h2>What is Herald?</h2>
+                    <p class="about-p">Herald, powered by an epic collaboration of Quart 3.0 and Peter Venkman, is your
+                        automated receptionist. With Herald, customers keep track of themselves, allowing your business to
+                        use human resources on things other than appointment times and check-in. It's your guestbook, your
+                        customer database, your calendar.</p>
+                </div>
+                <div class="col-md-5 col-md-offset-2 textbox">
+                    <h2>How does it work?</h2>
+                    <p class="about-p">To be: the have, to oth make calamity of respect that is sicklied of time, than fles
+                        that is sicklied of somethis rath, to troubler 'tis ressor's wrong, the question. To die: to sleep;
+                        not the retural shuffled of soment a sea of some with make calamity of that sleep: perchan flesh is
+                        may consummative under 'tis returns of somenter to, 'tis a sleep of?</p>
+                </div>
             </div>
         </div>
-        <div class="pricing-table group">
-            <div class="block personal fl">
-                <h2 class="title">personal</h2>
-                <div class="content">
-                    <p class="price">
-                        <sup>$</sup> <span>$</span> <sub>/mo.</sub>
-                    </p>
-                    <p class="hint">Perfect for freelancers</p>
+    </div>
+            <div class="pricing-table group">
+                <div class="block personal fl">
+                    <h2 class="title">personal</h2>
+                    <div class="content">
+                        <p class="price">
+                            <sup>$</sup> <span>$</span> <sub>/mo.</sub>
+                        </p>
+                        <p class="hint">Perfect for freelancers</p>
+                    </div>
+                    <ul class="features">
+                        <li><span class="fontawesome-cog"></span>1 WordPress Install</li>
+                        <li><span class="fontawesome-star"></span>25,000 visits/mo.</li>
+                        <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
+                        <li><span class="fontawesome-cloud"></span>10GB Local Storage</li>
+                    </ul>
                 </div>
-                <ul class="features">
-                    <li><span class="fontawesome-cog"></span>1 WordPress Install</li>
-                    <li><span class="fontawesome-star"></span>25,000 visits/mo.</li>
-                    <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
-                    <li><span class="fontawesome-cloud"></span>10GB Local Storage</li>
-                </ul>
-            </div>
-            <div class="block professional fl">
-                <h2 class="title">Professional</h2>
-                <div class="content">
-                    <p class="price">
-                        <sup>$</sup> <span>$$</span> <sub>/mo.</sub>
-                    </p>
-                    <p class="hint">Suitable for startups</p>
+                <div class="block professional fl">
+                    <h2 class="title">Professional</h2>
+                    <div class="content">
+                        <p class="price">
+                            <sup>$</sup> <span>$$</span> <sub>/mo.</sub>
+                        </p>
+                        <p class="hint">Suitable for startups</p>
+                    </div>
+                    <ul class="features">
+                        <li><span class="fontawesome-cog"></span>10 WordPress Install</li>
+                        <li><span class="fontawesome-star"></span>100,000 visits/mo.</li>
+                        <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
+                        <li><span class="fontawesome-cloud"></span>20GB Local Storage</li>
+                    </ul>
                 </div>
-                <ul class="features">
-                    <li><span class="fontawesome-cog"></span>10 WordPress Install</li>
-                    <li><span class="fontawesome-star"></span>100,000 visits/mo.</li>
-                    <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
-                    <li><span class="fontawesome-cloud"></span>20GB Local Storage</li>
-                </ul>
-            </div>
-            <div class="block business fl">
-                <h2 class="title">Enterprise</h2>
-                <div class="content">
-                    <p class="price">
-                        <sup>$</sup> <span>$$$</span> <sub>/mo.</sub>
-                    </p>
-                    <p class="hint">For established business</p>
+                <div class="block business fl">
+                    <h2 class="title">Enterprise</h2>
+                    <div class="content">
+                        <p class="price">
+                            <sup>$</sup> <span>$$$</span> <sub>/mo.</sub>
+                        </p>
+                        <p class="hint">For established business</p>
+                    </div>
+                    <ul class="features">
+                        <li><span class="fontawesome-cog"></span>25 WordPress Install</li>
+                        <li><span class="fontawesome-star"></span>400,000 visits/mo.</li>
+                        <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
+                        <li><span class="fontawesome-cloud"></span>30GB Local Storage</li>
+                    </ul>
                 </div>
-                <ul class="features">
-                    <li><span class="fontawesome-cog"></span>25 WordPress Install</li>
-                    <li><span class="fontawesome-star"></span>400,000 visits/mo.</li>
-                    <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
-                    <li><span class="fontawesome-cloud"></span>30GB Local Storage</li>
-                </ul>
             </div>
         </div>
     </div>

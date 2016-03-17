@@ -220,19 +220,19 @@ body {
     padding: 5px 5px 5px 5px;
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: black;
+    color: white;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: black;
+    color: white;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: black;
+    color: white;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: black;
+    color: white;
 }
 :placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
-  color: black;
+    color: white;
 }
 
 .signin-cont {
