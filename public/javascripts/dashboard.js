@@ -339,7 +339,7 @@ function drawTable() {
  * Keen.io for javascript
  */
 
-function recordClick(userid, username, userlevel, companyname) {
+function login(userid, username, userlevel, companyname) {
     // Configure an instance for your project
     var client = new Keen({
         projectId: "56dccd4ac1e0ab4d24f6c62e",
@@ -347,7 +347,7 @@ function recordClick(userid, username, userlevel, companyname) {
     });
 
 // Create a data object with the properties you want to send
-    var pageviews = {
+    var userlogin = {
         user: userid,
         name: username,
         level: userlevel,
@@ -358,14 +358,14 @@ function recordClick(userid, username, userlevel, companyname) {
     };
 
 // Send it to the "purchases" collection
-    client.addEvent("pageviews", pageviews, function(err, res){
+    client.addEvent("login", userlogin, function(err, res){
         if (err) {
             // there was an error!
-            alert("error: write");
+  //          alert("error: write");
         }
         else {
             // see sample response below
-            alert("success: write");
+   //         alert("success: write");
         }
     });
 
@@ -482,13 +482,16 @@ function testkeenio() {
         // Sample two
         // ----------------------------------------
         var pageviews_static = new Keen.Query("count", {
-            event_collection: "pageviews",
-            group_by: "user.device_info.browser.family",
+            eventCollection: "login",
+            groupBy: [
+                "company"
+            ],
             timeframe: {
-                start: "2014-05-01T00:00:00.000Z",
-                end: "2017-05-05T00:00:00.000Z"
+                "end": "2016-03-29T00:00:00.000+00:00",
+                "start": "2016-03-15T00:00:00.000+00:00"
             }
         });
+
         client.draw(pageviews_static, document.getElementById("chart-02"), {
             chartType: "piechart",
             title: false,
@@ -510,18 +513,19 @@ function testkeenio() {
         // ----------------------------------------
         // Sample three
         // ----------------------------------------
-        var impressions_timeline = new Keen.Query("count", {
-            event_collection: "impressions",
-            group_by: "ad.advertiser",
+        var create_account_timeline = new Keen.Query("sum", {
+            eventCollection: "anonpageviews",
+            groupBy: [
+                "id"
+            ],
             interval: "hourly",
-            timeframe: {
-                start: "2014-05-04T00:00:00.000Z",
-                end: "2017-05-05T00:00:00.000Z"
-            }
+            targetProperty: "id",
+            timeframe: "this_1_days",
+            timezone: "UTC"
         });
-        client.draw(impressions_timeline, document.getElementById("chart-03"), {
+        client.draw(create_account_timeline, document.getElementById("chart-03"), {
             chartType: "columnchart",
-            title: false,
+            title: "Account Creation Rate",
             height: 250,
             width: "auto",
             chartOptions: {

@@ -16,6 +16,8 @@
     {{/newrelic}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="/javascripts/landing.js"></script>
+
 </head>
 <body>
     <div class="initial-screen">
@@ -32,7 +34,7 @@
                         <span class="form-span">Password</span>
                         <input type="password" class="form-input" id="password" name="password" required />
                     </label>
-                    <button type="submit" class="standard-btn standard-btn-small">Log in</button>
+                    <button type="submit" class="standard-btn standard-btn-small" onclick="">Log in</button>
                 </form>
                 {{#message}}
                    <div style="color: #FFFFFF">{{message}}</div>
@@ -44,7 +46,7 @@
             <div class="col-md-2 col-md-offset-5"></div>
                 <h1><span style="font-weight: 900;">HERALD</span> <span style="font-weight: 300;">CHECK-IN</span></h1>
                 <div>
-                    <a href="/register" class="standard-btn">Sign Up</a>
+                    <a href="/register" class="standard-btn" onclick="landingPageView()">Sign Up</a>
                     <a href="#foo" class="standard-btn">Learn More</a>
                   <!--  <a href="/login" class="standard-btn" style="margin-left: -1px;">Log In</a> -->
                 </div>
@@ -126,6 +128,7 @@
         </div>
     </div>
 
-
+    <script type="text/javascript" src="/keenio/assets/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/keenio/assets/lib/keen-js/dist/keen.min.js"></script>
 </body>
 </html>

@@ -14,8 +14,6 @@
     <link rel='stylesheet' href='/stylesheets/tableStripeOverride.css'/>
 
 
-
-
     {{{ newrelic.getBrowserTimingHeader }}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -28,7 +26,7 @@
         !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
     </script>
     <script>
-        var userid = "{{eId}}";
+        var userid = "{{eid}}";
         var username = "{{employeeName}}";
         var userlevel = "{{employeePermission}}";
         var company = "{{companyName}}";
@@ -49,7 +47,7 @@
     </script>
 
 </head>
-<body>
+<body onload="testkeenio()">
 
   <div class="page-wrap">
     <!-- nav bar -->
@@ -102,7 +100,7 @@
    <div class="alert alert-danger">{{message}}</div>
 {{/message}}
 
-  <h1><strong><div>Hi, {{companyName}}  ({{employeePermission}})</div></strong></h1>
+  <h1><strong><div>{{employeeName}} of {{companyName}}! ({{employeePermission}} {{eId}})</div></strong></h1>
   <div class="dashboardTopInfo text-center">
 
       <h1 class="text-center">Today</h1>
@@ -110,7 +108,7 @@
       <div id="txt" class="text-center"></div>
     </div>
 
-      <button id="addevent" onclick="recordClick(userid, username, userlevel, company)" style="color:black">Add Event</button>
+      <button id="addevent" onclick="login(userId, username, userlevel, company)" style="color:black">Add Event</button>
     <p> Add event: simply records the user and permission level and current time </p>
       <button id="retrieveevent" onclick="testkeenio()" style="color:black">Retrieve Event</button>
     <p>Retrieve events: simply calls the function that creates the charts below. (Not much meaningful data exists so expect them to look plain/empty)</p>
@@ -181,59 +179,12 @@
                           </div>
                       </div>
                   </div>
-
+                </div>
               </div>
-
       </div> <!-- end chart -->
 
   </div> <!-- end transbox bottom -->
 
-
-  <!-- begin transbox -->
-  <div class="container transbox" style="box-shadow:  0px 0px 30px 5px rgba(0, 0, 0, 0.8)">
-  {{#message}}
-      <div class="alert alert-danger">{{message}}</div>
-      {{/message}}
-      <h1><strong>
-          Hi, {{employeeName}} of {{companyName}}!
-      </strong></h1>
-      <div class="dashboardTopInfo text-center">
-
-          <h1 class="text-center">Today</h1>
-          <h1 class="text-center" id="currentDate"></h1>
-          <div id="txt" class="text-center"></div>
-      </div>
-      <p></p>
-      <div class="row">
-          <table class="table table-striped whitetext">
-              <thead>
-              <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th></th>
-                  <th>Appointment Time</th>
-                  <th>Status</th>
-                  <th></th>
-                  <th>Picture</th>
-                  <th></th>
-              </tr>
-              </thead>
-              <tbody id="tblBody">
-              <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-              </tr>
-              </tbody>
-          </table>
-      </div>
-  </div>
-  <!-- end transbox -->
 
 
   <footer class="footer site-footer">
