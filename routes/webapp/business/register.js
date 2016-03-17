@@ -10,7 +10,8 @@ var validateFields = function (body) {
 		return 'Invalid last name';
 	}
 
-	if (body.phone === '') {
+    var phone = body.phone.replace(/\D/g,''); // only numbers
+	if (phone === '' || !(phone.length === 7 || phone.length === 10 || phone.length === 11)) {
 		return 'Invalid phone number';
 	}
 
@@ -18,12 +19,12 @@ var validateFields = function (body) {
 		return 'Invalid company name';
 	}
 
-	if (body.email === '' || body.password === '') {
-		return 'Invalid email and/or password';
+	if (body.email === '' || body.email.indexOf('@')  === -1) {
+		return 'Invalid email';
 	}
 
-	if (body.email !== body.email2) {
-		return 'Emails do not match';
+	if (body.password === '') {
+		return 'Invalid password';
 	}
 
 	if (body.password !== body.password2) {
@@ -48,17 +49,20 @@ exports.post = function (req, res) {
 	var employeeDB = req.db.get('employees');
 	var formDB = req.db.get('forms');
 
-	var fieldsCheck = validateFields(req.body);
+    var fieldsCheck = validateFields(req.body);
+
+    console.log(fieldsCheck);
 	if (fieldsCheck !== 'OK') {
-		res.render('/business/register', {message: fieldsCheck});
+		res.render('business/register', {message: fieldsCheck});
 		return;
 	}
 
+    var phone = req.body.phone.replace(/\D/g,''); // only numbers
 	var businessData = {
 		email: req.body.email,
 		password: auth.hashPassword(req.body.password),
 		companyName: req.body.companyName,
-		phone: req.body.phone,
+		phone: phone,
 		fname: req.body.fname,
 		lname: req.body.lname,
 		logo: 'images/dentalLogo.jpg',
@@ -89,16 +93,18 @@ exports.post = function (req, res) {
 			throw err;
 		}
 		var businessID = result._id.toString();
+        var phone = result.phone.replace(/\D/g,''); // only numbers
 		var userData = {
 			business: ObjectId(businessID),
 			password: result.password,
-			phone: result.phone,
+			phone: phone,
 			fname: result.fname,
 			lname: result.lname,
 			email: result.email,
 			smsNotify: true,
 			emailNotify: true,
 			permissionLevel: 2,
+            permissionName: 'Owner',
 			company: result.companyName
 		};
 		console.log('Successfully inserted new business.');

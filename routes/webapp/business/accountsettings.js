@@ -4,19 +4,34 @@ var auth = require('../../../lib/auth');
  * Find out which account settings page to load based on user level
  *
  * @param employee
+ *          1: load everything
+ *          2: load everything
+ *          3: load everything
+ *          4: load everything (with correct nav bar)
  * @returns hjs file to render
  */
 function getPage(employee) {
     switch (employee.permissionLevel) {
-        case 1: // place holder
-        case 2:
-            return 'business/level_2/accountsettings';
-            break
-        case 3:
-            return 'business/level_3/accountsettings';
-            break;
-        default: // default level 4
-            return 'business/level_4/accountsettings';
+        case 1: return 'business/level_1/accountsettings';
+        case 2: // place holder
+        case 3: return 'business/level_2/accountsettings';
+        case 4: return 'business/level_4/accountsettings';
+        default: return 'error';
+    }
+}
+
+function phoneString(phoneNumber) {
+    var length = phoneNumber.length;
+    var current_string = phoneNumber;
+    var new_string;
+
+    phone = phone.replace('1', '');
+    phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+
+    switch (length) {
+        case 11: current_string = return_string.substring(1,10);
+        case 10: return_string = "(" + return_string.substring(1,3);
+        //case  7: return_string =
             break;
     }
 }
@@ -73,11 +88,25 @@ exports.post = function (req, res) {
     var employees = db.get('employees');
     var eid = req.user[0]._id;
 
+    var inputName = req.body.editName;
     var inputPass = req.body.editPassword;
     var inputEmail = req.body.editEmail;
     var inputPhone = req.body.editPhone;
     var textNotify = req.body.sendText;
     var emailNotify = req.body.sendEmail;
+
+    //if (inputName != null)
+    //{
+    //    var name = inputName.split(' ');
+    //
+    //    employees.findAndModify({_id: eid}, { $set: {fname: name[0], lname: name[1]}}, function(err, result) {
+    //       if (err) { return handleError(res, err); }
+    //
+    //        employees.find({_id: eid}, {limit: 1}, function (err, result) {
+    //           var emp = result[0];var phone = emp.phone;
+    //        });
+    //    });
+    //}
 
     if (inputPass != null)
     {
@@ -156,6 +185,14 @@ exports.post = function (req, res) {
                 });
             });
         });
+
+        // if owner, change business email
+        if (req.user[0].permissionLevel === 2) {
+            var businessDB = req.db.get('businesses');
+            businessDB.findAndModify({_id: req.user[0].business}, { $set: {email: inputEmail}}, function (err, result) {
+                if (err) { return handleError(res, err); }
+            });
+        }
     }
 
     if (inputPhone != null)

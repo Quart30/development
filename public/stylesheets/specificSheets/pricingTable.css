@@ -28,7 +28,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 .group:after {
     content: "";
     display: table;
-} 
+}
 .group:after {
     clear: both;
 }
@@ -56,12 +56,12 @@ body {
     margin-bottom: 4rem;
 }
 .block{
-    width: 30%;    
+    width: 30%;
     margin: 0 15px;
     overflow: hidden;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 5px;    
+    border-radius: 5px;
 /*    border: 1px solid red;*/
 }
 /*Shared properties*/
@@ -91,7 +91,7 @@ body {
     top:0;
 }
 .content:after,.pt-footer:after {
-	border-color: rgba(136, 183, 213, 0);	
+	border-color: rgba(136, 183, 213, 0);
 	border-width: 5px;
 	margin-left: -5px;
 }
@@ -101,14 +101,14 @@ body {
     display: inline-block;
     margin-bottom: 0.625rem;
 }
-.price span{    
+.price span{
     font-size: 6rem;
     letter-spacing: 8px;
-    font-weight: bold;        
+    font-weight: bold;
 }
 .price sup{
-    font-size: 1.5rem;    
-    position: absolute;    
+    font-size: 1.5rem;
+    position: absolute;
     top: 12px;
     left: -12px;
 }
@@ -117,7 +117,7 @@ body {
     font-size: 1.3rem;
 }
 .features{
-    list-style-type: none;    
+    list-style-type: none;
     background: #FFFFFF;
     text-align: left;
     color: #9C9C9C;
@@ -129,17 +129,17 @@ body {
     width: 100%;
 }
 .features li span{
-   padding-right: 0.4rem; 
+   padding-right: 0.4rem;
 }
 /*PERSONAL*/
-.personal .title{        
-    background: #9ad3de;    
+.personal .title{
+    background: #9ad3de;
 }
 .personal .content,.personal .pt-footer{
     background: #9ad3de;
 }
-.personal .content:after{	
-	border-top-color: #9ad3de;	
+.personal .content:after{
+	border-top-color: #9ad3de;
 }
 .personal .pt-footer:after{
     border-top-color: #FFFFFF;
@@ -151,8 +151,8 @@ body {
 .professional .content,.professional .pt-footer{
     background: #89bdd3;
 }
-.professional .content:after{	
-	border-top-color: #89bdd3;	
+.professional .content:after{
+	border-top-color: #89bdd3;
 }
 .professional .pt-footer:after{
     border-top-color: #FFFFFF;
@@ -164,9 +164,9 @@ body {
 .business .content,.business .pt-footer{
     background: #377995;
 }
-.business .content:after{	
-	border-top-color: #377995;	
+.business .content:after{
+	border-top-color: #377995;
 }
-.business .pt-footer:after {	
-	border-top-color: #FFFFFF;	
+.business .pt-footer:after {
+	border-top-color: #FFFFFF;
 }

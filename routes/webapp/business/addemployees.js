@@ -5,12 +5,31 @@ var ObjectId = require('mongodb').ObjectID;
 var transporter = require('nodemailer').createTransport('smtps://quart30dev%40gmail.com:cse112quart@smtp.gmail.com');
 
 /**
+ * Find out which account settings page to load based on user level
+ *
+ * @param employee
+ *          1: load everything
+ *          2: load everything
+ *          3: load everything
+ *          4: error
+ * @returns hjs file to render
+ */
+function getPage(employee) {
+    switch (employee.permissionLevel) {
+        case 1: return 'business/level_1/addemployees';
+        case 2: // place holder
+        case 3: return 'business/level_2/addemployees';
+        default: return 'error';
+    }
+}
+
+/**
  * Takes a req and res parameters and is inputted into function to get employee, notemployee, and business data.
  *
  * @param req and res The two parameters passed in to get the apprporiate employee,
  * @returns The appropriate data about the employee
  */
-exports.get = function(req,res){
+exports.get = function(req, res){
     var database =  req.db;
     var employeeDB = database.get('employees');
     var employee;
@@ -25,14 +44,12 @@ exports.get = function(req,res){
                     if(!results) { return next(new Error('Error finding employee'));}
 
                     employeee = results;
-                    //console.log(employeee);
                     cb();
 
                 });
             },
             nonemployee: function(cb){
                 employeeDB.find({registrationToken: {$exists: true}, business: ObjectId(businessID)}, function (err,results){
-
 
                     if (err) { return next(err); }
                     if(!results) { return next(new Error('Error finding employee'));}
@@ -50,21 +67,8 @@ exports.get = function(req,res){
             }
 
             // load the page
-            employeeDB.find({_id: req.user[0]._id}, function (err, results) {
-                var emp = results[0];
-                var page; // page to load
-                switch (emp.permissionLevel) {
-                    case 1:
-                    case 2:
-                        page = 'business/level_2/addemployees';
-                        break;
-                    // default 3
-                    default:
-                        page = 'business/level_3/addemployees';
-                        break;
-                }
-
-                res.render(page,{title: 'Express',notsigned: notemployee, signed: employeee});
+            employeeDB.find({_id: req.user[0]._id}, {limit: 1}, function (err, result) {
+                res.render(getPage(result[0]), {title: 'Express', notsigned: notemployee, signed: employeee});
             });
 
         });
@@ -85,10 +89,8 @@ exports.post = function(req,res){
     var businessID = req.user[0].business;
     var companyName = req.user[0].company;
 
-
     for(var i = 0; i < rows.length; i++){
         /*TODO: Add constrains for text fields*/
-
 
         var username = rows[i][0];
 
@@ -108,7 +110,8 @@ exports.post = function(req,res){
         var lname = nameArr[1];
         var token = randomToken();
 
-        employeeDB.find({business: ObjectId(businessID), email: email}, {limit: 1}, function(err, result) {
+        employeeDB.find({business: ObjectId(businessID), email: email}, function(err, result) {
+
             if (result == '') {
                 employeeDB.insert({
                     business: ObjectId(businessID),
@@ -118,11 +121,11 @@ exports.post = function(req,res){
                     email: email,
                     registrationToken : token, //will be removed programmatically once the employee confirms
                     permissionLevel: 4,
+                    permissionName: 'Provider',
                     registered: false,
                     smsNotify: true, //added to match passport
                     emailNotify: true, //added to match passport
                     phone: '1234567890' //TODO: maybe add phone number to employee confirmation page?
-                    /*password: pass*/ //will be added programmatically once the employee confirms
                 });
 
                 sendEmail(fname, lname, email, token);
@@ -131,7 +134,6 @@ exports.post = function(req,res){
                 // else employee already exists
             }
         });
-
     }
     res.redirect('/addemployees');
 };
@@ -173,7 +175,7 @@ function sendEmail(fname, lname, email, token) {
 
 /** Deletes an employee from the database
  *
- * @param email email to be deleted
+ * @param req contains email to be deleted
  * @param res and req
  */
 exports.delete = function (req, res) {
@@ -184,17 +186,11 @@ exports.delete = function (req, res) {
     var params = req.query;
     var email = params.email;
 
-    var owner = 0; // is this an owner of the business
-    businessDB.find({_id: bid}, {limit: 1}, function (err, result) {
-        if (result[0].email == reqEmail) // if it's an owners account
-            owner = 1;
+    employeeDB.find({business: bid, email: email}, {limit: 1}, function (err, result) {
 
-        employeeDB.find({business: bid, email: email}, {limit: 1}, function (err, result) {
-
-            // only owners can fire everyone
-            if (result[0].permissionLevel !== 2 || owner === 1)
-                employeeDB.remove(result[0], {justOne: true});
-        });
+        // only delete accounts of lower level
+        if (req.user[0].permissionLevel > result[0].permissionLevel)
+            employeeDB.remove(result[0], {justOne: true});
     });
 
     res.redirect('/addemployees');

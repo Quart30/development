@@ -45,6 +45,9 @@
           <a href="/businesssetting" style="color: white;">Company Settings</a>
         </li>
         <li>
+          <a href="/checkin">Check-in Page</a>
+        </li>
+        <li>
           <a href="/logout">Logout</a>
         </li>
       </ul>
@@ -77,6 +80,7 @@
                             <tr>
                                 <td>{{fname}} {{lname}}</td>
                                 <td>{{email}}</td>
+                                <td>{{permissionName}}</td>
                                 <td>
                                     <form action="/addemployees/mod?email={{email}}&lvl=up" method="post">
                                         <input type="submit" class="emp_up" value="Up">

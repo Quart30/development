@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class="page-wrap">
+    <div >
       <!-- nav bar -->
       <div class = "top-bar-section">
         <div style="padding-top: 33px;">
@@ -37,6 +37,9 @@
           </li>
           <li class="active">
             <a href="/businesssetting">Company Settings</a>
+          </li>
+          <li>
+            <a href="/checkin">Check-in Page</a>
           </li>
           <li>
             <a href="/logout">Logout</a>
@@ -97,12 +100,9 @@
                           </div>
                         </div>
                         <button type="submit" class="custom-button">Save</button>
-                        <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=23623886482.24011540304" type="submit" class="custom-button">Add to Slack</a>
-                            <!-- slack button -->
-                            <!--
-                          <span><a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=23623886482.24011540304"><img alt="Add to Slack" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a></span>
-                        -->
                       </form>
+                      <!--slack button-->
+                      <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=23623886482.24011540304" type="submit" class="custom-button">Add to Slack</a>
                     </div>
                   </div>
                 </div>
@@ -111,16 +111,13 @@
           </div>
         </div>
       </div>
-    </div>
-    <!--
-    <footer class="footer site-footer">
-      <ul class="list-inline">
-        <li><a href="#" class="whitetext">Privacy</a></li>
-        <li><a href="#" class="whitetext">Terms</a></li>
-        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
-        <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
-      </ul>
-    </footer>
-  -->
+  <footer class="footer site-footer" >
+    <ul class="list-inline">
+      <li><a href="#" class="whitetext">Privacy</a></li>
+      <li><a href="#" class="whitetext">Terms</a></li>
+      <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
+      <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
+    </ul>
+  </footer>
   </body>
 </html>

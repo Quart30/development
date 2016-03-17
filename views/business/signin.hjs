@@ -1,27 +1,78 @@
 <!DOCTYPE html>
-
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/specificSheets/footer.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/header.css'/>
+    <link rel='stylesheet' href='/stylesheets/register.css'/>
+</head>
 <html>
-
 <body>
-
-<h2 style="text-align: center;"> Sign in! </h2>
-
-
-
-<form   method="post" name="shit" action="checkin" enctype="application/x-www-form-urlencoded">
+    <div class="page-wrap">
+        <div class = "top-bar-section" >
+            <div class="shameless-plug">Herald</div>
+       </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 signin-cont">
+                    <form class="signin-form" method="post" name="shit" action="checkin" enctype="application/x-www-form-urlencoded">
+                        <h2>Sign in!</h2>
                         <div>
-                            <input class="regis form-input" type="text" name="name" value="{{ companyName }}" placeholder="Name" required>
+                            <input type="text" name="firstName"  placeholder="First Name" required>
                         </div>
                         <div>
-                            <input class="regis form-input" type="tel" name="phone" value="{{ phone }}" placeholder="Phone Number">
+                            <input type="text" name="lastName" placeholder="Last Name" required>
                         </div>
                         <div>
-                            <input class="regis form-input" type="email" name="email" value="{{ email }}" placeholder="Company Email" required>
+                            <input type="tel" name="phone"  placeholder="Phone Number">
                         </div>
-
                         <div>
-                            <input class="btn custom-button" name="submit" type="submit" value="Sign In">
+                            <input type="hidden" id="date" name="date">
+                        </div>
+                        <div>
+                            <input type="hidden" id="time " name="time">
+                        </div>
+                        <div>
+                            <button class="custom-button" type="submit" id="signinButton" class="btn btn-primary">Check-In</button>
                         </div>
                     </form>
+                </div>
+            </div> <!-- row -->
+        </div>
+    </div>
+    <footer class="footer site-footer">
+        <ul class="list-inline">
+            <li><a href="#" class="whitetext">Privacy</a></li>
+            <li><a href="#" class="whitetext">Terms</a></li>
+            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
+            <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
+        </ul>
+    </footer>
+
+    <script>
+    jQuery(document).ready(function($) {
+        'use strict';
+         console.log('nigga');
+           var signinButton = document.getElementById('signinButton'),
+            date = document.getElementById('date'),
+            time = document.getElementById('time');
+
+
+        $(signinButton).click(function(e){
+            var dateObj = new Date();
+            var currDate = "" + (dateObj.getMonth() + 1) +"," + dateObj.getDate() + "," + dateObj.getFullYear();
+            console.log(currDate);
+            var currTime = "" + ( ((dateObj.getHours() + 11) % 12) + 1) + "," + dateObj.getMinutes();
+            console.log(currTime);
+            $(date).attr("value", currDate);
+            $(time).attr("value", currTime);
+
+
+            $(signinButton).submit();
+
+        });
+    });
+   </script>
 </body>
 </html>
