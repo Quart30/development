@@ -40,11 +40,19 @@ a:hover {
     border:1px white solid;
 }
 
+.standard-btn-small-fuck {
+    width: 120px;
+    padding: 6px 25px 6px 25px;
+    font-size: 13px;
+    text-align: center;
+    margin-right: -100px;
+    display: inline-block;
+}
+
 .standard-btn-small {
     width: 120px;
     padding: 6px 25px 6px 25px;
     font-size: 13px;
-    overflow: hidden;
     text-align: center;
 }
 
@@ -94,7 +102,7 @@ a:hover {
   margin-top: -54px;
 */
     float: right;
-    padding-right: 40px;
+    padding-right: 50px;
     margin-top: -30px;
 
 
@@ -157,7 +165,11 @@ a:hover {
     padding-top: 40px;
 }
 
-
+.textbox {
+    background-color: rgba(0,0,0,0.3);
+    padding: 0px 15px 15px 15px;
+    margin-top: 15px;
+}
 
 .middle-bar-section-text {
     margin: 0px 0px 0px 0px;
@@ -166,7 +178,6 @@ a:hover {
 
 .pricing-part {
     text-align: center;
-    background-color: #c9c9c9;
     padding-top: 27px;
 }
 .bottom-part {

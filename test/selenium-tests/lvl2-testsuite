@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="lvl2-nav.html">lvl2-nav</a></td></tr>
+<tr><td><a href="lvl2-logout.html">lvl2-logout</a></td></tr>
+<tr><td><a href="lvl2-checkin.html">lvl2-checkin</a></td></tr>
+<tr><td><a href="lvl2-addemployee.html">lvl2-addemployee</a></td></tr>
+<tr><td><a href="lvl2-checkmail.html">lvl2-checkmail</a></td></tr>
+<tr><td><a href="lvl2-resendemail.html">lvl2-resendemail</a></td></tr>
+<tr><td><a href="lvl2-removeemployee.html">lvl2-removeemployee</a></td></tr>
+</tbody></table>
+</body>
+</html>

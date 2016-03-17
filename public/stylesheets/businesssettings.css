@@ -16,11 +16,6 @@ html, body {
   text-align: center;
 }
 
-.form {
-  margin: 0px auto;
-  text-align: center;
-}
-
 .form-group {
   text-align: left;
 }
@@ -55,8 +50,9 @@ h1 {
 }
 
 .label{
-  font-size: 15px;
+  font-size: 13pt;
   color: white;
+  margin-left: -8px;
 }
 
 .list-inline {

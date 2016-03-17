@@ -25,6 +25,10 @@ exports.post = function(req, res) {
     var eid = req.user[0]._id;
     var fname = params.fname;
     var lname = params.lname;
+    fname = fname.toLowerCase();
+    lname = lname.toLocaleLowerCase();
+    fname = fname.charAt(0).toUpperCase() + fname.slice(1);
+    lname = lname.charAt(0).toUpperCase() + lname.slice(1);
     var state = params.state ? params.state : "scheduled";
     var image = params.image ? params.image : "http://placehold.it/50x50";
     var phone = params.phone ? params.phone : "12321";
@@ -58,7 +62,7 @@ exports.post = function(req, res) {
             }
             app.io.emit('create_appointment',
                 {eid: eid, _id: result._id, fname: fname, lname: lname, state: state, date: date, image: image,
-                phone: phone});
+                    phone: phone});
             //res.writeHead(200);
             //res.write("Successfully inserted " + fname + " " +
             //    lname + " into the appointments table. Appt id = " + result._id.toString());

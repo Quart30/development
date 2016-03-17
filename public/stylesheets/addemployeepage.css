@@ -6,6 +6,7 @@ html *
 
 body {
     background-color: #89bdd3;
+    overflow-x: hidden;
 }
 
 .custom-button {

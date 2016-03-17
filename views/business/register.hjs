@@ -55,13 +55,10 @@
                             <input class="regis form-input" type="text" name="lname" value="{{ lname }}" placeholder="Last Name" required>
                         </div>
                         <div>
-                            <input class="regis form-input" type="tel" name="phone" value="{{ phone }}" placeholder="Phone Number">
+                            <input class="regis form-input" type="tel" name="phone" value="{{ phone }}" placeholder="Phone Number" required>
                         </div>
                         <div>
                             <input class="regis form-input" type="email" name="email" value="{{ email }}" placeholder="Company Email" required>
-                        </div>
-                        <div>
-                            <input class="regis form-input" type="email" name="email2" value="{{ email }}" placeholder="Confirm Email" required>
                         </div>
                         <div>
                             <input class="regis form-input" type="password" name="password" value="{{ password }}" placeholder="Password" required>
@@ -70,8 +67,6 @@
                         <div>
                             <input class="regis form-input" type="password" name="password2" value="{{ password }}" placeholder="Confirm Password" required>
                         </div>
-
-
                         <div>
                             <input class="btn custom-button" name="submit" type="submit" id="submitbutton" value="Sign Up" onclick="signUpPageView()">
                         </div>

@@ -31,8 +31,6 @@ exports.get = function (req, res) {
 exports.post = function (req, res) {
 
 	console.log(req.body);
-    // use req.body.name, req.body.email, req.body.phone to add visitor to queue
-
 
     var bid = req.user[0].business;
     var formDB = req.db.get('forms');
@@ -48,9 +46,12 @@ exports.post = function (req, res) {
             return;
         }
 
-        var spaceIndex = req.body.name.indexOf(' ');
-        var fname = req.body.name.substring(0, spaceIndex);
-        var lname = req.body.name.substring(spaceIndex + 1);
+        var fname = (req.body.firstName).trim();
+        var lname = (req.body.lastName).trim();
+        fname = fname.toLowerCase();
+        lname = lname.toLocaleLowerCase();
+        fname = fname.charAt(0).toUpperCase() + fname.slice(1);
+        lname = lname.charAt(0).toUpperCase() + lname.slice(1);
         var name = fname + ' ' + lname;
         var appointmentsDB = req.db.get('appointments');
         appointmentsDB.findOne({fname: fname, lname: lname, phone: req.body.phone}, function(err, apptResult) {
@@ -75,4 +76,3 @@ exports.post = function (req, res) {
 
     formDB.find(query, findFormCallback);
 };
-

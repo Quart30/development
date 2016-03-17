@@ -18,7 +18,19 @@ var accountType = function( level){
             break
     }
     return name;
+};
+
+function getPage(employee) {
+    switch(employee.permissionLevel) {
+        case 1: //return 'business/level_1/dashboard';
+        case 2: return 'business/level_2/dashboard';
+        case 3: return 'business/level_3/dashboard';
+        case 4: return 'business/level_4/dashboard';
+        case 5: return 'business/checkin';
+        default: return 'error';
+    }
 }
+
 exports.get = function (req, res) {
 	var employeeId = req.user[0]._id;
 	var employeename = req.user[0].fname;
@@ -31,28 +43,21 @@ exports.get = function (req, res) {
 
     var companyName = req.user[0].company;
 
-    var page; // page to load
-    switch (employeePermission) {
-        case 1:
-        case 2: // level2/3 have the same views
-            page = 'business/level_2/dashboard';
-            break;
-        case 3:
-            page = 'business/level_3/dashboard';
-            break;
-        default: // default level 4
-            //TODO: go striaght to signin page
-            page = 'business/level_4/dashboard';
-            break;
-    }
-    res.render(page, {title: 'Dashboard',
-		eid: employeeId,
-		employeeName: employeename,
-        employeeLast: employeeLastName,
-        employeePhone: employeePhone,
-        employeePermission: accountType(employeePermission),
-        walkinsAllowed: walkinsAllowed,
-        companyName: companyName,
-		message: req.flash("permission")
-	});
+    var page = getPage(req.user[0]); // get the page
+    if (page == 'error')
+        res.render('error', {
+           message: 'page not found',
+           error: '404'
+        });
+    else
+        res.render(page, {title: 'Dashboard',
+            eid: employeeId,
+            employeeName: employeename,
+            employeeLast: employeeLastName,
+            employeePhone: employeePhone,
+            employeePermission: accountType(employeePermission),
+            walkinsAllowed: walkinsAllowed,
+            companyName: companyName,
+            message: req.flash("permission")
+        });
 };
