@@ -133,9 +133,10 @@ app.use('/api', require('./routes/webapi'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    var err = new Error("Couldn't find All the things");
     err.status = 404;
-    next(err);
+    res.render('error', {message: err.message, error: err});
+    //next(err);
 });
 
 // error handlers
@@ -149,7 +150,7 @@ if (app.get('env') === 'development') {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
-            error: err
+            error: "Uh oh spaghettios"
         });
     });
 }
