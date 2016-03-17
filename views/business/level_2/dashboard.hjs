@@ -6,10 +6,9 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/dashboard.css'/>
-    <link rel='stylesheet' href='/stylesheets/specificSheets/pricingTable.css'/>
-    <link rel='stylesheet' href='/stylesheets/index.css'/>
-    <link rel='stylesheet' href='/stylesheets/specificSheets/header.css'/>
     <link rel='stylesheet' href='/stylesheets/tableStripeOverride.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/pricingTable.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/header.css'/>
 
 
     {{{ newrelic.getBrowserTimingHeader }}}
@@ -21,10 +20,9 @@
 </head>
 <body>
 
-  <div class="page-wrap">
     <!-- nav bar -->
     <div class = "top-bar-section">
-      <div style="padding-top: 33px;">
+      <div style="padding-top: 40px;">
         <span class="shameless-plug">Herald</span>
       </div>
       <div class="form-container">
@@ -56,9 +54,6 @@
         </li>
       </ul>
     </div>
-
-    </nav>
-    <div class="container container-margin-no-secondary">
 
   <!-- begin transbox -->
   <div class="container transbox" style="box-shadow:  0px 0px 30px 5px rgba(0, 0, 0, 0.8)">
@@ -103,8 +98,10 @@
               </tbody>
           </table>
       </div>
+  </div>
 
-      <!-- PAYMENT -->
+  <!-- PAYMENT -->
+  <div class="page-wrap">
       <div class="pricing-table group">
           <div>
               <h1>Payment Options</h1>
@@ -123,7 +120,7 @@
                   <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
                   <li><span class="fontawesome-cloud"></span>10GB Local Storage</li>
                   <li>
-                      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                      <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                           <input type="hidden" name="cmd" value="_s-xclick">
                           <input type="hidden" name="hosted_button_id" value="XJ2VAN9JBPNW6">
                           <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -146,7 +143,7 @@
                   <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
                   <li><span class="fontawesome-cloud"></span>20GB Local Storage</li>
                   <li>
-                      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                      <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                           <input type="hidden" name="cmd" value="_s-xclick">
                           <input type="hidden" name="hosted_button_id" value="54JWNN3JRYCH2">
                           <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -169,7 +166,7 @@
                   <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
                   <li><span class="fontawesome-cloud"></span>30GB Local Storage</li>
                   <li>
-                      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                      <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                           <input type="hidden" name="cmd" value="_s-xclick">
                           <input type="hidden" name="hosted_button_id" value="2BAVNLLBX5QBW">
                           <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -178,13 +175,10 @@
                   </li>
               </ul>
           </div>
+          <A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=LAK56CGBVEP7S">
+              <IMG SRC="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_SM.gif" BORDER="0">
+          </A>
       </div>
-
-      <A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=LAK56CGBVEP7S">
-          <IMG SRC="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_SM.gif" BORDER="0">
-      </A>
-  </div>
-  <!-- end transbox -->
 </div>
 
 

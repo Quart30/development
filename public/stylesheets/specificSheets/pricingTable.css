@@ -70,11 +70,15 @@ body {
     text-transform: capitalize;
     line-height: 2.5;
     position: relative;
+    border: 1px solid black;
 }
 .content{
     position: relative;
     color: #FEFEFE;
     padding: 20px 0 10px 0;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
 }
 /*arrow creation*/
 .content:after, .content:before,.pt-footer:before,.pt-footer:after {
@@ -169,4 +173,8 @@ body {
 }
 .business .pt-footer:after {
 	border-top-color: #FFFFFF;
+}
+
+ul.features li {
+    color: grey;
 }
