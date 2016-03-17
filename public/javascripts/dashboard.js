@@ -342,8 +342,8 @@ function drawTable() {
 function login(userid, username, userlevel, companyname) {
     // Configure an instance for your project
     var client = new Keen({
-        projectId: "56dccd4ac1e0ab4d24f6c62e",
-        writeKey: "347629feb542cb08d47167810add3966c3c8b37c429f3a74961ad481b025f9ed7710e865db5ee8beeb84fb109092e82882e3c4f2d2c26f8b0c429c51a4b60478944074ffc09968f1239f058f3576498478f660f45e8ce3b76b40559e4886a0e9"
+        projectId: "56eb3c832fd4b1443854f4f7",
+        writeKey: "e23084aefe33e2ee3cb38adf7dc37f17787ca0f6e87b01be6a4b54094126db45c19c3bce31fb331c42b8e63df6975c156ca58f140aa64d47ed2285c079cf97e59a9cfa93f3b4f47818bff87b20030e957d85ae684c4011c63738f3df39b9ee1d"
     });
 
 // Create a data object with the properties you want to send
@@ -375,8 +375,8 @@ function login(userid, username, userlevel, companyname) {
 function retrieveClick(){
     // Create a client instance
     var client = new Keen({
-        projectId: "56dccd4ac1e0ab4d24f6c62e",
-        readKey: "18b847b8b4f4aba961bd51cfc39b8f87743429164184584fd7dc29635311991ad99f185c359c90bed086c77fc3df6c9efb3587acc3081d627717e9d727a6761403b98cfa2caa1abf24c7cd6669d811e82109262bd6a296af6f62a4d1f40219ab"
+        projectId: "56eb3c832fd4b1443854f4f7",
+        readKey: "1d0849a464fb39aaf19c7234314c43636fa50f51d30162d9f24a0ae9871f17d94fa65b0c5a0679adfa2ccba3cea459b348844e71e2eda3509673ec47cae74e4de42b85e4b0719d7e97a2c2ee1c25e4cec07ca52fefbf6f883ed068863dfee72b"
 
     });
 
@@ -414,8 +414,8 @@ function retrieveClick(){
 function onloadpageview() {
     // Configure an instance for your project
     var client = new Keen({
-        projectId: "56dccd4ac1e0ab4d24f6c62e",
-        writeKey: "347629feb542cb08d47167810add3966c3c8b37c429f3a74961ad481b025f9ed7710e865db5ee8beeb84fb109092e82882e3c4f2d2c26f8b0c429c51a4b60478944074ffc09968f1239f058f3576498478f660f45e8ce3b76b40559e4886a0e9"
+        projectId: "56eb3c832fd4b1443854f4f7",
+        writeKey: "e23084aefe33e2ee3cb38adf7dc37f17787ca0f6e87b01be6a4b54094126db45c19c3bce31fb331c42b8e63df6975c156ca58f140aa64d47ed2285c079cf97e59a9cfa93f3b4f47818bff87b20030e957d85ae684c4011c63738f3df39b9ee1d"
     });
 
 // Create a data object with the properties you want to send
@@ -443,8 +443,8 @@ function onloadpageview() {
 
 function testkeenio() {
     var client = new Keen({
-        projectId: "56dccd4ac1e0ab4d24f6c62e",
-        readKey: "18b847b8b4f4aba961bd51cfc39b8f87743429164184584fd7dc29635311991ad99f185c359c90bed086c77fc3df6c9efb3587acc3081d627717e9d727a6761403b98cfa2caa1abf24c7cd6669d811e82109262bd6a296af6f62a4d1f40219ab"
+        projectId: "56eb3c832fd4b1443854f4f7",
+        readKey: "1d0849a464fb39aaf19c7234314c43636fa50f51d30162d9f24a0ae9871f17d94fa65b0c5a0679adfa2ccba3cea459b348844e71e2eda3509673ec47cae74e4de42b85e4b0719d7e97a2c2ee1c25e4cec07ca52fefbf6f883ed068863dfee72b"
 
     });
     Keen.ready(function(){
