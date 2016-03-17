@@ -32,7 +32,7 @@
             <a href="/addemployees">Employees</a>
           </li>
           <li class="active">
-            <a href="/addAppointment">Add Appointment</a>
+            <a href="/addAppointment">Add Appointments</a>
           </li>
           <li>
             <a href="/accountSettings">Account Settings</a>

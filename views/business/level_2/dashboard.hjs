@@ -22,7 +22,7 @@
 
     <!-- nav bar -->
     <div class = "top-bar-section">
-      <div style="padding-top: 40px;">
+      <div style="padding-top: 43px;">
         <span class="shameless-plug">Herald</span>
       </div>
       <div class="form-container">
