@@ -234,3 +234,10 @@ body {
 :placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
   color: black;
 }
+
+.signin-cont {
+    padding: 10px 10px 10px 10px;
+    background-color: rgba(0,0,0, 0.3);
+    margin-top: 50px;
+}
+
