@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div >
+  <div class="page-wrap"> 
       <!-- nav bar -->
       <div class = "top-bar-section">
         <div style="padding-top: 33px;">
@@ -55,55 +55,50 @@
       </div>
       <!-- end nav bar -->
 
-      <div class="row business-setting-margin">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="row business-setting-margin">
+      <div class="col-md-8 col-md-offset-2">
+        <div>
           <div>
-            <div>
-              <h1>Company Settings</h1>
-              <div class="row" style="text-align:center">
-                {{#edited}}
-                  <div class="alert alert-success" role="alert">
-                    {{edited}}
-                  </div>
-                {{/edited}}
-                {{#error}}
-                  <div class="alert alert-danger" role="alert">
-                    {{error}}
-                  </div>
-                {{/error}}
-              </div>
-              <hr>
+            <h2 style="margin-top: 40px;">Company Settings</h2>
+            <div class="row" style="text-align:center">
+              {{#edited}}
+                <div class="alert alert-success" role="alert">
+                  {{edited}}
+                </div>
+              {{/edited}}
+              {{#error}}
+                <div class="alert alert-danger" role="alert">
+                  {{error}}
+                </div>
+              {{/error}}
             </div>
-            <div>
-              <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                  <div>
-                    <h3>Edit the name of your company or phone number</h3>
-                    <hr>
-                  </div>
-                    <div class="panel-body">
-                      <form class="form" action="" method="post">
-                        <div class="row">
-                          <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                              <label class = "label" for="email">Company Name</label>
-                              <input type="text" id="companyName" name="companyName" class="form-control input-lg" value="{{companyName}}">
-                            </div>
+            <hr style="width: 70%;">
+          </div>
+          <div>
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                  <div class="panel-body">
+                    <form class="form" action="" method="post">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                          <div class="form-group">
+                            <label class = "label" for="email">Company Name</label>
+                            <input type="text" id="companyName" name="companyName" class="form-control input-lg" value="{{companyName}}">
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                              <label class = "label">Phone Number</label>
-                              <input type="text" id="phone" name ="phone"class="form-control input-lg" value="{{phone}}">
-                            </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                          <div class="form-group">
+                            <label class = "label">Phone Number</label>
+                            <input type="text" id="phone" name ="phone"class="form-control input-lg" value="{{phone}}">
                           </div>
                         </div>
-                        <button type="submit" class="custom-button">Save</button>
-                      </form>
-                      <!--slack button-->
+                      </div>
+                      <button type="submit" class="custom-button">Save</button>
                       <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=23623886482.24011540304" type="submit" class="custom-button">Add to Slack</a>
-                    </div>
+                    </form>
+                    <!--slack button-->
                   </div>
                 </div>
               </div>
@@ -111,6 +106,8 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
   <footer class="footer site-footer" >
     <ul class="list-inline">
       <li><a href="#" class="whitetext">Privacy</a></li>
