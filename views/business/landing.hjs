@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!--<link rel='stylesheet' href='/stylesheets/style.css'/>-->
     <link rel='stylesheet' href='/stylesheets/landing.css'/>
-    <link rel='stylesheet' href='/stylesheets/specificSheets/footer.css'/>
     <link rel='stylesheet' href='/stylesheets/specificSheets/pricingTable.css'/>
     <link rel="stylesheet" href="/stylesheets/specificSheets/faq.css"> <!-- Resource style -->
+    <link rel='stylesheet' href='/stylesheets/specificSheets/footer.css'/>
     {{#newrelic}}
         {{{ newrelic.getBrowserTimingHeader }}}
     {{/newrelic}}
@@ -25,7 +25,7 @@
             <div class="shameless-plug">Powered by Quart 3.0</div>
             <div class="form-container">
                 <form action="login" method="post" style="width: 600px;">
-                    <label for="email" class="login-section-text" "form-label" >
+                    <label for="email" class="login-section-text" "form-label">
                         <span class="form-span">Email</span>
                         <input type="email" class="form-input" id="email" name="email" required />
                     </label>
@@ -51,9 +51,9 @@
                 </div>
             </div>
             <div class="initial-screen-bottom-links">
-                <a href="#" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">About</a>
+                <a href="#faq" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">About</a>
                 <a href="#" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Sponsors</a>
-                <a href="#" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Pricing</a>
+                <a href="#pricing" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">Pricing</a>
                 <a href="#faq" class="standard-btn standard-btn-small initial-screen-bottom-links-buttons">FAQ</a>
             </div>
         </div>
@@ -122,80 +122,88 @@
             <a href="#0" class="cd-close-panel">Close</a>
         </section> <!-- cd-faq -->
     </div>
-            <div class="pricing-table group">
-                <h2 style="text-align: center; font-size: 32pt; margin-bottom: -5px;">Pricing Table</h2>
-                <div class="block personal fl">
-                    <h2 class="title">personal</h2>
-                    <div class="content">
-                        <p class="price">
-                            <sup>$</sup> <span>$</span> <sub>/mo.</sub>
-                        </p>
-                        <p class="hint">Perfect for freelancers</p>
-                    </div>
-                    <ul class="features">
-                        <li><span class="fontawesome-cog"></span>1 WordPress Install</li>
-                        <li><span class="fontawesome-star"></span>25,000 visits/mo.</li>
-                        <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
-                        <li><span class="fontawesome-cloud"></span>10GB Local Storage</li>
-                        <li>
-                            <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                <input type="hidden" name="cmd" value="_s-xclick">
-                                <input type="hidden" name="hosted_button_id" value="54JWNN3JRYCH2">
-                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                            </form>
-                        </li>
-                    </ul>
+        <div id="pricing" class="pricing-table group" style="border-top: 1px solid white;">
+            <h2 style="text-align: center; font-size: 32pt;">Pricing Table</h2>
+            <div class="block personal fl">
+                <h2 class="title">personal</h2>
+                <div class="content">
+                    <p class="price">
+                        <sup>$</sup> <span>$</span> <sub>/mo.</sub>
+                    </p>
+                    <p class="hint">Perfect for freelancers</p>
                 </div>
-                <div class="block professional fl">
-                    <h2 class="title">Professional</h2>
-                    <div class="content">
-                        <p class="price">
-                            <sup>$</sup> <span>$$</span> <sub>/mo.</sub>
-                        </p>
-                        <p class="hint">Suitable for startups</p>
-                    </div>
-                    <ul class="features">
-                        <li><span class="fontawesome-cog"></span>10 WordPress Install</li>
-                        <li><span class="fontawesome-star"></span>100,000 visits/mo.</li>
-                        <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
-                        <li><span class="fontawesome-cloud"></span>20GB Local Storage</li>
-                        <li>
-                            <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                <input type="hidden" name="cmd" value="_s-xclick">
-                                <input type="hidden" name="hosted_button_id" value="54JWNN3JRYCH2">
-                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                            </form>
-                        </li>
-                    </ul>
+                <ul class="features">
+                    <li><span class="fontawesome-cog"></span>1 WordPress Install</li>
+                    <li><span class="fontawesome-star"></span>25,000 visits/mo.</li>
+                    <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
+                    <li><span class="fontawesome-cloud"></span>10GB Local Storage</li>
+                    <li>
+                        <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="54JWNN3JRYCH2">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div class="block professional fl">
+                <h2 class="title">Professional</h2>
+                <div class="content">
+                    <p class="price">
+                        <sup>$</sup> <span>$$</span> <sub>/mo.</sub>
+                    </p>
+                    <p class="hint">Suitable for startups</p>
                 </div>
-                <div class="block business fl">
-                    <h2 class="title">Enterprise</h2>
-                    <div class="content">
-                        <p class="price">
-                            <sup>$</sup> <span>$$$</span> <sub>/mo.</sub>
-                        </p>
-                        <p class="hint">For established business</p>
-                    </div>
-                    <ul class="features">
-                        <li><span class="fontawesome-cog"></span>25 WordPress Install</li>
-                        <li><span class="fontawesome-star"></span>400,000 visits/mo.</li>
-                        <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
-                        <li><span class="fontawesome-cloud"></span>30GB Local Storage</li>
-                        <li>
-                            <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                <input type="hidden" name="cmd" value="_s-xclick">
-                                <input type="hidden" name="hosted_button_id" value="54JWNN3JRYCH2">
-                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                            </form>
-                        </li>
-                    </ul>
+                <ul class="features">
+                    <li><span class="fontawesome-cog"></span>10 WordPress Install</li>
+                    <li><span class="fontawesome-star"></span>100,000 visits/mo.</li>
+                    <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
+                    <li><span class="fontawesome-cloud"></span>20GB Local Storage</li>
+                    <li>
+                        <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="54JWNN3JRYCH2">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div class="block business fl">
+                <h2 class="title">Enterprise</h2>
+                <div class="content">
+                    <p class="price">
+                        <sup>$</sup> <span>$$$</span> <sub>/mo.</sub>
+                    </p>
+                    <p class="hint">For established business</p>
                 </div>
+                <ul class="features">
+                    <li><span class="fontawesome-cog"></span>25 WordPress Install</li>
+                    <li><span class="fontawesome-star"></span>400,000 visits/mo.</li>
+                    <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
+                    <li><span class="fontawesome-cloud"></span>30GB Local Storage</li>
+                    <li>
+                        <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="54JWNN3JRYCH2">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
+  <footer class="footer site-footer">
+    <ul class="list-inline">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  class="whitetext">Support</a></li>
+      <li class="footer-copyright">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Copyright &#169; Quart 3.0, Winter 2015. All Rights Reserved.</li>
+    </ul>
+  </footer>
 
 <script src="/javascripts/jquery-2.1.1.js"></script>
 <script src="/javascripts/jquery.mobile.custom.min.js"></script>

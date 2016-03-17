@@ -40,18 +40,9 @@ a:hover {
     border:1px white solid;
 }
 
-.standard-btn-small-fuck {
-    width: 120px;
-    padding: 6px 25px 6px 25px;
-    font-size: 13px;
-    text-align: center;
-    margin-right: -100px;
-    display: inline-block;
-}
-
 .standard-btn-small {
     width: 120px;
-    padding: 6px 25px 6px 25px;
+    padding: 7px 25px 7px 25px;
     font-size: 13px;
     text-align: center;
 }
