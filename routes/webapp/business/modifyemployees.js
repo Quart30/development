@@ -1,5 +1,11 @@
 
 
+function debug(message) {
+    var app = require('../../../app');
+    if (app.get('env') === 'development')
+        console.log(message);
+}
+
 function getPermissionName(permissionLevel) {
     switch (permissionLevel) {
         case 1: return 'SaaS';
@@ -13,9 +19,7 @@ function getPermissionName(permissionLevel) {
 
 exports.post = function(req, res) {
     var employeeDB = req.db.get('employees');
-    var businessDB = req.db.get('businesses');
     var bid = req.user[0].business;
-    var reqEmail = req.user[0].email;
     var params = req.query;
     var email = params.email;
     var lvl = params.lvl;
@@ -24,13 +28,16 @@ exports.post = function(req, res) {
 
         var own_level = req.user[0].permissionLevel;
         var emp_level = result[0].permissionLevel;
-        // can only upgrade an account to your level-1
-        if (lvl === 'up' && own_level > emp_level+1)
-            mod(employeeDB, result[0], ++emp_level);
 
-        // can only downgrade an account to 4 (must be less than your level)
-        else if (lvl === 'down' && own_level > emp_level && emp_level !== 4)
-            mod(employeeDB, result[0], --emp_level);
+        if (emp_level !== 5) {
+            // can only upgrade an account to your level-1
+            if (lvl === 'up' && own_level < emp_level-1)
+                mod(employeeDB, result[0], --emp_level);
+
+            // can only downgrade an account to 4 (must be less than your level)
+            else if (lvl === 'down' && own_level < emp_level && emp_level !== 4)
+                mod(employeeDB, result[0], ++emp_level);
+        }
     });
 
     res.redirect('/addemployees');

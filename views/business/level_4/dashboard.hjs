@@ -34,17 +34,8 @@
         <li class="active">
           <a href="/dashboard">Dashboard</a>
         </li>
-        <li id="emptab">
-            <a href="/addAppointment">Add Appointments</a>
-          </li>
         <li>
           <a href="/accountSettings">Account Settings</a>
-        </li>
-        <li>
-          <a href="/formBuilder">Manage Forms</a>
-        </li>
-        <li>
-          <a href="/checkin">Check-in Page</a>
         </li>
         <li>
           <a href="/logout">Logout</a>
