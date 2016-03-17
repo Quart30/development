@@ -60,10 +60,8 @@
             var currDate = "" + (dateObj.getMonth() + 1) +"," + dateObj.getDate() + "," + dateObj.getFullYear();
             console.log(currDate);
             var currTime = "" + ( ((dateObj.getHours() + 11) % 12) + 1) + "," + dateObj.getMinutes();
-            console.log(currTime);
             $(date).attr("value", currDate);
             $(time).attr("value", currTime);
-
 
             $(signinButton).submit();
 
