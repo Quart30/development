@@ -3,15 +3,19 @@
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel='stylesheet' href='/stylesheets/register.css'/>
     <link rel='stylesheet' href='/stylesheets/specificSheets/footer.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/header.css'/>
+    <link rel='stylesheet' href='/stylesheets/register.css'/>
 </head>
 <html>
 <body>
     <div class="page-wrap">
+        <div class = "top-bar-section" >
+            <div class="shameless-plug">Herald</div>
+       </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-4 col-md-offset-4 signin-cont">
                     <form class="signin-form" method="post" name="shit" action="checkin" enctype="application/x-www-form-urlencoded">
                         <h2>Sign in!</h2>
                         <div>
