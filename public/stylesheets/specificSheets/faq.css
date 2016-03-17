@@ -58,7 +58,7 @@ a {
   text-decoration: none;
 }
 a:focus {
-  color: #c9c9c9;
+  color: white;
   text-decoration: none;
 }
 
@@ -355,11 +355,14 @@ Main components
   margin: 1.6em 0 .4em;
   line-height: 1.8;
   font-size: 18pt;
-  color: #c9c9c9;
+  color: black;
 }
 .cd-faq-trigger:hover {
-  color: #c9c9c9;
+  color: black;
   text-decoration: none;
+}
+.cd-faq-trigger:focus {
+  color: black;
 }
 @media only screen and (min-width: 768px) {
   .cd-faq-trigger {
