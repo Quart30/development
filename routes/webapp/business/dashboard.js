@@ -26,6 +26,7 @@ function getPage(employee) {
         case 2: return 'business/level_2/dashboard';
         case 3: return 'business/level_3/dashboard';
         case 4: return 'business/level_4/dashboard';
+        case 5: return 'business/checkin';
         default: return 'error';
     }
 }
