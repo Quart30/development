@@ -53,7 +53,6 @@ exports.post = function (req, res) {
         fname = fname.charAt(0).toUpperCase() + fname.slice(1);
         lname = lname.charAt(0).toUpperCase() + lname.slice(1);
         var name = fname + ' ' + lname;
-        console.log("niggaa" + name);
         var appointmentsDB = req.db.get('appointments');
         appointmentsDB.findOne({fname: fname, lname: lname, phone: req.body.phone}, function(err, apptResult) {
             if (apptResult) {
@@ -77,4 +76,3 @@ exports.post = function (req, res) {
 
     formDB.find(query, findFormCallback);
 };
-
