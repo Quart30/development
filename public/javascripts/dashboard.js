@@ -504,7 +504,7 @@ function testkeenio() {
                     top: "5%",
                     width: "100%"
                 },
-                pieHole: .4
+                pieHole: .2
             }
         });
         // ----------------------------------------
