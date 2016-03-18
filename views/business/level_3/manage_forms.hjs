@@ -40,8 +40,11 @@
     <div class="navbar-secondary navbar-tabs">
         <ul>
             <li class="active"><a href="/manageforms">Manage Forms</a></li>
-            <li><a href="/uploadlogo">Upload Logo</a></li>
-            <li><a href="/customizetheme">Customize Theme</a>
+            <li> <a href="/checkin">Check-in Page</a> </li>
+            <li class="active"><a href="/formbuilder">Edit Form</a></li>
+            <li>
+                <a href="/customizetheme">Customize Theme</a>
+            </li>
             <li><a href="/businesssetting">Company Settings</a></li>
         </ul>
     </div>
