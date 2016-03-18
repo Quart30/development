@@ -18,11 +18,7 @@ exports.get = function (req, res) {
     end.setHours(23, 59, 59, 999);
 
     appointments.find({
-        employee: ObjectID(req.user[0]._id),
-        date: {
-            $gte: begin,
-            $lte: end
-        }
+        employee: ObjectID(req.user[0]._id)
     },{sort : {date: 1}}, function (err, results) {
         if (err) {
             console.error('MongoDB Error in /api/employee/:eid/appointments/today: ' + err);

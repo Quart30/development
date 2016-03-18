@@ -61,9 +61,9 @@ exports.post = function (req, res) {
                     if (result) {
                         console.log("This is a successful checkin for " + name + " under employee " + result.fname);
                         var app = require('../../../app');
-                        app.io.emit('appointment_changed', {apptId: apptResult._id, eid: apptResult.employee, state: 'checkedIn'});
+                        app.io.emit('appointment_changed', {apptId: apptResult._id, eid: apptResult.employee, state: 'Checked In'});
                         //TODO finish this
-                        appointmentsDB.findAndModify({query: apptResult, update: {$set: {state:'checkedIn'}}});
+                        appointmentsDB.findAndModify({query: apptResult, update: {$set: {state:'Checked In'}}});
                     }
                 });
             }
