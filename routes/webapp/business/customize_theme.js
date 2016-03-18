@@ -1,4 +1,3 @@
-
 /**
  * Find out which account settings page to load based on user level
  *
@@ -30,7 +29,7 @@ exports.get = function (req, res, next) {
         var page = getPage(req.user[0]);
         if (page == 'error') {
             res.render('error', {
-               message: 'Page not found',
+                message: 'Page not found',
                 error: '404'
             });
         }

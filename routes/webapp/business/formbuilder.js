@@ -1,4 +1,3 @@
-
 exports.get = function (req, res) {
     sendPageWithCurrentForm(req, res, '');
 };
@@ -20,11 +19,11 @@ exports.post = function (req, res) {
     };
 
     var insertFormCallback = function (err, result) {
-      if (err) {
-          throw err;
-      }
-      console.log("Inserted form successfully.");
-      console.log("insert result: " + result);
+        if (err) {
+            throw err;
+        }
+        console.log("Inserted form successfully.");
+        console.log("insert result: " + result);
     };
 
     var updateFormCallback = function (err, result) {

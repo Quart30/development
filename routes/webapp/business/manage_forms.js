@@ -20,16 +20,16 @@ function getPage(employee) {
 }
 
 function makeDropdown(options, name, body) {
-    var s = '<select class="form-control" name="'+name+'" id="'+name+'">';
+    var s = '<select class="form-control" name="' + name + '" id="' + name + '">';
     _.each(options, function (option) {
-        s += '<option value="'+option+'" ' + (body[name] === option ? 'selected' : '') + '>'+option+'</option> ';
+        s += '<option value="' + option + '" ' + (body[name] === option ? 'selected' : '') + '>' + option + '</option> ';
     });
-    s+= '</select>';
+    s += '</select>';
     return s;
 }
 
 function makeTextfield(name, body) {
-    return'<input type="text" class="form-control form-width-custom" name="'+name+'" id="' + name + '"value="' + (body[name] || '') + '">';
+    return '<input type="text" class="form-control form-width-custom" name="' + name + '" id="' + name + '"value="' + (body[name] || '') + '">';
 }
 
 function makeFormGroup(field, index, body) {

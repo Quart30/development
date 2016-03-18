@@ -27,20 +27,20 @@ module.exports = function (passport) {
 
     router.get('/theming', isLoggedIn, theming.get);
 
-    router.post('/login',passport.authenticate('local-login',{
-        successRedirect : '/dashboard',
-        failureRedirect : '/',
+    router.post('/login', passport.authenticate('local-login', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/',
         failureFlash: true
     }));
 
-    router.get('/formbuilder',isLoggedIn, formbuilder.get);
+    router.get('/formbuilder', isLoggedIn, formbuilder.get);
     router.post('/formbuilder', isLoggedIn, formbuilder.post);
 
     router.get('/accountSettings', isLoggedIn, accountSettings.get);
     router.post('/accountSettings', isLoggedIn, accountSettings.post);
 
     router.get('/businesssetting', isLoggedIn, businesssetting.get);
-    router.post('/businesssetting', isLoggedIn,businesssetting.post);
+    router.post('/businesssetting', isLoggedIn, businesssetting.post);
 
     router.get('/uploadlogo', isLoggedIn, uploadLogo.get);
     router.post('/uploadlogo', isLoggedIn, uploadLogo.post);
@@ -54,8 +54,8 @@ module.exports = function (passport) {
 
     router.get('/dashboard', isLoggedIn, dashboard.get);
 
-    router.get('/addemployees',isLoggedIn, addEmployees.get);
-    router.post('/addemployees',isLoggedIn, addEmployees.post);
+    router.get('/addemployees', isLoggedIn, addEmployees.get);
+    router.post('/addemployees', isLoggedIn, addEmployees.post);
     router.post('/addemployees/delete', isLoggedIn, addEmployees.delete); // html can only call GET or POST
     router.post('/addemployees/mod', isLoggedIn, modifyEmployees.post);
     router.post('/employeeregister/resend', isLoggedIn, employeeRegister.post); // resend registration email
@@ -67,9 +67,9 @@ module.exports = function (passport) {
     router.get('/manageforms', isLoggedIn, manageForms.get);
 
     router.get('/employeeregister', employeeRegister.get);
-    router.post('/employeeregister', passport.authenticate('local-signup-employee',{
-        successRedirect : '/dashboard', // redirect to the secure profile section
-        failureRedirect : '/register' // redirect back to the signup page if there is an error
+    router.post('/employeeregister', passport.authenticate('local-signup-employee', {
+        successRedirect: '/dashboard', // redirect to the secure profile section
+        failureRedirect: '/register' // redirect back to the signup page if there is an error
     }));
 
     router.get('/viewform/:id', viewForm.get);
@@ -84,7 +84,7 @@ module.exports = function (passport) {
         res.redirect('/');
     }
 
-    function isLoggedIn(req,res,next) {
+    function isLoggedIn(req, res, next) {
         if (req.isAuthenticated()) {
             return next();
         }

@@ -15,7 +15,7 @@ function getPage(employee) {
     }
 }
 
-exports.get = function(req, res){
+exports.get = function (req, res) {
 
     var db = req.db;
     var employees = db.get('employees');

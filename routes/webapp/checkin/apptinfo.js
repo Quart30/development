@@ -5,11 +5,11 @@ exports.get = function (req, res, next) {
     var appointments = db.get('appointments');
     var business = req.session.business;
 
-    appointments.findById(req.session.appointmentId, function(err, appointment) {
+    appointments.findById(req.session.appointmentId, function (err, appointment) {
         if (err) {
             return next(err);
         }
-        if(!appointment) {
+        if (!appointment) {
             return next(new Error('Appointment from session not found: ' + req.session.appointmentId));
         }
 
