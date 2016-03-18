@@ -102,6 +102,7 @@
                 </div>
             </form>
         </div>
+        <!--
         <div class="form-inline">
             <form class = "form-horizontal" action = "" method = "">
                 <label class="col-md-4 control-label editNotify"><b>Notification Style Upon Checkin:</b></label>
@@ -112,22 +113,22 @@
         </div>
         <div  class="column">
             <div class="row formSection">
-                <!--<div class="form-inline">-->
-                    <!--<label class="col-md-3 col-md-offset-3 control-label">Send me a text</label>-->
-                    <!--<div class="col-md-2 col-md-offset-1">-->
-                        <!--{{#smsNotify}}-->
-                        <!--<form class="form-horizontal" action="" method="post">-->
-                            <!--<input type="hidden" id="checkBox" name="sendText" value="0">-->
-                            <!--<input type="checkbox" id="checkBox" name="sendText" onchange="this.form.submit();" checked />-->
-                        <!--</form>-->
-                        <!--{{/smsNotify}}-->
-                        <!--{{^smsNotify}}-->
-                        <!--<form class="form-horizontal" action="" method="post">-->
-                            <!--<input type="checkbox" id="checkBox" name="sendText" value="1" onchange="this.form.submit();" />-->
-                        <!--</form>-->
-                        <!--{{/smsNotify}}-->
-                    <!--</div>-->
-                <!--</div>-->
+                <div class="form-inline">
+                    <label class="col-md-3 col-md-offset-3 control-label">Send me a text</label>
+                    <div class="col-md-2 col-md-offset-1">
+                        {{#smsNotify}}
+                        <form class="form-horizontal" action="" method="post">
+                            <input type="hidden" id="checkBox" name="sendText" value="0">
+                            <input type="checkbox" id="checkBox" name="sendText" onchange="this.form.submit();" checked />
+                        </form>
+                        {{/smsNotify}}
+                        {{^smsNotify}}
+                        <form class="form-horizontal" action="" method="post">
+                            <input type="checkbox" id="checkBox" name="sendText" value="1" onchange="this.form.submit();" />
+                        </form>
+                        {{/smsNotify}}
+                    </div>
+                </div>
                 <div class="form-inline">
                     <label class="col-md-3 col-md-offset-3 control-label">Send me an email</label>
                     <div class="col-md-2 col-md-offset-1">
@@ -146,6 +147,7 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
 </div>
 

@@ -22,7 +22,7 @@ var accountType = function( level){
 
 function getPage(employee) {
     switch(employee.permissionLevel) {
-        case 1: //return 'business/level_1/dashboard';
+        case 1: return 'business/level_1/dashboard';
         case 2: return 'business/level_2/dashboard';
         case 3: return 'business/level_3/dashboard';
         case 4: return 'business/level_4/dashboard';

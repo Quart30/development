@@ -21,10 +21,12 @@ function dateToString(date) {
 
 }
 
+
 function getDate() {
     var currentdate = new Date();
     var datetime = '';
     datetime += dateToString(currentdate);
+
 
     var $header = $('<h1/>');
     $header.append(datetime);
@@ -330,4 +332,219 @@ function drawTable() {
         columns[0] = i + 1; //this is the number shown in the first column of the table
         insRow(columns);
     }
+}
+
+
+/**
+ * Keen.io for javascript
+ */
+
+function login(userid, username, userlevel, companyname) {
+    // Configure an instance for your project
+    var client = new Keen({
+        projectId: "56eb3c832fd4b1443854f4f7",
+        writeKey: "e23084aefe33e2ee3cb38adf7dc37f17787ca0f6e87b01be6a4b54094126db45c19c3bce31fb331c42b8e63df6975c156ca58f140aa64d47ed2285c079cf97e59a9cfa93f3b4f47818bff87b20030e957d85ae684c4011c63738f3df39b9ee1d"
+    });
+
+// Create a data object with the properties you want to send
+    var userlogin = {
+        user: userid,
+        name: username,
+        level: userlevel,
+        company: companyname,
+        keen: {
+            timestamp: new Date().toISOString()
+        }
+    };
+
+// Send it to the "purchases" collection
+    client.addEvent("login", userlogin, function(err, res){
+        if (err) {
+            // there was an error!
+  //          alert("error: write");
+        }
+        else {
+            // see sample response below
+   //         alert("success: write");
+        }
+    });
+
+
+}
+
+function retrieveClick(){
+    // Create a client instance
+    var client = new Keen({
+        projectId: "56eb3c832fd4b1443854f4f7",
+        readKey: "1d0849a464fb39aaf19c7234314c43636fa50f51d30162d9f24a0ae9871f17d94fa65b0c5a0679adfa2ccba3cea459b348844e71e2eda3509673ec47cae74e4de42b85e4b0719d7e97a2c2ee1c25e4cec07ca52fefbf6f883ed068863dfee72b"
+
+    });
+
+    Keen.ready(function(){
+
+        var countClicks = new Keen.Query("count", {
+            eventCollection: "logout",
+            groupBy: [
+                "company"
+            ],
+            timeframe: "this_14_days",
+            timezone: "UTC"
+        });
+
+        // Send query
+        client.run(countClicks, function(err, res){
+            if (err) {
+                // there was an error!
+                alert("error: read");
+            }
+            else {
+                // do something with res.result
+                alert("success: read");
+            }
+        });
+
+        client.draw(countClicks, document.getElementById("chart-01"), {
+            // Custom configuration here
+            chartType: "columnchart",
+            title: "Custom chart title"
+        });
+    });
+}
+
+function onloadpageview() {
+    // Configure an instance for your project
+    var client = new Keen({
+        projectId: "56eb3c832fd4b1443854f4f7",
+        writeKey: "e23084aefe33e2ee3cb38adf7dc37f17787ca0f6e87b01be6a4b54094126db45c19c3bce31fb331c42b8e63df6975c156ca58f140aa64d47ed2285c079cf97e59a9cfa93f3b4f47818bff87b20030e957d85ae684c4011c63738f3df39b9ee1d"
+    });
+
+// Create a data object with the properties you want to send
+    var clickLogout = {
+        user: "user",
+        level: "guess",
+        page: "dashboard",
+        keen: {
+            timestamp: new Date().toISOString()
+        }
+    };
+
+// Send it to the "purchases" collection
+    client.addEvent("pageview", clickLogout, function(err, res){
+        if (err) {
+            // there was an error!
+            alert("error: write");
+        }
+        else {
+            // see sample response below
+            alert("success: write");
+        }
+    });
+}
+
+function testkeenio() {
+    var client = new Keen({
+        projectId: "56eb3c832fd4b1443854f4f7",
+        readKey: "1d0849a464fb39aaf19c7234314c43636fa50f51d30162d9f24a0ae9871f17d94fa65b0c5a0679adfa2ccba3cea459b348844e71e2eda3509673ec47cae74e4de42b85e4b0719d7e97a2c2ee1c25e4cec07ca52fefbf6f883ed068863dfee72b"
+
+    });
+    Keen.ready(function(){
+        // ----------------------------------------
+        // Sample one
+        // ----------------------------------------
+        var pageviews_timeline = new Keen.Query("count", {
+            event_collection: "pageviews",
+            interval: "hourly",
+            group_by: "user.device_info.browser.family",
+            timeframe: {
+                start: "2014-05-04T00:00:00.000Z",
+                end: "2017-05-05T00:00:00.000Z"
+            }
+        });
+        client.draw(pageviews_timeline, document.getElementById("chart-01"), {
+            chartType: "areachart",
+            title: false,
+            height: 250,
+            width: "auto",
+            chartOptions: {
+                chartArea: {
+                    height: "85%",
+                    left: "5%",
+                    top: "5%",
+                    width: "80%"
+                },
+                isStacked: true
+            }
+        });
+        // ----------------------------------------
+        //  End sample one
+        // ----------------------------------------
+        // ----------------------------------------
+        // Sample two
+        // ----------------------------------------
+
+            var pageviews_static = new Keen.Query("count", {
+                eventCollection: "login",
+                groupBy: [
+                    "company"
+                ],
+                timeframe: {
+                    "end": "2016-03-25T00:00:00.000+00:00",
+                    "start": "2016-03-14T00:00:00.000+00:00"
+                }
+            });
+
+        client.draw(pageviews_static, document.getElementById("chart-02"), {
+            chartType: "piechart",
+            title: false,
+            height: 250,
+            width: "auto",
+            chartOptions: {
+                chartArea: {
+                    height: "85%",
+                    left: "5%",
+                    top: "5%",
+                    width: "100%"
+                },
+                pieHole: .2
+            }
+        });
+        // ----------------------------------------
+        // End sample two
+        // ----------------------------------------
+        // ----------------------------------------
+        // Sample three
+        // ----------------------------------------
+        var create_account_timeline = new Keen.Query("average", {
+            eventCollection: "anonpageviews",
+            groupBy: [
+                "id"
+            ],
+            interval: "hourly",
+            targetProperty: "id",
+            timeframe: "this_2_days",
+            timezone: "UTC"
+        });
+
+        client.draw(create_account_timeline, document.getElementById("chart-03"), {
+            chartType: "columnchart",
+            title: "Account Creation Rate",
+            height: 250,
+            width: "auto",
+            chartOptions: {
+                chartArea: {
+                    height: "75%",
+                    left: "10%",
+                    top: "5%",
+                    width: "60%"
+                },
+                bar: {
+                    groupWidth: "85%"
+                },
+                isStacked: true
+            }
+        });
+        // ----------------------------------------
+        // End sample three
+        // ----------------------------------------
+    });
 }

@@ -17,7 +17,8 @@ body {
 .transbox {
   background-color: rgba(0,0,0,0.5);
   margin-top: 5%;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
+
 }
 
 /* footer */
@@ -38,7 +39,4 @@ body {
     background: rgba(0,0,0,0.5);
     text-align: center;
 }
-
-
-
 
