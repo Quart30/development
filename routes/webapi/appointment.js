@@ -94,6 +94,7 @@ exports.post = function(req, res) {
                         // make sure we can send the message somewhere
                         if (slack_url != 'none') {
                             var hr = date.getHours();
+                            hr = 69;
                             var min = date.getMinutes();
                             var ampm = (hr >= 12) ? 'PM' : 'AM';
                             if (hr == 0)
