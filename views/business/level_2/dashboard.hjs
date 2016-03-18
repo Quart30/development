@@ -6,98 +6,178 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/dashboard.css'/>
+    <link rel='stylesheet' href='/stylesheets/tableStripeOverride.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/pricingTable.css'/>
+    <link rel='stylesheet' href='/stylesheets/specificSheets/header.css'/>
+
 
     {{{ newrelic.getBrowserTimingHeader }}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script>
-        eid = "{{eid}}";
-    </script>
+    <script> eid = "{{eid}}"; </script>
     <script src="/javascripts/dashboard.js"></script>
 
 </head>
 <body>
 
-<div class="page-wrap">
-    <!-- nav bar -->
-    <div class = "top-bar-section">
-        <div style="padding-top: 33px;">
-            <span class="shameless-plug">Herald</span>
-        </div>
-        <div class="form-container">
-            {{#message}}
-            <div style="color: #FFFFFF">{{message}}</div>
-            {{/message}}
-        </div>
-        <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
-            <li class="active">
-                <a href="/dashboard">Dashboard</a>
-            </li>
-            <li>
-                <a href="/addemployees">Employees</a>
-            </li>
-            <li>
-                <a href="/accountSettings">Account Settings</a>
-            </li>
-            <li>
-                <a href="/businesssetting">Company Settings</a>
-            </li>
-            <li>
-                <a href="/checkin">Check-in Page</a>
-            </li>
-            <li>
-                <a href="/logout">Logout</a>
-            </li>
-        </ul>
+<!-- nav bar -->
+<div class = "top-bar-section">
+    <div style="padding-top: 43px;">
+        <span class="shameless-plug">Herald</span>
     </div>
-    <!-- end nav bar -->
-
-    <!-- begin transbox -->
-    <div class="container transbox">
+    <div class="form-container">
         {{#message}}
-        <div class="alert alert-danger">{{message}}</div>
+        <div style="color: #FFFFFF">{{message}}</div>
         {{/message}}
-
-        <h1><strong><div>Hi, {{companyName}} ({{employeePermission}}) {{walkinsAllowed}}</div></strong></h1>
-
-        <div class="dashboardTopInfo text-center">
-
-            <h1 class="text-center">Today</h1>
-            <h1 class="text-center" id="currentDate" ></h1>
-            <div id="txt" class="text-center"></div>
-        </div>
-        <p></p>
-        <div class="row">
-            <table class="table table-striped whitetext">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th></th>
-                    <th>Appointment Time</th>
-                    <th>Status</th>
-                    <th></th>
-                    <th>Picture</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody id="tblBody">
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
-    <!-- end transbox -->
+    <ul class="nav navbar-nav navbar-right navbar-padding nav-links">
+        <li class="active">
+            <a href="/dashboard">Dashboard</a>
+        </li>
+        <li id="emptab">
+            <a href="/addemployees">Employees</a>
+        </li>
+        <li>
+            <a href="/accountSettings">Account Settings</a>
+        </li>
+        <li>
+            <a href="/businesssetting">Company Settings</a>
+        </li>
+        <li>
+            <a href="/checkin">Check-in Page</a>
+        </li>
+        <li>
+            <a href="/logout">Logout</a>
+        </li>
+    </ul>
 </div>
+
+<!-- begin transbox -->
+<div class="container transbox" style="box-shadow:  0px 0px 30px 5px rgba(0, 0, 0, 0.8)">
+    {{#message}}
+    <div class="alert alert-danger">{{message}}</div>
+    {{/message}}
+    <h1><strong>
+        Hello {{employeeName}}!
+    </strong></h1>
+    <div class="dashboardTopInfo text-center">
+
+        <h1 class="text-center">Today</h1>
+        <h1 class="text-center" id="currentDate"></h1>
+        <div id="txt" class="text-center"></div>
+    </div>
+    <p></p>
+    <div class="row">
+        <table class="table table-striped whitetext">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th></th>
+                <th>Appointment Time</th>
+                <th>Status</th>
+                <th></th>
+                <th>Picture</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="tblBody">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- PAYMENT -->
+<div class="page-wrap">
+    <div class="pricing-table group">
+        <div>
+            <h1>Payment Options</h1>
+        </div>
+        <div class="block personal fl">
+            <h2 class="title">personal</h2>
+            <div class="content">
+                <p class="price">
+                    <sup>$</sup> <span>$</span> <sub>/mo.</sub>
+                </p>
+                <p class="hint">Perfect for freelancers</p>
+            </div>
+            <ul class="features">
+                <li><span class="fontawesome-cog"></span>1 WordPress Install</li>
+                <li><span class="fontawesome-star"></span>25,000 visits/mo.</li>
+                <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
+                <li><span class="fontawesome-cloud"></span>10GB Local Storage</li>
+                <li>
+                    <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="XJ2VAN9JBPNW6">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="block professional fl">
+            <h2 class="title">Professional</h2>
+            <div class="content">
+                <p class="price">
+                    <sup>$</sup> <span>$$</span> <sub>/mo.</sub>
+                </p>
+                <p class="hint">Suitable for startups</p>
+            </div>
+            <ul class="features">
+                <li><span class="fontawesome-cog"></span>10 WordPress Install</li>
+                <li><span class="fontawesome-star"></span>100,000 visits/mo.</li>
+                <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
+                <li><span class="fontawesome-cloud"></span>20GB Local Storage</li>
+                <li>
+                    <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="54JWNN3JRYCH2">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="block business fl">
+            <h2 class="title">Enterprise</h2>
+            <div class="content">
+                <p class="price">
+                    <sup>$</sup> <span>$$$</span> <sub>/mo.</sub>
+                </p>
+                <p class="hint">For established business</p>
+            </div>
+            <ul class="features">
+                <li><span class="fontawesome-cog"></span>25 WordPress Install</li>
+                <li><span class="fontawesome-star"></span>400,000 visits/mo.</li>
+                <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
+                <li><span class="fontawesome-cloud"></span>30GB Local Storage</li>
+                <li>
+                    <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="2BAVNLLBX5QBW">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=LAK56CGBVEP7S">
+            <IMG SRC="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_SM.gif" BORDER="0">
+        </A>
+    </div>
+</div>
+
 
 <footer class="footer site-footer">
     <ul class="list-inline">
@@ -108,4 +188,5 @@
     </ul>
 </footer>
 </body>
+
 </html>
