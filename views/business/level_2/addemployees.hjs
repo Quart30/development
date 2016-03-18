@@ -45,9 +45,6 @@
           <a href="/businesssetting" style="color: white;">Company Settings</a>
         </li>
         <li>
-          <a href="/checkin">Check-in Page</a>
-        </li>
-        <li>
           <a href="/logout">Logout</a>
         </li>
       </ul>

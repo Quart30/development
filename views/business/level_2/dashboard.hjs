@@ -47,9 +47,6 @@
           <a href="/businesssetting">Company Settings</a>
         </li>
         <li>
-          <a href="/checkin">Check-in Page</a>
-        </li>
-        <li>
           <a href="/logout">Logout</a>
         </li>
       </ul>
@@ -61,7 +58,7 @@
       <div class="alert alert-danger">{{message}}</div>
       {{/message}}
       <h1><strong>
-          Hi, {{employeeName}} of {{companyName}}!
+          Hello {{employeeName}}!
       </strong></h1>
       <div class="dashboardTopInfo text-center">
 

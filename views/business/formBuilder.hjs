@@ -42,15 +42,13 @@
             <a href="/businesssetting" style="color: white;">Company Settings</a>
           </li>
           <li>
-            <a href="/checkin" style="color: white;">Check-in Page</a>
-          </li>
-          <li>
             <a href="/logout" style="color: white;">Logout</a>
           </li>
         </ul>
       </div>
       <div class="top-bar-section-secondary" id="secondary_navbar">
           <ul class="nav navbar-nav navbar-right navbar-secondary">
+              <li> <a href="/checkin" style="color: white;">Check-in Page</a> </li>
               <li class="active"><a href="/formbuilder" style="color: white;">Edit Form</a></li>
               <li><a href="/customizetheme" style="color: white;">Customize Theme</a></li>
               <li><a href="/businesssetting" style="color: white;">Company Settings</a></li>

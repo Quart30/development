@@ -54,12 +54,12 @@ exports.post = function (req, res) {
         lname = lname.charAt(0).toUpperCase() + lname.slice(1);
         var name = fname + ' ' + lname;
         var appointmentsDB = req.db.get('appointments');
-        appointmentsDB.findOne({fname: fname, lname: lname, phone: req.body.phone}, function(err, apptResult) {
-            if (apptResult) {
+        appointmentsDB.find({fname: fname, lname: lname, phone: req.body.phone}, {limit:1}, function(err, apptResult) {
+            if (apptResult[0]) {
                 var employeesDB = req.db.get('employees');
-                employeesDB.findOne({_id: ObjectId(apptResult.employee), business: ObjectId(bid)}, function(err, result) {
-                    if (result) {
-                        console.log("This is a successful checkin for " + name + " under employee " + result.fname);
+                employeesDB.find({_id: ObjectId(apptResult[0].employee), business: ObjectId(bid)}, {limit: 1}, function(err, result) {
+                    if (result[0]) {
+                        console.log("This is a successful checkin for " + name + " under employee " + result[0].fname);
                         var app = require('../../../app');
                         app.io.emit('appointment_changed', {apptId: apptResult._id, eid: apptResult.employee, state: 'Checked In'});
                         //TODO finish this

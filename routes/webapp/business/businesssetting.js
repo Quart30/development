@@ -18,6 +18,18 @@ function getPage(employee) {
     }
 }
 
+function phoneString(phoneNumber) {
+    var length = phoneNumber.length;
+    var phone_str = phoneNumber;
+
+    switch (length) {
+        case 11: phone_str = phone_str.slice(1,12);
+        case 10: return '(' + phone_str.slice(0,3) + ') ' + phone_str.slice(3,6) + '-' + phone_str.slice(6);
+        default: // no default
+            break;
+    }
+}
+
 
 exports.get = function (req,res) {
     var bid = req.user[0].business;
@@ -29,9 +41,7 @@ exports.get = function (req,res) {
                 return next(err);
             }
         var dbBusiness = result;
-        var phone = dbBusiness.phone;
-        phone = phone.replace('1', '');
-        phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+        var phone = phoneString(dbBusiness.phone);
 
         res.render(getPage(req.user[0]), {
             companyName: dbBusiness.companyName,
@@ -61,10 +71,7 @@ exports.post = function (req, res) {
         if(phone  && companyName) {
             //if input fields are empty
             if (companyName === '' || phone === '') {
-                phone = dbBusiness.phone;
-                //removing country code 1 from phone
-                phone = phone.replace('1', '');
-                phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+                phone = phoneString(dbBusiness.phone);
                 res.render(getPage(req.user[0]), {
                     error: 'You must fill in all fields.',
                     companyName: dbBusiness.companyName,
@@ -72,7 +79,7 @@ exports.post = function (req, res) {
                 });
             }
              else {
-                phone = phone.replace(/-/g, '');
+                phone = phone.replace(/\D/g, '');
                 if(phone.length === 10){
                     //this regex is removing the dashesh from input
                     //its adding 1 in the front for US coutry code
@@ -84,8 +91,7 @@ exports.post = function (req, res) {
                             phone: phone
                         }
                     });
-                    phone = phone.replace('1', '');
-                    phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+                    phone = phoneString(phone);
                     res.render(getPage(req.user[0]), {
                         companyName: companyName,
                         phone: phone,
@@ -93,9 +99,7 @@ exports.post = function (req, res) {
                     });
                 }
                 else{
-                    phone = dbBusiness.phone;
-                    phone = phone.replace('1', '');
-                    phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+                    phone = phoneString(dbBusiness.phone);
                     res.render(getPage(req.user[0]), {
                         companyName: dbBusiness.companyName,
                         phone: phone,
@@ -116,9 +120,7 @@ exports.post = function (req, res) {
                             password: newPassword,
                         }
                     });
-                    phone = dbBusiness.phone;
-                    phone = phone.replace('1', '');
-                    phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+                    phone = phoneString(dbBusiness.phone);
                     res.render(getPage(req.user[0]), {
                         companyName: dbBusiness.companyName,
                         phone: phone,
@@ -126,9 +128,7 @@ exports.post = function (req, res) {
                     });
                 }
                 else {
-                    phone = dbBusiness.phone;
-                    phone = phone.replace('1', '');
-                    phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+                    phone = phoneString(dbBusiness.phone);
                     res.render(getPage(req.user[0]), {
                         companyName: dbBusiness.companyName,
                         phone: phone,
@@ -137,9 +137,7 @@ exports.post = function (req, res) {
                 }
         }//end of elseif statement
         else {
-            phone = dbBusiness.phone;
-            phone = phone.replace('1', '');
-            phone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+            phone = phoneString(dbBusiness.phone);
             res.render(getPage(req.user[0]), {
                 error: 'You must fill in all fields.',
                 companyName: dbBusiness.companyName,
