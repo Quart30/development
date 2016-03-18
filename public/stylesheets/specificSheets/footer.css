@@ -23,3 +23,7 @@ html, body {
 .footer-copyright {
 	color: white;
 }
+
+ul.list-inline > li > a {
+	color: white;
+}

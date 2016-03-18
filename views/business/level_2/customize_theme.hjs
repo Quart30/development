@@ -41,15 +41,13 @@
         <a href="/businesssetting">Company Settings</a>
       </li>
       <li>
-        <a href="/checkin">Check-in Page</a>
-      </li>
-      <li>
         <a href="/logout">Logout</a>
       </li>
     </ul>
   </div>
     <div class="top-bar-section-secondary" id="secondary_navbar">
       <ul class="nav navbar-nav navbar-right navbar-secondary">
+        <li> <a href="/checkin">Check-in Page</a> </li>
         <li><a href="/formbuilder">Edit Form</a></li>
         <li class="active">
           <a href="/customizetheme">Customize Theme</a>

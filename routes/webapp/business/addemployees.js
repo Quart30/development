@@ -4,6 +4,13 @@ var async = require('async');
 var ObjectId = require('mongodb').ObjectID;
 var transporter = require('nodemailer').createTransport('smtps://quart30dev%40gmail.com:cse112quart@smtp.gmail.com');
 
+
+function debug(message) {
+    var app = require('../../../app');
+    if (app.get('env') === 'development')
+        console.log(message);
+}
+
 /**
  * Find out which account settings page to load based on user level
  *
@@ -84,59 +91,74 @@ exports.get = function(req, res){
 exports.post = function(req,res){
     var parsed = baby.parse(req.body.csvEmployees);
     var rows = parsed.data;
+
+    var i = 0;
+    insertEmployee(req, rows, i);
+
+    res.redirect('/addemployees');
+};
+
+// recursive function to parse the CSV
+function insertEmployee(req, rows, i) {
+
+    if (i >= rows.length)
+        return;
+
     var database =  req.db;
     var employeeDB = database.get('employees');
     var businessID = req.user[0].business;
     var companyName = req.user[0].company;
 
-    for(var i = 0; i < rows.length; i++){
-        /*TODO: Add constrains for text fields*/
 
-        var username = rows[i][0];
+    /*TODO: Add constrains for text fields*/
 
-        /*Check for valid inputs */
-        if (rows[i].length  < 2 ) {
-            //TODO: Error print statements
-            break;
-        }
-        var email = rows[i][1].trim();
-        /*Check for valid email*/
-        if (email.indexOf("@")  === -1) {
-            /*TODO: ERROR */
-            break;
-        }
-        var nameArr = username.split(' ');
-        var fname = nameArr[0];
-        var lname = nameArr[1];
-        var token = randomToken();
+    var username = rows[i][0];
+    debug(username);
 
-        employeeDB.find({business: ObjectId(businessID), email: email}, function(err, result) {
-
-            if (result == '') {
-                employeeDB.insert({
-                    business: ObjectId(businessID),
-                    company: companyName,
-                    fname: fname,
-                    lname: lname,
-                    email: email,
-                    registrationToken : token, //will be removed programmatically once the employee confirms
-                    permissionLevel: 4,
-                    permissionName: 'Provider',
-                    registered: false,
-                    smsNotify: true, //added to match passport
-                    emailNotify: true, //added to match passport
-                    phone: '1234567890' //TODO: maybe add phone number to employee confirmation page?
-                });
-
-                sendEmail(fname, lname, email, token);
-            }
-            else {
-                // else employee already exists
-            }
-        });
+    /*Check for valid inputs */
+    if (rows[i].length  < 2 ) {
+        //TODO: Error print statements
+        return;
     }
-    res.redirect('/addemployees');
-};
+    var email = rows[i][1].trim();
+    debug(email);
+    /*Check for valid email*/
+    if (email.indexOf("@")  === -1) {
+        /*TODO: ERROR */
+        return;
+    }
+    var nameArr = username.split(' ');
+    var fname = nameArr[0];
+    var lname = nameArr[1];
+    var token = randomToken();
+
+    employeeDB.find({business: ObjectId(businessID), email: email}, function(err, result) {
+
+        if (result == '') {
+            employeeDB.insert({
+                business: ObjectId(businessID),
+                company: companyName,
+                fname: fname,
+                lname: lname,
+                email: email,
+                registrationToken : token, //will be removed programmatically once the employee confirms
+                permissionLevel: 4,
+                permissionName: 'Provider',
+                registered: false,
+                smsNotify: true, //added to match passport
+                emailNotify: true, //added to match passport
+                phone: '1234567890' //TODO: maybe add phone number to employee confirmation page?
+            });
+
+            sendEmail(fname, lname, email, token);
+        }
+        else {
+            // else employee already exists
+        }
+
+        insertEmployee(req, rows, ++i);
+    });
+}
 
 
 /**
@@ -180,17 +202,16 @@ function sendEmail(fname, lname, email, token) {
  */
 exports.delete = function (req, res) {
     var employeeDB = req.db.get("employees");
-    var businessDB = req.db.get("businesses");
     var bid = req.user[0].business;
-    var reqEmail = req.user[0].email;
     var params = req.query;
     var email = params.email;
 
     employeeDB.find({business: bid, email: email}, {limit: 1}, function (err, result) {
 
-        // only delete accounts of lower level
-        if (req.user[0].permissionLevel > result[0].permissionLevel)
+        // only delete accounts of lower level -- note lower number = higher level
+        if (req.user[0].permissionLevel < result[0].permissionLevel && result[0].permissionLevel !== 5) {
             employeeDB.remove(result[0], {justOne: true});
+        }
     });
 
     res.redirect('/addemployees');
