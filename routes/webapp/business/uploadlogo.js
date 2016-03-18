@@ -1,6 +1,24 @@
 var fs = require('fs');
 var auth = require('../../../lib/auth');
 
+/**
+ * Find out which account settings page to load based on user level
+ *
+ * @param employee
+ *          1: load everything
+ *          2: load everything
+ *          3: load everything
+ *          4: error
+ * @returns hjs file to render
+ */
+function getPage(employee) {
+    switch (employee.permissionLevel) {
+        case 2: return 'business/level_2/uploadlogo';
+        case 3: return 'business/level_3/uploadlogo';
+        default: return 'error';
+    }
+}
+
 exports.get = function(req, res, next){
 
     var db = req.db;
@@ -15,11 +33,11 @@ exports.get = function(req, res, next){
 
             if(results.logo){
 
-                res.render('business//level_2/uploadLogo',
+                res.render(getPage(req.user[0]),
                     {title:'Upload Logo',logo: results.logo});
             }
             else{
-                res.render('business//level_2/uploadLogo',
+                res.render(getPage(req.user[0]),
                     {title:'Upload Logo'});
             }
         }
@@ -57,7 +75,7 @@ exports.post = function(req, res, next){
                     return next(err);
                 }
 
-                res.render('business//level_2/customize_theme',{
+                res.render(getPage(req.user[0]),{
                     success:'Succesfully uploaded file: '+req.files.userLogo.originalname,
                     bg: "images/bg.jpg",  // + business.style.bg
                     logo:'/images/uploads/'+req.files.userLogo.name
@@ -77,7 +95,7 @@ exports.post = function(req, res, next){
 
                 if(results.logo){
 
-                    res.render('business//level_2/customize_theme',{
+                    res.render(getPage(req.user[0]),{
                         title:'Upload Logo',
                         logo:results.logo,
                         bg: "images/bg.jpg",  // + business.style.bg
@@ -85,7 +103,7 @@ exports.post = function(req, res, next){
                     });
                 }
                 else{
-                    res.render('business//level_2/customize_theme',{
+                    res.render(getPage(req.user[0]),{
                         title:'Upload Logo',
                         bg: "images/bg.jpg",  // + business.style.bg
                         error:'Please select a valid image(png,jpg) file to upload.'

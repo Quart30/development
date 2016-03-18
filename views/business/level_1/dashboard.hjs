@@ -67,16 +67,10 @@
             <a href="/addemployees">Employees</a>
         </li>
         <li>
-          <a href="/addAppointment">Add Appointments</a>
-        </li>
-        <li>
           <a href="/accountSettings">Account Settings</a>
         </li>
         <li>
           <a href="/businesssetting">Company Settings</a>
-        </li>
-        <li>
-          <a href="/checkin">Check-in Page</a>
         </li>
         <li>
           <a href="/logout">Logout</a>

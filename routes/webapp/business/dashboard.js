@@ -26,7 +26,7 @@ function getPage(employee) {
         case 2: return 'business/level_2/dashboard';
         case 3: return 'business/level_3/dashboard';
         case 4: return 'business/level_4/dashboard';
-        case 5: return 'business/checkin';
+        case 5: return 'redirect';
         default: return 'error';
     }
 }
@@ -49,6 +49,8 @@ exports.get = function (req, res) {
            message: 'page not found',
            error: '404'
         });
+    else if (page == 'redirect')
+        res.redirect('checkin');
     else
         res.render(page, {title: 'Dashboard',
             eid: employeeId,

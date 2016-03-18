@@ -13,8 +13,8 @@ var auth = require('../../../lib/auth');
 function getPage(employee) {
     switch (employee.permissionLevel) {
         case 1: return 'business/level_1/accountsettings';
-        case 2: // place holder
-        case 3: return 'business/level_2/accountsettings';
+        case 2: return 'business/level_2/accountsettings';
+        case 3: return 'business/level_3/accountsettings';
         case 4: return 'business/level_4/accountsettings';
         default: return 'error';
     }

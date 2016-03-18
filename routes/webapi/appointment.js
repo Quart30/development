@@ -86,7 +86,7 @@ exports.post = function(req, res) {
                 businesses.findOne({_id: ObjectId(bid)}, function(err, result) {
                     if (err)
                         throw(err);
-                    //TODO: @Randy, also take a look at this
+
                     if (result) {
                         // find a slack channel
                         var slack_url = result.slack ? result.slack.toString() : 'none';

@@ -24,8 +24,8 @@ function debug(message) {
 function getPage(employee) {
     switch (employee.permissionLevel) {
         case 1: return 'business/level_1/addemployees';
-        case 2: // place holder
-        case 3: return 'business/level_2/addemployees';
+        case 2: return 'business/level_2/addemployees';
+        case 3: return 'business/level_3/addemployees';
         default: return 'error';
     }
 }
