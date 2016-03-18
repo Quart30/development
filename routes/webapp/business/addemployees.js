@@ -132,7 +132,7 @@ function insertEmployee(req, rows, i) {
     var lname = nameArr[1];
     var token = randomToken();
 
-    employeeDB.find({business: ObjectId(businessID), email: email}, function(err, result) {
+    employeeDB.find({email: email}, function(err, result) {
 
         if (result == '') {
             employeeDB.insert({

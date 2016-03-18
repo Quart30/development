@@ -60,5 +60,5 @@ exports.get = function(req, res) {
         }
     });
 
-    res.redirect('/businesssetting/'); // redirect after processing data
+    res.redirect('businesssetting/'); // redirect after processing data
 };

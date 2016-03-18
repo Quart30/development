@@ -61,7 +61,7 @@
       <div class="alert alert-danger">{{message}}</div>
       {{/message}}
       <h1><strong>
-          Hi, {{employeeName}} of {{companyName}}!
+          Hello {{employeeName}}!
       </strong></h1>
       <div class="dashboardTopInfo text-center">
 
