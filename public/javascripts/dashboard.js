@@ -481,16 +481,17 @@ function testkeenio() {
         // ----------------------------------------
         // Sample two
         // ----------------------------------------
-        var pageviews_static = new Keen.Query("count", {
-            eventCollection: "login",
-            groupBy: [
-                "company"
-            ],
-            timeframe: {
-                "end": "2016-03-29T00:00:00.000+00:00",
-                "start": "2016-03-15T00:00:00.000+00:00"
-            }
-        });
+
+            var pageviews_static = new Keen.Query("count", {
+                eventCollection: "login",
+                groupBy: [
+                    "company"
+                ],
+                timeframe: {
+                    "end": "2016-03-25T00:00:00.000+00:00",
+                    "start": "2016-03-14T00:00:00.000+00:00"
+                }
+            });
 
         client.draw(pageviews_static, document.getElementById("chart-02"), {
             chartType: "piechart",
@@ -513,16 +514,17 @@ function testkeenio() {
         // ----------------------------------------
         // Sample three
         // ----------------------------------------
-        var create_account_timeline = new Keen.Query("sum", {
+        var create_account_timeline = new Keen.Query("average", {
             eventCollection: "anonpageviews",
             groupBy: [
                 "id"
             ],
             interval: "hourly",
             targetProperty: "id",
-            timeframe: "this_1_days",
+            timeframe: "this_2_days",
             timezone: "UTC"
         });
+
         client.draw(create_account_timeline, document.getElementById("chart-03"), {
             chartType: "columnchart",
             title: "Account Creation Rate",

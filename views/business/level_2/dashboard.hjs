@@ -100,7 +100,7 @@
       <div id="txt" class="text-center"></div>
     </div>
 
-      <button id="addevent" onclick="login(userId, username, userlevel, company)" style="color:black">Add Event</button>
+      <button id="addevent" onclick="login(userid, username, userlevel, company)" style="color:black">Add Event</button>
     <p> Add event: simply records the user and permission level and current time </p>
       <button id="retrieveevent" onclick="testkeenio()" style="color:black">Retrieve Event</button>
     <p>Retrieve events: simply calls the function that creates the charts below. (Not much meaningful data exists so expect them to look plain/empty)</p>
