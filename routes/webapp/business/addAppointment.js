@@ -10,7 +10,7 @@
  */
 function getPage(employee) {
     switch (employee.permissionLevel) {
-        case 3: return 'business/level_2/addAppointment';
+        case 3: return 'business/level_3/addAppointment';
         default: return 'error';
     }
 }
