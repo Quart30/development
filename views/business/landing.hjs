@@ -69,52 +69,39 @@
                     <li>
                         <a class="cd-faq-trigger" href="#0">What is Herald?</a>
                         <div class="cd-faq-content">
-                            <p>Hi.</p>
+                            <p>Herald is a functional and beautiful check-in application.  Use it for your business to make your workflow easier.  Transition to the 21st Century with no more need for a pen and paper.</p>
                         </div> <!-- cd-faq-content -->
                     </li>
 
                     <li>
                         <a class="cd-faq-trigger" href="#0">How does it work?</a>
                         <div class="cd-faq-content">
-                            <p>Hi</p>
+                            <p>Elves in the background.  In reality, when customers check themsevles in, and our system automatically finds their appointment and notifies you when the customer gets here.  </p>
                         </div> <!-- cd-faq-content -->
                     </li>
 
                     <li>
                         <a class="cd-faq-trigger" href="#0">What is Quart 3.0?</a>
                         <div class="cd-faq-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis provident officiis, reprehenderit numquam. Praesentium veritatis eos tenetur magni debitis inventore fugit, magnam, reiciendis, saepe obcaecati ex vero quaerat distinctio velit.</p>
+                            <p>Quart 3.0 is a group of students working hard to get you the best experience.  Herald is the product of our talent and ambition.</p>
                         </div> <!-- cd-faq-content -->
                     </li>
 
                     <li>
                         <a class="cd-faq-trigger" href="#0">How do I sign up?</a>
                         <div class="cd-faq-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis provident officiis, reprehenderit numquam. Praesentium veritatis eos tenetur magni debitis inventore fugit, magnam, reiciendis, saepe obcaecati ex vero quaerat distinctio velit.</p>
+                            <p>To sign up, press the Sign Up button above and fill in your details, and you're all set!</p>
                         </div> <!-- cd-faq-content -->
                     </li>
                 </ul> <!-- cd-faq-group -->
 
                 <ul id="mobile" class="cd-faq-group">
                     <li class="cd-faq-title"><h2>For Business Owners</h2></li>
-                    <li>
-                        <a class="cd-faq-trigger" href="#0">How does syncing work?</a>
-                        <div class="cd-faq-content">
-                            <p>Hi</p>
-                        </div> <!-- cd-faq-content -->
-                    </li>
 
                     <li>
-                        <a class="cd-faq-trigger" href="#0">How do I upload files from my phone or tablet?</a>
+                        <a class="cd-faq-trigger" href="#0">Does it cost money?</a>
                         <div class="cd-faq-content">
-                            <p>Hi</p>
-                        </div> <!-- cd-faq-content -->
-                    </li>
-
-                    <li>
-                        <a class="cd-faq-trigger" href="#0">How do I link to a file or folder?</a>
-                        <div class="cd-faq-content">
-                            <p>Hai</p>
+                            <p>Yes, but there are multiple tiers that give different benefits starting at $1 a month.</p>
                         </div> <!-- cd-faq-content -->
                     </li>
                 </ul> <!-- cd-faq-group -->
