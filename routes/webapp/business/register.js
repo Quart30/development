@@ -1,5 +1,6 @@
 var auth = require('../../../lib/auth');
 var ObjectId = require('mongodb').ObjectID;
+var transporter = require('nodemailer').createTransport('smtps://quart30dev%40gmail.com:cse112quart@smtp.gmail.com');
 
 function debug(message) {
 
@@ -42,10 +43,75 @@ var validateFields = function (body) {
 	return 'OK';
 };
 
+// used for generating a password
 function randomString(length, chars) {
     var result = '';
-    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    for (var i = length; i > 0; --i)
+        result = result.concat(chars[Math.floor(Math.random() * chars.length)]);
+
     return result;
+}
+
+// recursion magic!!!!!!!!!!!!!!!!
+function makeAccount(employeeDB, businessID, fname, email, adr, i) {
+    var temp_adr = '';
+    if (i < 10)
+        temp_adr = adr.concat('00' + i + '@herald.app');
+    else if (i < 100)
+        temp_adr = adr.concat('0' + i + '@herald.app');
+    else
+        temp_adr = adr.concat('' + i + '@herald.app');
+
+    debug(adr);
+    debug(temp_adr);
+
+    employeeDB.find({email: temp_adr}, {limit: 1}, function(err, result) {
+
+        debug(adr);
+        debug(temp_adr);
+
+        if (result == '') {
+            // stolen from stackoverflow http://stackoverflow.com/questions/10726909/random-alpha-numeric-string-in-javascript
+            var ran_password = randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+            debug(temp_adr + '\'s password: ' + ran_password);
+
+            // check in credentials
+            var check_in = {
+                business: ObjectId(businessID),
+                email: temp_adr,
+                password: auth.hashPassword(ran_password),
+                permissionLevel: 5,
+                permissionName: 'Check In Account'
+            };
+
+            debug(check_in);
+            employeeDB.insert(check_in); // insert it
+
+            sendEmail(fname, email, temp_adr, ran_password);
+        }
+        else
+            makeAccount(employeeDB, businessID, fname, email, adr, ++i);
+    });
+}
+
+
+function sendEmail(fname, email, acc, pass) {
+
+    var message = {
+        to: email,
+        from: 'quart30dev@gmail.com', //cse112quart
+        subject: 'Welcome',
+        text: 'Hello ' + fname + '!\n\n' + 'Below is your special account for login form. Please save this information!\n\n' +
+        'Username: ' + acc + '\n'+ 'Password: ' + pass
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(message, function(error, info){
+        if(error){
+            debug('Email error: ' + error);
+        }
+        debug('Confirmation email sent: ' + info.response);
+    });
 }
 
 exports.get = function (req, res) {
@@ -138,48 +204,13 @@ exports.post = function (req, res) {
                     break;
         }
 
-        // numbers and check for uniqueness
-        //var i = 0;
-        //var good = false;
-        //while (!good) {
-        //
-        //    var temp_adr;
-        //    if (i < 10)
-        //        temp_adr = adr.concat('00' + i + '@herald.app');
-        //    else if (i < 100)
-        //        temp_adr = adr.concat('0' + i + '@herald.app');
-        //    else
-        //        temp_adr = adr.concat('' + i + '@herald.app');
-        //
-        //    employeeDB.find({email: temp_adr}, {limit: 1}, function(err, result) {
-        //        if (result == '') {
-        //            good = true;
-        //            adr = temp_adr;
-        //        }
-        //    });
-        //
-        //    i++; // try the next number
-        //}
-
-        // stolen from stackoverflow http://stackoverflow.com/questions/10726909/random-alpha-numeric-string-in-javascript
-        var ran_password = randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-        debug(adr + '\'s password: ' + ran_password);
-
-        // check in credentials
-        var check_in = {
-            business: ObjectId(businessID),
-            email: adr,
-            password: auth.hashPassword(ran_password),
-            permissionLevel: 5,
-            permissionName: 'Check In Account'
-        };
-
-        debug(check_in);
+        // numbers and check for uniqueness; finish up form account process
+        var i = 0;
+        makeAccount(employeeDB, businessID, result.fname, result.email, adr, i);
 
         debug('Successfully inserted new business.');
         debug('Inserting new employee for the business');
 		employeeDB.insert(userData, insertEmployeeCallback);
-        //employeeDB.insert(check_in); // insert it
 	};
 
 	var insertEmployeeCallback = function (err, result) {
@@ -194,3 +225,12 @@ exports.post = function (req, res) {
 
 	businessDB.findOne({email: req.body.email}, findExistingBusinessCallback);
 };
+
+/*
+ adm000@herald.app's password: h4j23RxX
+ { business: 56eb3872c5ee19c8033c315f,
+ email: 'adm000@herald.app',
+ password: '$2a$08$TW6RQnN8P.PlNSv7VzqFNOISXpRrCWxUyYzFcE0xt/JH05aFThNhS',
+ permissionLevel: 5,
+ permissionName: 'Check In Account' }
+ */
