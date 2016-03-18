@@ -1,9 +1,9 @@
 var auth = require('../../../lib/auth');
 
-var accountType = function( level){
+var accountType = function (level) {
     var name;
     // note: level 4 has no dashboard so doesn't need to display this
-    switch(level){
+    switch (level) {
         case 1:
             name = "Admin Account";
             break;
@@ -22,18 +22,18 @@ var accountType = function( level){
 
 function getPage(employee) {
     switch(employee.permissionLevel) {
-        case 1: //return 'business/level_1/dashboard';
+        case 1: return 'business/level_1/dashboard';
         case 2: return 'business/level_2/dashboard';
         case 3: return 'business/level_3/dashboard';
         case 4: return 'business/level_4/dashboard';
-        case 5: return 'business/checkin';
+        case 5: return 'redirect';
         default: return 'error';
     }
 }
 
 exports.get = function (req, res) {
-	var employeeId = req.user[0]._id;
-	var employeename = req.user[0].fname;
+    var employeeId = req.user[0]._id;
+    var employeename = req.user[0].fname;
 
     //delete me
     var employeeLastName = req.user[0].lname;
@@ -46,11 +46,14 @@ exports.get = function (req, res) {
     var page = getPage(req.user[0]); // get the page
     if (page == 'error')
         res.render('error', {
-           message: 'page not found',
-           error: '404'
+            message: 'page not found',
+            error: '404'
         });
+    else if (page == 'redirect')
+        res.redirect('checkin');
     else
-        res.render(page, {title: 'Dashboard',
+        res.render(page, {
+            title: 'Dashboard',
             eid: employeeId,
             employeeName: employeename,
             employeeLast: employeeLastName,

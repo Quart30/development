@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-  <div class="page-wrap"> 
+  <div class="page-wrap">
       <!-- nav bar -->
       <div class = "top-bar-section">
         <div style="padding-top: 33px;">
@@ -30,9 +30,6 @@
             <a href="/addemployees">Employees</a>
           </li>
           <li>
-            <a href="/addAppointment">Add Appointments</a>
-          </li>
-          <li>
             <a href="/accountSettings">Account Settings</a>
           </li>
           <li class="active">
@@ -45,7 +42,6 @@
       </div>
       <div class="top-bar-section-secondary" id="secondary_navbar">
           <ul class="nav navbar-nav navbar-right navbar-secondary">
-              <li> <a href="/checkin">Check-in Page</a> </li>
               <li><a href="/formbuilder">Edit Form</a></li>
               <li><a href="/customizetheme">Customize Theme</a></li>
               <li class="active"><a href="/businesssetting">Company Settings</a></li>

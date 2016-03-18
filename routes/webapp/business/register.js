@@ -11,36 +11,36 @@ function debug(message) {
 }
 
 var validateFields = function (body) {
-	if (body.fname === '') {
-		return 'Invalid first name';
-	}
+    if (body.fname === '') {
+        return 'Invalid first name';
+    }
 
-	if (body.lname === '') {
-		return 'Invalid last name';
-	}
+    if (body.lname === '') {
+        return 'Invalid last name';
+    }
 
-    var phone = body.phone.replace(/\D/g,''); // only numbers
-	if (phone === '' || phone.length !== 10) {
-		return 'Invalid phone number';
-	}
+    var phone = body.phone.replace(/\D/g, ''); // only numbers
+    if (phone === '' || phone.length !== 10) {
+        return 'Invalid phone number';
+    }
 
-	if (body.companyName === '') {
-		return 'Invalid company name';
-	}
+    if (body.companyName === '') {
+        return 'Invalid company name';
+    }
 
-	if (body.email === '' || body.email.indexOf('@')  === -1) {
-		return 'Invalid email';
-	}
+    if (body.email === '' || body.email.indexOf('@') === -1) {
+        return 'Invalid email';
+    }
 
-	if (body.password === '') {
-		return 'Invalid password';
-	}
+    if (body.password === '') {
+        return 'Invalid password';
+    }
 
-	if (body.password !== body.password2) {
-		return 'Passwords do not match';
-	}
+    if (body.password !== body.password2) {
+        return 'Passwords do not match';
+    }
 
-	return 'OK';
+    return 'OK';
 };
 
 // used for generating a password
@@ -65,7 +65,7 @@ function makeAccount(employeeDB, businessID, fname, email, adr, i) {
     debug(adr);
     debug(temp_adr);
 
-    employeeDB.find({email: temp_adr}, {limit: 1}, function(err, result) {
+    employeeDB.find({email: temp_adr}, {limit: 1}, function (err, result) {
 
         debug(adr);
         debug(temp_adr);
@@ -102,12 +102,12 @@ function sendEmail(fname, email, acc, pass) {
         from: 'quart30dev@gmail.com', //cse112quart
         subject: 'Welcome',
         text: 'Hello ' + fname + '!\n\n' + 'Below is your special account for login form. Please save this information!\n\n' +
-        'Username: ' + acc + '\n'+ 'Password: ' + pass
+        'Username: ' + acc + '\n' + 'Password: ' + pass
     };
 
     // send mail with defined transport object
-    transporter.sendMail(message, function(error, info){
-        if(error){
+    transporter.sendMail(message, function (error, info) {
+        if (error) {
             debug('Email error: ' + error);
         }
         debug('Confirmation email sent: ' + info.response);
@@ -115,7 +115,7 @@ function sendEmail(fname, email, acc, pass) {
 }
 
 exports.get = function (req, res) {
-	if (!req.session.companyName) {
+    if (!req.session.companyName) {
         res.render('business/register');
     } else {
         res.render('business/register', {title: 'Employee Sign-up', companyName: req.session.companyName});
@@ -124,69 +124,69 @@ exports.get = function (req, res) {
 
 exports.post = function (req, res) {
 
-	debug('Incoming request fields: ' + Object.getOwnPropertyNames(req.body));
+    debug('Incoming request fields: ' + Object.getOwnPropertyNames(req.body));
 
-	var businessDB = req.db.get('businesses');
-	var employeeDB = req.db.get('employees');
-	var formDB = req.db.get('forms');
+    var businessDB = req.db.get('businesses');
+    var employeeDB = req.db.get('employees');
+    var formDB = req.db.get('forms');
 
     var fieldsCheck = '' + validateFields(req.body);
 
-	if (fieldsCheck !== 'OK') {
-		res.render('business/register', {message: fieldsCheck});
-		return;
-	}
+    if (fieldsCheck !== 'OK') {
+        res.render('business/register', {message: fieldsCheck});
+        return;
+    }
 
-    var phone = req.body.phone.replace(/\D/g,''); // only numbers
-	var businessData = {
-		email: req.body.email,
-		password: auth.hashPassword(req.body.password),
-		companyName: req.body.companyName,
-		phone: phone,
-		fname: req.body.fname,
-		lname: req.body.lname,
-		logo: 'images/dentalLogo.jpg',
-		bg: 'images/dark-blur.jpg',
-		walkins: false,
-		slack: 'none'
-	};
+    var phone = req.body.phone.replace(/\D/g, ''); // only numbers
+    var businessData = {
+        email: req.body.email,
+        password: auth.hashPassword(req.body.password),
+        companyName: req.body.companyName,
+        phone: phone,
+        fname: req.body.fname,
+        lname: req.body.lname,
+        logo: 'images/dentalLogo.jpg',
+        bg: 'images/dark-blur.jpg',
+        walkins: false,
+        slack: 'none'
+    };
 
-	var findExistingBusinessCallback = function (err, business) {
-		if (err) {
-			throw err;
-		}
+    var findExistingBusinessCallback = function (err, business) {
+        if (err) {
+            throw err;
+        }
 
-		debug('Preexisting business: ');
-		debug(business);
+        debug('Preexisting business: ');
+        debug(business);
 
-		if (!business) {
-			debug('No business found, inserting.');
-			businessDB.insert(businessData, insertBusinessCallback);
-		}
-		else {
-		  res.json({message: 'This company is already registered!'});
-	  }
-	};
+        if (!business) {
+            debug('No business found, inserting.');
+            businessDB.insert(businessData, insertBusinessCallback);
+        }
+        else {
+            res.json({message: 'This company is already registered!'});
+        }
+    };
 
-	var insertBusinessCallback = function (err, result) {
-		if (err) {
-			throw err;
-		}
-		var businessID = result._id.toString();
-        var phone = result.phone.replace(/\D/g,''); // only numbers
-		var userData = {
-			business: ObjectId(businessID),
-			password: result.password,
-			phone: phone,
-			fname: result.fname,
-			lname: result.lname,
-			email: result.email,
-			smsNotify: true,
-			emailNotify: true,
-			permissionLevel: 2,
+    var insertBusinessCallback = function (err, result) {
+        if (err) {
+            throw err;
+        }
+        var businessID = result._id.toString();
+        var phone = result.phone.replace(/\D/g, ''); // only numbers
+        var userData = {
+            business: ObjectId(businessID),
+            password: result.password,
+            phone: phone,
+            fname: result.fname,
+            lname: result.lname,
+            email: result.email,
+            smsNotify: true,
+            emailNotify: true,
+            permissionLevel: 2,
             permissionName: 'Owner',
-			company: result.companyName
-		};
+            company: result.companyName
+        };
 
         // insert form/check in account (level_5)
 
@@ -194,14 +194,18 @@ exports.post = function (req, res) {
         var adr = result.companyName.toLowerCase().replace(' ', ''); // replace whitespace
         // characters
         switch (adr.length) {
-            case 0: adr = 'thd';
-                    break;
-            case 1: adr = adr.concat('hc');
-                    break;
-            case 2: adr = adr.concat('z');
-                    break;
-            default: adr = adr.slice(0,3);
-                    break;
+            case 0:
+                adr = 'thd';
+                break;
+            case 1:
+                adr = adr.concat('hc');
+                break;
+            case 2:
+                adr = adr.concat('z');
+                break;
+            default:
+                adr = adr.slice(0, 3);
+                break;
         }
 
         // numbers and check for uniqueness; finish up form account process
@@ -210,20 +214,20 @@ exports.post = function (req, res) {
 
         debug('Successfully inserted new business.');
         debug('Inserting new employee for the business');
-		employeeDB.insert(userData, insertEmployeeCallback);
-	};
+        employeeDB.insert(userData, insertEmployeeCallback);
+    };
 
-	var insertEmployeeCallback = function (err, result) {
-		if (err) {
+    var insertEmployeeCallback = function (err, result) {
+        if (err) {
             debug('Error inserting new employee.');
-			throw err;
-		}
+            throw err;
+        }
         debug('Successfully inserted new employee.');
-		formDB.insert({business: result.business, data: ''}); // insert form
-		res.json({message: 'Signup successful! Please log in.'});
-	};
+        formDB.insert({business: result.business, data: ''}); // insert form
+        res.json({message: 'Signup successful! Please log in.'});
+    };
 
-	businessDB.findOne({email: req.body.email}, findExistingBusinessCallback);
+    businessDB.findOne({email: req.body.email}, findExistingBusinessCallback);
 };
 
 /*

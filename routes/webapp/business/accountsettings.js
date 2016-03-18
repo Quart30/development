@@ -13,8 +13,8 @@ var auth = require('../../../lib/auth');
 function getPage(employee) {
     switch (employee.permissionLevel) {
         case 1: return 'business/level_1/accountsettings';
-        case 2: // place holder
-        case 3: return 'business/level_2/accountsettings';
+        case 2: return 'business/level_2/accountsettings';
+        case 3: return 'business/level_3/accountsettings';
         case 4: return 'business/level_4/accountsettings';
         default: return 'error';
     }
@@ -25,8 +25,10 @@ function phoneString(phoneNumber) {
     var phone_str = phoneNumber;
 
     switch (length) {
-        case 11: phone_str = phone_str.slice(1,12);
-        case 10: return '(' + phone_str.slice(0,3) + ') ' + phone_str.slice(3,6) + '-' + phone_str.slice(6);
+        case 11:
+            phone_str = phone_str.slice(1, 12);
+        case 10:
+            return '(' + phone_str.slice(0, 3) + ') ' + phone_str.slice(3, 6) + '-' + phone_str.slice(6);
         default: // no default
             break;
     }
@@ -57,8 +59,8 @@ function reload(employees, eid, message) {
  * @param req The req parameter used to access the database,
  * @returns title, fname, lname, password, phone, email, smsNotify, emailNotify
  */
-exports.get = function (req,res) {
-		var eid = req.user[0]._id;
+exports.get = function (req, res) {
+    var eid = req.user[0]._id;
     var db = req.db;
     var employees = db.get('employees');
 
@@ -106,41 +108,42 @@ exports.post = function (req, res) {
     var textNotify = req.body.sendText;
     var emailNotify = req.body.sendEmail;
 
-    if (inputName != null)
-    {
+    if (inputName != null) {
         var name = inputName.split(' ');
 
-        employees.findAndModify({_id: eid}, { $set: {fname: name[0], lname: name[1]}}, function(err, result) {
-           if (err) { return handleError(res, err); }
+        employees.findAndModify({_id: eid}, {$set: {fname: name[0], lname: name[1]}}, function (err, result) {
+            if (err) {
+                return handleError(res, err);
+            }
 
             employees.find({_id: eid}, {limit: 1}, function (err, result) {
-               var emp = result[0];var phone = emp.phone;
+                var emp = result[0];
+                var phone = emp.phone;
             });
         });
     }
 
-    if (inputPass != null)
-    {
-        if(inputPass === req.user.Employee[0].password)
-        {
+    if (inputPass != null) {
+        if (inputPass === req.user.Employee[0].password) {
             reload(employees, eid, 'Password successfully changed!');
         }
-		else
-		{
-			inputPass = auth.hashPassword(inputPass);
-			employees.findAndModify({_id: eid}, { $set: {password: inputPass}}, function(err, data) {
-           	    if (err) { return handleError(res, err); }
+        else {
+            inputPass = auth.hashPassword(inputPass);
+            employees.findAndModify({_id: eid}, {$set: {password: inputPass}}, function (err, data) {
+                if (err) {
+                    return handleError(res, err);
+                }
 
                 reload(employees, eid, 'Password successfully changed!');
-        	});
+            });
         }
     }
 
-    if (inputEmail != null)
-    {
-        employees.findAndModify({_id: eid}, { $set: {email: inputEmail}}, function(err, data)
-        {
-            if (err) { return handleError(res, err);}
+    if (inputEmail != null) {
+        employees.findAndModify({_id: eid}, {$set: {email: inputEmail}}, function (err, data) {
+            if (err) {
+                return handleError(res, err);
+            }
 
             reload(employees, eid, 'Email successfully changed!');
         });
@@ -148,63 +151,60 @@ exports.post = function (req, res) {
         // if owner, change business email
         if (req.user[0].permissionLevel === 2) {
             var businessDB = req.db.get('businesses');
-            businessDB.findAndModify({_id: req.user[0].business}, { $set: {email: inputEmail}}, function (err, result) {
-                if (err) { return handleError(res, err); }
+            businessDB.findAndModify({_id: req.user[0].business}, {$set: {email: inputEmail}}, function (err, result) {
+                if (err) {
+                    return handleError(res, err);
+                }
             });
         }
     }
 
-    if (inputPhone != null)
-    {
-        inputPhone = inputPhone.replace(/\D/g,''); // numbers only
+    if (inputPhone != null) {
+        inputPhone = inputPhone.replace(/\D/g, ''); // numbers only
 
-        if (inputPhone.length === 10)
-        {
-            employees.findAndModify({_id: eid}, { $set: {phone: inputPhone}}, function(err, data) {
-                if (err) { return handleError(res, err);}
+        if (inputPhone.length === 10) {
+            employees.findAndModify({_id: eid}, {$set: {phone: inputPhone}}, function (err, data) {
+                if (err) {
+                    return handleError(res, err);
+                }
 
                 reload(employees, eid, 'Phone number successfully changed!');
             });
         }
-        else
-        {
+        else {
             reload(employees, eid, 'Incorrect phone length');
         }
     }
 
-    if (textNotify != null)
-    {
-        if (textNotify === '0')
-        {
+    if (textNotify != null) {
+        if (textNotify === '0') {
             var smsSet = false;
         }
-        else
-        {
+        else {
             var smsSet = true;
         }
 
-        employees.findAndModify({_id: eid}, { $set: {smsNotify: smsSet}}, function(err, data)
-        {
-            if (err) { return handleError(res, err);}
+        employees.findAndModify({_id: eid}, {$set: {smsNotify: smsSet}}, function (err, data) {
+            if (err) {
+                return handleError(res, err);
+            }
 
             reload(employees, eid, 'SMS notification settings successfully changed!');
         });
     }
 
-    if (emailNotify != null)
-    {
-        if (emailNotify === '0')
-        {
+    if (emailNotify != null) {
+        if (emailNotify === '0') {
             var emailSet = false;
         }
-        else
-        {
+        else {
             var emailSet = true;
         }
-	    //find the appropriate employee to set the email and notification settings
-        employees.findAndModify({_id: eid}, { $set: {emailNotify: emailSet}}, function(err, data)
-        {
-            if (err) { return handleError(res, err);}
+        //find the appropriate employee to set the email and notification settings
+        employees.findAndModify({_id: eid}, {$set: {emailNotify: emailSet}}, function (err, data) {
+            if (err) {
+                return handleError(res, err);
+            }
 
             reload(employees, eid, 'Email notification settings successfully changed!');
         });

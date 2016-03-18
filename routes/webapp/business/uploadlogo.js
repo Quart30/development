@@ -1,6 +1,24 @@
 var fs = require('fs');
 var auth = require('../../../lib/auth');
 
+/**
+ * Find out which account settings page to load based on user level
+ *
+ * @param employee
+ *          1: load everything
+ *          2: load everything
+ *          3: load everything
+ *          4: error
+ * @returns hjs file to render
+ */
+function getPage(employee) {
+    switch (employee.permissionLevel) {
+        case 2: return 'business/level_2/uploadlogo';
+        case 3: return 'business/level_3/uploadlogo';
+        default: return 'error';
+    }
+}
+
 exports.get = function(req, res, next){
 
     var db = req.db;
@@ -8,18 +26,18 @@ exports.get = function(req, res, next){
     var businessID = req.user[0].business;
 
     businesses.findById(businessID,
-        function (err, results){
-            if(err){
+        function (err, results) {
+            if (err) {
                 return next(err);
             }
 
-            if(results.logo){
+            if (results.logo) {
 
-                res.render('business//level_2/uploadLogo',
+                res.render(getPage(req.user[0]),
                     {title:'Upload Logo',logo: results.logo});
             }
             else{
-                res.render('business//level_2/uploadLogo',
+                res.render(getPage(req.user[0]),
                     {title:'Upload Logo'});
             }
         }
@@ -27,22 +45,22 @@ exports.get = function(req, res, next){
 
 };
 
-exports.post = function(req, res, next){
+exports.post = function (req, res, next) {
 
     var db = req.db;
     var businesses = db.get('businesses');
     var businessID = req.user[0].business;
 
-    if(req.files.userLogo){
+    if (req.files.userLogo) {
 
         businesses.findById(businessID,
-            function (err, results){
+            function (err, results) {
 
-                if(err){
+                if (err) {
                     return next(err);
                 }
                 if (results.logo !== 'images/dentalLogo.jpg')
-                  fs.unlink('public/'+results.logo);
+                    fs.unlink('public/' + results.logo);
             }
         );
 
@@ -50,45 +68,44 @@ exports.post = function(req, res, next){
                 $set: {
                     logo: '/images/uploads/' + req.files.userLogo.name
                 }
-            },{
+            }, {
                 upsert: true
-            }, function (err){
+            }, function (err) {
                 if (err) {
                     return next(err);
                 }
 
-                res.render('business//level_2/customize_theme',{
+                res.render(getPage(req.user[0]),{
                     success:'Succesfully uploaded file: '+req.files.userLogo.originalname,
                     bg: "images/bg.jpg",  // + business.style.bg
-                    logo:'/images/uploads/'+req.files.userLogo.name
+                    logo: '/images/uploads/' + req.files.userLogo.name
                 });
 
             }
-
         );
     }
-    else{
+    else {
 
         businesses.findById(businessID,
-            function (err, results){
-                if(err){
+            function (err, results) {
+                if (err) {
                     return next(err);
                 }
 
-                if(results.logo){
+                if (results.logo) {
 
-                    res.render('business//level_2/customize_theme',{
+                    res.render(getPage(req.user[0]),{
                         title:'Upload Logo',
                         logo:results.logo,
                         bg: "images/bg.jpg",  // + business.style.bg
-                        error:'Please select a valid image(png,jpg) file to upload.'
+                        error: 'Please select a valid image(png,jpg) file to upload.'
                     });
                 }
                 else{
-                    res.render('business//level_2/customize_theme',{
+                    res.render(getPage(req.user[0]),{
                         title:'Upload Logo',
                         bg: "images/bg.jpg",  // + business.style.bg
-                        error:'Please select a valid image(png,jpg) file to upload.'
+                        error: 'Please select a valid image(png,jpg) file to upload.'
                     });
                 }
             }

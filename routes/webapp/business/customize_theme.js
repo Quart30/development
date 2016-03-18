@@ -1,4 +1,3 @@
-
 /**
  * Find out which account settings page to load based on user level
  *
@@ -11,8 +10,8 @@
  */
 function getPage(employee) {
     switch (employee.permissionLevel) {
-        case 2: // place holder
-        case 3: return 'business/level_2/customize_theme';
+        case 2: return 'business/level_2/customize_theme';
+        case 3: return 'business/level_3/customize_theme';
         default: return 'error';
     }
 }
@@ -30,7 +29,7 @@ exports.get = function (req, res, next) {
         var page = getPage(req.user[0]);
         if (page == 'error') {
             res.render('error', {
-               message: 'Page not found',
+                message: 'Page not found',
                 error: '404'
             });
         }

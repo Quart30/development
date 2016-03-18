@@ -1,16 +1,35 @@
 var _ = require('underscore');
 
+
+/**
+ * Find out which account settings page to load based on user level
+ *
+ * @param employee
+ *          1: load everything
+ *          2: load everything
+ *          3: load everything
+ *          4: load everything (with correct nav bar)
+ * @returns hjs file to render
+ */
+function getPage(employee) {
+    switch (employee.permissionLevel) {
+        case 2: return 'business/level_2/manage_forms';
+        case 3: return 'business/level_3/manage_forms';
+        default: return 'error';
+    }
+}
+
 function makeDropdown(options, name, body) {
-    var s = '<select class="form-control" name="'+name+'" id="'+name+'">';
+    var s = '<select class="form-control" name="' + name + '" id="' + name + '">';
     _.each(options, function (option) {
-        s += '<option value="'+option+'" ' + (body[name] === option ? 'selected' : '') + '>'+option+'</option> ';
+        s += '<option value="' + option + '" ' + (body[name] === option ? 'selected' : '') + '>' + option + '</option> ';
     });
-    s+= '</select>';
+    s += '</select>';
     return s;
 }
 
 function makeTextfield(name, body) {
-    return'<input type="text" class="form-control form-width-custom" name="'+name+'" id="' + name + '"value="' + (body[name] || '') + '">';
+    return '<input type="text" class="form-control form-width-custom" name="' + name + '" id="' + name + '"value="' + (body[name] || '') + '">';
 }
 
 function makeFormGroup(field, index, body) {
@@ -77,7 +96,7 @@ exports.get = function (req, res, next) {
             return next(err);
         }
 
-        res.render('business/level_2/manage_forms',{
+        res.render(getPage(req.user[0]),{
             message: req.flash('permission'),
             form: formHtml
         });

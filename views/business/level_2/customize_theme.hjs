@@ -32,9 +32,6 @@
         <a href="/addemployees">Employees</a>
       </li>
       <li>
-        <a href="/addAppointment">Add Appointments</a>
-      <li>
-      <li>
         <a href="/accountSettings">Account Settings</a>
       </li>
       <li class="active">

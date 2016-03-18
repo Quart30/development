@@ -24,8 +24,8 @@ function debug(message) {
 function getPage(employee) {
     switch (employee.permissionLevel) {
         case 1: return 'business/level_1/addemployees';
-        case 2: // place holder
-        case 3: return 'business/level_2/addemployees';
+        case 2: return 'business/level_2/addemployees';
+        case 3: return 'business/level_3/addemployees';
         default: return 'error';
     }
 }
@@ -36,30 +36,44 @@ function getPage(employee) {
  * @param req and res The two parameters passed in to get the apprporiate employee,
  * @returns The appropriate data about the employee
  */
-exports.get = function(req, res){
-    var database =  req.db;
+exports.get = function (req, res) {
+    var database = req.db;
     var employeeDB = database.get('employees');
     var employee;
     var notemployee;
     var businessID = req.user[0].business.toString();
 
     async.parallel({
-            employee: function(cb){
-                employeeDB.find({registrationToken: {$exists: false}, business: ObjectId(businessID)},function (err,results){
+            employee: function (cb) {
+                employeeDB.find({
+                    registrationToken: {$exists: false},
+                    business: ObjectId(businessID)
+                }, function (err, results) {
 
-                    if (err) { return next(err);  }
-                    if(!results) { return next(new Error('Error finding employee'));}
+                    if (err) {
+                        return next(err);
+                    }
+                    if (!results) {
+                        return next(new Error('Error finding employee'));
+                    }
 
                     employeee = results;
                     cb();
 
                 });
             },
-            nonemployee: function(cb){
-                employeeDB.find({registrationToken: {$exists: true}, business: ObjectId(businessID)}, function (err,results){
+            nonemployee: function (cb) {
+                employeeDB.find({
+                    registrationToken: {$exists: true},
+                    business: ObjectId(businessID)
+                }, function (err, results) {
 
-                    if (err) { return next(err); }
-                    if(!results) { return next(new Error('Error finding employee'));}
+                    if (err) {
+                        return next(err);
+                    }
+                    if (!results) {
+                        return next(new Error('Error finding employee'));
+                    }
 
                     notemployee = results;
                     cb();
@@ -67,9 +81,9 @@ exports.get = function(req, res){
             }
         },
 
-        function(err,results){
+        function (err, results) {
 
-            if(err){
+            if (err) {
                 throw err;
             }
 
@@ -88,7 +102,7 @@ exports.get = function(req, res){
  * @returns The appropriate data about the employee
  */
 
-exports.post = function(req,res){
+exports.post = function (req, res) {
     var parsed = baby.parse(req.body.csvEmployees);
     var rows = parsed.data;
 
@@ -104,7 +118,7 @@ function insertEmployee(req, rows, i) {
     if (i >= rows.length)
         return;
 
-    var database =  req.db;
+    var database = req.db;
     var employeeDB = database.get('employees');
     var businessID = req.user[0].business;
     var companyName = req.user[0].company;
@@ -116,14 +130,14 @@ function insertEmployee(req, rows, i) {
     debug(username);
 
     /*Check for valid inputs */
-    if (rows[i].length  < 2 ) {
+    if (rows[i].length < 2) {
         //TODO: Error print statements
         return;
     }
     var email = rows[i][1].trim();
     debug(email);
     /*Check for valid email*/
-    if (email.indexOf("@")  === -1) {
+    if (email.indexOf("@") === -1) {
         /*TODO: ERROR */
         return;
     }
@@ -132,7 +146,7 @@ function insertEmployee(req, rows, i) {
     var lname = nameArr[1];
     var token = randomToken();
 
-    employeeDB.find({business: ObjectId(businessID), email: email}, function(err, result) {
+    employeeDB.find({email: email}, function(err, result) {
 
         if (result == '') {
             employeeDB.insert({
@@ -141,7 +155,7 @@ function insertEmployee(req, rows, i) {
                 fname: fname,
                 lname: lname,
                 email: email,
-                registrationToken : token, //will be removed programmatically once the employee confirms
+                registrationToken: token, //will be removed programmatically once the employee confirms
                 permissionLevel: 4,
                 permissionName: 'Provider',
                 registered: false,
@@ -187,8 +201,8 @@ function sendEmail(fname, lname, email, token) {
     };
 
     // send mail with defined transport object
-    transporter.sendMail(message, function(error, info){
-        if(error){
+    transporter.sendMail(message, function (error, info) {
+        if (error) {
             return console.log('Email error: ' + error);
         }
         console.log('Confirmation email sent: ' + info.response);
