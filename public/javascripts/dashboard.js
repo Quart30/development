@@ -118,12 +118,12 @@ function parseAppointmentData(data, callback) {
     var imgSource = data.image ? data.image : "http://placehold.it/50x50";
     var $img = $('<img id="Image" src="' + imgSource + '" />');
 
-    if (data.state === 'checkedIn' || data.state === 'roomed') {
+    if (data.state === 'Checked In' || data.state === 'roomed') {
 
         var url = '/viewform/' + data._id;
         var $form = $('<a href="' + url + '" onclick="window.open(\'' + url + '\', \'newwindow\', \'width=600, height=400\'); return false;" >View Forms</a>');
 
-        if (data.state === 'checkedIn') {
+        if (data.state === 'Checked In') {
             var $check = $('<input type="checkbox">').data('appid', data._id);
             $check.change(function () {
                 var $appid = $(this).data('appid');
