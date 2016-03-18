@@ -122,10 +122,10 @@
                     <p class="hint">Perfect for freelancers</p>
                 </div>
                 <ul class="features">
-                    <li><span class="fontawesome-cog"></span>1 WordPress Install</li>
-                    <li><span class="fontawesome-star"></span>25,000 visits/mo.</li>
-                    <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
-                    <li><span class="fontawesome-cloud"></span>10GB Local Storage</li>
+                    <li><span class="fontawesome-cog"></span>No Analytics</li>
+                    <li><span class="fontawesome-star"></span>24/7 Customer Support</li>
+                    <li><span class="fontawesome-dashboard"></span>100 Check-Ins per Month</li>
+                    <li><span class="fontawesome-cloud"></span>1 Location</li>
                     <li>
                         <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                             <input type="hidden" name="cmd" value="_s-xclick">
@@ -145,10 +145,10 @@
                     <p class="hint">Suitable for startups</p>
                 </div>
                 <ul class="features">
-                    <li><span class="fontawesome-cog"></span>10 WordPress Install</li>
-                    <li><span class="fontawesome-star"></span>100,000 visits/mo.</li>
-                    <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
-                    <li><span class="fontawesome-cloud"></span>20GB Local Storage</li>
+                    <li><span class="fontawesome-cog"></span>Basic Analytics</li>
+                    <li><span class="fontawesome-star"></span>24/7 Customer Support</li>
+                    <li><span class="fontawesome-dashboard"></span>1000 Check-Ins per Month</li>
+                    <li><span class="fontawesome-cloud"></span>2 Locations at Once</li>
                     <li>
                         <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                             <input type="hidden" name="cmd" value="_s-xclick">
@@ -168,10 +168,10 @@
                     <p class="hint">For established business</p>
                 </div>
                 <ul class="features">
-                    <li><span class="fontawesome-cog"></span>25 WordPress Install</li>
-                    <li><span class="fontawesome-star"></span>400,000 visits/mo.</li>
-                    <li><span class="fontawesome-dashboard"></span>Unlimited Data Transfer</li>
-                    <li><span class="fontawesome-cloud"></span>30GB Local Storage</li>
+                    <li><span class="fontawesome-cog"></span>Advanced Analytics</li>
+                    <li><span class="fontawesome-star"></span>24/7 Customer Support</li>
+                    <li><span class="fontawesome-dashboard"></span>Unlimited Check-Ins</li>
+                    <li><span class="fontawesome-cloud"></span>Unlimited Locations</li>
                     <li>
                         <form style="text-align: center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                             <input type="hidden" name="cmd" value="_s-xclick">
