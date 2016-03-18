@@ -73,6 +73,36 @@ exports.post = function (req, res) {
                         appointmentsDB.findAndModify({query: apptResult, update: {$set: {state: 'checkedIn'}}});
                     }
                 });
+                var businessDB = req.db.get('businesses');
+                businessDB.findOne({_id: ObjectId(bid)}, function(err, result) {
+                    if (err)
+                        throw(err);
+
+                    if (result) {
+                        // find a slack channel
+                        var slack_url = result.slack ? result.slack.toString() : 'none';
+
+                        // make sure we can send the message somewhere
+                        if (slack_url != 'none') {
+                            // text
+                            var text = { 'text': fname + ' ' + lname +
+                            ' has checked in for their appointment! \nCheck it out: <https://heraldcheckin.herokuapp.com/dashboard>'
+                            };
+
+                            var options = {
+                                url: slack_url,
+                                method: 'POST',
+                                json: text
+                            };
+
+                            request.post(options, function (error, response, body) {
+                                if (!error && response.statusCode == 200) {
+                                    console.log(body.id); // Print the shortened url.
+                                }
+                            });
+                        }
+                    }
+                });
             }
         });
 
