@@ -1,48 +1,48 @@
 var fs = require('fs');
 var auth = require('../../../lib/auth');
 
-exports.get = function(req, res, next){
+exports.get = function (req, res, next) {
 
     var db = req.db;
     var businesses = db.get('businesses');
     var businessID = req.user[0].business;
 
     businesses.findById(businessID,
-        function (err, results){
-            if(err){
+        function (err, results) {
+            if (err) {
                 return next(err);
             }
 
-            if(results.logo){
+            if (results.logo) {
 
                 res.render('business//level_2/uploadLogo',
-                    {title:'Upload Logo',logo: results.logo});
+                    {title: 'Upload Logo', logo: results.logo});
             }
-            else{
+            else {
                 res.render('business//level_2/uploadLogo',
-                    {title:'Upload Logo'});
+                    {title: 'Upload Logo'});
             }
         }
     );
 
 };
 
-exports.post = function(req, res, next){
+exports.post = function (req, res, next) {
 
     var db = req.db;
     var businesses = db.get('businesses');
     var businessID = req.user[0].business;
 
-    if(req.files.userLogo){
+    if (req.files.userLogo) {
 
         businesses.findById(businessID,
-            function (err, results){
+            function (err, results) {
 
-                if(err){
+                if (err) {
                     return next(err);
                 }
                 if (results.logo !== 'images/dentalLogo.jpg')
-                  fs.unlink('public/'+results.logo);
+                    fs.unlink('public/' + results.logo);
             }
         );
 
@@ -50,45 +50,44 @@ exports.post = function(req, res, next){
                 $set: {
                     logo: '/images/uploads/' + req.files.userLogo.name
                 }
-            },{
+            }, {
                 upsert: true
-            }, function (err){
+            }, function (err) {
                 if (err) {
                     return next(err);
                 }
 
-                res.render('business//level_2/customize_theme',{
-                    success:'Succesfully uploaded file: '+req.files.userLogo.originalname,
+                res.render('business//level_2/customize_theme', {
+                    success: 'Succesfully uploaded file: ' + req.files.userLogo.originalname,
                     bg: "images/bg.jpg",  // + business.style.bg
-                    logo:'/images/uploads/'+req.files.userLogo.name
+                    logo: '/images/uploads/' + req.files.userLogo.name
                 });
 
             }
-
         );
     }
-    else{
+    else {
 
         businesses.findById(businessID,
-            function (err, results){
-                if(err){
+            function (err, results) {
+                if (err) {
                     return next(err);
                 }
 
-                if(results.logo){
+                if (results.logo) {
 
-                    res.render('business//level_2/customize_theme',{
-                        title:'Upload Logo',
-                        logo:results.logo,
+                    res.render('business//level_2/customize_theme', {
+                        title: 'Upload Logo',
+                        logo: results.logo,
                         bg: "images/bg.jpg",  // + business.style.bg
-                        error:'Please select a valid image(png,jpg) file to upload.'
+                        error: 'Please select a valid image(png,jpg) file to upload.'
                     });
                 }
-                else{
-                    res.render('business//level_2/customize_theme',{
-                        title:'Upload Logo',
+                else {
+                    res.render('business//level_2/customize_theme', {
+                        title: 'Upload Logo',
                         bg: "images/bg.jpg",  // + business.style.bg
-                        error:'Please select a valid image(png,jpg) file to upload.'
+                        error: 'Please select a valid image(png,jpg) file to upload.'
                     });
                 }
             }

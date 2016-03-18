@@ -8,13 +8,13 @@ exports.get = function (req, res, next) {
             return next(err);
         }
 
-        res.render('business/level_2/theme'  ,{
+        res.render('business/level_2/theme', {
             companyName: business.companyName,
-           // bg: business.style.bg,
-             logo: business.logo ,
-           // buttonBg: style.rgbObjectToCSS(business.style.buttonBg),
+            // bg: business.style.bg,
+            logo: business.logo,
+            // buttonBg: style.rgbObjectToCSS(business.style.buttonBg),
             //buttonText: style.rgbObjectToCSS(business.style.buttonText),
-           // containerText: style.rgbObjectToCSS(business.style.containerText),
+            // containerText: style.rgbObjectToCSS(business.style.containerText),
             //containerBg: style.rgbObjectToCSS(business.style.containerBg),
             style: JSON.stringify(business.style)
         });

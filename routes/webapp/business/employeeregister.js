@@ -1,10 +1,10 @@
 var transporter = require('nodemailer').createTransport('smtps://quart30dev%40gmail.com:cse112quart@smtp.gmail.com');
 
-exports.get = function(req,res){
+exports.get = function (req, res) {
     res.render('business/level_2/registeremployees');
 };
 
-exports.post = function(req, res) {
+exports.post = function (req, res) {
     var app = require('../../../app');
     var employeeDB = req.db.get('employees');
     var bid = req.user[0].business;
@@ -34,8 +34,8 @@ exports.post = function(req, res) {
         };
 
         // send mail with defined transport object
-        transporter.sendMail(message, function(error, info){
-            if(error){
+        transporter.sendMail(message, function (error, info) {
+            if (error) {
                 return console.log('Email error: ' + error);
             }
             console.log('Confirmation email sent: ' + info.response);
