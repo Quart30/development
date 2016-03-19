@@ -1,5 +1,7 @@
 # web-app [ ![Codeship Status for CSE112-GoldTeam/web-app](https://codeship.com/projects/9df65660-88a3-0132-d13f-02ce2f7c7d8a/status?branch=master)](https://codeship.com/projects/59497)
 
+Link to Heroku app: heraldcheckin.herokuapp.com
+
 First Run
 ----------------------------
 1. If on a Mac first install [Xcode](https://developer.apple.com/xcode/downloads/)
